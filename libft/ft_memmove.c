@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.h                                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 19:43:07 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/06 21:45:34 by jitlee           ###   ########.fr       */
+/*   Created: 2020/10/06 21:34:04 by jitlee            #+#    #+#             */
+/*   Updated: 2020/10/06 21:45:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stddef.h>
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t n);
-void	*ft_memset(void *b, int c, size_t len);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-#endif
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	char		*new_dst;
+	const char	*new_src;
+	size_t		i;
+
+	i = 0;
+	new_dst = dst;
+	new_src = src;
+	if (dst <= src)
+	{
+		while (i < len)
+		{
+			new_dst[i] = new_src[i];
+			i++;	
+		}
+	}
+	else
+	{
+		new_dst += len;
+		new_src += len;
+		while (i < len)
+		{
+			new_dst[len - (i + 1)] = new_src[len - (i + 1)];
+			i++;
+		}
+	}
+	return (dst);
+}
