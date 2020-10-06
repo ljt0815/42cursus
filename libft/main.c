@@ -40,5 +40,19 @@ int	main(void)
 	ft_memcpy(a,b,15);
 	for(i = 0; i < 15; i++)
 		printf("a[%d] = %d\n",i, a[i]);
+	
+	puts("*********** ft_memccpy TEST ****************");
+	char c[30] = "wowwowkkkwowwowzkkk";
+	char d[30] = "fffffffffffffffffff";
+	puts("c[30] = \"wowwowkkkwowwowzkkk\"");
+	puts("d[30] = \"fffffffffffffffffff\"");
+	puts("ft_memccpy(d, c, \'z\', 30) -> return");
+	printf("%p\n",ft_memccpy(d, c, 'z', 30));
+
+	for(int i = 0; i < 30; i++)
+	{
+		printf("d[%d] = %c\n", i, d[i]);
+	}
+
 	return 0;
 }
