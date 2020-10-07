@@ -60,5 +60,13 @@ int	main(void)
 	puts("ft_memmove(array+2, array, strlen(\"test\"));");
 	ft_memmove(array+2, array, 4);
 	printf("after memmove : %s\n", array);
+
+	puts("*********** ft_memchr TEST ****************");
+	char e[30] = "kkkabbc";
+	printf("e : %s\n", e);
+	printf("e adress : %p\n", e);
+	puts("ft_memchr(e, \'a\', 7)");
+	printf("memchr return : %p\n", ft_memchr(e, 'a', 7));
+
 	return 0;
 }

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.h                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 19:43:07 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/07 15:44:57 by jitlee           ###   ########.fr       */
+/*   Created: 2020/10/07 15:35:32 by jitlee            #+#    #+#             */
+/*   Updated: 2020/10/07 15:45:48 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stddef.h>
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t n);
-void	*ft_memset(void *b, int c, size_t len);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-void	*ft_memchr(const void *s, int c, size_t n);
-#endif
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*find;
+	size_t			i;
+
+	i = 0;
+	find = (unsigned char *)s;
+	while (i < n)
+	{
+		if(*(find + i) == c)
+			return (find + i);
+		i++;
+	}
+	return (0);
+}
