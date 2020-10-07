@@ -54,5 +54,11 @@ int	main(void)
 		printf("d[%d] = %c\n", i, d[i]);
 	}
 
+	puts("*********** ft_memmove TEST ****************");
+	char array[10] = "test";
+	printf("original : %s\n", array);
+	puts("ft_memmove(array+2, array, strlen(\"test\"));");
+	ft_memmove(array+2, array, 4);
+	printf("after memmove : %s\n", array);
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 21:34:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/06 21:45:18 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/07 13:37:56 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	else
 	{
-		new_dst += len;
-		new_src += len;
 		while (i < len)
 		{
 			new_dst[len - (i + 1)] = new_src[len - (i + 1)];
