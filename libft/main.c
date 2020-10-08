@@ -68,5 +68,12 @@ int	main(void)
 	puts("ft_memchr(e, \'a\', 7)");
 	printf("memchr return : %p\n", ft_memchr(e, 'a', 7));
 
+	puts("*********** ft_memcmp TEST ****************");	
+	puts("f[20] = \"abcdefkk\";");
+	puts("g[20] = \"abcdefko\";");
+	char f[20] = "abcdefkk";
+	char g[20] = "abcdefko";
+	puts("ft_memcmp(g, f, 8)");
+	printf("%d",ft_memcmp(g, f, 8));
 	return 0;
 }
