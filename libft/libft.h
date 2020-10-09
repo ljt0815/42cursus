@@ -6,14 +6,14 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 19:43:07 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/09 17:44:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/09 18:00:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stddef.h>
 # include <ctype.h>
+# include <stdlib.h>
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
@@ -37,4 +37,5 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+char	*ft_strdup(const char *src);
 #endif
