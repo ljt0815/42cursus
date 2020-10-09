@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 19:43:07 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/08 21:02:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/09 14:06:16 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_atoi(const char *str);
 #endif
