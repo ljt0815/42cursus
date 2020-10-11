@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:28:26 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/11 19:18:49 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/11 19:55:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_atoi(const char *str)
 		result = (result * 10) + str[i] - '0';
 		i++;
 	}
-	if ( i > 19 || result > 9223372036854775807)
+	if (i > 19 || result > 9223372036854775807)
 		return ((sign == 1) ? -1 : 0);
 	return (result * sign);
 }
