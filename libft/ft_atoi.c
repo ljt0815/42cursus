@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:28:26 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/09 15:08:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/11 19:18:49 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,27 @@ int		isnum(char str)
 
 int		ft_atoi(const char *str)
 {
-	int i;
-	int sign;
-	int tmp;
-	int result;
+	long				i;
+	long				sign;
+	unsigned long long	result;
 
 	i = 0;
-	sign = 0;
+	sign = 1;
 	result = 0;
 	while (is_space(str[i]))
 		i++;
 	if (issign(str[i]))
 	{
 		if (issign(str[i]) == 1)
-			sign = 1;
+			sign = -1;
 		i++;
 	}
 	while (isnum(str[i]))
 	{
-		tmp = str[i] - '0';
-		result = (result * 10) + tmp;
+		result = (result * 10) + str[i] - '0';
 		i++;
 	}
-	if (sign == 1)
-		result = result * -1;
-	return (result);
+	if ( i > 19 || result > 9223372036854775807)
+		return ((sign == 1) ? -1 : 0);
+	return (result * sign);
 }

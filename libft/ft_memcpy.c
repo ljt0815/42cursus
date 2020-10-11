@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 13:07:13 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/06 19:58:43 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/11 16:57:05 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char	*new_src;
 	int		new_n;
 
+	if (dst == 0 && src == 0)
+		return (dst);
 	new_n = (int)n;
 	new_dst = (char *)dst;
 	new_src = (char *)src;
