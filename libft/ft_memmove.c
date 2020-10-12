@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 21:34:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/11 16:57:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/12 17:28:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if ((dst == 0 && src == 0) || len == 0)
 		return (dst);
 	i = 0;
-	new_dst = dst;
-	new_src = src;
+	new_dst = (char *)dst;
+	new_src = (const char *)src;
 	if (dst <= src)
 		while (i < len)
 		{
