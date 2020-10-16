@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 15:58:49 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/16 18:41:55 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/16 18:43:39 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**null_process(char c, char **result, char const *s)
 {
 	if (c == 0)
 	{
-		if((result = (char **)malloc(sizeof(char *) * 2)))
+		if ((result = (char **)malloc(sizeof(char *) * 2)))
 			return (0);
 		result[0] = ft_strdup(s);
 		result[1] = 0;
