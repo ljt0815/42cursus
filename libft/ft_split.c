@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 15:58:49 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/15 21:41:31 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/16 18:41:55 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@ void	make_result(char const *s, char c, int cnt, char **result)
 	result[cnt] = 0;
 }
 
-int		null_process(char c, char **result, char const *s)
+char	**null_process(char c, char **result, char const *s)
 {
 	if (c == 0)
 	{
-		result = (char **)malloc(sizeof(char *) * 2);
+		if((result = (char **)malloc(sizeof(char *) * 2)))
+			return (0);
 		result[0] = ft_strdup(s);
 		result[1] = 0;
-		return (1);
+		return (result);
 	}
 	return (0);
 }
@@ -61,7 +62,7 @@ char	**ft_split(char const *s, char c)
 	result = 0;
 	cnt = 0;
 	i = 0;
-	if (null_process(c, result, s))
+	if ((result = null_process(c, result, s)))
 		return (result);
 	while (s[i])
 	{
