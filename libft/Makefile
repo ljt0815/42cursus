@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/07 16:47:10 by jitlee            #+#    #+#              #
-#    Updated: 2020/10/17 18:36:16 by jitlee           ###   ########.fr        #
+#    Updated: 2020/10/17 19:36:18 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ FILES = ft_memset \
 		ft_putnbr_fd
 
 BONUS_FILES = ft_lstnew \
-			  ft_lstadd_front
+			  ft_lstadd_front \
+			  ft_lstsize
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
