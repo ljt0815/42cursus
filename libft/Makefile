@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/07 16:47:10 by jitlee            #+#    #+#              #
-#    Updated: 2020/10/17 20:32:24 by jitlee           ###   ########.fr        #
+#    Updated: 2020/10/18 18:21:22 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,13 +49,17 @@ FILES = ft_memset \
 		ft_putchar_fd \
 		ft_putstr_fd \
 		ft_putendl_fd \
-		ft_putnbr_fd
+		ft_putnbr_fd \
+		ft_lstdelone
 
 BONUS_FILES = ft_lstnew \
 			  ft_lstadd_front \
 			  ft_lstsize \
 			  ft_lstlast \
-			  ft_lstadd_back
+			  ft_lstadd_back \
+			  ft_lstclear \
+			  ft_lstiter \
+			  ft_lstmap
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
