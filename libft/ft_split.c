@@ -6,13 +6,27 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 15:58:49 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/16 18:43:39 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/10/18 19:16:47 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	make_result(char const *s, char c, int cnt, char **result)
+char	**ft_malloc_error(char **result)
+{
+	int		i;
+
+	i = 0;
+	while (result[i])
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (0);
+}
+
+int		make_result(char const *s, char c, int cnt, char **result)
 {
 	int		i;
 	int		start;
@@ -32,16 +46,20 @@ void	make_result(char const *s, char c, int cnt, char **result)
 		if (start != -1)
 		{
 			if ((result[idx] = (char *)malloc(i - start + 2)) == 0)
-				return ;
+				return (0);
 			ft_strlcpy(result[idx], s + start, i - start + 1);
 			idx++;
 		}
 	}
 	result[cnt] = 0;
+	return (1);
 }
 
-char	**null_process(char c, char **result, char const *s)
+char	**null_process(char const *s, char c)
 {
+	char	**result;
+
+	result = 0;
 	if (c == 0)
 	{
 		if ((result = (char **)malloc(sizeof(char *) * 2)))
@@ -62,7 +80,7 @@ char	**ft_split(char const *s, char c)
 	result = 0;
 	cnt = 0;
 	i = 0;
-	if ((result = null_process(c, result, s)))
+	if ((result = null_process(s, c)))
 		return (result);
 	while (s[i])
 	{
@@ -75,6 +93,7 @@ char	**ft_split(char const *s, char c)
 	}
 	if ((result = (char **)malloc(sizeof(char *) * (cnt + 1))) == 0)
 		return (0);
-	make_result(s, c, cnt, result);
+	if ((make_result(s, c, cnt, result)) == 0)
+		return (ft_malloc_error(result));
 	return (result);
 }
