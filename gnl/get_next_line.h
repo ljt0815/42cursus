@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/01 22:12:45 by jitlee           ###   ########.fr       */
+/*   Created: 2020/11/01 21:17:17 by jitlee            #+#    #+#             */
+/*   Updated: 2020/11/01 21:32:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "GET_NEXT_LINE_H"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	get_next_line(int fd, char **line)
-{
-	
-	return (0);
-}
+# include <unistd.h>
+# include <fcntl.h>
+#endif
