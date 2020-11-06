@@ -6,21 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/06 22:31:03 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/07 00:51:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
@@ -80,8 +70,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		s2_len;
 	char	*result;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = 0;
+	while (s1[s1_len])
+		s1_len++;
+	s2_len = 0;
+	while (s2[s2_len])
+		s2_len++;
 	if ((result = (char *)malloc(s1_len + s2_len + 1)) == 0)
 		return (0);
 	ft_strlcpy(result, s1, s1_len + 1);
@@ -105,4 +99,25 @@ char	*ft_strchr(const char *s, int c)
 	if (find == 0)
 		return ((char *)s + i);
 	return (0);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*result;
+	int		s_len;
+
+	s_len = 0;
+	while (s[s_len])
+		s_len++;
+	if (s_len <= start)
+	{
+		if ((result = (char *)malloc(1)) == 0)
+			return (0);
+		result[0] = 0;
+		return (result);
+	}
+	if ((result = (char *)malloc(len + 1)) == 0)
+		return (0);
+	ft_strlcpy(result, s + start, len + 1);
+	return (result);
 }
