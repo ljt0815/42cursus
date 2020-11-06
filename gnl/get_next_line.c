@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/06 23:38:44 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/07 00:38:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int		not_in_cr_cycle(int fd, char *reading_content)
 {
 	char	*idx;
 	int		rtn;
+	int		read_cnt;
 
 	rtn = 0;
-	read(fd, reading_content, BUFFER_SIZE);
+	read_cnt = read(fd, reading_content, BUFFER_SIZE);
+	reading_content[read_cnt] = 0;
 	if ((idx = ft_strchr(reading_content, '\n')) != 0)
 		rtn = idx - reading_content;
 	return (rtn);
@@ -29,11 +31,13 @@ int		get_next_line(int fd, char **line)
 {
 	static char	*tmp;
 	char		*reading_content;
+	int			idx;
 
 	tmp = "";
 	reading_content = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
-	while (!not_in_cr_cycle(fd, reading_content))
+	while (!(idx = not_in_cr_cycle(fd, reading_content)))
 		tmp = ft_strjoin(tmp, reading_content);
+	printf("%d",idx);
 	*line = tmp;
 	return (0);
 }
