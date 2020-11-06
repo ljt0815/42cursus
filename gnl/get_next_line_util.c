@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/07 00:51:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/07 01:00:34 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*result;
-	int		s_len;
+	char			*result;
+	unsigned int	s_len;
 
 	s_len = 0;
 	while (s[s_len])
