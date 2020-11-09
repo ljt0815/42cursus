@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/09 22:34:14 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/09 23:12:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,15 @@ int		get_next_line(int fd, char **line)
 {
 	static char	*tmp;
 	static int	is_not_first;
-	char		*reading_content;
+	char		reading_content[BUFFER_SIZE + 1];
 	int			reading_length;
 	int			idx;
 
 	if (is_not_first != 1)
 	{
-		tmp = "";
+		tmp = ft_strdup("");
 		is_not_first = 1;
 	}
-	if ((reading_content = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)) == 0)
-		return (-1);
 	if ((idx = array_in_cr(tmp)) != -1)
 	{
 		*line = ft_strdup(ft_substr(tmp, 0, idx));

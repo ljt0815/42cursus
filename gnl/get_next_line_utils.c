@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/07 01:00:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/09 23:26:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		return (size + j);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		s1_len;
 	int		s2_len;
@@ -79,6 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if ((result = (char *)malloc(s1_len + s2_len + 1)) == 0)
 		return (0);
 	ft_strlcpy(result, s1, s1_len + 1);
+	free(s1);
 	ft_strlcat(result, s2, s1_len + s2_len + 1);
 	return (result);
 }
