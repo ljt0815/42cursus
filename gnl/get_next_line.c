@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/09 17:27:33 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/09 17:59:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int		get_next_line(int fd, char **line)
 		flag = 1;
 	}
 	if ((reading_content = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)) == 0)
-		return (0);
+		return (-1);
 	while ((idx = not_in_cr_cycle(fd, reading_content)) == -1)
 		tmp = ft_strjoin(tmp, reading_content);
 	tmp = ft_strjoin(tmp, ft_substr(reading_content, 0, idx));
 	*line = ft_strdup(tmp);
 	tmp = ft_substr(reading_content, idx + 1, BUFFER_SIZE);
-	return (0);
+	return (1);
 }

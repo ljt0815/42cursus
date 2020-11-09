@@ -7,9 +7,7 @@ int main(void)
 	int fd;
 	char *line;
 
-	fd = open("simple", O_RDONLY);
-	get_next_line(fd, &line);
-	printf("%s\n",line);
+	fd = open("aaa", O_RDONLY);
 	get_next_line(fd, &line);
 	printf("%s\n",line);
 	get_next_line(fd, &line);
