@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/11 23:39:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/11 23:49:46 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		get_next_line(int fd, char **line)
 		ft_strlcpy(my_tmp, my_tmp + idx + 1, BUFFER_SIZE - idx);
 		return (1);
 	}
-	while ((reading_length = read(fd, reading_content, BUFFER_SIZE)))
+	while ((reading_length = read(fd, reading_content, BUFFER_SIZE)) > 0)
 	{
 		reading_content[reading_length] = 0;
 		if ((idx = array_in_cr(reading_content)) != -1)
@@ -80,6 +80,8 @@ int		get_next_line(int fd, char **line)
 		}
 		my_tmp = ft_strjoin(my_tmp, reading_content, 0, BUFFER_SIZE);
 	}
+	if (reading_length == -1)
+		return (-1);
 	if (my_tmp[0] != 0)
 	{
 		*line = ft_strdup(my_tmp);
