@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/11 19:21:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/11 22:22:49 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
 		return (0);
 	ft_strlcpy(result, s1, s1_len + 1);
 	free(s1);
-	ft_strlcat(result, s2 + s2_start, s1_len + (s2_end - s2_start + 1) + 1);
+	ft_strlcat(result, (s2 + s2_start), s1_len + (s2_end - s2_start) + 1);
 	return (result);
 }
 
