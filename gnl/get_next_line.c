@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/11 20:12:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/11 21:34:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,24 @@ char	*ft_strdup(const char *src)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*tmp;
+	static char	*my_tmp;
 	static int	is_not_first;
 	char		reading_content[BUFFER_SIZE + 1];
 	int			reading_length;
 	int			idx;
 
+	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
+		return (-1);
 	if ((is_not_first & 128) != 128)
 	{
-		tmp = ft_strdup("");
+		my_tmp = ft_strdup("");
 		is_not_first |= 128;
 	}
-	if ((idx = array_in_cr(tmp)) != -1)
+	if ((idx = array_in_cr(my_tmp)) != -1)
 	{
 		free(*line);
-		*line = ft_substr(tmp, 0, idx);
-		ft_strlcpy(tmp, tmp + idx + 1, BUFFER_SIZE - idx);
+		*line = ft_substr(my_tmp, 0, idx);
+		ft_strlcpy(my_tmp, my_tmp + idx + 1, BUFFER_SIZE - idx);
 		return (1);
 	}
 	while ((reading_length = read(fd, reading_content, BUFFER_SIZE)))
@@ -66,16 +68,16 @@ int		get_next_line(int fd, char **line)
 		reading_content[reading_length] = 0;
 		if ((idx = array_in_cr(reading_content)) != -1)
 		{
-			tmp = ft_strjoin(tmp, reading_content, 0, idx - 1);
+			my_tmp = ft_strjoin(my_tmp, reading_content, 0, idx - 1);
 			if ((is_not_first & 64) != 64)
 				is_not_first |= 64;
 			else
 				free(*line);
-			*line = ft_strdup(tmp);
-			ft_strlcpy(tmp, reading_content + idx + 1, BUFFER_SIZE - idx);
+			*line = ft_strdup(my_tmp);
+			ft_strlcpy(my_tmp, reading_content + idx + 1, BUFFER_SIZE - idx);
 			return (1);
 		}
-		tmp = ft_strjoin(tmp, reading_content, 0, BUFFER_SIZE);
+		my_tmp = ft_strjoin(my_tmp, reading_content, 0, BUFFER_SIZE);
 	}
 	free(*line);
 	*line = ft_strdup("");
