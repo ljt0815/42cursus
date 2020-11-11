@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/09 23:12:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/11 20:12:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,16 @@ int		get_next_line(int fd, char **line)
 	int			reading_length;
 	int			idx;
 
-	if (is_not_first != 1)
+	if ((is_not_first & 128) != 128)
 	{
 		tmp = ft_strdup("");
-		is_not_first = 1;
+		is_not_first |= 128;
 	}
 	if ((idx = array_in_cr(tmp)) != -1)
 	{
-		*line = ft_strdup(ft_substr(tmp, 0, idx));
-		tmp = ft_substr(tmp, idx + 1, BUFFER_SIZE);
+		free(*line);
+		*line = ft_substr(tmp, 0, idx);
+		ft_strlcpy(tmp, tmp + idx + 1, BUFFER_SIZE - idx);
 		return (1);
 	}
 	while ((reading_length = read(fd, reading_content, BUFFER_SIZE)))
@@ -65,13 +66,18 @@ int		get_next_line(int fd, char **line)
 		reading_content[reading_length] = 0;
 		if ((idx = array_in_cr(reading_content)) != -1)
 		{
-			tmp = ft_strjoin(tmp, ft_substr(reading_content, 0, idx));
+			tmp = ft_strjoin(tmp, reading_content, 0, idx - 1);
+			if ((is_not_first & 64) != 64)
+				is_not_first |= 64;
+			else
+				free(*line);
 			*line = ft_strdup(tmp);
-			tmp = ft_substr(reading_content, idx + 1, BUFFER_SIZE);
+			ft_strlcpy(tmp, reading_content + idx + 1, BUFFER_SIZE - idx);
 			return (1);
 		}
-		tmp = ft_strjoin(tmp, reading_content);
+		tmp = ft_strjoin(tmp, reading_content, 0, BUFFER_SIZE);
 	}
-	*line = "";
+	free(*line);
+	*line = ft_strdup("");
 	return (0);
 }
