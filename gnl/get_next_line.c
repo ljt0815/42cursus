@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/11 23:49:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/12 02:27:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,69 @@
 
 int		array_in_cr(char *reading_content)
 {
-	char	*idx;
-	int		rtn;
+	int		idx;
 
-	rtn = -1;
-	if ((idx = ft_strchr(reading_content, '\n')) != 0)
-		rtn = idx - reading_content;
-	return (rtn);
+	if (reading_content == 0)
+		return (-1);
+	idx = 0;
+	while (reading_content[idx])
+	{
+		if (reading_content[idx] == '\n')
+			return (idx);
+		idx++;
+	}
+	return (-1);
 }
 
-char	*ft_strdup(const char *src)
+int		make_ret(int reading_length, char **my_tmp, char **line)
 {
-	int		len;
-	int		i;
-	char	*result;
-
-	len = 0;
-	i = -1;
-	while (src[len])
-		len++;
-	if ((result = (char *)malloc(sizeof(char) * len + 1)) == 0)
+	if (reading_length < 0)
+		return (-1);
+	if (*my_tmp[0] != 0)
+	{
+		*line = ft_strdup(*my_tmp);
+		*my_tmp[0] = 0;
 		return (0);
-	while (src[++i])
-		result[i] = src[i];
-	result[i] = 0;
-	return (result);
+	}
+	*line = ft_strdup("");
+	return (0);
+}
+
+int		slice_buf(char **my_tmp, char *reading_content, int idx, char **line)
+{
+	if (BUFFER_SIZE == 1)
+	{
+		*line = ft_strdup(*my_tmp);
+		ft_strlcpy(*my_tmp, reading_content + idx + 1, BUFFER_SIZE - idx);
+		return (1);
+	}
+	*my_tmp = ft_strjoin(*my_tmp, reading_content, 0, idx);
+	*line = ft_strdup(*my_tmp);
+	ft_strlcpy(*my_tmp, reading_content + idx + 1, BUFFER_SIZE - idx);
+	return (1);
 }
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*my_tmp;
-	static int	is_not_first;
+	static char	*my_tmp[OPEN_MAX];
 	char		reading_content[BUFFER_SIZE + 1];
 	int			reading_length;
 	int			idx;
 
 	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);
-	if ((is_not_first & 128) != 128)
+	if ((idx = array_in_cr(my_tmp[fd])) != -1)
 	{
-		my_tmp = ft_strdup("");
-		is_not_first |= 128;
-	}
-	if ((idx = array_in_cr(my_tmp)) != -1)
-	{
-		*line = ft_substr(my_tmp, 0, idx);
-		ft_strlcpy(my_tmp, my_tmp + idx + 1, BUFFER_SIZE - idx);
+		*line = ft_substr(my_tmp[fd], 0, idx);
+		ft_strlcpy(my_tmp[fd], my_tmp[fd] + idx + 1, BUFFER_SIZE - idx);
 		return (1);
 	}
 	while ((reading_length = read(fd, reading_content, BUFFER_SIZE)) > 0)
 	{
 		reading_content[reading_length] = 0;
 		if ((idx = array_in_cr(reading_content)) != -1)
-		{
-			if (BUFFER_SIZE == 1)
-			{
-				*line = ft_strdup(my_tmp);
-				ft_strlcpy(my_tmp, reading_content + idx + 1, BUFFER_SIZE - idx);
-				return (1);
-			}
-			my_tmp = ft_strjoin(my_tmp, reading_content, 0, idx);
-			*line = ft_strdup(my_tmp);
-			ft_strlcpy(my_tmp, reading_content + idx + 1, BUFFER_SIZE - idx);
-			return (1);
-		}
-		my_tmp = ft_strjoin(my_tmp, reading_content, 0, BUFFER_SIZE);
+			return (slice_buf(&my_tmp[fd], reading_content, idx, line));
+		my_tmp[fd] = ft_strjoin(my_tmp[fd], reading_content, 0, BUFFER_SIZE);
 	}
-	if (reading_length == -1)
-		return (-1);
-	if (my_tmp[0] != 0)
-	{
-		*line = ft_strdup(my_tmp);
-		my_tmp[0] = 0;
-		return (0);
-	}
-	*line = ft_strdup("");
-	return (0);
+	return (make_ret(reading_length, &my_tmp[fd], line));
 }

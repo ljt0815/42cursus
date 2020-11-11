@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/11 22:22:49 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/12 01:06:12 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,32 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		return (size + j);
 }
 
+char	*ft_strdup(const char *src)
+{
+	int		len;
+	int		i;
+	char	*result;
+
+	len = 0;
+	i = -1;
+	while (src[len])
+		len++;
+	if ((result = (char *)malloc(sizeof(char) * len + 1)) == 0)
+		return (0);
+	while (src[++i])
+		result[i] = src[i];
+	result[i] = 0;
+	return (result);
+}
+
 char	*ft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
 {
 	int		s1_len;
 	int		s2_len;
 	char	*result;
 
+	if (s1 == 0)
+		return (ft_strdup(s2));
 	s1_len = 0;
 	while (s1[s1_len])
 		s1_len++;
@@ -82,24 +102,6 @@ char	*ft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
 	free(s1);
 	ft_strlcat(result, (s2 + s2_start), s1_len + (s2_end - s2_start) + 1);
 	return (result);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned char	find;
-	int				i;
-
-	i = 0;
-	find = (unsigned char)c;
-	while (s[i])
-	{
-		if (s[i] == find)
-			return ((char *)s + i);
-		i++;
-	}
-	if (find == 0)
-		return ((char *)s + i);
-	return (0);
 }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
