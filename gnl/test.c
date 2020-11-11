@@ -6,11 +6,14 @@ int main(void)
 {
 	int fd;
 	char *line;
+	int ret;
 
+	ret = 1;
 	fd = open("aaa", O_RDONLY);
-	while (get_next_line(fd, &line))
+	while (ret > 0)
 	{
-		printf("%s\n",line);
+		ret = get_next_line(fd, &line);
+		printf("%s\n", line);
 		free(line);
 	}
 	system("leaks a.out > leaks_result; cat leaks_result | grep leaked && rm -rf leaks_result");

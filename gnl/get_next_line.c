@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/11 22:40:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/11 23:39:58 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ int		get_next_line(int fd, char **line)
 			return (1);
 		}
 		my_tmp = ft_strjoin(my_tmp, reading_content, 0, BUFFER_SIZE);
+	}
+	if (my_tmp[0] != 0)
+	{
+		*line = ft_strdup(my_tmp);
+		my_tmp[0] = 0;
+		return (0);
 	}
 	*line = ft_strdup("");
 	return (0);
