@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/12 02:27:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/12 03:08:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int		array_in_cr(char *reading_content)
 {
 	int		idx;
 
-	if (reading_content == 0)
-		return (-1);
 	idx = 0;
 	while (reading_content[idx])
 	{
@@ -65,6 +63,8 @@ int		get_next_line(int fd, char **line)
 
 	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);
+	if (my_tmp[fd] == 0)
+		my_tmp[fd] = ft_strdup("");
 	if ((idx = array_in_cr(my_tmp[fd])) != -1)
 	{
 		*line = ft_substr(my_tmp[fd], 0, idx);

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/12 01:06:12 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/12 03:10:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ char	*ft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
 	int		s2_len;
 	char	*result;
 
-	if (s1 == 0)
-		return (ft_strdup(s2));
 	s1_len = 0;
 	while (s1[s1_len])
 		s1_len++;
