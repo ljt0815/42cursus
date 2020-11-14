@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:39:04 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/13 23:33:09 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/14 10:43:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ int		make_ret(int reading_length, char **my_tmp, char **line)
 {
 	if (reading_length < 0)
 		return (-1);
-	if (*my_tmp[0] != 0)
+	if (*my_tmp != 0)
 	{
 		*line = ft_strdup(*my_tmp);
-		*my_tmp[0] = 0;
+		free(*my_tmp);
+		*my_tmp = 0;
 		return (0);
 	}
 	*line = ft_strdup("");
