@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/18 23:56:16 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/19 00:28:23 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 # define FLAG_MINUS 1
 # define FLAG_ZERO 2
@@ -28,4 +29,5 @@ typedef struct	s_parse_dat{
 }				t_parse_dat;
 int				ft_printf(const char *s, ...);
 int				parse_str(char *s, va_list *ap, t_parse_dat *dat);
+void			ft_bzero(void *s, size_t n);
 #endif
