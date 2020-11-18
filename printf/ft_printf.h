@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/19 00:28:23 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/11/19 04:40:45 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # define FLAG_MINUS 1
 # define FLAG_ZERO 2
+# define FLAG_BLANK 4
+# define FLAG_PLUS 8
 
 typedef struct	s_parse_dat{
 	int	flag;
