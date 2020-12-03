@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:19:16 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/03 14:45:26 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/03 21:21:41 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,7 @@ int	ft_isflag(char *s, t_parse_dat *dat)
 int	set_width(char *s, t_parse_dat *dat, int *i)
 {
 	if (*s >= '0' && *s <= '9')
-	{
-		if ((dat->flag == 0))
-			dat->flag |= FLAG_ZERO;
-		else
-			dat->width = dat->width * 10 + (*s - '0');
-	}
+		dat->width = dat->width * 10 + (*s - '0');
 	*i = *i + 1;
 }
 
@@ -56,9 +51,10 @@ int	parse_str(char *s, va_list *ap, t_parse_dat *dat)
 
 	ap += 0;//
 	i = 0;
-	if (ft_isflag(&s[i], dat))
+	while (ft_isflag(&s[i], dat))
 		i++;
 	while (ft_isdigit(s[i]))
 		set_width(&s[i], dat, &i);
+	if (ft_is
 	return (0);
 }
