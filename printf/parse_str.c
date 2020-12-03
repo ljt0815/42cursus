@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:19:16 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/19 05:30:53 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/03 14:45:26 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ int	ft_isflag(char *s, t_parse_dat *dat)
 int	set_width(char *s, t_parse_dat *dat, int *i)
 {
 	if (*s >= '0' && *s <= '9')
-		dat->width = dat->width * 10 + (*s - '0');
+	{
+		if ((dat->flag == 0))
+			dat->flag |= FLAG_ZERO;
+		else
+			dat->width = dat->width * 10 + (*s - '0');
+	}
 	*i = *i + 1;
 }
 
