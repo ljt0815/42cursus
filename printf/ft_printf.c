@@ -6,11 +6,12 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:56:26 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/19 00:25:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/05 13:00:15 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_printf(const char *s, ...)
 {
@@ -33,6 +34,9 @@ int	ft_printf(const char *s, ...)
 			write(1, &s[i], 1);
 		i++;
 	}
+	printf("%d\n",dat.flag);
+	printf("%d\n",dat.width);
+	printf("%d\n",dat.length);
 	va_end(ap);
 	return (0);
 }
