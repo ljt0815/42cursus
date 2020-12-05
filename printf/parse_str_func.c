@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 11:08:28 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/05 12:41:28 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/05 14:43:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,10 @@ void	is_length(char *s, t_parse_dat *dat, int *i)
 		is_length_sub(s, dat);
 	if (dat->length != 0)
 		*i += 1;
+}
+
+void	is_specifier(char *s, t_parse_dat *dat)
+{
+	if (*s == 'c')
+		
 }
