@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:56:26 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/05 13:00:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/05 17:43:50 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int	ft_printf(const char *s, ...)
 			write(1, &s[i], 1);
 		i++;
 	}
-	printf("%d\n",dat.flag);
-	printf("%d\n",dat.width);
-	printf("%d\n",dat.length);
+	printf("%d\n", dat.flag);
+	printf("%d\n", dat.width);
+	printf("%d\n", dat.length);
+	printf("%d\n", dat.specifier);
 	va_end(ap);
 	return (0);
 }

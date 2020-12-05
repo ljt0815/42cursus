@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 11:08:28 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/05 14:43:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/05 17:42:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,31 @@ void	is_length(char *s, t_parse_dat *dat, int *i)
 		else
 			dat->length = LENGTH_L;
 	}
-	else
-		is_length_sub(s, dat);
+	is_length_sub(s, dat);
 	if (dat->length != 0)
 		*i += 1;
 }
 
-void	is_specifier(char *s, t_parse_dat *dat)
+void	is_specifier(char *s, t_parse_dat *dat, int *i)
 {
 	if (*s == 'c')
-		
+		dat->specifier = SPECIFIER_C;
+	else if (*s == 's')
+		dat->specifier = SPECIFIER_S;
+	else if (*s == 'p')
+		dat->specifier = SPECIFIER_P;
+	else if (*s == 'd')
+		dat->specifier = SPECIFIER_D;
+	else if (*s == 'i')
+		dat->specifier = SPECIFIER_I;
+	else if (*s == 'u')
+		dat->specifier = SPECIFIER_U;
+	else if (*s == 'x')
+		dat->specifier = SPECIFIER_X;
+	else if (*s == 'X')
+		dat->specifier = SPECIFIER_BIGX;
+	else if (*s == '%')
+		dat->specifier = SPECIFIER_PER;
+	if (dat->specifier != 0)
+		*i += 1;
 }
