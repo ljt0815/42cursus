@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:19:16 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/05 17:43:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/05 18:40:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	parse_str(char *s, va_list *ap, t_parse_dat *dat)
 {
 	int	i;
-	int	idx;
 
-	ap += 0;
 	i = 0;
 	while (ft_isflag(&s[i], dat))
 		i++;
@@ -25,5 +23,6 @@ int	parse_str(char *s, va_list *ap, t_parse_dat *dat)
 		set_width(&s[i], dat, &i);
 	is_length(&s[i], dat, &i);
 	is_specifier(&s[i], dat, &i);
+	print_dat(dat, ap);
 	return (i);
 }
