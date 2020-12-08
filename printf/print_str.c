@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 21:27:22 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/08 16:47:36 by jitlee           ###   ########.fr       */
+/*   Created: 2020/12/08 17:55:54 by jitlee            #+#    #+#             */
+/*   Updated: 2020/12/08 19:24:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
-
-int main(void)
+void	print_str(t_parse_dat *dat, va_list *ap, int *rtn)
 {
-	char a = 'c';
-	//ft_printf("%c\n", a);
-	//printf("%c\n", a);
-	printf("%d\n", ft_printf("%45c", a));
-	printf("%d\n", printf("%45c", a));
-	return 0;
+	char	*result;
+	int		len;
+
+	len = 0;
+	result = va_arg(ap, char *)
+	if (dat->width != 0)
+	{
+	}
 }
