@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:22 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/05 17:46:16 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/08 16:44:28 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 int main(void)
 {
-	ft_printf("asdf%0-2147483648d\n",123);
-	printf("asdf%-2147483648d\n",123);
+	char a = 'c';
+	//ft_printf("%c\n", a);
+	//printf("%c\n", a);
+	printf("%d\n", ft_printf("%c", a));
+	printf("%d\n", printf("%c", a));
 	return 0;
 }

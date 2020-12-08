@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/05 17:43:13 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/08 16:38:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ typedef struct	s_parse_dat{
 	int	specifier;
 }				t_parse_dat;
 int				ft_printf(const char *s, ...);
-int				parse_str(char *s, va_list *ap, t_parse_dat *dat);
+int				parse_str(char *s, va_list *ap, t_parse_dat *dat, int *rtn);
 void			ft_bzero(void *s, size_t n);
 int				ft_isflag(char *s, t_parse_dat *dat);
 void			set_width(char *s, t_parse_dat *dat, int *i);
 void			is_length(char *s, t_parse_dat *dat, int *i);
 int				ft_isdigit(int c);
 void			is_specifier(char *s, t_parse_dat *dat, int *i);
+void			print_dat(t_parse_dat *dat, va_list *ap, int *rtn);
+void			print_ch(t_parse_dat *dat, va_list *ap, int *rtn);
 #endif

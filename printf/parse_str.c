@@ -6,13 +6,13 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:19:16 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/05 18:40:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/08 16:32:09 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	parse_str(char *s, va_list *ap, t_parse_dat *dat)
+int	parse_str(char *s, va_list *ap, t_parse_dat *dat, int *rtn)
 {
 	int	i;
 
@@ -23,6 +23,6 @@ int	parse_str(char *s, va_list *ap, t_parse_dat *dat)
 		set_width(&s[i], dat, &i);
 	is_length(&s[i], dat, &i);
 	is_specifier(&s[i], dat, &i);
-	print_dat(dat, ap);
+	print_dat(dat, ap, rtn);
 	return (i);
 }

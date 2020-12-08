@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   print_ch.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 18:56:26 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/08 16:29:00 by jitlee           ###   ########.fr       */
+/*   Created: 2020/12/08 10:47:47 by jitlee            #+#    #+#             */
+/*   Updated: 2020/12/08 16:40:40 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *s, ...)
+void	print_ch(t_parse_dat *dat, va_list *ap, int *rtn)
 {
-	int			i;
-	int			idx;
-	int			rtn;
-	va_list		ap;
-	t_parse_dat	dat;
+	char	*result;
+	int		i;
 
-	ft_bzero(&dat, sizeof(t_parse_dat));
-	va_start(ap, s);
 	i = 0;
-	rtn = 0;
-	while (s[i] != 0)
+	if (dat->width != 0)
 	{
-		if (s[i] == '%')
+		result = malloc(dat->width);
+		while (i < dat->width)
 		{
-			idx = parse_str((char *)&s[i + 1], &ap, &dat, &rtn);
-			i += idx;
+			result[i] = ' ';
+			i++;
 		}
-		else
-		{
-			write(1, &s[i], 1);
-			rtn++;
-		}
-		i++;
+		result[dat->width - 1] = va_arg(*ap, int);
+		*rtn += dat->width;
+		write(1, result, dat->width);
 	}
-	va_end(ap);
-	return (rtn);
+	else
+	{
+		result = malloc(1);
+		result[0] = va_arg(*ap, int);
+		*rtn += 1;
+		write(1, result, 1);
+	}
 }
