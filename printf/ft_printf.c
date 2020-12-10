@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:56:26 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/08 16:29:00 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/10 17:29:45 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_printf(const char *s, ...)
 
 	ft_bzero(&dat, sizeof(t_parse_dat));
 	va_start(ap, s);
-	i = 0;
+	i = -1;
 	rtn = 0;
-	while (s[i] != 0)
+	while (s[++i] != 0)
 	{
 		if (s[i] == '%')
 		{
@@ -36,7 +36,6 @@ int	ft_printf(const char *s, ...)
 			write(1, &s[i], 1);
 			rtn++;
 		}
-		i++;
 	}
 	va_end(ap);
 	return (rtn);
