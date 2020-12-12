@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/10 12:58:26 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/12 18:34:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ void			print_str(t_parse_dat *dat, va_list *ap, int *rtn);
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 size_t			ft_strlen(const char *s);
 void			*ft_memset(void *b, int c, size_t len);
+void			print_adr(t_parse_dat *dat, va_list *ap, int *rtn);
 #endif
