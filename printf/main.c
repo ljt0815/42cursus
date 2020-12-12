@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:22 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/12 23:31:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/13 00:51:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int main(void)
 	//printf("%d\n", printf("%-6.2s", b));
 	//printf("%d\n", ft_printf("a%c34%9.1s",'d',"qwer"));
 	//printf("%d\n", printf("a%c34%9.1s",'d',"qwer"));
-	printf("%d\n", printf("%-20p\n", b));
-	printf("%d", ft_printf("%-20p\n", b));
+	//printf("%d\n", printf("%-20p\n", b));
+	//printf("%d", ft_printf("%-20p\n", b));
+	printf(" %d\n", printf("%12p", b));
+	printf(" %d", ft_printf("%12p", b));
 	return 0;
 }
