@@ -6,11 +6,34 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 02:42:54 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/10 11:40:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/12 21:51:23 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+	int				flag;
+
+	flag = 0;
+	i = 0;
+	if (n > 0)
+	{
+		while (i <= (n - 1))
+		{
+			if (src[i] == 0)
+				flag = 1;
+			if (flag == 0)
+				dest[i] = src[i];
+			else
+				dest[i] = 0;
+			i++;
+		}
+	}
+	return (dest);
+}
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
