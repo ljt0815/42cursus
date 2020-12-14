@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 11:08:28 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/10 17:06:20 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/14 15:10:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ int		ft_isflag(char *s, t_parse_dat *dat)
 	else if (*s == '0')
 	{
 		dat->flag |= FLAG_ZERO;
-		return (1);
-	}
-	else if (*s == '+')
-	{
-		dat->flag |= FLAG_PLUS;
-		return (1);
-	}
-	else if (*s == ' ')
-	{
-		dat->flag |= FLAG_BLANK;
 		return (1);
 	}
 	return (0);

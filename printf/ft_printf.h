@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/12 21:51:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/14 13:17:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 # define FLAG_MINUS 1
 # define FLAG_ZERO 2
-# define FLAG_BLANK 4
-# define FLAG_PLUS 8
 # define LENGTH_HH 1
 # define LENGTH_H 2
 # define LENGTH_LL 3
@@ -62,4 +60,7 @@ size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 size_t			ft_strlen(const char *s);
 void			*ft_memset(void *b, int c, size_t len);
 void			print_adr(t_parse_dat *dat, va_list *ap, int *rtn);
+void			print_int(t_parse_dat *dat, va_list *ap, int *rtn);
+char			*ft_itoa(int n);
+int				num_len(long long n);
 #endif

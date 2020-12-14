@@ -6,11 +6,12 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:19:16 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/10 17:19:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/14 10:06:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	set_precision(char *s, t_parse_dat *dat, int *i)
 {

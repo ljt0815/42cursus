@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:57:21 by jitlee            #+#    #+#              #
-#    Updated: 2020/12/12 18:41:50 by jitlee           ###   ########.fr        #
+#    Updated: 2020/12/14 10:29:33 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ FILES = ft_printf \
 		print_ch \
 		print_dat \
 		print_str \
-		print_adr
+		print_adr \
+		print_int
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

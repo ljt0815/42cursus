@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:47:47 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/08 16:40:40 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/14 10:36:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ void	print_ch(t_parse_dat *dat, va_list *ap, int *rtn)
 	if (dat->width != 0)
 	{
 		result = malloc(dat->width);
-		while (i < dat->width)
-		{
-			result[i] = ' ';
-			i++;
-		}
-		result[dat->width - 1] = va_arg(*ap, int);
+		ft_memset(result, ' ', dat->width);
+		if (dat->flag == FLAG_MINUS)
+			result[0] = va_arg(*ap, int);
+		else
+			result[dat->width - 1] = va_arg(*ap, int);
 		*rtn += dat->width;
 		write(1, result, dat->width);
 	}
