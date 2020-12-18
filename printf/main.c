@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:22 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/14 17:18:22 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/18 16:11:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void)
 {
 	//char a = 'c';
 	//char *b = "qwer";
-	int	c = -124;
+	int	c = 124;
 	//ft_printf("%c\n", a);
 	//printf("%-10c\n", a);
 	//printf("%d\n", ft_printf("%3c", a));
@@ -32,8 +32,8 @@ int main(void)
 	//printf("%d", ft_printf("%-20p\n", b));
 	//printf(" %d\n", printf("%30p", b));
 	//printf(" %d", ft_printf("%30p", b));
-	printf("%-3d\n", c);
-	ft_printf("%-3d", c);
+	ft_printf("%-5.8d\n", c);
+	printf("%-5.8d", c);
 	//printf("%d\n", printf("%20.5d", c));
 	//printf("%d", ft_printf("%20.5d", c));
 	return 0;
