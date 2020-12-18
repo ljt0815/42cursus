@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/14 13:17:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/18 16:21:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,30 @@
 # define SPECIFIER_BIGX 8
 # define SPECIFIER_PER 9
 
-typedef struct	s_parse_dat{
+typedef struct {
 	int	flag;
 	int	width;
 	int	precision;
 	int	length;
 	int	specifier;
-}				t_parse_dat;
-int				ft_printf(const char *s, ...);
-int				parse_str(char *s, va_list *ap, t_parse_dat *dat, int *rtn);
-void			ft_bzero(void *s, size_t n);
-int				ft_isflag(char *s, t_parse_dat *dat);
-void			set_width(char *s, t_parse_dat *dat, int *i);
-void			is_length(char *s, t_parse_dat *dat, int *i);
-int				ft_isdigit(int c);
-void			is_specifier(char *s, t_parse_dat *dat, int *i);
-void			print_dat(t_parse_dat *dat, va_list *ap, int *rtn);
-void			print_ch(t_parse_dat *dat, va_list *ap, int *rtn);
-void			print_str(t_parse_dat *dat, va_list *ap, int *rtn);
-char			*ft_strncpy(char *dest, char *src, unsigned int n);
-size_t			ft_strlcpy(char *dest, const char *src, size_t size);
-size_t			ft_strlen(const char *s);
-void			*ft_memset(void *b, int c, size_t len);
-void			print_adr(t_parse_dat *dat, va_list *ap, int *rtn);
-void			print_int(t_parse_dat *dat, va_list *ap, int *rtn);
-char			*ft_itoa(int n);
-int				num_len(long long n);
+}		t_parse_dat;
+int		ft_printf(const char *s, ...);
+int		parse_str(char *s, va_list *ap, t_parse_dat *dat, int *rtn);
+void	ft_bzero(void *s, size_t n);
+int		ft_isflag(char *s, t_parse_dat *dat);
+void	set_width(char *s, t_parse_dat *dat, int *i);
+void	is_length(char *s, t_parse_dat *dat, int *i);
+int		ft_isdigit(int c);
+void	is_specifier(char *s, t_parse_dat *dat, int *i);
+void	print_dat(t_parse_dat *dat, va_list *ap, int *rtn);
+void	print_ch(t_parse_dat *dat, va_list *ap, int *rtn);
+void	print_str(t_parse_dat *dat, va_list *ap, int *rtn);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+size_t	ft_strlen(const char *s);
+void	*ft_memset(void *b, int c, size_t len);
+void	print_adr(t_parse_dat *dat, va_list *ap, int *rtn);
+void	print_int(t_parse_dat *dat, va_list *ap, int *rtn);
+char	*ft_itoa(int n);
+int		num_len(long long n);
 #endif

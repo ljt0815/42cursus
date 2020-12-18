@@ -6,12 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/18 16:04:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/18 18:00:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	proc_zero(t_parse_dat *dat, char *tmp, char *result, int len)
 {
@@ -35,6 +34,27 @@ void	proc_zero(t_parse_dat *dat, char *tmp, char *result, int len)
 		ft_strncpy(result + (dat->precision - len + minus), tmp, len - minus);
 	else
 		ft_strncpy(result + (dat->width - len), tmp, len - minus);
+}
+
+void	proc_minus(t_parse_dat *dat, char *tmp, char *result, int len)
+{
+	int minus;
+
+	minus = 0;
+	if (tmp[0] == '-')
+	{
+		result[0] = '-';
+		result += 1;
+		tmp += 1;
+		minus = 1;
+	}
+	if (dat->precision != 0)
+	{
+		ft_memset(result, '0', dat->precision);
+		ft_strncpy(result + (dat->precision - len + minus), tmp, len - minus);
+	}
+	else
+		ft_strncpy(result, tmp, len - minus);
 }
 
 char	*alloc_arr(t_parse_dat *dat, int len)
@@ -104,13 +124,15 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 		if (dat->flag == FLAG_ZERO)
 			proc_zero(dat, tmp, result, len);
 		else if (dat->flag == FLAG_MINUS)
-			ft_strncpy(result, tmp, len);
+			proc_minus(dat, tmp, result, len);
 		else
 			ft_strncpy(result + (dat->width - len), tmp, len);
 		print_flag(result, tmp, rtn, dat);
 	}
 	else
 	{
+		/*if (dat->precision != 0)
+			ft_memset(*/
 		write(1, tmp, len);
 		*rtn += len;
 	}
