@@ -6,11 +6,12 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/19 16:20:00 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/19 17:00:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	proc_zero(t_parse_dat *dat, char *tmp, char *result, int len)
 {
@@ -127,7 +128,8 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	}
 	else
 	{
-		write(1, tmp, len);
-		*rtn += len;
+		proc_else(dat, tmp, result, len);
+		print_else(result, tmp, rtn, dat);
 	}
+	free(result);
 }
