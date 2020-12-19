@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/18 18:00:22 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/19 16:20:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,22 @@ void	proc_minus(t_parse_dat *dat, char *tmp, char *result, int len)
 
 char	*alloc_arr(t_parse_dat *dat, int len)
 {
-	char *result;
+	char	*result;
+	int		size;
 
-	if (len < dat->width)
+	if (dat->width == 0 && dat->precision != 0)
+		size = dat->precision;
+	else if (len < dat->width)
 	{
 		if ((dat->width) < dat->precision)
-		{
-			result = malloc(dat->precision + 1);
-			ft_memset(result, ' ', dat->precision + 1);
-		}
+			size = dat->precision;
 		else
-		{
-			result = malloc(dat->width + 1);
-			ft_memset(result, ' ', dat->width + 1);
-		}
+			size = dat->width;
 	}
 	else
-	{
-		result = malloc(len + 1);
-		ft_memset(result, ' ', len + 1);
-	}
+		size = len;
+	result = malloc(size + 1);
+	ft_memset(result, ' ', size + 1);
 	return (result);
 }
 
@@ -118,9 +114,9 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 
 	tmp = ft_itoa(va_arg(*ap, int));
 	len = ft_strlen(tmp);
+	result = alloc_arr(dat, len);
 	if (dat->width != 0)
 	{
-		result = alloc_arr(dat, len);
 		if (dat->flag == FLAG_ZERO)
 			proc_zero(dat, tmp, result, len);
 		else if (dat->flag == FLAG_MINUS)
@@ -131,8 +127,6 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	}
 	else
 	{
-		/*if (dat->precision != 0)
-			ft_memset(*/
 		write(1, tmp, len);
 		*rtn += len;
 	}
