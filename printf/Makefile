@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:57:21 by jitlee            #+#    #+#              #
-#    Updated: 2020/12/14 10:29:33 by jitlee           ###   ########.fr        #
+#    Updated: 2020/12/21 13:11:02 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,15 @@ FILES = ft_printf \
 		ft_memset \
 		ft_strlcpy \
 		ft_strlen \
+		ft_itoa \
 		parse_str \
 		parse_str_func \
 		print_ch \
 		print_dat \
 		print_str \
 		print_adr \
-		print_int
+		print_int \
+		print_int_func
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
