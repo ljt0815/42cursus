@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/19 17:00:03 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/21 12:28:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@
 void	proc_zero(t_parse_dat *dat, char *tmp, char *result, int len)
 {
 	int minus;
+	int idx;
 
 	minus = 0;
+	idx = 0;
 	if (dat->width <= dat->precision)
 		ft_memset(result, '0', dat->precision + 1);
 	else if (dat->precision == 0)
 		ft_memset(result, '0', dat->width + 1);
 	else
+	{
 		ft_memset(result + (dat->width - dat->precision), '0', dat->precision);
+		idx = dat->width - dat->precision - 1;
+	}
 	if (tmp[0] == '-')
 	{
-		result[0] = '-';
+		result[idx] = '-';
 		result += 1;
 		tmp += 1;
 		minus = 1;
@@ -72,6 +77,8 @@ char	*alloc_arr(t_parse_dat *dat, int len)
 		else
 			size = dat->width;
 	}
+	else if (dat->width < dat->precision)
+		size = dat->precision;
 	else
 		size = len;
 	result = malloc(size + 1);
@@ -81,30 +88,31 @@ char	*alloc_arr(t_parse_dat *dat, int len)
 
 void	print_flag(char *result, char *tmp, int *rtn, t_parse_dat *dat)
 {
-	int len;
 	int minus;
+	int size;
 
 	minus = 0;
-	if (tmp[0] == '-')
-		minus = 1;
-	if ((len = ft_strlen(tmp)) < dat->width)
+	if ((int)(ft_strlen(tmp)) < dat->width)
 	{
 		if (dat->width <= dat->precision)
 		{
-			write(1, result, dat->precision + minus);
-			*rtn += (dat->precision + minus);
+			size = dat->precision;
+			if (tmp[0] == '-')
+				minus = 1;
 		}
 		else
-		{
-			write(1, result, dat->width);
-			*rtn += dat->width;
-		}
+			size = dat->width;
+	}
+	else if (dat->width < dat->precision)
+	{
+		size = dat->precision;
+		if (tmp[0] == '-')
+			minus = 1;
 	}
 	else
-	{
-		write(1, result, len);
-		*rtn += len;
-	}
+		size = ft_strlen(tmp);
+	write(1, result, size + minus);
+	*rtn += (size + minus);
 }
 
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
