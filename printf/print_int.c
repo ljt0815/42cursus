@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/23 16:24:08 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 00:59:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	fill_front(char *tmp, char *num, int *read_size, t_parse_dat *dat)
 		//write(1, "11\n", 3);
 	}
 	ft_memset(tmp, '0', idx);
-	if (dat->precision > ft_strlen(num))
+	if (dat->precision > (int)ft_strlen(num))
 	{
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
 		//write(1, "12\n", 3);
@@ -54,7 +54,7 @@ void	fill_front(char *tmp, char *num, int *read_size, t_parse_dat *dat)
 	}
 }
 
-void	fill_back(char *result, char *tmp, int read_size, t_parse_dat *dat)
+void	fill_back(char *result, char *tmp, int read_size)
 {
 	int tmp_len;
 	int minus;
@@ -86,8 +86,8 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	fill_front(tmp, num, &read_size, dat);
 	result = malloc(read_size);
 	ft_memset(result, ' ', read_size);
-	fill_back(result, tmp, read_size,  dat);
-	
+	fill_back(result, tmp, read_size);
 	write(1, result, read_size);
+	*rtn += 0;
 	free(result);
 }
