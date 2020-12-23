@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/23 14:00:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 16:24:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ char	*alloc_arr(t_parse_dat *dat, int len, int *read_size)
 	if (len > *read_size)
 		*read_size = len;
 	result = malloc(*read_size + 1);
-	ft_memset(result, ' ', *read_size + 1);
+	ft_memset(result, 0, *read_size + 1);
 	return (result);
 }
 
-void	fill_front(char *tmp, char *num, int *read_size)
+void	fill_front(char *tmp, char *num, int *read_size, t_parse_dat *dat)
 {
 	int idx;
 
@@ -39,12 +39,39 @@ void	fill_front(char *tmp, char *num, int *read_size)
 		num++;
 		(*read_size)++;
 		idx--;
+		//write(1, "11\n", 3);
 	}
 	ft_memset(tmp, '0', idx);
 	if (dat->precision > ft_strlen(num))
+	{
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
+		//write(1, "12\n", 3);
+	}
 	else
+	{
 		ft_strncpy(tmp, num, ft_strlen(num));
+		//write(1, "13\n", 3);
+	}
+}
+
+void	fill_back(char *result, char *tmp, int read_size, t_parse_dat *dat)
+{
+	int tmp_len;
+	int minus;
+
+	minus = 0;
+	if (tmp[0] == '-')
+		minus = 1;
+	if ((tmp_len = ft_strlen(tmp)) < read_size)
+	{
+		ft_strncpy(result + (read_size - tmp_len - minus), tmp, tmp_len);
+		//write(1, "21\n", 3);
+	}
+	else
+	{
+		ft_strncpy(result, tmp, tmp_len);
+		//write(1, "22\n", 3);
+	}
 }
 
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
@@ -55,8 +82,12 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	int		read_size;
 
 	num = ft_itoa(va_arg(*ap, int));
-	result = alloc_arr(dat, ft_strlen(num), &read_size);
-	fill_front(result, tmp, num, &read_size);
-	fill_back(
+	tmp = alloc_arr(dat, ft_strlen(num), &read_size);
+	fill_front(tmp, num, &read_size, dat);
+	result = malloc(read_size);
+	ft_memset(result, ' ', read_size);
+	fill_back(result, tmp, read_size,  dat);
+	
+	write(1, result, read_size);
 	free(result);
 }
