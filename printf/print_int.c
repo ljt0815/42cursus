@@ -6,39 +6,34 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/24 16:28:33 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 17:02:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*alloc_arr(t_parse_dat *dat, int len, int *read_size)
+char	*alloc_arr(t_parse_dat *dat, int len)
 {
 	char	*result;
 
-	*read_size = dat->width;
+	dat->read_size = dat->width;
 	if (dat->width < dat->precision)
-		*read_size = dat->precision;
-	if (len > *read_size)
-		*read_size = len;
-	result = malloc(*read_size + 1);
-	ft_memset(result, 0, *read_size + 1);
+		dat->read_size = dat->precision;
+	if (len > dat->read_size)
+		dat->read_size = len;
+	result = malloc(dat->read_size + 1);
+	ft_memset(result, 0, dat->read_size + 1);
 	return (result);
 }
 
-void	fill_front(char *tmp, char *num, int *read_size, t_parse_dat *dat)
+void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 {
-	int idx;
-	
-	idx = *read_size;
 	if (num[0] == '-')
 	{
 		tmp[0] = '-';
 		tmp++;
 		num++;
-		(*read_size)++;
-		idx--;
 		write(1, "11\n", 3);
 	}
 	ft_memset(tmp, '0', dat->precision);
@@ -54,26 +49,27 @@ void	fill_front(char *tmp, char *num, int *read_size, t_parse_dat *dat)
 	}
 }
 
-void	fill_back(char *result, char *tmp, int read_size, t_parse_dat *dat)
+void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 {
 	int tmp_len;
 	int minus;
 	int	idx;
+	int num_len;
 
 	minus = 0;
 	if (tmp[0] == '-')
 		minus = 1;
-	if ((tmp_len = ft_strlen(tmp)) < read_size)
+	if ((tmp_len = ft_strlen(tmp)) > (num_len = ft_strlen(num)))
 	{
 		if ((idx = dat->width - dat->precision - minus) > 0)
 			ft_strncpy(result + (idx), tmp, tmp_len);
 		else
-			ft_strncpy(result + (read_size - tmp_len - minus), tmp, tmp_len);
+			ft_strncpy(result, tmp, tmp_len);
 		write(1, "21\n", 3);
 	}
 	else
 	{
-		ft_strncpy(result, tmp, tmp_len);
+		ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
 		write(1, "22\n", 3);
 	}
 }
@@ -83,15 +79,14 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	char	*result;
 	char	*num;
 	char	*tmp;
-	int		read_size;
 
 	num = ft_itoa(va_arg(*ap, int));
-	tmp = alloc_arr(dat, ft_strlen(num), &read_size);
-	fill_front(tmp, num, &read_size, dat);
-	result = malloc(read_size);
-	ft_memset(result, ' ', read_size);
-	fill_back(result, tmp, read_size, dat);
-	write(1, result, read_size - 1);
+	tmp = alloc_arr(dat, ft_strlen(num));
+	fill_front(tmp, num, dat);
+	result = malloc(dat->read_size);
+	ft_memset(result, ' ', dat->read_size);
+	fill_back(result, tmp, num, dat);
+	write(1, result, dat->read_size);
 	*rtn += 0;
 	free(result);
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/19 16:54:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 16:59:23 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct {
 	int	precision;
 	int	length;
 	int	specifier;
+	int	read_size;
 }		t_parse_dat;
 int		ft_printf(const char *s, ...);
 int		parse_str(char *s, va_list *ap, t_parse_dat *dat, int *rtn);
