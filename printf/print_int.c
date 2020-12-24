@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/24 15:35:19 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 16:28:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	fill_front(char *tmp, char *num, int *read_size, t_parse_dat *dat)
 		idx--;
 		write(1, "11\n", 3);
 	}
-	ft_memset(tmp, '0', idx);
+	ft_memset(tmp, '0', dat->precision);
 	if (dat->precision > (int)ft_strlen(num))
 	{
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
@@ -66,7 +66,7 @@ void	fill_back(char *result, char *tmp, int read_size, t_parse_dat *dat)
 	if ((tmp_len = ft_strlen(tmp)) < read_size)
 	{
 		if ((idx = dat->width - dat->precision - minus) > 0)
-			ft_strncpy(result + (idx + read_size - tmp_len - minus) , tmp, tmp_len - minus);
+			ft_strncpy(result + (idx), tmp, tmp_len);
 		else
 			ft_strncpy(result + (read_size - tmp_len - minus), tmp, tmp_len);
 		write(1, "21\n", 3);
@@ -91,7 +91,7 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	result = malloc(read_size);
 	ft_memset(result, ' ', read_size);
 	fill_back(result, tmp, read_size, dat);
-	write(1, result, read_size);
+	write(1, result, read_size - 1);
 	*rtn += 0;
 	free(result);
 }
