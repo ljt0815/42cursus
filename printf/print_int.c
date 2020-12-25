@@ -6,11 +6,12 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/25 13:58:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/25 18:53:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 {
@@ -52,7 +53,8 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 	if (tmp[0] == '-')
 		minus = 1;
 	if (dat->flag == FLAG_ZERO)
-		idx = dat->read_size - num_len;
+		if ((idx = dat->read_size - num_len) < 0)
+			idx = 0;
 	if ((tmp_len = ft_strlen(tmp)) > num_len + idx)
 	{
 		if ((idx = dat->width - dat->precision - minus) > 0)
@@ -64,7 +66,10 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 	if (dat->flag == FLAG_MINUS)
 		ft_strncpy(result, tmp, tmp_len);
 	else
+	{
+		printf("tmp : %s\n", tmp);
 		ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
+	}
 }
 
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
@@ -86,6 +91,6 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	ft_memset(result, ' ', dat->read_size);
 	fill_back(result, tmp, num, dat);
 	write(1, result, dat->read_size);
-	*rtn += 0;
+	*rtn += dat->read_size;
 	free(result);
 }
