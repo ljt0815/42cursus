@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/25 18:53:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/25 20:30:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 		num++;
 		minus = 1;
 	}
-	if (dat->flag == FLAG_ZERO)
-		ft_memset(tmp, '0', dat->read_size - ft_strlen(num));
+	if (dat->flag == FLAG_MINUS)
+		ft_memset(tmp, ' ', dat->read_size - minus);
 	else
-		ft_memset(tmp, '0', dat->precision);
+		ft_memset(tmp, '0', dat->read_size - ft_strlen(num));
 	if (dat->read_size == dat->precision)
 		dat->read_size += minus;
 	if (dat->precision > (int)ft_strlen(num) && dat->flag == FLAG_ZERO)
-		ft_strncpy(tmp + dat->read_size - \
-				ft_strlen(num) - minus, num, ft_strlen(num));
+		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
+	else if (dat->flag == FLAG_ZERO && dat->precision == 0)
+		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
 	else if (dat->precision > (int)ft_strlen(num))
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
 	else
@@ -52,6 +53,16 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 	num_len = ft_strlen(num);
 	if (tmp[0] == '-')
 		minus = 1;
+	if (dat->flag == FLAG_ZERO && dat->precision == 0)
+	{
+		ft_strncpy(result, tmp, tmp_len);
+		return ;
+	}
+	if (dat->flag == FLAG_MINUS)
+	{
+		ft_strncpy(result, tmp, tmp_len);
+		return ;
+	}
 	if (dat->flag == FLAG_ZERO)
 		if ((idx = dat->read_size - num_len) < 0)
 			idx = 0;
@@ -63,13 +74,7 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 			ft_strncpy(result, tmp, tmp_len);
 		return ;
 	}
-	if (dat->flag == FLAG_MINUS)
-		ft_strncpy(result, tmp, tmp_len);
-	else
-	{
-		printf("tmp : %s\n", tmp);
-		ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
-	}
+	ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
 }
 
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
