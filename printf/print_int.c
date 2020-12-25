@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/24 17:06:43 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/25 11:14:10 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,22 @@ char	*alloc_arr(t_parse_dat *dat, int len)
 
 void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 {
+	int minus;
+
+	minus = 0;
 	if (num[0] == '-')
 	{
 		tmp[0] = '-';
 		tmp++;
 		num++;
+		minus = 1;
 		write(1, "11\n", 3);
 	}
 	ft_memset(tmp, '0', dat->precision);
 	if (dat->precision > (int)ft_strlen(num))
 	{
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
+		dat->read_size += minus;
 		write(1, "12\n", 3);
 	}
 	else
