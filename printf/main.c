@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:22 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/25 20:18:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/25 20:32:56 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int main(void)
 {
-	int	c = -214;
-	ft_printf("%020d\n", c);
-	printf("%020d", c);
+	int	c = 2147483647;
+	ft_printf("%20.3d\n", c);
+	printf("%20.3d", c);
 	return 0;
 }
