@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/25 20:35:12 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/26 16:54:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,39 +31,27 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 		ft_memset(tmp, '0', dat->read_size - ft_strlen(num));
 	if (dat->read_size == dat->precision)
 		dat->read_size += minus;
-	if (dat->precision > (int)ft_strlen(num) && dat->flag == FLAG_ZERO)
-		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
-	else if (dat->flag == FLAG_ZERO && dat->precision == 0)
-		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
+	if ((dat->precision > (int)ft_strlen(num) && dat->flag == FLAG_ZERO) || \
+			(dat->flag == FLAG_ZERO && dat->precision == 0))
+		ft_strncpy(tmp + dat->read_size - \
+				ft_strlen(num) - minus, num, ft_strlen(num));
 	else if (dat->precision > (int)ft_strlen(num))
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
 	else
 		ft_strncpy(tmp, num, ft_strlen(num));
 }
 
-void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
+void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 {
-	int tmp_len;
-	int num_len;
+	int idx;
 	int minus;
-	int	idx;
+	int tmp_len;
 
+	tmp_len = ft_strlen(tmp);
 	minus = 0;
 	idx = 0;
-	num_len = ft_strlen(num);
-	tmp_len = ft_strlen(tmp);
 	if (tmp[0] == '-')
 		minus = 1;
-	if (dat->flag == FLAG_ZERO && dat->precision == 0)
-	{
-		ft_strncpy(result, tmp, tmp_len);
-		return ;
-	}
-	if (dat->flag == FLAG_MINUS)
-	{
-		ft_strncpy(result, tmp, tmp_len);
-		return ;
-	}
 	if (dat->flag == FLAG_ZERO)
 		if ((idx = dat->read_size - num_len) < 0)
 			idx = 0;
@@ -76,6 +64,26 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 		return ;
 	}
 	ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
+}
+
+void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
+{
+	int tmp_len;
+	int num_len;
+
+	num_len = ft_strlen(num);
+	tmp_len = ft_strlen(tmp);
+	if (dat->flag == FLAG_ZERO && dat->precision == 0)
+	{
+		ft_strncpy(result, tmp, tmp_len);
+		return ;
+	}
+	if (dat->flag == FLAG_MINUS)
+	{
+		ft_strncpy(result, tmp, tmp_len);
+		return ;
+	}
+	sub_fill(result, tmp, num_len, dat);
 }
 
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
