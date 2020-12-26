@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/26 17:52:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 01:51:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 		ft_memset(tmp, ' ', dat->read_size - minus);
 	if (dat->read_size == dat->precision)
 		dat->read_size += minus;
-	if ((dat->precision > (int)ft_strlen(num) && dat->flag == FLAG_ZERO) || \
-			(dat->flag == FLAG_ZERO && dat->precision == 0))
-		ft_strncpy(tmp + dat->read_size - \
-				ft_strlen(num) - minus, num, ft_strlen(num));
+	if (dat->flag == FLAG_ZERO && dat->precision == 0)
+		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
 	else if (dat->precision > (int)ft_strlen(num))
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
 	else
@@ -57,15 +55,17 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 	if (dat->flag == FLAG_ZERO)
 		if ((idx = dat->read_size - num_len) < 0)
 			idx = 0;
-	if (tmp_len > num_len + idx && dat->precision != 0)
+	if (dat->precision != 0 && dat->flag == FLAG_ZERO)
+		ft_strncpy(result + dat->read_size - dat->precision - minus, tmp, tmp_len);
+	else if (tmp_len > num_len + idx && dat->precision != 0)
 	{
 		if ((idx = dat->width - dat->precision - minus) > 0)
 			ft_strncpy(result + (idx), tmp, tmp_len);
 		else
 			ft_strncpy(result, tmp, tmp_len);
-		return ;
 	}
-	ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
+	else
+		ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
 }
 
 void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
@@ -76,16 +76,11 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 	num_len = ft_strlen(num);
 	tmp_len = ft_strlen(tmp);
 	if (dat->flag == FLAG_ZERO && dat->precision == 0)
-	{
 		ft_strncpy(result, tmp, tmp_len);
-		return ;
-	}
-	if (dat->flag == FLAG_MINUS)
-	{
+	else if (dat->flag == FLAG_MINUS)
 		ft_strncpy(result, tmp, tmp_len);
-		return ;
-	}
-	sub_fill(result, tmp, num_len, dat);
+	else
+		sub_fill(result, tmp, num_len, dat);
 }
 
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
