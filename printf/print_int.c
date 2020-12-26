@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/27 01:51:22 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 02:00:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 	if (tmp[0] == '-')
 		minus = 1;
 	if (dat->flag == FLAG_ZERO)
-		if ((idx = dat->read_size - num_len) < 0)
-			idx = 0;
-	if (dat->precision != 0 && dat->flag == FLAG_ZERO)
-		ft_strncpy(result + dat->read_size - dat->precision - minus, tmp, tmp_len);
-	else if (tmp_len > num_len + idx && dat->precision != 0)
+	{
+		if (num_len < dat->precision)
+			ft_strncpy(result + dat->read_size - dat->precision - minus, tmp, tmp_len);
+		else
+			ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
+	}
+	else if (tmp_len > num_len && dat->precision != 0)
 	{
 		if ((idx = dat->width - dat->precision - minus) > 0)
 			ft_strncpy(result + (idx), tmp, tmp_len);
@@ -71,16 +73,14 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 {
 	int tmp_len;
-	int num_len;
 
-	num_len = ft_strlen(num);
 	tmp_len = ft_strlen(tmp);
 	if (dat->flag == FLAG_ZERO && dat->precision == 0)
 		ft_strncpy(result, tmp, tmp_len);
 	else if (dat->flag == FLAG_MINUS)
 		ft_strncpy(result, tmp, tmp_len);
 	else
-		sub_fill(result, tmp, num_len, dat);
+		sub_fill(result, tmp, ft_strlen(num), dat);
 }
 
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
