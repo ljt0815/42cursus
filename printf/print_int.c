@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/27 12:13:08 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 15:35:12 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 	}
 	if (dat->precision != 0)
 		ft_memset(tmp, '0', dat->precision);
-	else if (dat->flag == FLAG_ZERO)
+	else if (dat->flag & FLAG_ZERO)
 		ft_memset(tmp, '0', dat->read_size - ft_strlen(num));
 	else
 		ft_memset(tmp, ' ', dat->read_size - minus);
-	if (dat->flag == FLAG_ZERO && dat->precision == 0)
+	if ((dat->flag & FLAG_ZERO) && dat->precision == 0)
 		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
 	else if (dat->precision > (int)ft_strlen(num))
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
@@ -50,7 +50,7 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 	idx = 0;
 	if (tmp[0] == '-')
 		minus = 1;
-	if (dat->flag == FLAG_ZERO)
+	if (dat->flag & FLAG_ZERO)
 	{
 		if (num_len < dat->precision)
 			ft_strncpy(result + dat->read_size - dat->precision - minus, tmp, tmp_len);
@@ -74,9 +74,9 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 
 	tmp_len = ft_strlen(tmp);
 	ft_memset(result, ' ', dat->read_size);
-	if (dat->flag == FLAG_ZERO && dat->precision == 0)
+	if (dat->flag & FLAG_MINUS)
 		ft_strncpy(result, tmp, tmp_len);
-	else if (dat->flag == FLAG_MINUS)
+	else if (dat->flag & FLAG_ZERO && dat->precision == 0)
 		ft_strncpy(result, tmp, tmp_len);
 	else
 		sub_fill(result, tmp, ft_strlen(num), dat);
