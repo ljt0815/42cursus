@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:19:16 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/14 16:16:33 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 20:47:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int		parse_str(char *s, va_list *ap, t_parse_dat *dat, int *rtn)
 	while (ft_isdigit(s[i]))
 		set_width(&s[i], dat, &i);
 	if (s[i] == '.')
+	{
+		dat->dot = 1;
 		set_precision(&s[++i], dat, &i);
+	}
 	is_length(&s[i], dat, &i);
 	is_specifier(&s[i], dat, &i);
 	print_dat(dat, ap, rtn);

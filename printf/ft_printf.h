@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/24 16:59:23 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 20:46:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 typedef struct {
 	int	flag;
 	int	width;
+	int	dot;
 	int	precision;
 	int	length;
 	int	specifier;

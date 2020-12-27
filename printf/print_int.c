@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/27 20:31:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 20:55:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ char	*alloc_arr(char *num, t_parse_dat *dat)
 			dat->read_size = dat->precision;
 	}
 	tmp = malloc(dat->read_size + 1);
-	if (dat->precision == 0 && num[0] == '0')
+	if (dat->precision == 0 && num[0] == '0' \
+			&& dat->dot == 1 && dat->width == 0)
+		num[0] = 0;
+	if (dat->precision == 0 && num[0] == '0' && dat->dot == 1)
 		num[0] = ' ';
 	return (tmp);
 }
