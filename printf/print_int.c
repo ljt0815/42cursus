@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/27 02:00:13 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 12:13:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 		ft_memset(tmp, '0', dat->read_size - ft_strlen(num));
 	else
 		ft_memset(tmp, ' ', dat->read_size - minus);
-	if (dat->read_size == dat->precision)
-		dat->read_size += minus;
 	if (dat->flag == FLAG_ZERO && dat->precision == 0)
 		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
 	else if (dat->precision > (int)ft_strlen(num))
@@ -75,6 +73,7 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 	int tmp_len;
 
 	tmp_len = ft_strlen(tmp);
+	ft_memset(result, ' ', dat->read_size);
 	if (dat->flag == FLAG_ZERO && dat->precision == 0)
 		ft_strncpy(result, tmp, tmp_len);
 	else if (dat->flag == FLAG_MINUS)
@@ -91,15 +90,19 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 
 	num = ft_itoa(va_arg(*ap, int));
 	dat->read_size = dat->width;
-	if (dat->width < dat->precision)
-		dat->read_size = dat->precision;
-	if ((int)ft_strlen(num) > dat->read_size)
+	if (dat->width < (int)ft_strlen(num))
 		dat->read_size = ft_strlen(num);
+	if (dat->read_size < dat->precision)
+	{
+		if (num[0] == '-')
+			dat->read_size = dat->precision + 1;
+		else
+			dat->read_size = dat->precision;
+	}
 	tmp = malloc(dat->read_size + 1);
 	ft_memset(tmp, 0, dat->read_size + 1);
 	fill_front(tmp, num, dat);
 	result = malloc(dat->read_size);
-	ft_memset(result, ' ', dat->read_size);
 	fill_back(result, tmp, num, dat);
 	write(1, result, dat->read_size);
 	*rtn += dat->read_size;
