@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/27 15:35:12 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 20:31:45 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 	}
 	if (dat->precision != 0)
 		ft_memset(tmp, '0', dat->precision);
-	else if (dat->flag & FLAG_ZERO)
+	else if (dat->flag & FLAG_ZERO && num[0] != ' ')
 		ft_memset(tmp, '0', dat->read_size - ft_strlen(num));
 	else
 		ft_memset(tmp, ' ', dat->read_size - minus);
@@ -82,13 +82,10 @@ void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
 		sub_fill(result, tmp, ft_strlen(num), dat);
 }
 
-void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
+char	*alloc_arr(char *num, t_parse_dat *dat)
 {
-	char	*result;
-	char	*num;
 	char	*tmp;
 
-	num = ft_itoa(va_arg(*ap, int));
 	dat->read_size = dat->width;
 	if (dat->width < (int)ft_strlen(num))
 		dat->read_size = ft_strlen(num);
@@ -100,6 +97,19 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 			dat->read_size = dat->precision;
 	}
 	tmp = malloc(dat->read_size + 1);
+	if (dat->precision == 0 && num[0] == '0')
+		num[0] = ' ';
+	return (tmp);
+}
+
+void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
+{
+	char	*result;
+	char	*num;
+	char	*tmp;
+
+	num = ft_itoa(va_arg(*ap, int));
+	tmp = alloc_arr(num, dat);
 	ft_memset(tmp, 0, dat->read_size + 1);
 	fill_front(tmp, num, dat);
 	result = malloc(dat->read_size);
