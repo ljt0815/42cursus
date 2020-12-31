@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/27 20:55:18 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 19:42:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 	else
 		ft_memset(tmp, ' ', dat->read_size - minus);
 	if ((dat->flag & FLAG_ZERO) && dat->precision == 0)
-		ft_strncpy(tmp + dat->read_size - ft_strlen(num) - minus, num, ft_strlen(num));
+		ft_strncpy(tmp + dat->read_size - \
+				ft_strlen(num) - minus, num, ft_strlen(num));
 	else if (dat->precision > (int)ft_strlen(num))
 		ft_strncpy(tmp + dat->precision - ft_strlen(num), num, ft_strlen(num));
 	else
@@ -43,9 +44,7 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 {
 	int idx;
 	int minus;
-	int tmp_len;
 
-	tmp_len = ft_strlen(tmp);
 	minus = 0;
 	idx = 0;
 	if (tmp[0] == '-')
@@ -53,19 +52,20 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 	if (dat->flag & FLAG_ZERO)
 	{
 		if (num_len < dat->precision)
-			ft_strncpy(result + dat->read_size - dat->precision - minus, tmp, tmp_len);
+			ft_strncpy(result + dat->read_size - \
+					dat->precision - minus, tmp, ft_strlen(tmp));
 		else
-			ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
+			ft_strncpy(result + dat->read_size - num_len, tmp, ft_strlen(tmp));
 	}
-	else if (tmp_len > num_len && dat->precision != 0)
+	else if (ft_strlen(tmp) > num_len && dat->precision != 0)
 	{
 		if ((idx = dat->width - dat->precision - minus) > 0)
-			ft_strncpy(result + (idx), tmp, tmp_len);
+			ft_strncpy(result + (idx), tmp, ft_strlen(tmp));
 		else
-			ft_strncpy(result, tmp, tmp_len);
+			ft_strncpy(result, tmp, ft_strlen(tmp));
 	}
 	else
-		ft_strncpy(result + dat->read_size - num_len, tmp, tmp_len);
+		ft_strncpy(result + dat->read_size - num_len, tmp, ft_strlen(tmp));
 }
 
 void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat)
@@ -99,8 +99,8 @@ char	*alloc_arr(char *num, t_parse_dat *dat)
 	tmp = malloc(dat->read_size + 1);
 	if (dat->precision == 0 && num[0] == '0' \
 			&& dat->dot == 1 && dat->width == 0)
-		num[0] = 0;
-	if (dat->precision == 0 && num[0] == '0' && dat->dot == 1)
+		dat->read_size = 0;
+	else if (dat->precision == 0 && num[0] == '0' && dat->dot == 1)
 		num[0] = ' ';
 	return (tmp);
 }
