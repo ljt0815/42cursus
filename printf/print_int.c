@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/31 19:42:03 by jitlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 20:31:54 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 		else
 			ft_strncpy(result + dat->read_size - num_len, tmp, ft_strlen(tmp));
 	}
-	else if (ft_strlen(tmp) > num_len && dat->precision != 0)
+	else if ((int)ft_strlen(tmp) > num_len && dat->precision != 0)
 	{
 		if ((idx = dat->width - dat->precision - minus) > 0)
 			ft_strncpy(result + (idx), tmp, ft_strlen(tmp));
