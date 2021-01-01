@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/31 20:31:54 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/01 15:50:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,10 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	char	*num;
 	char	*tmp;
 
-	num = ft_itoa(va_arg(*ap, int));
+	if (dat->specifier == SPECIFIER_U)
+		num = ft_uitoa(va_arg(*ap, unsigned int));
+	else
+		num = ft_itoa(va_arg(*ap, int));
 	tmp = alloc_arr(num, dat);
 	ft_memset(tmp, 0, dat->read_size + 1);
 	fill_front(tmp, num, dat);

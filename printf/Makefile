@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:57:21 by jitlee            #+#    #+#              #
-#    Updated: 2020/12/25 13:34:35 by jitlee           ###   ########.fr        #
+#    Updated: 2021/01/01 15:56:47 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ FILES = ft_printf \
 		ft_strlcpy \
 		ft_strlen \
 		ft_itoa \
+		ft_uitoa \
 		parse_str \
 		parse_str_func \
 		print_ch \

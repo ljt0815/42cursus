@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 17:55:54 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/12 21:51:52 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/01 14:44:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 void	print_str(t_parse_dat *dat, va_list *ap, int *rtn)
 {
-	char	*result;
 	char	*tmp;
 	int		len;
+	int		i;
 
-	tmp = va_arg(*ap, char *);
-	if (dat->precision == 0)
+	i = -1;
+	if ((tmp = va_arg(*ap, char *)) == 0)
+		tmp = "(null)";
+	if ((dat->precision == 0 && dat->dot == 0) \
+				|| dat->precision > (int)ft_strlen(tmp))
 		len = ft_strlen(tmp);
 	else
 		len = dat->precision;
-	if (dat->width != 0 && len < dat->width)
-	{
-		result = malloc(dat->width + 1);
-		ft_memset(result, ' ', dat->width + 1);
-		if (dat->flag == FLAG_MINUS)
-			ft_strncpy(result, tmp, len);
-		else
-			ft_strlcpy(result + (dat->width - len), tmp, len + 1);
-		write(1, result, dat->width);
-		*rtn += dat->width;
-	}
-	else
-	{
+	if (dat->flag & FLAG_MINUS)
 		write(1, tmp, len);
-		*rtn += len;
+	while (++i < dat->width - len)
+	{
+		write(1, " ", 1);
+		*rtn += 1;
 	}
+	if ((dat->flag & FLAG_MINUS) == 0)
+		write(1, tmp, len);
+	*rtn += len;
 }
