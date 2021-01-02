@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 19:31:42 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 13:43:43 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 18:28:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 void	hex_convert(unsigned long tmp, int *rtn)
 {
-	char	full_addr[9];
+	char	*full_addr;
 	int		i;
+	int		addr_len;
 
 	i = 0;
-	while (i < 9)
+	addr_len = hex_len((long long)tmp);
+	full_addr = malloc(addr_len);
+	while (i < addr_len)
 	{
-		full_addr[8 - i] = (tmp % 16) >= 10 ? \
+		full_addr[addr_len - i] = (tmp % 16) >= 10 ? \
 							(tmp % 16) + 87 : (tmp % 16) + 48;
 		tmp = tmp / 16;
 		i++;
 	}
 	write(1, "0x", 2);
-	write(1, full_addr, 9);
-	*rtn += 11;
+	write(1, full_addr, addr_len);
+	*rtn += addr_len;
 }
 
 void	null_proc(t_parse_dat *dat, int *rtn)
