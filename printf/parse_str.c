@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:19:16 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/01 13:11:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 16:19:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int		starwidth(char c, va_list *ap, t_parse_dat *dat, int *i)
 	{
 		dat->width = va_arg(*ap, int);
 		if (dat->width < 0)
-			dat->flag |= FLAG_MINUS;
+		{
+			dat->flag = FLAG_MINUS;
+			dat->width *= -1;
+		}
 		*i += 1;
 		return (1);
 	}
