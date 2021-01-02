@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 14:34:09 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 14:37:29 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
 char	*ft_itox(unsigned int n);
+char	*ft_itobigx(unsigned int n);
 int		num_len(long long n);
 int		hex_len(long long n);
 void	proc_else(t_parse_dat *dat, char *tmp, char *result, int len);

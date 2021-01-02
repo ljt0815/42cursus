@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 12:28:58 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 14:33:39 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 14:42:19 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_hex(t_parse_dat *dat, va_list *ap, int *rtn)
 	char	*tmp;
 
 	if (dat->specifier == SPECIFIER_BIGX)
-		num = ft_uitoa(va_arg(*ap, unsigned int));
+		num = ft_itobigx(va_arg(*ap, unsigned int));
 	else
 		num = ft_itox(va_arg(*ap, unsigned int));
 	tmp = alloc_arr(num, dat);
