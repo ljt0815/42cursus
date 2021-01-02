@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:11:28 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 14:38:27 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 14:52:47 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	print_dat(t_parse_dat *dat, va_list *ap, int *rtn)
 		print_str(dat, ap, rtn);
 	else if (dat->specifier == SPECIFIER_P)
 		print_adr(dat, ap, rtn);
-	else if (dat->specifier == SPECIFIER_D || dat->specifier == SPECIFIER_I || dat->specifier == SPECIFIER_U)
-		print_int(dat, ap, rtn);
 	else if (dat->specifier == SPECIFIER_X || dat->specifier == SPECIFIER_BIGX)
-		print_hex(dat, ap, rtn);/*
+		print_hex(dat, ap, rtn);
 	else if (dat->specifier == SPECIFIER_PER)
-		print_per(dat, ap);*/
+		print_per(dat, rtn);
+	else
+		print_int(dat, ap, rtn);
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 14:37:29 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 14:52:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat);
 void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat);
 char	*alloc_arr(char *num, t_parse_dat *dat);
 void	print_hex(t_parse_dat *dat, va_list *ap, int *rtn);
+void	print_per(t_parse_dat *dat, int *rtn);
 #endif
