@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 19:31:42 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 19:57:26 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 20:03:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,12 @@ void	hex_convert(unsigned long tmp, int *rtn)
 		tmp = tmp / 16;
 		i++;
 	}
-	i = 0;
-	while (i < 3)
-	{
-		if (full_addr[i] == '0')
-			idx++;
-		i++;
-	}
+	i = -1;
+	while (full_addr[++i] == '0')
+		idx++;
 	write(1, "0x", 2);
-	write(1, idx, 9 + 3 - (idx - full_addr));
-	*rtn += 2 + 9 + 3 - (idx - full_addr);
+	write(1, idx, 12 - (idx - full_addr));
+	*rtn += 2 + 12 - (idx - full_addr);
 }
 
 void	null_proc(t_parse_dat *dat, int *rtn)
