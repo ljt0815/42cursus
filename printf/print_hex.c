@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 12:28:58 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 16:32:29 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 20:09:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	print_hex(t_parse_dat *dat, va_list *ap, int *rtn)
 	fill_back(result, tmp, num, dat);
 	write(1, result, dat->read_size);
 	*rtn += dat->read_size;
+	free(num);
 	free(result);
 	free(tmp);
 }
