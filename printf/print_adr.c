@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 19:31:42 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 12:01:28 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 13:43:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	print_adr(t_parse_dat *dat, va_list *ap, int *rtn)
 {
 	int				i;
 	unsigned long	tmp;
-	
+
 	i = 11;
-	tmp = (unsigned long)va_arg(*ap, void *); 
+	tmp = (unsigned long)va_arg(*ap, void *);
 	if (tmp == 0)
 		null_proc(dat, rtn);
 	else if (dat->width != 0 && (dat->width > 11))

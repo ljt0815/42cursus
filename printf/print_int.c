@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/01 15:50:22 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 12:47:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,6 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	write(1, result, dat->read_size);
 	*rtn += dat->read_size;
 	free(result);
+	free(tmp);
+	free(num);
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/01 15:56:27 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/02 14:34:09 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,14 @@ void	print_adr(t_parse_dat *dat, va_list *ap, int *rtn);
 void	print_int(t_parse_dat *dat, va_list *ap, int *rtn);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
+char	*ft_itox(unsigned int n);
 int		num_len(long long n);
+int		hex_len(long long n);
 void	proc_else(t_parse_dat *dat, char *tmp, char *result, int len);
 void	print_else(char *result, char *tmp, int *rtn, t_parse_dat *dat);
+void	fill_front(char *tmp, char *num, t_parse_dat *dat);
+void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat);
+void	fill_back(char *result, char *tmp, char *num, t_parse_dat *dat);
+char	*alloc_arr(char *num, t_parse_dat *dat);
+void	print_hex(t_parse_dat *dat, va_list *ap, int *rtn);
 #endif

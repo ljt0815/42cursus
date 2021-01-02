@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:57:21 by jitlee            #+#    #+#              #
-#    Updated: 2021/01/01 15:56:47 by jitlee           ###   ########.fr        #
+#    Updated: 2021/01/02 14:25:04 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,15 @@ FILES = ft_printf \
 		ft_strlen \
 		ft_itoa \
 		ft_uitoa \
+		ft_itox \
 		parse_str \
 		parse_str_func \
 		print_ch \
 		print_dat \
 		print_str \
 		print_adr \
-		print_int
+		print_int \
+		print_hex
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
