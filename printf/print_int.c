@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 20:08:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/03 18:51:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 	char	*num;
 	char	*tmp;
 
-	if (dat->specifier == SPECIFIER_U)
+	if (dat->specifier == SPEC_U)
 		num = ft_uitoa(va_arg(*ap, unsigned int));
 	else
 		num = ft_itoa(va_arg(*ap, int));

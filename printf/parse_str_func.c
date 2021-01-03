@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 11:08:28 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/14 15:10:53 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/03 18:50:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,23 +78,23 @@ void	is_length(char *s, t_parse_dat *dat, int *i)
 void	is_specifier(char *s, t_parse_dat *dat, int *i)
 {
 	if (*s == 'c')
-		dat->specifier = SPECIFIER_C;
+		dat->specifier = SPEC_C;
 	else if (*s == 's')
-		dat->specifier = SPECIFIER_S;
+		dat->specifier = SPEC_S;
 	else if (*s == 'p')
-		dat->specifier = SPECIFIER_P;
+		dat->specifier = SPEC_P;
 	else if (*s == 'd')
-		dat->specifier = SPECIFIER_D;
+		dat->specifier = SPEC_D;
 	else if (*s == 'i')
-		dat->specifier = SPECIFIER_I;
+		dat->specifier = SPEC_I;
 	else if (*s == 'u')
-		dat->specifier = SPECIFIER_U;
+		dat->specifier = SPEC_U;
 	else if (*s == 'x')
-		dat->specifier = SPECIFIER_X;
+		dat->specifier = SPEC_X;
 	else if (*s == 'X')
-		dat->specifier = SPECIFIER_BIGX;
+		dat->specifier = SPEC_BIGX;
 	else if (*s == '%')
-		dat->specifier = SPECIFIER_PER;
+		dat->specifier = SPEC_PER;
 	if (dat->specifier != 0)
 		*i += 1;
 }

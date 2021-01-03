@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 14:52:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/03 18:47:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@
 # define LENGTH_Z 6
 # define LENGTH_T 7
 # define LENGTH_BIGL 8
-# define SPECIFIER_C 1
-# define SPECIFIER_S 2
-# define SPECIFIER_P 3
-# define SPECIFIER_D 4
-# define SPECIFIER_I 5
-# define SPECIFIER_U 6
-# define SPECIFIER_X 7
-# define SPECIFIER_BIGX 8
-# define SPECIFIER_PER 9
+# define SPEC_C 1
+# define SPEC_S 2
+# define SPEC_P 3
+# define SPEC_D 4
+# define SPEC_I 5
+# define SPEC_U 6
+# define SPEC_X 7
+# define SPEC_BIGX 8
+# define SPEC_PER 9
 
 typedef struct {
 	int	flag;
