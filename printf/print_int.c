@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/03 18:51:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/03 19:13:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	sub_fill(char *result, char *tmp, int num_len, t_parse_dat *dat)
 		minus = 1;
 	if (dat->flag & FLAG_ZERO)
 	{
-		if (num_len < dat->precision)
+		if (num_len <= dat->precision)
 			ft_strncpy(result + dat->read_size - \
 					dat->precision - minus, tmp, ft_strlen(tmp));
 		else
@@ -87,7 +87,7 @@ char	*alloc_arr(char *num, t_parse_dat *dat)
 	dat->read_size = dat->width;
 	if (dat->width < (int)ft_strlen(num))
 		dat->read_size = ft_strlen(num);
-	if (dat->read_size < dat->precision)
+	if (dat->read_size <= dat->precision)
 	{
 		if (num[0] == '-')
 			dat->read_size = dat->precision + 1;
