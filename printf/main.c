@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 21:27:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/04 20:40:49 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 00:42:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int main(void)
 {
-	printf("%-16.p\n", NULL);
-	ft_printf("%-16.p\n", NULL);
+	int a = 34;
+	int *b = &a;
+	//printf("%-16.p\n", b);
+	ft_printf("%-16.p\n", b);
 }
