@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 19:31:42 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/02 20:03:18 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/04 20:40:40 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ void	hex_convert(unsigned long tmp, int *rtn)
 void	null_proc(t_parse_dat *dat, int *rtn)
 {
 	int i;
+	int len;
 
-	i = 3;
+	if (dat->dot == 1 && dat->precision == 0)
+		len = 2;
+	else
+		len = 3;
+	i = len;
 	if (dat->flag == FLAG_MINUS)
-		write(1, "0x0", 3);
+		write(1, "0x0", len);
 	while (i < dat->width)
 	{
 		write(1, " ", 1);
@@ -49,8 +54,8 @@ void	null_proc(t_parse_dat *dat, int *rtn)
 		*rtn += 1;
 	}
 	if (dat->flag != FLAG_MINUS)
-		write(1, "0x0", 3);
-	*rtn += 3;
+		write(1, "0x0", len);
+	*rtn += len;
 }
 
 void	print_adr(t_parse_dat *dat, va_list *ap, int *rtn)
