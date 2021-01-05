@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/03 19:13:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 20:19:26 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ void	print_int(t_parse_dat *dat, va_list *ap, int *rtn)
 		num = ft_uitoa(va_arg(*ap, unsigned int));
 	else
 		num = ft_itoa(va_arg(*ap, int));
+	if ((dat->flag & FLAG_ZERO) && dat->dot == 1 && dat->precision == 0)
+		dat->flag -= FLAG_ZERO;
 	tmp = alloc_arr(num, dat);
 	ft_memset(tmp, 0, dat->read_size + 1);
 	fill_front(tmp, num, dat);
