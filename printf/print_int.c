@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:37:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/05 20:19:26 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 23:15:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void	fill_front(char *tmp, char *num, t_parse_dat *dat)
 	}
 	if (dat->precision != 0)
 		ft_memset(tmp, '0', dat->precision);
-	else if (dat->flag & FLAG_ZERO && num[0] != ' ')
+	else if (dat->flag & FLAG_ZERO && num[0] != ' ' \
+			&& !(dat->flag & FLAG_MINUS))
 		ft_memset(tmp, '0', dat->read_size - ft_strlen(num));
-	if ((dat->flag & FLAG_ZERO) && dat->precision == 0)
+	if ((dat->flag & FLAG_ZERO) && dat->precision == 0 && \
+			!(dat->flag & FLAG_MINUS))
 		ft_strncpy(tmp + dat->read_size - \
 				ft_strlen(num) - minus, num, ft_strlen(num));
 	else if (dat->precision > (int)ft_strlen(num))

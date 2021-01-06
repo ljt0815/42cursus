@@ -6,16 +6,16 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 19:31:42 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/06 20:41:59 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 23:04:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	hex_convert(long long tmp, int *rtn, int len)
 {
 	char	full_addr[12];
-	char	*idx;
 	int		i;
 
 	i = 0;
@@ -30,8 +30,8 @@ void	hex_convert(long long tmp, int *rtn, int len)
 	while (full_addr[i] == '0')
 		i++;
 	write(1, "0x", 2);
-	write(1, full_addr + i, len);
-	*rtn += 2 + len;
+	write(1, full_addr + i, len - 2);
+	*rtn += len;
 }
 
 void	null_proc(t_parse_dat *dat, int *rtn)
@@ -68,7 +68,7 @@ void	print_adr(t_parse_dat *dat, va_list *ap, int *rtn)
 	len = hex_len(tmp) + 2;
 	if (tmp == 0)
 		null_proc(dat, rtn);
-	else if (dat->width != 0 && (len > dat->width))
+	else if (dat->width != 0 && (len < dat->width))
 	{
 		if (dat->flag == FLAG_MINUS)
 			hex_convert(tmp, rtn, len);
