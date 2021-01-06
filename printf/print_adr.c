@@ -6,20 +6,19 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 19:31:42 by jitlee            #+#    #+#             */
-/*   Updated: 2021/01/05 00:47:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 20:41:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	hex_convert(long long tmp, int *rtn)
+void	hex_convert(long long tmp, int *rtn, int len)
 {
 	char	full_addr[12];
 	char	*idx;
 	int		i;
 
 	i = 0;
-	idx = full_addr;
 	while (i < 12)
 	{
 		full_addr[11 - i] = (tmp % 16) >= 10 ? \
@@ -27,12 +26,12 @@ void	hex_convert(long long tmp, int *rtn)
 		tmp = tmp / 16;
 		i++;
 	}
-	i = -1;
-	while (full_addr[++i] == '0')
-		idx++;
+	i = 0;
+	while (full_addr[i] == '0')
+		i++;
 	write(1, "0x", 2);
-	write(1, idx, 12 - (idx - full_addr));
-	*rtn += 2 + 12 - (idx - full_addr);
+	write(1, full_addr + i, len);
+	*rtn += 2 + len;
 }
 
 void	null_proc(t_parse_dat *dat, int *rtn)
@@ -69,10 +68,10 @@ void	print_adr(t_parse_dat *dat, va_list *ap, int *rtn)
 	len = hex_len(tmp) + 2;
 	if (tmp == 0)
 		null_proc(dat, rtn);
-	else if (dat->width != 0 && (dat->width > 11))
+	else if (dat->width != 0 && (len > dat->width))
 	{
 		if (dat->flag == FLAG_MINUS)
-			hex_convert(tmp, rtn);
+			hex_convert(tmp, rtn, len);
 		while (i < dat->width - len)
 		{
 			write(1, " ", 1);
@@ -80,8 +79,8 @@ void	print_adr(t_parse_dat *dat, va_list *ap, int *rtn)
 			*rtn += 1;
 		}
 		if (dat->flag != FLAG_MINUS)
-			hex_convert(tmp, rtn);
+			hex_convert(tmp, rtn, len);
 	}
 	else
-		hex_convert(tmp, rtn);
+		hex_convert(tmp, rtn, len);
 }
