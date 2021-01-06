@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:47:47 by jitlee            #+#    #+#             */
-/*   Updated: 2020/12/14 10:36:59 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 00:00:49 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	print_ch(t_parse_dat *dat, va_list *ap, int *rtn)
 		*rtn += 1;
 		write(1, result, 1);
 	}
+	free(result);
 }
