@@ -1,12 +1,5 @@
 #include "stack.h"
 
-typedef char element;
-typedef struct {
-    element *data;
-    int     capacity;
-    int     top;
-}   StackType;
-
 // 스택 생성 함수
 void    init_stack(StackType *s)
 {
