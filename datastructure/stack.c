@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "stack.h"
 
 typedef int element;
 typedef struct {
@@ -28,13 +26,13 @@ int     is_empty(StackType *s)
 }
 
 // 스택 삭제 함수
-void    delete(StackType *s)
+void    s_delete(StackType *s)
 {
     free(s);
 }
 
 // 푸쉬푸쉬베이베
-void    push(StackType *s, element item)
+void    s_push(StackType *s, element item)
 {
     element *tmp;
 
@@ -47,7 +45,7 @@ void    push(StackType *s, element item)
 }
 
 // 삭제함수
-element pop(StackType *s)
+element s_pop(StackType *s)
 {
     if (is_empty(s))
     {
