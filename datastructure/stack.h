@@ -16,4 +16,5 @@ int         is_empty(StackType *s);
 void        s_delete(StackType *s);
 void        s_push(StackType *s, element item);
 element     s_pop(StackType *s);
+element     s_peek(StackType *s);
 #endif

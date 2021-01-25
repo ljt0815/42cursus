@@ -1,6 +1,6 @@
 #include "stack.h"
 
-typedef int element;
+typedef char element;
 typedef struct {
     element *data;
     int     capacity;
@@ -44,6 +44,16 @@ void    s_push(StackType *s, element item)
     s->data[++(s->top)] = item;
 }
 
+element s_peek(StackType *s)
+{
+    if (is_empty(s))
+    {
+        fprintf(stderr, "스택 공백 에러\n");
+        exit(1);
+    }
+    else return s->data[(s->top)];
+}
+
 // 삭제함수
 element s_pop(StackType *s)
 {
@@ -53,19 +63,4 @@ element s_pop(StackType *s)
         exit(1);
     }
     else return s->data[(s->top)--];
-}
-
-int     main(void)
-{
-    StackType s;
-
-    init_stack(&s);
-    push(&s, 1);
-    push(&s, 2);
-    push(&s, 3);
-    printf("%d \n", pop(&s));
-    printf("%d \n", pop(&s));
-    printf("%d \n", pop(&s));
-    free(s.data);
-    return 0;
 }
