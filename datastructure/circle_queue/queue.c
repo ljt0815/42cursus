@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define MAX_QUEUE_SIZE 5
 
-typedef int element;
+typedef char element;
 typedef struct {
     int front;
     int rear;
@@ -75,14 +75,15 @@ element peek(QueueType *q)
 int     main(void)
 {
     QueueType q;
-    int ele;
+    char ele;
     
     init_queue(&q);
     puts("--데이터 추가 단계--");
     while (!is_full(&q))
     {
         printf("정수를 입력하시오: ");
-        scanf("%d", &ele);
+        scanf("%c", &ele);
+        getchar();
         enqueue(&q, ele);
         queue_print(&q);
     }
@@ -92,7 +93,7 @@ int     main(void)
     while (!is_empty(&q))
     {
         ele = dequeue(&q);
-        printf("꺼내진 정수: %d \n", ele);
+        printf("꺼내진 정수: %c \n", ele);
         queue_print(&q);
     }
     puts("큐는 비어있을껄");
