@@ -1,1 +1,1 @@
-gcc ${1} -L . libft.a
+gcc ${1} -L . libft.a libmlx.a

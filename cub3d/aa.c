@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include "libft.h"
+#include "mlx.h"
 
 int main(void)
 {
-	char *a;
+	void *mlx_ptr;
 
-	ft_strlcpy(a, "qwer", 5);
-	printf("%s", a);
+	mlx_ptr = mlx_init();
+	printf("%p", mlx_ptr);
 	return 0;
 }
