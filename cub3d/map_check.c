@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/05 02:15:40 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/05 02:38:46 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		resol_check(char *line, t_dat *dat)
 		line++;
 	while (ft_isdigit(*(line)))
 	{
-		dat->t_r.x = dat->t_r.x * 10 + (*(line) - '0');
+		dat->r.x = dat->r.x * 10 + (*(line) - '0');
 		line++;
 	}
 	if (*(line) != ' ')
@@ -30,9 +30,10 @@ int		resol_check(char *line, t_dat *dat)
 		line++;
 	while (ft_isdigit(*(line)))
 	{
-		dat->t_r.y = dat->t_r.y * 10 + (*(line) - '0');
+		dat->r.y = dat->r.y * 10 + (*(line) - '0');
 		line++;
 	}
+	return (1);
 }
 
 int		map_check(char *path, t_dat *dat)
@@ -46,7 +47,7 @@ int		map_check(char *path, t_dat *dat)
 	{
 		i = 0;
 		if (line[0] == 'R')
-			resol_check(line, t_dat *dat);
+			resol_check(line, dat);
 	}
 	return (0);
 }

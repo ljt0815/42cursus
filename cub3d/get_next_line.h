@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:17:17 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/12 01:48:48 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/05 02:39:26 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <limits.h>
+# define BUFFER_SIZE 10
 
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *s);

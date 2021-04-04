@@ -6,14 +6,16 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/05 02:28:26 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/05 02:31:07 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "cub3d.h"
 
 int main(void)
 {
 	t_dat dat;
 
-	ft_bzero(dat, sizeof(dat));
+	ft_bzero(&dat, sizeof(dat));
 	map_check("./test_map.cub", &dat);
 }
