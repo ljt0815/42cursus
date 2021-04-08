@@ -6,12 +6,13 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/05 02:38:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/08 19:06:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "cub3d.h"
+#include <stdio.h>
 
 int		resol_check(char *line, t_dat *dat)
 {
@@ -36,18 +37,26 @@ int		resol_check(char *line, t_dat *dat)
 	return (1);
 }
 
-int		map_check(char *path, t_dat *dat)
+int		map_check(char *my_path, t_dat *dat)
 {
 	char *line;
 	int fd;
 	int i;
+	int state;
 
-	fd = open(path, O_RDONLY);
-	while (get_next_line(fd, &line))
+	dat += 0;
+	fd = open(my_path, O_RDONLY);
+	while ((state = get_next_line(fd, &line)))
 	{
+		if (state == -1)
+		{
+			write(1, "error", 5);
+			return (0);
+		}
 		i = 0;
 		if (line[0] == 'R')
-			resol_check(line, dat);
+			resol_check(&line[1], dat);
 	}
+	printf("x = %d\ny = %d", dat->r.y, dat->r.x);
 	return (0);
 }
