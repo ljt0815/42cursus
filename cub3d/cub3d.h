@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/11 09:34:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/11 18:43:44 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct {
 	t_r		r;
 	char	*no;
 	char	*so;
+	char	*we;
+	char	*ea;
 }	t_dat;
 
 int			ft_isdigit(int c);

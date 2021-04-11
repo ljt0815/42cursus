@@ -6,17 +6,23 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/11 09:35:05 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/11 19:20:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "cub3d.h"
 
+void	err_msg(void)
+{
+	printf("Error\n");
+	exit(1);
+}
+
 void	resol_check(char *line, t_dat *dat)
 {
 	if (*(line) != ' ')
-		exit(1);
+		err_msg();
 	while (*(line) == ' ')
 		line++;
 	while (ft_isdigit(*(line)))
@@ -25,7 +31,7 @@ void	resol_check(char *line, t_dat *dat)
 		line++;
 	}
 	if (*(line) != ' ')
-		exit(1);
+		err_msg();
 	while (*(line) == ' ')
 		line++;
 	while (ft_isdigit(*(line)))
@@ -38,15 +44,19 @@ void	resol_check(char *line, t_dat *dat)
 void	path_check(char *line, t_dat *dat, char news)
 {
 	if (*(line) != ' ')
-		exit(1);
+		err_msg();
 	while (*(line) == ' ')
 		line++;
 	if (open(line, O_RDONLY) == -1)
-		exit(1);
+		err_msg();
 	if (news == 'n')
 		dat->no = line;
 	else if (news == 's')
 		dat->so = line;
+	else if (news == 'w')
+		dat->we = line;
+	else if (news == 'e')
+		dat->ea = line;
 }
 
 int		map_check(char *my_path, t_dat *dat)
@@ -59,12 +69,13 @@ int		map_check(char *my_path, t_dat *dat)
 	while ((state = get_next_line(fd, &line)))
 	{
 		if (state == -1)
-		{
-			write(1, "Error\n", 6);
-			return (0);
-		}
+			err_msg();
 		if (line[0] == 'R')
+		{	
+			if (dat->r.x != 0 || dat->r.y != 0)
+				err_msg();
 			resol_check(&line[1], dat);
+		}
 		if (line[0] == 'N')
 		{
 			if (line[1] == 'O')
@@ -75,7 +86,19 @@ int		map_check(char *my_path, t_dat *dat)
 			if (line[1] == 'O')
 				path_check(&line[2], dat, 's');
 		}
+		if (line[0] == 'W')
+		{
+			if (line[1] == 'E')
+				path_check(&line[2], dat, 'w');
+		}
+		if (line[0] == 'E')
+		{
+			if (line[1] == 'A')
+				path_check(&line[2], dat, 'e');
+		}
+
+		
 	}
-	printf("x = %d\ny = %d\nNO=%s\nSO=%s\n", dat->r.y, dat->r.x, dat->no, dat->so);
+	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea);
 	return (0);
 }
