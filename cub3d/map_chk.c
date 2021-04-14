@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_chk.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 02:46:44 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 03:51:28 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ int		map_chk(char *my_path, t_dat *dat)
 			resol_chk(&line[1], dat);
 		}
 		xpm_chk(line, dat);
+		comma_chk(line, dat);
 	}
 	null_chk(dat);
-	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea);
+	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nF.r=%d", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea, dat->f.r);
 	return (0);
 }

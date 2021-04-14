@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 02:45:11 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 03:35:05 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,21 @@ typedef struct {
 }			t_r;
 
 typedef struct {
+	int		r;
+	int		g;
+	int		b;
+}			t_f;
+
+typedef struct {
+	int		r;
+	int		g;
+	int		b;
+}			t_c;
+
+typedef struct {
 	t_r		r;
+	t_f		f;
+	t_c		c;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -39,4 +53,5 @@ void		ft_bzero(void *s, size_t n);
 void		err_msg(void);
 void		xpm_chk(char *line, t_dat *dat);
 void		null_chk(t_dat *dat);
+void		comma_chk(char *line, t_dat *dat);
 #endif
