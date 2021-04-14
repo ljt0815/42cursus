@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/12 08:38:10 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 02:46:25 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	main(void)
 	t_dat dat;
 
 	ft_bzero(&dat, sizeof(dat));
-	map_check("./test_map.cub", &dat);
+	map_chk("./test_map.cub", &dat);
 }

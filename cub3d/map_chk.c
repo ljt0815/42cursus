@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 00:15:48 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 02:46:44 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	err_msg(void)
 	exit(1);
 }
 
-void	resol_check(char *line, t_dat *dat)
+void	resol_chk(char *line, t_dat *dat)
 {
 	if (*(line) != ' ')
 		err_msg();
@@ -41,7 +41,7 @@ void	resol_check(char *line, t_dat *dat)
 	}
 }
 
-void	path_check(char *line, t_dat *dat, char news)
+void	path_chk(char *line, t_dat *dat, char news)
 {
 	if (*(line) != ' ')
 		err_msg();
@@ -59,7 +59,7 @@ void	path_check(char *line, t_dat *dat, char news)
 		dat->ea = line;
 }
 
-int		map_check(char *my_path, t_dat *dat)
+int		map_chk(char *my_path, t_dat *dat)
 {
 	char	*line;
 	int		fd;
@@ -74,11 +74,11 @@ int		map_check(char *my_path, t_dat *dat)
 		{
 			if (dat->r.x != 0 || dat->r.y != 0)
 				err_msg();
-			resol_check(&line[1], dat);
+			resol_chk(&line[1], dat);
 		}
-		xpm_check(line, dat);
+		xpm_chk(line, dat);
 	}
-	null_check(dat);
+	null_chk(dat);
 	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea);
 	return (0);
 }
