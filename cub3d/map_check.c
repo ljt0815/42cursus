@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/11 19:20:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 00:15:48 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,34 +71,14 @@ int		map_check(char *my_path, t_dat *dat)
 		if (state == -1)
 			err_msg();
 		if (line[0] == 'R')
-		{	
+		{
 			if (dat->r.x != 0 || dat->r.y != 0)
 				err_msg();
 			resol_check(&line[1], dat);
 		}
-		if (line[0] == 'N')
-		{
-			if (line[1] == 'O')
-				path_check(&line[2], dat, 'n');
-		}
-		if (line[0] == 'S')
-		{
-			if (line[1] == 'O')
-				path_check(&line[2], dat, 's');
-		}
-		if (line[0] == 'W')
-		{
-			if (line[1] == 'E')
-				path_check(&line[2], dat, 'w');
-		}
-		if (line[0] == 'E')
-		{
-			if (line[1] == 'A')
-				path_check(&line[2], dat, 'e');
-		}
-
-		
+		xpm_check(line, dat);
 	}
+	null_check(dat);
 	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea);
 	return (0);
 }
