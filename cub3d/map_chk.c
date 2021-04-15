@@ -6,23 +6,24 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 19:37:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 19:54:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "cub3d.h"
 
-void	err_msg(void)
+void	err_msg(char *msg)
 {
 	printf("Error\n");
+	printf("%s\n", msg);
 	exit(1);
 }
 
 void	resol_chk(char *line, t_dat *dat)
 {
 	if (*(line) != ' ')
-		err_msg();
+		err_msg("Identifier : R");
 	while (*(line) == ' ')
 		line++;
 	while (ft_isdigit(*(line)))
@@ -31,7 +32,7 @@ void	resol_chk(char *line, t_dat *dat)
 		line++;
 	}
 	if (*(line) != ' ')
-		err_msg();
+		err_msg("Identifier : R");
 	while (*(line) == ' ')
 		line++;
 	while (ft_isdigit(*(line)))
@@ -44,11 +45,11 @@ void	resol_chk(char *line, t_dat *dat)
 void	path_chk(char *line, t_dat *dat, char news)
 {
 	if (*(line) != ' ')
-		err_msg();
+		err_msg("Identifier : NEWS");
 	while (*(line) == ' ')
 		line++;
 	if (open(line, O_RDONLY) == -1)
-		err_msg();
+		err_msg("TextureFile Can't Open");
 	if (news == 'n')
 		dat->no = line;
 	else if (news == 's')
@@ -69,11 +70,11 @@ int		map_chk(char *my_path, t_dat *dat)
 	while ((state = get_next_line(fd, &line)))
 	{
 		if (state == -1)
-			err_msg();
+			err_msg(".cub File Exception");
 		if (line[0] == 'R')
 		{
 			if (dat->r.x != 0 || dat->r.y != 0)
-				err_msg();
+				err_msg("Duplicate Identifier \"R\"");
 			resol_chk(&line[1], dat);
 		}
 		xpm_chk(line, dat);
