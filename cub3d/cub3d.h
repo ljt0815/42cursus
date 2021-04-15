@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 03:35:05 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 19:46:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,8 @@ void		err_msg(void);
 void		xpm_chk(char *line, t_dat *dat);
 void		null_chk(t_dat *dat);
 void		comma_chk(char *line, t_dat *dat);
+void		*ft_memset(void *b, int c, size_t len);
+void		f_chk(char *line, t_dat *dat);
+void		c_chk(char *line, t_dat *dat);
+void		rgb_valid_chk(t_dat *dat, char fc);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 08:26:14 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 03:59:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 19:47:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,22 @@ void	null_chk(t_dat *dat)
 		err_msg();
 	else if (dat->r.y == 0)
 		err_msg();
+	else if (dat->f.r == -1)
+		err_msg();
+	else if (dat->c.r == -1)
+		err_msg();
 }
 
 void	comma_chk(char *line, t_dat *dat)
 {
 	if (*(line) == 'F')
 	{
-		if (*(++line) != ' ')
-			err_msg();
-		while (*(line) == ' ')
-			line++;
-		while (ft_isdigit(*line))
-			dat->f.r = (dat->f.r * 10) + *(line++) - '0';
-		if (*(line) != ',')
-			err_msg();
+		f_chk(line, dat);
+		rgb_valid_chk(dat, 'f');
+	}
+	else if (*(line) == 'C')
+	{
+		c_chk(line, dat);
+		rgb_valid_chk(dat, 'c');
 	}
 }

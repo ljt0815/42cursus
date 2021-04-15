@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 18:15:27 by jitlee           ###   ########.fr       */
+/*   Created: 2020/09/28 15:21:36 by jitlee            #+#    #+#             */
+/*   Updated: 2020/10/06 19:51:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_dat dat;
+	unsigned char	*temp;
+	unsigned int	i;
+	unsigned int	i_len;
 
-	ft_bzero(&dat, sizeof(dat));
-	ft_memset(&dat.f, -1, sizeof(dat.f));
-	ft_memset(&dat.c, -1, sizeof(dat.f));
-	map_chk("./test_map.cub", &dat);
+	i_len = (unsigned int)len;
+	temp = (unsigned char *)b;
+	i = 0;
+	while (i < i_len)
+	{
+		*(temp + i) = c;
+		i++;
+	}
+	return (b);
 }

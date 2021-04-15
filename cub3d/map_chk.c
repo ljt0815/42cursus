@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 03:51:28 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/15 19:37:34 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int		map_chk(char *my_path, t_dat *dat)
 		comma_chk(line, dat);
 	}
 	null_chk(dat);
-	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nF.r=%d", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea, dat->f.r);
+	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s\n", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea);
+	printf("F.r=%d\nF.g=%d\nF.b=%d\n", dat->f.r, dat->f.g, dat->f.b);
+	printf("C.r=%d\nC.g=%d\nC.b=%d\n", dat->c.r, dat->c.g, dat->c.b);
 	return (0);
 }
