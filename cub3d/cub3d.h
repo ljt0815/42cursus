@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 19:49:31 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 01:44:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void		*ft_memset(void *b, int c, size_t len);
 void		f_chk(char *line, t_dat *dat);
 void		c_chk(char *line, t_dat *dat);
 void		rgb_valid_chk(t_dat *dat, char fc);
+size_t		ft_strlen(const char *s);
 #endif

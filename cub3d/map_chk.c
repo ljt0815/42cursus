@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/15 19:54:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 03:17:55 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	path_chk(char *line, t_dat *dat, char news)
 		err_msg("Identifier : NEWS");
 	while (*(line) == ' ')
 		line++;
+	if (ft_strncmp(&line[ft_strlen(line) - 4], ".xpm", 4) != 0)
+		err_msg("TextureFile is not xpmFile");
 	if (open(line, O_RDONLY) == -1)
 		err_msg("TextureFile Can't Open");
 	if (news == 'n')

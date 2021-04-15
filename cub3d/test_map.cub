@@ -1,7 +1,7 @@
+F  225,255,211    
 R 1320 450
-NO   ./test_map.cub
-SO   ./test_map.cub
-EA ./test_map.cub
-WE ./test_map.cub
-F 225,255,211
-C 255,255,255
+NO   ./a.xpm
+SO   ./a.xpm
+EA ./a.xpm
+WE ./a.xpm
+C  255,255,255
