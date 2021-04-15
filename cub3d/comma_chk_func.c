@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 01:22:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 05:55:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,20 @@ void	rgb_valid_chk(t_dat *dat, char fc)
 {
 	if (fc == 'c')
 	{
-		if(!(dat->c.r >= 0 && dat->c.r <= 255))
+		if (!(dat->c.r >= 0 && dat->c.r <= 255))
 			err_msg("Identifier \"C\" Exception");
-		if(!(dat->c.g >= 0 && dat->c.g <= 255))
+		if (!(dat->c.g >= 0 && dat->c.g <= 255))
 			err_msg("Identifier \"C\" Exception");
-		if(!(dat->c.b >= 0 && dat->c.b <= 255))
+		if (!(dat->c.b >= 0 && dat->c.b <= 255))
 			err_msg("Identifier \"C\" Exception");
 	}
 	else if (fc == 'f')
 	{
-		if(!(dat->f.r >= 0 && dat->f.r <= 255))
+		if (!(dat->f.r >= 0 && dat->f.r <= 255))
 			err_msg("Identifier \"F\" Exception");
-		if(!(dat->f.g >= 0 && dat->f.g <= 255))
+		if (!(dat->f.g >= 0 && dat->f.g <= 255))
 			err_msg("Identifier \"F\" Exception");
-		if(!(dat->f.b >= 0 && dat->f.b <= 255))
+		if (!(dat->f.b >= 0 && dat->f.b <= 255))
 			err_msg("Identifier \"F\" Exception");
 	}
 }
