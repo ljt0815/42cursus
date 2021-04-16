@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_util.c                               :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2020/11/12 03:10:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 09:34:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	cft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	len;
@@ -41,7 +41,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (0);
 }
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+size_t	cft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -64,7 +64,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		return (size + j);
 }
 
-char	*ft_strdup(const char *src)
+char	*cft_strdup(const char *src)
 {
 	int		len;
 	int		i;
@@ -82,7 +82,7 @@ char	*ft_strdup(const char *src)
 	return (result);
 }
 
-char	*ft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
+char	*cft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
 {
 	int		s1_len;
 	int		s2_len;
@@ -96,13 +96,13 @@ char	*ft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
 		s2_len++;
 	if ((result = (char *)malloc(s1_len + s2_len + 1)) == 0)
 		return (0);
-	ft_strlcpy(result, s1, s1_len + 1);
+	cft_strlcpy(result, s1, s1_len + 1);
 	free(s1);
-	ft_strlcat(result, (s2 + s2_start), s1_len + (s2_end - s2_start) + 1);
+	cft_strlcat(result, (s2 + s2_start), s1_len + (s2_end - s2_start) + 1);
 	return (result);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*cft_substr(char *s, unsigned int start, size_t len)
 {
 	char			*result;
 	unsigned int	s_len;
@@ -119,6 +119,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	}
 	if ((result = (char *)malloc(len + 1)) == 0)
 		return (0);
-	ft_strlcpy(result, s + start, len + 1);
+	cft_strlcpy(result, s + start, len + 1);
 	return (result);
 }

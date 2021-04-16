@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 03:17:55 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 09:43:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	path_chk(char *line, t_dat *dat, char news)
 	if (open(line, O_RDONLY) == -1)
 		err_msg("TextureFile Can't Open");
 	if (news == 'n')
-		dat->no = line;
+		dat->no = ft_strdup(line);
 	else if (news == 's')
-		dat->so = line;
+		dat->so = ft_strdup(line);
 	else if (news == 'w')
-		dat->we = line;
+		dat->we = ft_strdup(line);
 	else if (news == 'e')
-		dat->ea = line;
+		dat->ea = ft_strdup(line);
 }
 
 int		map_chk(char *my_path, t_dat *dat)
@@ -73,14 +73,19 @@ int		map_chk(char *my_path, t_dat *dat)
 	{
 		if (state == -1)
 			err_msg(".cub File Exception");
-		if (line[0] == 'R')
+		else if (line[0] == 'R')
 		{
 			if (dat->r.x != 0 || dat->r.y != 0)
 				err_msg("Duplicate Identifier \"R\"");
 			resol_chk(&line[1], dat);
 		}
-		xpm_chk(line, dat);
-		comma_chk(line, dat);
+		else if (xpm_chk(line, dat) || comma_chk(line, dat))
+		{
+			free(line);
+			continue;
+		}
+		else
+			break;
 	}
 	null_chk(dat);
 	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s\n", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea);
