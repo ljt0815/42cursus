@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 10:44:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 11:13:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ void	path_chk(char *line, t_dat *dat, char news)
 		dat->ea = ft_strdup(line);
 }
 
+void	map_valid_chk(int fd, t_dat *dat, char *line)
+{
+	printf("%s\nfd : %d\n", line, fd);
+	get_next_line(fd, &line);
+	printf("%s\nfd : %d\n", line, fd);
+}
+
 void	map_chk(char *my_path, t_dat *dat)
 {
 	char	*line;
@@ -64,5 +71,5 @@ void	map_chk(char *my_path, t_dat *dat)
 		free(line);
 	}
 	null_chk(dat);
-	//map_valid_chk(fd, dat);
+	map_valid_chk(fd, dat, line);
 }
