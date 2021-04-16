@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 09:43:59 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 10:44:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,6 @@ void	err_msg(char *msg)
 	printf("Error\n");
 	printf("%s\n", msg);
 	exit(1);
-}
-
-void	resol_chk(char *line, t_dat *dat)
-{
-	if (*(line) != ' ')
-		err_msg("Identifier : R");
-	while (*(line) == ' ')
-		line++;
-	while (ft_isdigit(*(line)))
-	{
-		dat->r.x = dat->r.x * 10 + (*(line) - '0');
-		line++;
-	}
-	if (*(line) != ' ')
-		err_msg("Identifier : R");
-	while (*(line) == ' ')
-		line++;
-	while (ft_isdigit(*(line)))
-	{
-		dat->r.y = dat->r.y * 10 + (*(line) - '0');
-		line++;
-	}
 }
 
 void	path_chk(char *line, t_dat *dat, char news)
@@ -62,7 +40,7 @@ void	path_chk(char *line, t_dat *dat, char news)
 		dat->ea = ft_strdup(line);
 }
 
-int		map_chk(char *my_path, t_dat *dat)
+void	map_chk(char *my_path, t_dat *dat)
 {
 	char	*line;
 	int		fd;
@@ -79,17 +57,12 @@ int		map_chk(char *my_path, t_dat *dat)
 				err_msg("Duplicate Identifier \"R\"");
 			resol_chk(&line[1], dat);
 		}
-		else if (xpm_chk(line, dat) || comma_chk(line, dat))
-		{
-			free(line);
-			continue;
-		}
+		else if (xpm_chk(line, dat) || comma_chk(line, dat) || line[0] == '\0')
+			;
 		else
-			break;
+			break ;
+		free(line);
 	}
 	null_chk(dat);
-	printf("x = %d\ny = %d\nNO=%s\nSO=%s\nWE=%s\nEA=%s\n", dat->r.y, dat->r.x, dat->no, dat->so, dat->we, dat->ea);
-	printf("F.r=%d\nF.g=%d\nF.b=%d\n", dat->f.r, dat->f.g, dat->f.b);
-	printf("C.r=%d\nC.g=%d\nC.b=%d\n", dat->c.r, dat->c.g, dat->c.b);
-	return (0);
+	//map_valid_chk(fd, dat);
 }

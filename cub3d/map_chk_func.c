@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 08:26:14 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 09:23:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/16 10:16:44 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,26 @@ int		comma_chk(char *line, t_dat *dat)
 		return (1);
 	}
 	return (0);
+}
+
+void	resol_chk(char *line, t_dat *dat)
+{
+	if (*(line) != ' ')
+		err_msg("Identifier : R");
+	while (*(line) == ' ')
+		line++;
+	while (ft_isdigit(*(line)))
+	{
+		dat->r.x = dat->r.x * 10 + (*(line) - '0');
+		line++;
+	}
+	if (*(line) != ' ')
+		err_msg("Identifier : R");
+	while (*(line) == ' ')
+		line++;
+	while (ft_isdigit(*(line)))
+	{
+		dat->r.y = dat->r.y * 10 + (*(line) - '0');
+		line++;
+	}
 }
