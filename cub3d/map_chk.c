@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/19 08:57:36 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 09:20:21 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	save_map(t_dat *dat, char *my_path)
 
 	i = 0;
 	fd = open(my_path, O_RDONLY);
-	dat->map.map = malloc(sizeof(char *) * dat->map.size + 1);
+	dat->map.map = malloc(sizeof(char *) * (dat->map.size + 1));
 	while ((state = get_next_line(fd, &line)))
 	{
 		if (state == -1)
@@ -69,6 +69,7 @@ void	map_valid_chk(int fd, t_dat *dat, char *line)
 			player_chk(dat, line);
 		else
 			err_msg("MiniMap Error");
+		free(line);
 	}
 	close(fd);
 }

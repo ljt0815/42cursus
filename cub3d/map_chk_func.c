@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 08:26:14 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 10:16:44 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 09:20:46 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		xpm_chk(char *line, t_dat *dat)
 		else
 			err_msg("Duplicate Identifier \"SO\"");
 	}
-	else if(xpm_chk2(line, dat))
+	else if (xpm_chk2(line, dat))
 		return (1);
 	return (0);
 }
