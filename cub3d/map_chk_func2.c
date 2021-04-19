@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/19 10:33:56 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/20 04:30:56 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,15 @@ void	player_chk(t_dat *dat, char *line)
 		{
 			if (dat->p.x == -1)
 			{
-				dat->p.x = dat->map.y;
+				dat->p.x = dat->map.x;
 				dat->p.y = i;
 			}
 			else
 				err_msg("Player ONLY ONE");
 		}
-		if (i > dat->map.x)
-			dat->map.x = i + 1;
+		if (i > dat->map.y)
+			dat->map.y = i;
 		i++;
 	}
-	dat->map.y++;
+	dat->map.x++;
 }
