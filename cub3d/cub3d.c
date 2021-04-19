@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/19 09:34:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 10:34:12 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	debug_print(t_dat *dat)
 	printf("F.r=%d\nF.g=%d\nF.b=%d\n", dat->f.r, dat->f.g, dat->f.b);
 	printf("C.r=%d\nC.g=%d\nC.b=%d\n", dat->c.r, dat->c.g, dat->c.b);
 	printf("p.x=%d\np.y=%d\n", dat->p.x, dat->p.y);
-	printf("map.size = %d\n", dat->map.size);
-	while (++i < dat->map.size)
+	printf("map.x = %d\n", dat->map.x);
+	printf("map.y = %d\n", dat->map.y);
+	while (++i < dat->map.y)
 		printf("%s\n", dat->map.map[i]);
 }
 
@@ -30,11 +31,11 @@ int		main(void)
 {
 	t_dat dat;
 
-	dat.map.size = 0;
 	ft_bzero(&dat, sizeof(dat));
 	ft_memset(&dat.f, -1, sizeof(dat.f));
 	ft_memset(&dat.c, -1, sizeof(dat.c));
 	ft_memset(&dat.p, -1, sizeof(dat.p));
 	map_chk("./test_map.cub", &dat);
-	debug_print(&dat);
+	//debug_print(&dat);
+	border_chk(&dat);
 }

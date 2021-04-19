@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/19 08:58:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 10:25:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef struct {
 }			t_c;
 
 typedef struct {
-	int		size;
+	int		x;
+	int		y;
 	char	**map;
 }			t_map;
 
@@ -78,4 +79,6 @@ char		*ft_strdup(const char *src);
 void		resol_chk(char *line, t_dat *dat);
 void		save_map(t_dat *dat, char *my_path);
 void		map_valid_chk(int fd, t_dat *dat, char *line);
+void		border_chk(t_dat *dat);
+char		*ft_mapcpy(const char *src);
 #endif
