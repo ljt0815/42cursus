@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 11:02:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 08:58:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
 
 typedef struct {
 	int		x;
@@ -36,20 +37,29 @@ typedef struct {
 }			t_c;
 
 typedef struct {
+	int		size;
+	char	**map;
+}			t_map;
+
+typedef struct {
+	int		x;
+	int		y;
+}			t_p;
+
+typedef struct {
 	t_r		r;
 	t_f		f;
 	t_c		c;
+	t_p		p;
+	t_map	map;
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	**map;
-	int		min_x;
-	int		min_y;
-	int		max_x;
-	int		max_y;
 }	t_dat;
 
+
+void		player_chk(t_dat *dat, char *line);
 void		path_chk(char *line, t_dat *dat, char news);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_isdigit(int c);
@@ -66,5 +76,6 @@ void		rgb_valid_chk(t_dat *dat, char fc);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *src);
 void		resol_chk(char *line, t_dat *dat);
+void		save_map(t_dat *dat, char *my_path);
 void		map_valid_chk(int fd, t_dat *dat, char *line);
 #endif

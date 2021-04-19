@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 11:13:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 08:57:36 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,37 @@ void	path_chk(char *line, t_dat *dat, char news)
 		dat->ea = ft_strdup(line);
 }
 
+void	save_map(t_dat *dat, char *my_path)
+{
+	char	*line;
+	int		fd;
+	int		state;
+	int		i;
+
+	i = 0;
+	fd = open(my_path, O_RDONLY);
+	dat->map.map = malloc(sizeof(char *) * dat->map.size + 1);
+	while ((state = get_next_line(fd, &line)))
+	{
+		if (state == -1)
+			err_msg(".cub File Exception");
+		else if (ft_isdigit(line[0]) || line[0] == ' ')
+			dat->map.map[i++] = ft_strdup(line);
+		free(line);
+	}
+}
+
 void	map_valid_chk(int fd, t_dat *dat, char *line)
 {
-	printf("%s\nfd : %d\n", line, fd);
-	get_next_line(fd, &line);
-	printf("%s\nfd : %d\n", line, fd);
+	player_chk(dat, line);
+	while (get_next_line(fd, &line))
+	{
+		if (ft_isdigit(line[0]) || line[0] == ' ')
+			player_chk(dat, line);
+		else
+			err_msg("MiniMap Error");
+	}
+	close(fd);
 }
 
 void	map_chk(char *my_path, t_dat *dat)
@@ -72,4 +98,5 @@ void	map_chk(char *my_path, t_dat *dat)
 	}
 	null_chk(dat);
 	map_valid_chk(fd, dat, line);
+	save_map(dat, my_path);
 }

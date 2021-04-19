@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comma_chk_func.c                                   :+:      :+:    :+:   */
+/*   map_chk_func2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 05:55:27 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 09:04:40 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,27 @@ void	rgb_valid_chk(t_dat *dat, char fc)
 		if (!(dat->f.b >= 0 && dat->f.b <= 255))
 			err_msg("Identifier \"F\" Exception");
 	}
+}
+
+void	player_chk(t_dat *dat, char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == 'N' || line[i] == 'S' || \
+				line[i] == 'E' || line[i] == 'W')
+		{
+			if (dat->p.x == -1)
+			{
+				dat->p.x = dat->map.size;
+				dat->p.y = i;
+			}
+			else
+				err_msg("Player ONLY ONE");
+		}
+		i++;
+	}
+	dat->map.size++;
 }
