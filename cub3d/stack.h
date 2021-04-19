@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 07:38:01 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 08:05:39 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 09:22:34 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct {
 typedef struct {
 	t_loc	data[MAX_STACK_SIZE];
 	int		top;
-}			t_stack;
+}	t_stack;
 
 void		init_stack(t_stack *s);
 int			is_empty(t_stack *s);

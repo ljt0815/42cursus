@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 07:37:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 08:01:13 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/19 09:21:56 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ t_loc	pop(t_stack *s)
 {
 	if (is_empty(s))
 		err_msg("STACK EMPTY ERROR");
-	return s->data[(s->top)--];
+	return (s->data[(s->top)--]);
 }
