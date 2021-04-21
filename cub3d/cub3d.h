@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/19 10:25:11 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/20 22:27:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include "stack.h"
 
 typedef struct {
 	int		x;
@@ -59,7 +60,6 @@ typedef struct {
 	char	*ea;
 }	t_dat;
 
-
 void		player_chk(t_dat *dat, char *line);
 void		path_chk(char *line, t_dat *dat, char news);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -79,6 +79,7 @@ char		*ft_strdup(const char *src);
 void		resol_chk(char *line, t_dat *dat);
 void		save_map(t_dat *dat, char *my_path);
 void		map_valid_chk(int fd, t_dat *dat, char *line);
-void		border_chk(t_dat *dat);
+void		border_chk(t_dat *dat, int i);
 char		*ft_mapcpy(const char *src);
+void		navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp);
 #endif

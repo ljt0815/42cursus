@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/19 10:34:12 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/20 22:05:46 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int		main(void)
 	ft_memset(&dat.p, -1, sizeof(dat.p));
 	map_chk("./test_map.cub", &dat);
 	//debug_print(&dat);
-	border_chk(&dat);
+	border_chk(&dat, -1);
 }
