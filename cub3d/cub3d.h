@@ -79,7 +79,7 @@ char		*ft_strdup(const char *src);
 void		resol_chk(char *line, t_dat *dat);
 void		save_map(t_dat *dat, char *my_path);
 void		map_valid_chk(int fd, t_dat *dat, char *line);
-void		border_chk(t_dat *dat, int i);
+void		border_chk(t_dat *dat);
 char		*ft_mapcpy(const char *src);
 void		navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);

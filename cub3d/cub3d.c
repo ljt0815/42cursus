@@ -37,5 +37,5 @@ int		main(void)
 	ft_memset(&dat.p, -1, sizeof(dat.p));
 	map_chk("./test_map.cub", &dat);
 	//debug_print(&dat);
-	border_chk(&dat, -1);
+	border_chk(&dat);
 }
