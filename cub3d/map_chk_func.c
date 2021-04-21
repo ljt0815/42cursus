@@ -34,6 +34,8 @@ int		xpm_chk2(char *line, t_dat *dat)
 		else
 			err_msg("Duplicate Identifier \"EA\"");
 	}
+	else if (xpm_chk3(line, dat))
+		return (1);
 	return (0);
 }
 
@@ -74,6 +76,8 @@ void	null_chk(t_dat *dat)
 		err_msg("NULL Identifier \"WE\"");
 	else if (dat->ea == 0)
 		err_msg("NULL Identifier \"EA\"");
+	else if (dat->s == 0)
+		err_msg("NULL Identifier \"S\"");
 	else if (dat->r.x == 0)
 		err_msg("Resolution Width Zero or NULL");
 	else if (dat->r.y == 0)

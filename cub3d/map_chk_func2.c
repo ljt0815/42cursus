@@ -12,6 +12,21 @@
 
 #include "cub3d.h"
 
+int		xpm_chk3(char *line, t_dat *dat)
+{
+	if (line[0] == 'S')
+	{
+		if (dat->s == 0)
+		{
+			path_chk(&line[1], dat, 'k');
+			return (1);
+		}
+		else
+			err_msg("Duplicate Identifier \"S\"");
+	}
+	return (0);
+}
+
 void	f_chk(char *line, t_dat *dat)
 {
 	if (dat->f.r != -1)

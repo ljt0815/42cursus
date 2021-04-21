@@ -23,7 +23,7 @@ void	err_msg(char *msg)
 void	path_chk(char *line, t_dat *dat, char news)
 {
 	if (*(line) != ' ')
-		err_msg("Identifier : NEWS");
+		err_msg("Identifier : SNEWS");
 	line = ft_strtrim(line, " ");
 	if (ft_strncmp(&line[ft_strlen(line) - 4], ".xpm", 4) != 0)
 		err_msg("TextureFile is not xpmFile");
@@ -37,6 +37,8 @@ void	path_chk(char *line, t_dat *dat, char news)
 		dat->we = ft_strdup(line);
 	else if (news == 'e')
 		dat->ea = ft_strdup(line);
+	else if (news == 'k')
+		dat->s = ft_strdup(line);
 	free(line);
 }
 
