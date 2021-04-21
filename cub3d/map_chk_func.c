@@ -121,4 +121,6 @@ void	resol_chk(char *line, t_dat *dat)
 		dat->r.y = dat->r.y * 10 + (*(line) - '0');
 		line++;
 	}
+	if (*(line) != '\0')
+		err_msg("Identifier : R");
 }

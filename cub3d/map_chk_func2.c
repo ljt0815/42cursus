@@ -104,8 +104,8 @@ void	player_chk(t_dat *dat, char *line)
 			else
 				err_msg("Player ONLY ONE");
 		}
-		if (i > dat->map.y)
-			dat->map.y = i;
+		if (i + 1 > dat->map.y)
+			dat->map.y = i + 1;
 		i++;
 	}
 	dat->map.x++;

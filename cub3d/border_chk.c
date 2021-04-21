@@ -27,7 +27,7 @@ void	push_loc(t_stack *s, int x, int y, char **map_tmp)
 	}
 }
 
-void	map_print(char **map_tmp, int max_x, int max_y)
+void	map_print(char **map_tmp, int max_x)
 {
 	int i;
 
@@ -49,7 +49,7 @@ void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp)
 		if (x == 0 || y == 0 || x == (dat->map.x - 1) || y == (dat->map.y - 1))
 			break ;
 		map_tmp[x][y] = '*';
-		map_print(map_tmp, dat->map.x, dat->map.y);
+		map_print(map_tmp, dat->map.x);
 		push_loc(s, x - 1, y, map_tmp);
 		push_loc(s, x + 1, y, map_tmp);
 		push_loc(s, x, y - 1, map_tmp);
@@ -65,6 +65,28 @@ void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp)
 	printf("Faild\n");
 }
 
+void	zero_space_chk(t_dat *dat, int i, int j)
+{
+	while (++i)
+	{
+		j = -1;
+		while (dat->map.map[i][++j])
+		{
+			if (dat->map.map[i][j] == '0')
+			{
+				if (i != 0 && dat->map.map[i - 1][j] == ' ')
+					err_msg("minimap error");
+				if (i == dat->map.x && dat->map.map[i + 1][j] == ' ') // i
+					err_msg("minimap error");
+				if (j != 0 && dat->map.map[i][j - 1] == ' ')
+					err_msg("minimap error");
+				if (dat->map.map[i][j + 1] == ' ')
+					err_msg("minimap error");
+			}
+		}
+	}
+}
+
 void	border_chk(t_dat *dat, int i)
 {
 	char	**map_tmp;
@@ -74,6 +96,7 @@ void	border_chk(t_dat *dat, int i)
 	init_stack(&s);
 	st.x = dat->p.x;
 	st.y = dat->p.y;
+	zero_space_chk(dat, -1, -1);
 	map_tmp = malloc(sizeof(char *) * (dat->map.x + 1));
 	while (++i < dat->map.x)
 		map_tmp[i] = ft_mapcpy(dat->map.map[i]);

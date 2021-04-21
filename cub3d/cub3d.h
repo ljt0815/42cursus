@@ -82,4 +82,7 @@ void		map_valid_chk(int fd, t_dat *dat, char *line);
 void		border_chk(t_dat *dat, int i);
 char		*ft_mapcpy(const char *src);
 void		navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp);
+size_t		ft_strlcpy(char *dest, const char *src, size_t size);
+char		*ft_strchr(const char *s, int c);
+char		*ft_strtrim(char const *s1, char const *set);
 #endif
