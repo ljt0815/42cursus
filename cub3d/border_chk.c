@@ -67,7 +67,7 @@ void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp)
 
 void	zero_space_chk(t_dat *dat, int i, int j)
 {
-	while (++i)
+	while (++i < dat->map.x)
 	{
 		j = -1;
 		while (dat->map.map[i][++j])
@@ -76,7 +76,7 @@ void	zero_space_chk(t_dat *dat, int i, int j)
 			{
 				if (i != 0 && dat->map.map[i - 1][j] == ' ')
 					err_msg("minimap error");
-				if (i == dat->map.x && dat->map.map[i + 1][j] == ' ') // i
+				if ((i == dat->map.x - 1) && dat->map.map[i + 1][j] == ' ')
 					err_msg("minimap error");
 				if (j != 0 && dat->map.map[i][j - 1] == ' ')
 					err_msg("minimap error");
