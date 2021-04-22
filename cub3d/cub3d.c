@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/20 22:05:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/23 04:04:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	debug_print(t_dat *dat)
 	printf("p.x=%d\np.y=%d\n", dat->p.x, dat->p.y);
 	printf("map.x = %d\n", dat->map.x);
 	printf("map.y = %d\n", dat->map.y);
-	while (++i < dat->map.y)
+	while (++i < dat->map.x)
 		printf("%s\n", dat->map.map[i]);
 }
 
@@ -36,6 +36,6 @@ int		main(void)
 	ft_memset(&dat.c, -1, sizeof(dat.c));
 	ft_memset(&dat.p, -1, sizeof(dat.p));
 	map_chk("./test_map.cub", &dat);
-	//debug_print(&dat);
-	border_chk(&dat);
+	debug_print(&dat);
+	//border_chk(&dat);
 }

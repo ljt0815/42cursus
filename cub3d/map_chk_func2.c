@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/20 04:30:56 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/23 04:03:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,19 @@ void	f_chk(char *line, t_dat *dat)
 		err_msg("Identifier \"F\" Exception");
 	while (*(line) == ' ')
 		line++;
+	isdigit_chk(*(++line), 'f');
 	while (ft_isdigit(*line))
 		dat->f.r = (dat->f.r * 10) + *(line++) - '0';
 	if (*(line) != ',')
 		err_msg("Identifier \"F\" Exception");
-	while (ft_isdigit(*(++line)))
-		dat->f.g = (dat->f.g * 10) + *(line) - '0';
+	isdigit_chk(*(++line), 'f');
+	while (ft_isdigit(*(line)))
+		dat->f.g = (dat->f.g * 10) + *(line++) - '0';
 	if (*(line) != ',')
 		err_msg("Identifier \"F\" Exception");
-	while (ft_isdigit(*(++line)))
-		dat->f.b = (dat->f.b * 10) + *(line) - '0';
+	isdigit_chk(*(++line), 'f');
+	while (ft_isdigit(*(line)))
+		dat->f.b = (dat->f.b * 10) + *(line++) - '0';
 	while (*(line) == ' ')
 		line++;
 	if (*(line) != '\0')
@@ -63,16 +66,19 @@ void	c_chk(char *line, t_dat *dat)
 		err_msg("Identifier \"C\" Exception");
 	while (*(line) == ' ')
 		line++;
+	isdigit_chk(*(++line), 'c');
 	while (ft_isdigit(*line))
 		dat->c.r = (dat->c.r * 10) + *(line++) - '0';
 	if (*(line) != ',')
 		err_msg("Identifier \"C\" Exception");
-	while (ft_isdigit(*(++line)))
-		dat->c.g = (dat->c.g * 10) + *(line) - '0';
+	isdigit_chk(*(++line), 'c');
+	while (ft_isdigit(*(line)))
+		dat->c.g = (dat->c.g * 10) + *(line++) - '0';
 	if (*(line) != ',')
 		err_msg("Identifier \"C\" Exception");
-	while (ft_isdigit(*(++line)))
-		dat->c.b = (dat->c.b * 10) + *(line) - '0';
+	isdigit_chk(*(++line), 'c');
+	while (ft_isdigit(*(line)))
+		dat->c.b = (dat->c.b * 10) + *(line++) - '0';
 	while (*(line) == ' ')
 		line++;
 	if (*(line) != '\0')

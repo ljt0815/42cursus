@@ -47,7 +47,7 @@ void	zero_space_chk(char **map, int x, int y, t_dat *dat)
 			err_msg("minimap error");
 		if (y != 0 && map[x][y - 1] == ' ')
 			err_msg("minimap error");
-		if (map[x][y + 1] == ' ')
+		if (map[x][y + 1] == ' ' || map[x][y + 1] == 0)
 			err_msg("minimap error");
 	}
 }

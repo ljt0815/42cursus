@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/20 22:27:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/23 03:58:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strtrim(char const *s1, char const *set);
 int			xpm_chk3(char *line, t_dat *dat);
+void		isdigit_chk(char ch, char flag);
 #endif
