@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/20 04:32:52 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/23 10:50:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	save_map(t_dat *dat, char *my_path)
 		if (state == -1)
 			err_msg(".cub File Exception");
 		else if (ft_isdigit(line[0]) || line[0] == ' ')
-			dat->map.map[i++] = ft_strdup(line);
+			dat->map.map[i++] = ft_mapcpy(line, dat);
 		free(line);
 	}
 }
