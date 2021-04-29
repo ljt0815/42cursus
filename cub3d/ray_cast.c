@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 05:08:21 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 07:09:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ray_init(t_dat *dat)
 	while (++i < 5)
 		if (!(dat->texture[i] = ft_calloc(dat->r.x * dat->r.y, sizeof(int))))
 			err_msg("memory allocate error");
-	dat->move_speed = 0.05;
-	dat->rot_speed = 0.05;
+	dat->movespeed = 0.05;
+	dat->rotspeed = 0.05;
 }
 
 void	load_image(t_dat *dat, int *texture, char *path, t_img *img)
@@ -64,7 +64,7 @@ void	load_texture(t_dat *dat)
 int		main_loop(t_dat *dat)
 {
 	ray_calc(dat);
-	//ray_draw(dat);
+	ray_draw(dat);
 	return (0);
 }
 
@@ -76,6 +76,6 @@ void	ray_cast(t_dat *dat)
 	dat->img.img = mlx_new_image(dat->mlx, dat->r.x, dat->r.y);
 	dat->img.data = (int *)mlx_get_data_addr(dat->img.img, &dat->img.bpp, &dat->img.size_l, &dat->img.endian);
 	mlx_loop_hook(dat->mlx, &main_loop, dat);
-	//mlx_hook(dat->win, X_EVENT_KEY_PRESS, 0, &key_press, dat);
+	mlx_hook(dat->win, 2, 0, &key_press, dat);
 	mlx_loop(dat->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 05:45:06 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 06:38:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ typedef struct {
 	void	*win;
 	int		**buf;
 	int		**texture;
-	double	move_speed;
-	double	rot_speed;
+	double	movespeed;
+	double	rotspeed;
 }	t_dat;
 
 void		player_chk(t_dat *dat, char *line);
@@ -144,4 +144,6 @@ void		ray_cast(t_dat *dat);
 void		map_word_chk(char num);
 void		*ft_calloc(size_t count, size_t size);
 void		ray_calc(t_dat *dat);
+void		ray_draw(t_dat *dat);
+int			key_press(int key, t_dat *dat);
 #endif
