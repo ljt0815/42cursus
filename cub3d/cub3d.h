@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 03:22:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 05:45:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <math.h>
 # include "stack.h"
 # include "mlx.h"
 
@@ -64,10 +65,38 @@ typedef struct {
 }			t_img;
 
 typedef struct {
+	double	camerax;
+	double	raydirx;
+	double	raydiry;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	double	perpwalldist;
+	double	wallx;
+	double	step;
+	double	texpos;
+	int		stepx;
+	int		stepy;
+	int		hit;
+	int		side;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
+	int		texnum;
+	int		mapx;
+	int		mapy;
+	int		texx;
+	int		texy;
+	int		color;
+}			t_d;
+
+typedef struct {
 	t_r		r;
 	t_f		f;
 	t_c		c;
 	t_p		p;
+	t_d		d;
 	t_map	map;
 	t_img	img;
 	char	*no;
@@ -113,4 +142,6 @@ void		isdigit_chk(char ch, char flag);
 void		player_dir(t_dat *dat, char news);
 void		ray_cast(t_dat *dat);
 void		map_word_chk(char num);
+void		*ft_calloc(size_t count, size_t size);
+void		ray_calc(t_dat *dat);
 #endif
