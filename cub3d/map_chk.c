@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/23 10:50:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 01:37:47 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	map_valid_chk(int fd, t_dat *dat, char *line)
 			err_msg("MiniMap Error");
 		free(line);
 	}
+	if (dat->p.x == -1)
+		err_msg("no player in the map");
 	close(fd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/23 04:03:27 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 00:44:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	player_chk(t_dat *dat, char *line)
 			{
 				dat->p.x = dat->map.x;
 				dat->p.y = i;
+				player_dir(dat, line[i]);
 			}
 			else
 				err_msg("Player ONLY ONE");

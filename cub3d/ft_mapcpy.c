@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 09:49:37 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/29 20:07:03 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 01:49:54 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ char	*ft_mapcpy(const char *src, t_dat *dat)
 	result[dat->map.y] = 0;
 	while (src[++i])
 		result[i] = src[i];
-	result[i] = 0;
 	return (result);
 }

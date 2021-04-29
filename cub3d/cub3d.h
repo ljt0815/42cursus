@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/23 10:51:20 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 01:23:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,21 @@ typedef struct {
 typedef struct {
 	int		x;
 	int		y;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
 }			t_p;
+
+typedef struct {
+	int		bpp;
+	int		*data;
+	int		size_l;
+	int		endian;
+	int		img_width;
+	int		img_height;
+	void	*img;
+}			t_img;
 
 typedef struct {
 	t_r		r;
@@ -54,11 +68,18 @@ typedef struct {
 	t_c		c;
 	t_p		p;
 	t_map	map;
+	t_img	img;
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
 	char	*s;
+	void	*mlx;
+	void	*win;
+	int		**buf;
+	int		**texture;
+	double	move_speed;
+	double	rot_speed;
 }	t_dat;
 
 void		player_chk(t_dat *dat, char *line);
@@ -88,4 +109,5 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strtrim(char const *s1, char const *set);
 int			xpm_chk3(char *line, t_dat *dat);
 void		isdigit_chk(char ch, char flag);
+void		player_dir(t_dat *dat, char news);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 09:36:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/20 22:24:56 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 02:12:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,14 @@ void	map_print(char **map, int max_x)
 
 void	zero_space_chk(char **map, int x, int y, t_dat *dat)
 {
-	if (map[x][y] == '0')
-	{
-		if (x != 0 && map[x - 1][y] == ' ')
-			err_msg("minimap error");
-		if ((x == dat->map.x - 1) && map[x + 1][y] == ' ')
-			err_msg("minimap error");
-		if (y != 0 && map[x][y - 1] == ' ')
-			err_msg("minimap error");
-		if (map[x][y + 1] == ' ' || map[x][y + 1] == 0)
-			err_msg("minimap error");
-	}
+	if (x != 0 && map[x - 1][y] == ' ')
+		err_msg("minimap error");
+	if ((x <= dat->map.x - 1) && map[x + 1][y] == ' ')
+		err_msg("minimap error");
+	if (y != 0 && map[x][y - 1] == ' ')
+		err_msg("minimap error");
+	if (map[x][y + 1] == ' ' || map[x][y + 1] == 0)
+		err_msg("minimap error");
 }
 
 void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map)
