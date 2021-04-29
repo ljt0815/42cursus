@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 01:23:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 03:22:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include "stack.h"
+# include "mlx.h"
 
 typedef struct {
 	int		x;
@@ -110,4 +111,6 @@ char		*ft_strtrim(char const *s1, char const *set);
 int			xpm_chk3(char *line, t_dat *dat);
 void		isdigit_chk(char ch, char flag);
 void		player_dir(t_dat *dat, char news);
+void		ray_cast(t_dat *dat);
+void		map_word_chk(char num);
 #endif
