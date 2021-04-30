@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 09:59:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 11:52:21 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ray_init(t_dat *dat)
 	while (++i < 5)
 		if (!(dat->texture[i] = ft_calloc(dat->r.x * dat->r.y, sizeof(int))))
 			err_msg("memory allocate error");
-	dat->movespeed = 0.05;
-	dat->rotspeed = 0.05;
+	dat->movespeed = 0.1;
+	dat->rotspeed = 0.1;
 }
 
 void	load_image(t_dat *dat, int *texture, char *path, t_img *img)
