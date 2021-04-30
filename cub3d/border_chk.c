@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 09:36:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 02:12:11 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 10:00:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push_loc(t_stack *s, int x, int y, char **map)
 
 	if (x < 0 || y < 0)
 		return ;
-	if (map[x][y] == '0' || map[x][y] == '2')
+	if (map[x][y] == 0 || map[x][y] == 2)
 	{
 		loc.x = x;
 		loc.y = y;
@@ -27,25 +27,31 @@ void	push_loc(t_stack *s, int x, int y, char **map)
 	}
 }
 
-void	map_print(char **map, int max_x)
+void	map_print(char **map, int max_x, int map_y)
 {
 	int i;
+	int j;
 
 	i = -1;
 	while (++i < max_x)
-		printf("%s\n", map[i]);
-	puts("");
+	{
+		j = -1;
+		while (++j < map_y)
+			printf("%d\t", map[i][j]);
+		printf("\n");
+	}
+	printf("\n");
 }
 
 void	zero_space_chk(char **map, int x, int y, t_dat *dat)
 {
-	if (x != 0 && map[x - 1][y] == ' ')
+	if (x != 0 && map[x - 1][y] == -16)
 		err_msg("minimap error");
-	if ((x <= dat->map.x - 1) && map[x + 1][y] == ' ')
+	if ((x <= dat->map.x - 1) && map[x + 1][y] == -16)
 		err_msg("minimap error");
-	if (y != 0 && map[x][y - 1] == ' ')
+	if (y != 0 && map[x][y - 1] == -16)
 		err_msg("minimap error");
-	if (map[x][y + 1] == ' ' || map[x][y + 1] == 0)
+	if (map[x][y + 1] == -16 || map[x][y + 1] == -48)
 		err_msg("minimap error");
 }
 
@@ -61,8 +67,8 @@ void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map)
 		if (x == 0 || y == 0 || x == (dat->map.x - 1) || y == (dat->map.y - 1))
 			break ;
 		zero_space_chk(map, x, y, dat);
-		map[x][y] = '*';
-		map_print(map, dat->map.x);
+		map[x][y] = 88;
+		//map_print(map, dat->map.x, dat->map.y);
 		push_loc(s, x - 1, y, map);
 		push_loc(s, x + 1, y, map);
 		push_loc(s, x, y - 1, map);
@@ -80,11 +86,21 @@ void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map)
 
 void	border_chk(t_dat *dat)
 {
+	int		i;
+	int		j;
 	t_loc	st;
 	t_stack	s;
 
+	i = -1;
 	init_stack(&s);
 	st.x = dat->p.x;
 	st.y = dat->p.y;
 	navi_map(&st, &s, dat, dat->map.map);
+	while (++i < dat->map.x)
+	{
+		j = -1;
+		while (++j < dat->map.y)
+			if (dat->map.map[i][j] == 88)
+				dat->map.map[i][j] = 0;
+	}
 }

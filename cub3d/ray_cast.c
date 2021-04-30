@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 07:29:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 09:59:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	load_image(t_dat *dat, int *texture, char *path, t_img *img)
 			&img->img_width, &img->img_height);
 	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, \
 			&img->size_l, &img->endian);
-	printf("img size : %d\n", img->size_l);
 	while (++y < img->img_height)
 	{
 		x = -1;
