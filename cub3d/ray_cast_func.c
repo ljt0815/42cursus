@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 09:28:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 11:45:04 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void	calc_screen(t_dat *dat, t_d *d)
 void	ray_calc(t_dat *dat)
 {
 	int	x;
-	int	y;
 	t_d	d;
 
 	x = -1;
@@ -108,16 +107,6 @@ void	ray_calc(t_dat *dat)
 		calc_select(dat, &d);
 		calc_dda(dat, &d);
 		calc_screen(dat, &d);
-		y = d.drawstart;
-		while (y < d.drawend)
-		{
-			d.texy = (int)d.texpos & (64 - 1);
-			d.texpos += d.step;
-			d.color = dat->texture[d.texnum][64 * d.texy + d.texx];
-			if (d.side == 1)
-				d.color = (d.color >> 1) & 8355711;
-			dat->buf[y][x] = d.color;
-			y++;
-		}
+		input_buf(dat, &d, x);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 07:50:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 11:49:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,4 +146,5 @@ void		*ft_calloc(size_t count, size_t size);
 void		ray_calc(t_dat *dat);
 void		ray_draw(t_dat *dat);
 int			key_press(int key, t_dat *dat);
+void		input_buf(t_dat *dat, t_d *d, int x);
 #endif
