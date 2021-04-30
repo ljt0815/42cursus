@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 07:09:00 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 07:29:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,18 @@ void	load_image(t_dat *dat, int *texture, char *path, t_img *img)
 	int x;
 	int y;
 
-	x = -1;
 	y = -1;
 	img->img = mlx_xpm_file_to_image(dat->mlx, path, \
 			&img->img_width, &img->img_height);
 	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, \
 			&img->size_l, &img->endian);
+	printf("img size : %d\n", img->size_l);
 	while (++y < img->img_height)
+	{
+		x = -1;
 		while (++x < img->img_width)
 			texture[img->img_width * y + x] = img->data[img->img_width * y + x];
+	}
 	mlx_destroy_image(dat->mlx, img->img);
 }
 

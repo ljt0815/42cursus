@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 06:38:08 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/04/30 07:50:45 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct {
 }			t_map;
 
 typedef struct {
-	int		x;
-	int		y;
+	double	x;
+	double	y;
 	double	dirx;
 	double	diry;
 	double	planex;
