@@ -60,17 +60,31 @@ int		key_press(int key, t_dat *dat)
 	//13
 	if (key == 119)
 	{
-		if (!dat->map.map[(int)(dat->p.x + dat->p.dirx * dat->movespeed)][(int)(dat->p.y)])
+		if (!dat->map.map[(int)(dat->p.x + dat->p.dirx * 2 * dat->movespeed)][(int)(dat->p.y)])
 					dat->p.x += dat->p.dirx * dat->movespeed;
 		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y + dat->p.diry * dat->movespeed)])
 					dat->p.y += dat->p.diry * dat->movespeed;
 	}
 	if (key == 115)
 	{
-		if (!dat->map.map[(int)(dat->p.x - dat->p.dirx - dat->movespeed)][(int)(dat->p.y)])
+		if (!dat->map.map[(int)(dat->p.x - dat->p.dirx * 2 * dat->movespeed)][(int)(dat->p.y)])
 					dat->p.x -= dat->p.dirx * dat->movespeed;
 		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y - dat->p.diry * dat->movespeed)])
 					dat->p.y -= dat->p.diry * dat->movespeed;
+	}
+	if (key == 97)
+	{
+		if (!dat->map.map[(int)(dat->p.x - dat->p.diry * 2 * dat->movespeed)][(int)(dat->p.y)])
+					dat->p.x -= dat->p.diry * dat->movespeed;
+		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y - dat->p.dirx * dat->movespeed)])
+					dat->p.y += dat->p.dirx * dat->movespeed;
+	}
+	if (key == 100)
+	{
+		if (!dat->map.map[(int)(dat->p.x + dat->p.diry * 2 * dat->movespeed)][(int)(dat->p.y)])
+					dat->p.x += dat->p.diry * dat->movespeed;
+		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y + dat->p.dirx * dat->movespeed)])
+					dat->p.y -= dat->p.dirx * dat->movespeed;
 	}
 	//53
 	if (key == 65307)
