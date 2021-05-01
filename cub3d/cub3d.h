@@ -147,4 +147,5 @@ void		ray_calc(t_dat *dat);
 void		ray_draw(t_dat *dat);
 int			key_press(int key, t_dat *dat);
 void		input_buf(t_dat *dat, t_d *d, int x);
+void		choice_tex(t_dat *dat, t_d *d);
 #endif

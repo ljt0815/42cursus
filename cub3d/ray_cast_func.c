@@ -80,7 +80,7 @@ void	calc_screen(t_dat *dat, t_d *d)
 		d->drawstart = 0;
 	if ((d->drawend = d->lineheight / 2 + dat->r.y / 2) >= dat->r.y)
 		d->drawend = dat->r.y - 1;
-	d->texnum = dat->map.map[d->mapx][d->mapy];
+	choice_tex(dat, d);
 	if (d->side == 0)
 		d->wallx = dat->p.y + d->perpwalldist * d->raydiry;
 	else
