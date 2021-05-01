@@ -42,7 +42,8 @@ void	key_press2(int key, t_dat *dat)
 	double olddirx;
 	double oldplanex;
 
-	if (key == 124)
+	//124
+	if (key == 65363)
 	{
 		olddirx = dat->p.dirx;
 		dat->p.dirx = dat->p.dirx * cos(-dat->rotspeed) - dat->p.diry * sin(-dat->rotspeed);
@@ -51,7 +52,8 @@ void	key_press2(int key, t_dat *dat)
 		dat->p.planex = dat->p.planex * cos(-dat->rotspeed) - dat->p.planey * sin(-dat->rotspeed);
 		dat->p.planey = oldplanex * sin(-dat->rotspeed) + dat->p.planey * cos(-dat->rotspeed);
 	}
-	if (key == 123)
+	//123
+	if (key == 65361)
 	{
 		olddirx = dat->p.dirx;
 		dat->p.dirx = dat->p.dirx * cos(dat->rotspeed) - dat->p.diry * sin(dat->rotspeed);
@@ -65,14 +67,16 @@ void	key_press2(int key, t_dat *dat)
 int		key_press(int key, t_dat *dat)
 {
 	printf("key : %d\n", key);
-	if (key == 13)
+	//13
+	if (key == 119)
 	{
 		if (!dat->map.map[(int)(dat->p.x + dat->p.dirx * dat->movespeed)][(int)(dat->p.y)])
 					dat->p.x += dat->p.dirx * dat->movespeed;
 		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y + dat->p.diry * dat->movespeed)])
 					dat->p.y += dat->p.diry * dat->movespeed;
 	}
-	if (key == 53)
+	//53
+	if (key == 65307)
 		exit(0);
 	key_press2(key, dat);
 	return (0);

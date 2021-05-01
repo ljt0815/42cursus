@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # define BUFFER_SIZE 10
+# define OPEN_MAX 64
 
 int		get_next_line(int fd, char **line);
 size_t	cft_strlen(const char *s);
