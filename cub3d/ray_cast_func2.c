@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:46:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 04:02:09 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ void	key_press2(int key, t_dat *dat)
 {
 	if (key == 0)
 	{
-		if (!dat->map.map[(int)(dat->p.x - dat->p.diry * 2 * \
-					dat->movespeed)][(int)(dat->p.y)])
+		if (!dat->map.map[(int)(dat->p.x - dat->p.diry \
+					* 2 * dat->movespeed)][(int)(dat->p.y)])
 			dat->p.x -= dat->p.diry * dat->movespeed;
-		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y - \
-					dat->p.dirx * dat->movespeed)])
+		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y \
+					+ dat->p.dirx * dat->movespeed)])
 			dat->p.y += dat->p.dirx * dat->movespeed;
 	}
 	if (key == 2)
 	{
-		if (!dat->map.map[(int)(dat->p.x + dat->p.diry * 2 * \
-					dat->movespeed)][(int)(dat->p.y)])
+		if (!dat->map.map[(int)(dat->p.x + dat->p.diry \
+					* 2 * dat->movespeed)][(int)(dat->p.y)])
 			dat->p.x += dat->p.diry * dat->movespeed;
-		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y + \
-					dat->p.dirx * dat->movespeed)])
+		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y \
+					- dat->p.dirx * dat->movespeed)])
 			dat->p.y -= dat->p.dirx * dat->movespeed;
 	}
 	key_press3(key, dat, 0, 0);

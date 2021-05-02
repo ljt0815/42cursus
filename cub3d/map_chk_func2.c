@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:06:29 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 03:50:09 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void	player_chk(t_dat *dat, char *line)
 		{
 			if (dat->p.x == -1.0)
 			{
-				dat->p.x = dat->map.x;
-				dat->p.y = i;
+				dat->p.x = dat->map.x + 0.5;
+				dat->p.y = i + 0.5;
 				player_dir(dat, line[i]);
 			}
 			else
