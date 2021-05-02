@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 07:54:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 02:06:29 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	f_chk(char *line, t_dat *dat)
 		err_msg("Identifier \"F\" Exception");
 	while (*(line) == ' ')
 		line++;
-	isdigit_chk(*(++line), 'f');
+	isdigit_chk(*(line), 'f');
 	while (ft_isdigit(*line))
 		dat->f.r = (dat->f.r * 10) + *(line++) - '0';
 	if (*(line) != ',')
@@ -66,7 +66,7 @@ void	c_chk(char *line, t_dat *dat)
 		err_msg("Identifier \"C\" Exception");
 	while (*(line) == ' ')
 		line++;
-	isdigit_chk(*(++line), 'c');
+	isdigit_chk(*(line), 'c');
 	while (ft_isdigit(*line))
 		dat->c.r = (dat->c.r * 10) + *(line++) - '0';
 	if (*(line) != ',')

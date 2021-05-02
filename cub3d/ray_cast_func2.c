@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 12:02:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 01:57:49 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	key_press2(int key, t_dat *dat)
 	double olddirx;
 	double oldplanex;
 
-	//124
-	if (key == 65363)
+	//R_AR 124, 65363
+	if (key == 124)
 	{
 		olddirx = dat->p.dirx;
 		dat->p.dirx = dat->p.dirx * cos(-dat->rotspeed) - dat->p.diry * sin(-dat->rotspeed);
@@ -42,8 +42,8 @@ void	key_press2(int key, t_dat *dat)
 		dat->p.planex = dat->p.planex * cos(-dat->rotspeed) - dat->p.planey * sin(-dat->rotspeed);
 		dat->p.planey = oldplanex * sin(-dat->rotspeed) + dat->p.planey * cos(-dat->rotspeed);
 	}
-	//123
-	if (key == 65361)
+	//L_AR 123, 65361
+	if (key == 123)
 	{
 		olddirx = dat->p.dirx;
 		dat->p.dirx = dat->p.dirx * cos(dat->rotspeed) - dat->p.diry * sin(dat->rotspeed);
@@ -56,38 +56,41 @@ void	key_press2(int key, t_dat *dat)
 
 int		key_press(int key, t_dat *dat)
 {
-	printf("key : %d\n", key);
-	//13
-	if (key == 119)
+	//printf("key : %d\n", key);
+	//W 13, 119
+	if (key == 13)
 	{
 		if (!dat->map.map[(int)(dat->p.x + dat->p.dirx * 2 * dat->movespeed)][(int)(dat->p.y)])
 					dat->p.x += dat->p.dirx * dat->movespeed;
 		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y + dat->p.diry * dat->movespeed)])
 					dat->p.y += dat->p.diry * dat->movespeed;
 	}
-	if (key == 115)
+	//S 1, 115
+	if (key == 1)
 	{
 		if (!dat->map.map[(int)(dat->p.x - dat->p.dirx * 2 * dat->movespeed)][(int)(dat->p.y)])
 					dat->p.x -= dat->p.dirx * dat->movespeed;
 		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y - dat->p.diry * dat->movespeed)])
 					dat->p.y -= dat->p.diry * dat->movespeed;
 	}
-	if (key == 97)
+	//A 0, 97
+	if (key == 0)
 	{
 		if (!dat->map.map[(int)(dat->p.x - dat->p.diry * 2 * dat->movespeed)][(int)(dat->p.y)])
 					dat->p.x -= dat->p.diry * dat->movespeed;
 		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y - dat->p.dirx * dat->movespeed)])
 					dat->p.y += dat->p.dirx * dat->movespeed;
 	}
-	if (key == 100)
+	//D 2, 100
+	if (key == 2)
 	{
 		if (!dat->map.map[(int)(dat->p.x + dat->p.diry * 2 * dat->movespeed)][(int)(dat->p.y)])
 					dat->p.x += dat->p.diry * dat->movespeed;
 		if (!dat->map.map[(int)(dat->p.x)][(int)(dat->p.y + dat->p.dirx * dat->movespeed)])
 					dat->p.y -= dat->p.dirx * dat->movespeed;
 	}
-	//53
-	if (key == 65307)
+	//ESC 53, 65307
+	if (key == 53)
 		exit(0);
 	key_press2(key, dat);
 	return (0);
@@ -101,7 +104,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 	while (++y < dat->r.y)
 	{
 		if (y < d->drawstart)
-			dat->buf[y][x] = 0xeeeeee;
+			dat->buf[y][x] = d->ccolor;
 		else if (y < d->drawend)
 		{
 			d->texy = (int)d->texpos & (64 - 1);
@@ -112,7 +115,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 			dat->buf[y][x] = d->color;
 		}
 		else
-			dat->buf[y][x] = 0x6f4f28;
+			dat->buf[y][x] = d->fcolor;
 	}
 	
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 11:49:32 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 01:45:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ typedef struct {
 	int		texx;
 	int		texy;
 	int		color;
+	int		fcolor;
+	int		ccolor;
 }			t_d;
 
 typedef struct {

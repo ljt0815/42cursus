@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:17:17 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 09:35:03 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 01:40:19 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # define BUFFER_SIZE 10
-# define OPEN_MAX 64
+//# define OPEN_MAX 64
 
 int		get_next_line(int fd, char **line);
 size_t	cft_strlen(const char *s);
