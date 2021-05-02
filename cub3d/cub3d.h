@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 05:46:31 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 06:58:12 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <math.h>
 # include "stack.h"
 # include "mlx.h"
+# define UDIV 1
+# define VDIV 1
+# define VMOVE 0.0
 
 typedef struct {
 	int		x;
@@ -107,7 +110,7 @@ typedef struct {
 typedef struct {
 	double	spx;
 	double	spy;
-	double	invdet;
+	double	invd;
 	double	tfx;
 	double	tfy;
 	double	*spdist;
@@ -146,9 +149,10 @@ typedef struct {
 	void	*win;
 	int		**buf;
 	int		**texture;
-	int		numsp;
+	int		spnum;
 	double	movespeed;
 	double	rotspeed;
+	double	*zbuf;
 }	t_dat;
 
 void		player_chk(t_dat *dat, char *line);
@@ -188,4 +192,5 @@ int			key_press(int key, t_dat *dat);
 void		input_buf(t_dat *dat, t_d *d, int x);
 void		choice_tex(t_d *d);
 void		key_press3(int key, t_dat *dat, double olddirx, double oldplanex);
+void		calc_sprite(t_dat *dat, t_i *s);
 #endif

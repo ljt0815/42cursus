@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 04:13:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 06:56:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 		else
 			dat->buf[y][x] = d->fcolor;
 	}
+	dat->zbuf[x] = d->perpwalldist;
 }
 
 void	choice_tex(t_d *d)
