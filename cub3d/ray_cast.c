@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 01:56:03 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 02:29:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	ray_cast(t_dat *dat)
 	load_texture(dat);
 	dat->win = mlx_new_window(dat->mlx, dat->r.x, dat->r.y, "mlx");
 	dat->img.img = mlx_new_image(dat->mlx, dat->r.x, dat->r.y);
-	dat->img.data = (int *)mlx_get_data_addr(dat->img.img, &dat->img.bpp, &dat->img.size_l, &dat->img.endian);
+	dat->img.data = (int *)mlx_get_data_addr(dat->img.img, \
+			&dat->img.bpp, &dat->img.size_l, &dat->img.endian);
 	mlx_loop_hook(dat->mlx, &main_loop, dat);
 	mlx_hook(dat->win, 2, 1, &key_press, dat);
 	mlx_loop(dat->mlx);

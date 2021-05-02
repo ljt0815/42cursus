@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 09:36:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/30 10:00:33 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 02:28:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	zero_space_chk(char **map, int x, int y, t_dat *dat)
 		err_msg("minimap error");
 	if (y != 0 && map[x][y - 1] == -16)
 		err_msg("minimap error");
-	if (map[x][y + 1] == -16 || map[x][y + 1] == -48)
+	if (map[x][y + 1] == -16)
 		err_msg("minimap error");
 }
 
@@ -65,23 +65,18 @@ void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map)
 		x = st->x;
 		y = st->y;
 		if (x == 0 || y == 0 || x == (dat->map.x - 1) || y == (dat->map.y - 1))
-			break ;
+			err_msg("minimap border not invalid");
 		zero_space_chk(map, x, y, dat);
 		map[x][y] = 88;
-		//map_print(map, dat->map.x, dat->map.y);
 		push_loc(s, x - 1, y, map);
 		push_loc(s, x + 1, y, map);
 		push_loc(s, x, y - 1, map);
 		push_loc(s, x, y + 1, map);
 		if (is_empty(s))
-		{
-			printf("sucessed\n");
 			return ;
-		}
 		else
 			*st = pop(s);
 	}
-	printf("Faild\n");
 }
 
 void	border_chk(t_dat *dat)

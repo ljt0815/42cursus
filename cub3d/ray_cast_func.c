@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:08:44 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 02:32:20 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	calc_init(t_dat *dat, t_d *d, int x)
 	d->raydiry = dat->p.diry + dat->p.planey * d->camerax;
 	d->mapx = (int)dat->p.x;
 	d->mapy = (int)dat->p.y;
-	d->deltadistx = sqrt(1 + (d->raydiry * d->raydiry) / (d->raydirx * d->raydirx));
-	d->deltadisty = sqrt(1 + (d->raydirx * d->raydirx) / (d->raydiry * d->raydiry));
+	d->deltadistx = sqrt(1 + (d->raydiry * d->raydiry) / \
+			(d->raydirx * d->raydirx));
+	d->deltadisty = sqrt(1 + (d->raydirx * d->raydirx) / \
+			(d->raydiry * d->raydiry));
 	d->fcolor = dat->f.r * 256 + dat->f.g;
 	d->fcolor = d->fcolor * 256 + dat->f.b;
 	d->ccolor = dat->c.r * 256 + dat->c.g;
@@ -72,9 +74,11 @@ void	calc_dda(t_dat *dat, t_d *d)
 			d->hit = 1;
 	}
 	if (d->side == 0)
-		d->perpwalldist = (d->mapx - dat->p.x + (1 - d->stepx) / 2) / d->raydirx;
+		d->perpwalldist = (d->mapx - dat->p.x + \
+				(1 - d->stepx) / 2) / d->raydirx;
 	else
-		d->perpwalldist = (d->mapy - dat->p.y + (1 - d->stepy) / 2) / d->raydiry;
+		d->perpwalldist = (d->mapy - dat->p.y + \
+				(1 - d->stepy) / 2) / d->raydiry;
 }
 
 void	calc_screen(t_dat *dat, t_d *d)
