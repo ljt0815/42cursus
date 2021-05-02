@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:29:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 03:14:39 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,16 @@
 void	ray_init(t_dat *dat)
 {
 	int i;
+	int x;
+	int y;
 
 	i = -1;
 	dat->mlx = mlx_init();
+	mlx_get_screen_size(dat->mlx, &x, &y);
+	if (dat->r.x > x)
+		dat->r.x = x;
+	if (dat->r.y > y)
+		dat->r.y = y;
 	if (!(dat->buf = ft_calloc(dat->r.y, sizeof(int *))))
 		err_msg("memory allocate error");
 	while (++i < dat->r.y)
