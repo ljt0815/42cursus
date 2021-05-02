@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 03:54:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:27:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 04:15:34 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,6 @@ void	isdigit_chk(char ch, char flag)
 
 void	player_dir2(t_dat *dat, char news)
 {
-	if (news == 'W')
-	{
-		dat->p.dirx = -1.0;
-		dat->p.diry = 0.0;
-		dat->p.planex = 0.0;
-		dat->p.planey = 0.66;
-	}
-	else if (news == 'E')
-	{
-		dat->p.dirx = -1.0;
-		dat->p.diry = 0.0;
-		dat->p.planex = 0.0;
-		dat->p.planey = 0.66;
-	}
-}
-
-void	player_dir(t_dat *dat, char news)
-{
 	if (news == 'N')
 	{
 		dat->p.dirx = -1.0;
@@ -52,10 +34,28 @@ void	player_dir(t_dat *dat, char news)
 	}
 	else if (news == 'S')
 	{
-		dat->p.dirx = -1.0;
+		dat->p.dirx = 1.0;
 		dat->p.diry = 0.0;
 		dat->p.planex = 0.0;
-		dat->p.planey = 0.66;
+		dat->p.planey = -0.66;
+	}
+}
+
+void	player_dir(t_dat *dat, char news)
+{
+	if (news == 'W')
+	{
+		dat->p.dirx = 0.0;
+		dat->p.diry = -1.0;
+		dat->p.planex = -0.66;
+		dat->p.planey = 0.0;
+	}
+	else if (news == 'E')
+	{
+		dat->p.dirx = 0.0;
+		dat->p.diry = 1.0;
+		dat->p.planex = 0.66;
+		dat->p.planey = 0.0;
 	}
 	else
 		player_dir2(dat, news);

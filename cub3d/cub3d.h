@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 03:00:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 05:46:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,47 @@ typedef struct {
 }			t_d;
 
 typedef struct {
+	double	x;
+	double	y;
+	int		texture;
+}	t_sp;
+
+typedef struct {
+	double	first;
+	int		second;
+}	t_pair;
+
+typedef struct {
+	double	spx;
+	double	spy;
+	double	invdet;
+	double	tfx;
+	double	tfy;
+	double	*spdist;
+	int		*spord;
+	int		spscrx;
+	int		vmoves;
+	int		sph;
+	int		drsty;
+	int		dreny;
+	int		spw;
+	int		drstx;
+	int		drenx;
+	int		st;
+	int		texx;
+	int		y;
+	int		d;
+	int		texy;
+	int		color;
+}	t_i;
+
+typedef struct {
 	t_r		r;
 	t_f		f;
 	t_c		c;
 	t_p		p;
 	t_d		d;
+	t_sp	*sp;
 	t_map	map;
 	t_img	img;
 	char	*no;
@@ -110,6 +146,7 @@ typedef struct {
 	void	*win;
 	int		**buf;
 	int		**texture;
+	int		numsp;
 	double	movespeed;
 	double	rotspeed;
 }	t_dat;

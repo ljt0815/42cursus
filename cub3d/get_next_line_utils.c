@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:49:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/04/16 09:34:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 04:29:44 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*cft_strdup(const char *src)
 	i = -1;
 	while (src[len])
 		len++;
-	if ((result = (char *)malloc(sizeof(char) * len + 1)) == 0)
+	if (!(result = (char *)malloc(sizeof(char) * len + 1)))
 		return (0);
 	while (src[++i])
 		result[i] = src[i];
@@ -94,7 +94,7 @@ char	*cft_strjoin(char *s1, char *s2, int s2_start, int s2_end)
 	s2_len = 0;
 	while (s2[s2_len])
 		s2_len++;
-	if ((result = (char *)malloc(s1_len + s2_len + 1)) == 0)
+	if (!(result = (char *)malloc(s1_len + s2_len + 1)))
 		return (0);
 	cft_strlcpy(result, s1, s1_len + 1);
 	free(s1);
@@ -112,12 +112,12 @@ char	*cft_substr(char *s, unsigned int start, size_t len)
 		s_len++;
 	if (s_len <= start)
 	{
-		if ((result = (char *)malloc(1)) == 0)
+		if (!(result = (char *)malloc(1)))
 			return (0);
 		result[0] = 0;
 		return (result);
 	}
-	if ((result = (char *)malloc(len + 1)) == 0)
+	if (!(result = (char *)malloc(len + 1)))
 		return (0);
 	cft_strlcpy(result, s + start, len + 1);
 	return (result);

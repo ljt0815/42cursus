@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 20:41:11 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/11 22:11:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 04:28:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = get_idx(s1, set, 2);
 	if (start >= end)
 		return (ft_strdup(""));
-	if ((result = (char *)malloc(end - start + 1)) == 0)
+	if (!(result = (char *)malloc(end - start + 1)))
 		return (0);
 	ft_strlcpy(result, s1 + start, end - start + 1);
 	return (result);

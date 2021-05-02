@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:47:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 05:18:19 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	ray_calc(t_dat *dat)
 {
 	int	x;
 	t_d	d;
+	t_i i;
 
 	x = -1;
 	while (++x < dat->r.x)
@@ -116,5 +117,6 @@ void	ray_calc(t_dat *dat)
 		calc_dda(dat, &d);
 		calc_screen(dat, &d);
 		input_buf(dat, &d, x);
+		calc_sprite(dat, &i, &d);
 	}
 }
