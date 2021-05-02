@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:43:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 02:46:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,6 @@ void		ray_calc(t_dat *dat);
 void		ray_draw(t_dat *dat);
 int			key_press(int key, t_dat *dat);
 void		input_buf(t_dat *dat, t_d *d, int x);
-void		choice_tex(t_dat *dat, t_d *d);
+void		choice_tex(t_d *d);
 void		key_press3(int key, t_dat *dat, double olddirx, double oldplanex);
 #endif

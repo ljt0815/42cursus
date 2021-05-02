@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:44:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 02:46:34 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 	}
 }
 
-void	choice_tex(t_dat *dat, t_d *d)
+void	choice_tex(t_d *d)
 {
 	if (d->side == 0 && d->raydirx < 0)
 		d->texnum = 0;

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 02:32:20 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 02:47:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	calc_screen(t_dat *dat, t_d *d)
 		d->drawstart = 0;
 	if ((d->drawend = d->lineheight / 2 + dat->r.y / 2) >= dat->r.y)
 		d->drawend = dat->r.y - 1;
-	choice_tex(dat, d);
+	choice_tex(d);
 	if (d->side == 0)
 		d->wallx = dat->p.y + d->perpwalldist * d->raydiry;
 	else
