@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 06:12:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 08:09:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,19 @@ int		main(int argc, char **argv)
 	else if (argc < 2)
 		err_msg("I NEED MAP ARGUMENT");
 	ft_bzero(&dat, sizeof(dat));
+	if (argc == 3)
+	{
+		if (ft_strncmp(argv[2], "--save\0", 7) == 0)
+			dat.issave = 1;
+		else
+			err_msg("UNKNOWN ARGUMENT");
+	}
 	ft_memset(&dat.f, -1, sizeof(dat.f));
 	ft_memset(&dat.c, -1, sizeof(dat.c));
 	dat.p.x = -1.0;
 	dat.p.y = -1.0;
-	dat.spnum = 0;
 	map_chk(argv[1], &dat);
 	border_chk(&dat);
+	printf("aa %d\n", dat.issave);
 	ray_cast(&dat);
 }

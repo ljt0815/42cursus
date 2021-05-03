@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 06:06:31 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 07:49:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,25 @@ typedef struct {
 	int		color;
 }			t_i;
 
+typedef	struct {
+	char	bftype[2];
+	int		size;
+	char	bfreserv1[2];
+	char	bfreserv2[2];
+	int		bfoffbits;
+	int		bisize;
+	int		biwidth;
+	int		biheight;
+	char	biplanes[2];
+	char	bibitcnt[2];
+	int		bicomp;
+	int		bisizeimg;
+	int		bixppm;
+	int		biyppm;
+	int		biclrused;
+	int		biclrimp;
+}			t_bmp;
+
 typedef struct {
 	t_r		r;
 	t_f		f;
@@ -150,6 +169,7 @@ typedef struct {
 	int		**buf;
 	int		**texture;
 	int		spnum;
+	int		issave;
 	double	movespeed;
 	double	rotspeed;
 	double	*zbuf;
@@ -195,4 +215,5 @@ void		key_press3(int key, t_dat *dat, double olddirx, double oldplanex);
 void		calc_sprite(t_dat *dat, t_i *s);
 void		init_sprite(t_dat *dat, t_i *s);
 int			mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
+void		screenshot(t_dat *dat);
 #endif

@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 02:33:55 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/04 04:27:42 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/04 08:03:56 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ FILES = border_chk \
 		ray_cast_func2 \
 		ray_cast_func3 \
 		ray_cast_func4 \
+		screenshot \
 		cub3d
 
 SRCS_DIR = ./srcs/

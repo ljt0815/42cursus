@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 06:13:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 07:48:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ int		main_loop(t_dat *dat)
 {
 	ray_calc(dat);
 	ray_draw(dat);
+	if (dat->issave)
+	{
+		screenshot(dat);
+		exit(1);
+	}
 	return (0);
 }
 
