@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 02:34:36 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 08:59:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 22:41:15 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	sort_order(t_pair *sp, int spnum)
 	int		j;
 
 	i = -1;
-	printf("spnum : %d\n", spnum);
 	while (++i < spnum)
 	{
 		j = -1;
@@ -58,7 +57,7 @@ void	sort_order(t_pair *sp, int spnum)
 				sp[0].first = 0;
 				sp[0].second = 0;
 			}
-			if (sp[j].first > sp[j + 1].first)
+			else if (sp[j].first > sp[j + 1].first)
 			{
 				tmp.first = sp[j].first;
 				tmp.second = sp[j].second;
@@ -78,23 +77,18 @@ void	sort_sprite(t_i *s, int spnum)
 	i = -1;
 	if (!(sp = malloc(sizeof(t_pair) * spnum)))
 		err_msg("allocate error");
-	printf("bspord[0] = %d\n",s->spord[0]);
 	while (++i < spnum)
 	{
 		sp[i].first = s->spdist[i];
 		sp[i].second = s->spord[i];
 	}
 	sort_order(sp, spnum);
-	printf("sp[0].f = %lf\n",sp[0].first);
-	printf("sp[0].s = %d\n",sp[0].second);
 	i = -1;
 	while (++i < spnum)
 	{
 		s->spdist[i] = sp[spnum - i - 1].first;
-		s->spord[i] = sp[spnum = i - 1].second;
+		s->spord[i] = sp[spnum - i - 1].second;
 	}
-	printf("spdist[0] = %lf\n",s->spdist[0]);
-	printf("spord[0] = %d\n",s->spord[0]);
 	free(sp);
 }
 
