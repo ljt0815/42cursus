@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 07:22:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 06:08:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	path_chk(char *line, t_dat *dat, char news)
 	free(line);
 }
 
-void	save_map(t_dat *dat, char *my_path)
+void	save_map(t_dat *dat, char **my_path)
 {
 	char	*line;
 	int		fd;
@@ -50,7 +50,7 @@ void	save_map(t_dat *dat, char *my_path)
 	int		i;
 
 	i = 0;
-	fd = open(my_path, O_RDONLY);
+	fd = open(*my_path, O_RDONLY);
 	if (!(dat->sp = malloc(sizeof(t_sp) * (dat->spnum + 1))))
 		err_msg("allocate error");
 	dat->spnum = 0;
@@ -67,12 +67,15 @@ void	save_map(t_dat *dat, char *my_path)
 		}
 		free(line);
 	}
+	free(line);
+	close(fd);
 }
 
-void	map_valid_chk(int fd, t_dat *dat, char *line)
+void	map_valid_chk(int *fd, t_dat *dat, char *line)
 {
 	player_chk(dat, line);
-	while (get_next_line(fd, &line))
+	free(line);
+	while (get_next_line(*fd, &line))
 	{
 		if (ft_isdigit(line[0]) || line[0] == ' ')
 			player_chk(dat, line);
@@ -80,9 +83,10 @@ void	map_valid_chk(int fd, t_dat *dat, char *line)
 			err_msg("MiniMap Error");
 		free(line);
 	}
+	free(line);
 	if (dat->p.x == -1)
 		err_msg("no player in the map");
-	close(fd);
+	close(*fd);
 }
 
 void	map_chk(char *my_path, t_dat *dat)
@@ -109,6 +113,6 @@ void	map_chk(char *my_path, t_dat *dat)
 		free(line);
 	}
 	null_chk(dat);
-	map_valid_chk(fd, dat, line);
-	save_map(dat, my_path);
+	map_valid_chk(&fd, dat, line);
+	save_map(dat, &my_path);
 }

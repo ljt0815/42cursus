@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 04:24:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 06:08:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		main(int argc, char **argv)
 	dat.p.y = -1.0;
 	dat.spnum = 0;
 	map_chk(argv[1], &dat);
+	system("leaks cub3D > leaks_result; cat leaks_result | grep leaked && rm -rf leaks_result");
 	border_chk(&dat);
 	ray_cast(&dat);
 }

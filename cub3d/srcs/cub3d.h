@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 04:28:08 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 06:06:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,8 @@ void		rgb_valid_chk(t_dat *dat, char fc);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *src);
 void		resol_chk(char *line, t_dat *dat);
-void		save_map(t_dat *dat, char *my_path);
-void		map_valid_chk(int fd, t_dat *dat, char *line);
+void		save_map(t_dat *dat, char **my_path);
+void		map_valid_chk(int *fd, t_dat *dat, char *line);
 void		border_chk(t_dat *dat);
 char		*ft_mapcpy(const char *src, t_dat *dat, int i);
 void		navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp);
