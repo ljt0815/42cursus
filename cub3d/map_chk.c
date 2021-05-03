@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 04:27:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 07:22:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	save_map(t_dat *dat, char *my_path)
 
 	i = 0;
 	fd = open(my_path, O_RDONLY);
+	if (!(dat->sp = malloc(sizeof(t_sp) * (dat->spnum + 1))))
+		err_msg("allocate error");
+	dat->spnum = 0;
 	if (!(dat->map.map = malloc(sizeof(char *) * (dat->map.x + 1))))
 		err_msg("allocate error");
 	while ((state = get_next_line(fd, &line)))
@@ -58,7 +61,10 @@ void	save_map(t_dat *dat, char *my_path)
 		if (state == -1)
 			err_msg(".cub File Exception");
 		else if (ft_isdigit(line[0]) || line[0] == ' ')
-			dat->map.map[i++] = ft_mapcpy(line, dat);
+		{
+			dat->map.map[i] = ft_mapcpy(line, dat, i);
+			i++;
+		}
 		free(line);
 	}
 }

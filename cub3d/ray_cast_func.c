@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 06:58:28 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 07:34:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,6 @@ void	ray_calc(t_dat *dat)
 		calc_dda(dat, &d);
 		calc_screen(dat, &d);
 		input_buf(dat, &d, x);
-		calc_sprite(dat, &i);
+		init_sprite(dat, &i);
 	}
 }

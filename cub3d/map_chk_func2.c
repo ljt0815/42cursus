@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:30:22 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 03:50:09 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 07:01:50 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	player_chk(t_dat *dat, char *line)
 	i = 0;
 	while (line[i])
 	{
-		map_word_chk(line[i]);
+		map_word_chk(line[i], dat);
 		if (line[i] == 'N' || line[i] == 'S' || \
 				line[i] == 'E' || line[i] == 'W')
 		{

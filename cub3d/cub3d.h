@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 06:58:12 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 07:24:05 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void		resol_chk(char *line, t_dat *dat);
 void		save_map(t_dat *dat, char *my_path);
 void		map_valid_chk(int fd, t_dat *dat, char *line);
 void		border_chk(t_dat *dat);
-char		*ft_mapcpy(const char *src, t_dat *dat);
+char		*ft_mapcpy(const char *src, t_dat *dat, int i);
 void		navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map_tmp);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 char		*ft_strchr(const char *s, int c);
@@ -184,7 +184,7 @@ int			xpm_chk3(char *line, t_dat *dat);
 void		isdigit_chk(char ch, char flag);
 void		player_dir(t_dat *dat, char news);
 void		ray_cast(t_dat *dat);
-void		map_word_chk(char num);
+void		map_word_chk(char num, t_dat *dat);
 void		*ft_calloc(size_t count, size_t size);
 void		ray_calc(t_dat *dat);
 void		ray_draw(t_dat *dat);
@@ -193,4 +193,5 @@ void		input_buf(t_dat *dat, t_d *d, int x);
 void		choice_tex(t_d *d);
 void		key_press3(int key, t_dat *dat, double olddirx, double oldplanex);
 void		calc_sprite(t_dat *dat, t_i *s);
+void		init_sprite(t_dat *dat, t_i *s);
 #endif

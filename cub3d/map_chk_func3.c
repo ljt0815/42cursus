@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 03:54:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 04:15:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/03 07:02:41 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	player_dir(t_dat *dat, char news)
 		player_dir2(dat, news);
 }
 
-void	map_word_chk(char num)
+void	map_word_chk(char num, t_dat *dat)
 {
 	if (num == 'N' || num == 'S' || num == 'E' || num == 'W')
 		;
-	else if (num == ' ' || num == '0' || num == '1' || num == '2')
+	else if (num == ' ' || num == '0' || num == '1')
 		;
+	else if (num == '2')
+		dat->spnum += 1;
 	else
 		err_msg("minimap in unknown word");
 }
