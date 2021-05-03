@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 08:30:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 00:43:52 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	calc_sprite(t_dat *dat, t_i *s)
 		s->tfy = s->invd * (-dat->p.planey * s->spx + dat->p.planex * s->spy);
 		s->spscrx = (int)((dat->r.x / 2) * (1 + s->tfx / s->tfy));
 		s->vmoves = (int)(VMOVE / s->tfy);
-		s->sph = (int)fabs((dat->r.y / s->tfy) / UDIV);
+		s->sph = (int)fabs((dat->r.y / s->tfy) / VDIV);
 		if ((s->drsty = -s->sph / 2 + dat->r.y / 2 + s->vmoves) < 0)
 			s->drsty = 0;
 		if ((s->dreny = s->sph / 2 + dat->r.y / 2 + s->vmoves) >= dat->r.y)
