@@ -6,11 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 15:21:36 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/06 19:51:11 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 01:33:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 00:43:52 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 01:43:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	screen_sprite(t_dat *dat, t_i *s, int i)
 		s->texx = (int)((256 * (st - (-s->spw / 2 + s->spscrx)) * 64 / s->spw) / 256);
 		if (s->tfy > 0 && st > 0 && st < dat->r.x && s->tfy < dat->zbuf[st])
 		{
-			y = -1;
+			y = s->drsty - 1;
 			while (++y < s->dreny)
 			{
 				s->d = (y - s->vmoves) * 256 - dat->r.y * 128 + s->sph * 128;
