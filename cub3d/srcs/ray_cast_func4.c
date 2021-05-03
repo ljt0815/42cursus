@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 01:43:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 03:01:23 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	screen_sprite(t_dat *dat, t_i *s, int i)
 	st = s->drstx - 1;
 	while (++st < s->drenx)
 	{
-		s->texx = (int)((256 * (st - (-s->spw / 2 + s->spscrx)) * 64 / s->spw) / 256);
+		s->texx = (int)((256 * (st - (-s->spw / 2 + s->spscrx)) \
+					* 64 / s->spw) / 256);
 		if (s->tfy > 0 && st > 0 && st < dat->r.x && s->tfy < dat->zbuf[st])
 		{
 			y = s->drsty - 1;
@@ -28,7 +29,8 @@ void	screen_sprite(t_dat *dat, t_i *s, int i)
 			{
 				s->d = (y - s->vmoves) * 256 - dat->r.y * 128 + s->sph * 128;
 				s->texy = ((s->d * 64) / s->sph) / 256;
-				s->color = dat->texture[dat->sp[s->spord[i]].texture][64 * s->texy + s->texx];
+				s->color = dat->texture[dat->sp[s->spord[i]].texture]\
+					[64 * s->texy + s->texx];
 				if ((s->color & 0x00FFFFFF) != 0)
 					dat->buf[y][st] = s->color;
 			}
@@ -45,7 +47,8 @@ void	calc_sprite(t_dat *dat, t_i *s)
 	{
 		s->spx = dat->sp[s->spord[i]].x - dat->p.x;
 		s->spy = dat->sp[s->spord[i]].y - dat->p.y;
-		s->invd = 1.0 / (dat->p.planex * dat->p.diry - dat->p.dirx * dat->p.planey);
+		s->invd = 1.0 / (dat->p.planex * \
+				dat->p.diry - dat->p.dirx * dat->p.planey);
 		s->tfx = s->invd * (dat->p.diry * s->spx - dat->p.dirx * s->spy);
 		s->tfy = s->invd * (-dat->p.planey * s->spx + dat->p.planex * s->spy);
 		s->spscrx = (int)((dat->r.x / 2) * (1 + s->tfx / s->tfy));

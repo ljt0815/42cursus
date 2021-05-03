@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 07:24:05 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 04:28:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,12 @@ typedef struct {
 	double	x;
 	double	y;
 	int		texture;
-}	t_sp;
+}			t_sp;
 
 typedef struct {
 	double	first;
 	int		second;
-}	t_pair;
+}			t_pair;
 
 typedef struct {
 	double	spx;
@@ -129,7 +129,7 @@ typedef struct {
 	int		d;
 	int		texy;
 	int		color;
-}	t_i;
+}			t_i;
 
 typedef struct {
 	t_r		r;
@@ -194,4 +194,5 @@ void		choice_tex(t_d *d);
 void		key_press3(int key, t_dat *dat, double olddirx, double oldplanex);
 void		calc_sprite(t_dat *dat, t_i *s);
 void		init_sprite(t_dat *dat, t_i *s);
+int			mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 #endif

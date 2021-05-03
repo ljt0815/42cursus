@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 02:33:55 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/04 02:25:06 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/04 04:27:42 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = cub3D
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 FRAME_WORK = -framework OpenGl -framework Appkit
-MLX_D = libmlx.dylib
+MLX = -lmlxo
+LIB = -Lsrcs
 FILES = border_chk \
 		get_next_line \
 		get_next_line_utils \
@@ -52,14 +53,12 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(FRAME_WORK) -o $@ $^ -Lsrcs -lmlx 
-	mv $(SRCS_DIR)$(MLX_D) ./$(MLX_D)
+	$(CC) $(CFLAGS) $(FRAME_WORK) -o $@ $^ $(LIB) $(MLX)
 
 all: $(NAME)
 
 clean:
 	rm -f $(OBJS)
-	mv $(MLX_D) $(SRCS_DIR)$(MLX_D)
 
 fclean: clean
 	rm -f $(NAME)
