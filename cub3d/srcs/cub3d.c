@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 02:15:52 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 08:09:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 08:49:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ int		main(int argc, char **argv)
 	dat.p.y = -1.0;
 	map_chk(argv[1], &dat);
 	border_chk(&dat);
-	printf("aa %d\n", dat.issave);
 	ray_cast(&dat);
 }

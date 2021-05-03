@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 06:49:33 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 08:44:42 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 08:49:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	screenshot(t_dat *dat)
 	t_bmp	bmp;
 	int		fd;
 	int		i;
-
 
 	fd = open("screen_shot.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	init_bmp(&bmp, dat, &fd);
