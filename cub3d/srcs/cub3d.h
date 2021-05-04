@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 07:49:08 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 11:37:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,12 @@ typedef struct {
 	int		**texture;
 	int		spnum;
 	int		issave;
+	int		k_w;
+	int		k_s;
+	int		k_a;
+	int		k_d;
+	int		k_left;
+	int		k_right;
 	double	movespeed;
 	double	rotspeed;
 	double	*zbuf;
@@ -208,12 +214,14 @@ void		map_word_chk(char num, t_dat *dat);
 void		*ft_calloc(size_t count, size_t size);
 void		ray_calc(t_dat *dat);
 void		ray_draw(t_dat *dat);
+int			key_update(t_dat *dat);
 int			key_press(int key, t_dat *dat);
 void		input_buf(t_dat *dat, t_d *d, int x);
 void		choice_tex(t_d *d);
-void		key_press3(int key, t_dat *dat, double olddirx, double oldplanex);
+void		key_update3(t_dat *dat, double olddirx, double oldplanex);
 void		calc_sprite(t_dat *dat, t_i *s);
 void		init_sprite(t_dat *dat, t_i *s);
 int			mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 void		screenshot(t_dat *dat);
+int			key_release(int key, t_dat *dat);
 #endif

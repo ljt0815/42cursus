@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 07:48:32 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 10:46:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ray_init(t_dat *dat)
 	while (++i < 5)
 		if (!(dat->texture[i] = ft_calloc(dat->r.x * dat->r.y, sizeof(int))))
 			err_msg("memory allocate error");
-	dat->movespeed = 0.15;
-	dat->rotspeed = 0.15;
+	dat->movespeed = 0.07;
+	dat->rotspeed = 0.07;
 }
 
 void	load_image(t_dat *dat, int *texture, char *path, t_img *img)
@@ -79,6 +79,7 @@ int		main_loop(t_dat *dat)
 		screenshot(dat);
 		exit(1);
 	}
+	key_update(dat);
 	return (0);
 }
 
@@ -94,5 +95,6 @@ void	ray_cast(t_dat *dat)
 			&dat->img.bpp, &dat->img.size_l, &dat->img.endian);
 	mlx_loop_hook(dat->mlx, &main_loop, dat);
 	mlx_hook(dat->win, 2, 1, &key_press, dat);
+	mlx_hook(dat->win, 3, 2, &key_release, dat);
 	mlx_loop(dat->mlx);
 }

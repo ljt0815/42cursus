@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 06:56:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 11:38:46 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	ray_draw(t_dat *dat)
 	mlx_put_image_to_window(dat->mlx, dat->win, dat->img.img, 0, 0);
 }
 
-void	key_press2(int key, t_dat *dat)
+void	key_update2(t_dat *dat)
 {
-	if (key == 0)
+	if (dat->k_a)
 	{
 		if (!dat->map.map[(int)(dat->p.x - dat->p.diry \
 					* 2 * dat->movespeed)][(int)(dat->p.y)])
@@ -38,7 +38,7 @@ void	key_press2(int key, t_dat *dat)
 					+ dat->p.dirx * dat->movespeed)])
 			dat->p.y += dat->p.dirx * dat->movespeed;
 	}
-	if (key == 2)
+	if (dat->k_d)
 	{
 		if (!dat->map.map[(int)(dat->p.x + dat->p.diry \
 					* 2 * dat->movespeed)][(int)(dat->p.y)])
@@ -47,12 +47,12 @@ void	key_press2(int key, t_dat *dat)
 					- dat->p.dirx * dat->movespeed)])
 			dat->p.y -= dat->p.dirx * dat->movespeed;
 	}
-	key_press3(key, dat, 0, 0);
+	key_update3(dat, 0, 0);
 }
 
-int		key_press(int key, t_dat *dat)
+int		key_update(t_dat *dat)
 {
-	if (key == 13)
+	if (dat->k_w)
 	{
 		if (!dat->map.map[(int)(dat->p.x + dat->p.dirx * 2 * \
 					dat->movespeed)][(int)(dat->p.y)])
@@ -61,7 +61,7 @@ int		key_press(int key, t_dat *dat)
 					dat->p.diry * dat->movespeed)])
 			dat->p.y += dat->p.diry * dat->movespeed;
 	}
-	if (key == 1)
+	if (dat->k_s)
 	{
 		if (!dat->map.map[(int)(dat->p.x - dat->p.dirx * 2 * \
 					dat->movespeed)][(int)(dat->p.y)])
@@ -70,9 +70,7 @@ int		key_press(int key, t_dat *dat)
 					dat->p.diry * dat->movespeed)])
 			dat->p.y -= dat->p.diry * dat->movespeed;
 	}
-	if (key == 53)
-		exit(0);
-	key_press2(key, dat);
+	key_update2(dat);
 	return (0);
 }
 
@@ -90,8 +88,6 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 			d->texy = (int)d->texpos & (64 - 1);
 			d->texpos += d->step;
 			d->color = dat->texture[d->texnum][64 * d->texy + d->texx];
-			if (d->side == 1)
-				d->color = (d->color >> 1) & 8355711;
 			dat->buf[y][x] = d->color;
 		}
 		else

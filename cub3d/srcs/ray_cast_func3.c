@@ -6,16 +6,16 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 02:34:36 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 22:41:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/04 10:35:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	key_press3(int key, t_dat *dat, double olddirx, double oldplanex)
+void	key_update3(t_dat *dat, double olddirx, double oldplanex)
 {
 	olddirx = dat->p.dirx;
-	if (key == 124)
+	if (dat->k_left)
 	{
 		dat->p.dirx = dat->p.dirx * cos(-dat->rotspeed) - \
 					dat->p.diry * sin(-dat->rotspeed);
@@ -27,7 +27,7 @@ void	key_press3(int key, t_dat *dat, double olddirx, double oldplanex)
 		dat->p.planey = oldplanex * sin(-dat->rotspeed) + \
 						dat->p.planey * cos(-dat->rotspeed);
 	}
-	if (key == 123)
+	if (dat->k_right)
 	{
 		dat->p.dirx = dat->p.dirx * cos(dat->rotspeed) - \
 			dat->p.diry * sin(dat->rotspeed);
