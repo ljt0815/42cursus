@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 11:38:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/07 08:08:47 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,23 @@ int		key_release(int key, t_dat *dat)
 		dat->k_left = 0;
 	else if (key == 123)
 		dat->k_right = 0;
+	return (0);
+}
+
+int		map_update(t_dat *dat)
+{
+	int		i;
+	i = -1;
+	while (++i < dat->spnum)
+		if ((int)dat->p.x == (int)dat->sp[i].x)
+			if ((int)dat->p.y == (int)dat->sp[i].y)
+			{
+				dat->sp[i].x = 0;
+				dat->sp[i].y = 0;
+				dat->sp[i].texture = -1;
+				dat->spnum -= 1;
+				dat->sp[i] = dat->sp[dat->spnum];
+				system("leaks cub3D > leaks_result; cat leaks_result | grep leaked && rm -rf leaks_result");
+			}
 	return (0);
 }

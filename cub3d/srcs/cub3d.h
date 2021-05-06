@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/06 23:03:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/07 06:05:28 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,4 +224,5 @@ void		init_sprite(t_dat *dat, t_i *s);
 int			mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 void		screenshot(t_dat *dat);
 int			key_release(int key, t_dat *dat);
+int			map_update(t_dat *dat);
 #endif

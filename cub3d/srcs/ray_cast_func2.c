@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/06 23:02:43 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/07 07:11:55 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		key_update(t_dat *dat)
 			dat->p.y -= dat->p.diry * dat->movespeed;
 	}
 	key_update2(dat);
+	map_update(dat);
 	return (0);
 }
 
