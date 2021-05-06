@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 10:46:33 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/06 21:59:07 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ void	ray_cast(t_dat *dat)
 	load_texture(dat);
 	if (!(dat->zbuf = malloc(sizeof(double) * dat->r.x)))
 		err_msg("allocate error");
-	dat->win = mlx_new_window(dat->mlx, dat->r.x, dat->r.y, "mlx");
+	if (dat->issave)
+		dat->win = mlx_new_window(dat->mlx, 0, 0, "mlx");
+	else
+		dat->win = mlx_new_window(dat->mlx, dat->r.x, dat->r.y, "mlx");
 	dat->img.img = mlx_new_image(dat->mlx, dat->r.x, dat->r.y);
 	dat->img.data = (int *)mlx_get_data_addr(dat->img.img, \
 			&dat->img.bpp, &dat->img.size_l, &dat->img.endian);
