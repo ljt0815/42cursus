@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/06 22:59:57 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/07 05:07:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,11 @@ void	calc_dda(t_dat *dat, t_d *d)
 void	calc_screen(t_dat *dat, t_d *d)
 {
 	d->lineheight = (int)(dat->r.y / d->perpwalldist);
-	if ((d->drawstart = -(d->lineheight) / 2 + dat->r.y / 2) < 0)
+	d->drawstart = -(d->lineheight) / 2 + dat->r.y / 2;
+	if (d->drawstart < 0)
 		d->drawstart = 0;
-	if ((d->drawend = d->lineheight / 2 + dat->r.y / 2) >= dat->r.y)
+	d->drawend = d->lineheight / 2 + dat->r.y / 2;
+	if (d->drawend >= dat->r.y)
 		d->drawend = dat->r.y - 1;
 	choice_tex(d);
 	if (d->side == 0)
