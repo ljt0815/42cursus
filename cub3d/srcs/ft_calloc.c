@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 14:42:26 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 04:30:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/06 23:36:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*tmp;
 
-	if (!(tmp = malloc(count * size)))
+	tmp = malloc(count * size);
+	if (tmp == 0)
 		return (tmp);
 	ft_bzero(tmp, count * size);
 	return (tmp);

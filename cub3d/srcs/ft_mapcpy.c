@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 09:49:37 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 08:08:55 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/07 00:33:28 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char	*ft_mapcpy(const char *src, t_dat *dat, int i)
 	char	*result;
 
 	j = -1;
-	if (!(result = (char *)malloc(sizeof(char) * dat->map.y + 1)))
+	result = (char *)malloc(sizeof(char) * dat->map.y + 1);
+	if (result == 0)
 		return (0);
 	ft_memset(result, -16, dat->map.y);
 	result[dat->map.y] = -48;
