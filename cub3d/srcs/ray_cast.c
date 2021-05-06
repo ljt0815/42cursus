@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/06 21:59:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/06 23:04:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,10 @@ void	ray_cast(t_dat *dat)
 		dat->win = mlx_new_window(dat->mlx, 0, 0, "mlx");
 	else
 		dat->win = mlx_new_window(dat->mlx, dat->r.x, dat->r.y, "mlx");
+	dat->fcolor = dat->f.r * 256 + dat->f.g;
+	dat->fcolor = dat->fcolor * 256 + dat->f.b;
+	dat->ccolor = dat->c.r * 256 + dat->c.g;
+	dat->ccolor = dat->ccolor * 256 + dat->c.b;
 	dat->img.img = mlx_new_image(dat->mlx, dat->r.x, dat->r.y);
 	dat->img.data = (int *)mlx_get_data_addr(dat->img.img, \
 			&dat->img.bpp, &dat->img.size_l, &dat->img.endian);

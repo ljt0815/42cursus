@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 11:38:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/06 23:02:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 	while (++y < dat->r.y)
 	{
 		if (y < d->drawstart)
-			dat->buf[y][x] = d->ccolor;
+			dat->buf[y][x] = dat->ccolor;
 		else if (y < d->drawend)
 		{
 			d->texy = (int)d->texpos & (64 - 1);
@@ -91,7 +91,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 			dat->buf[y][x] = d->color;
 		}
 		else
-			dat->buf[y][x] = d->fcolor;
+			dat->buf[y][x] = dat->fcolor;
 	}
 	dat->zbuf[x] = d->perpwalldist;
 }

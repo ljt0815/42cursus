@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/03 23:44:42 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/06 22:59:57 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ void	calc_init(t_dat *dat, t_d *d, int x)
 			(d->raydirx * d->raydirx));
 	d->deltadisty = sqrt(1 + (d->raydirx * d->raydirx) / \
 			(d->raydiry * d->raydiry));
-	d->fcolor = dat->f.r * 256 + dat->f.g;
-	d->fcolor = d->fcolor * 256 + dat->f.b;
-	d->ccolor = dat->c.r * 256 + dat->c.g;
-	d->ccolor = d->ccolor * 256 + dat->c.b;
 	d->hit = 0;
 }
 

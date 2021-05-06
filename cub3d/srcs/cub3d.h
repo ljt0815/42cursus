@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 11:37:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/06 23:03:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ typedef struct {
 	int		texx;
 	int		texy;
 	int		color;
-	int		fcolor;
-	int		ccolor;
 }			t_d;
 
 typedef struct {
@@ -176,6 +174,8 @@ typedef struct {
 	int		k_d;
 	int		k_left;
 	int		k_right;
+	int		fcolor;
+	int		ccolor;
 	double	movespeed;
 	double	rotspeed;
 	double	*zbuf;
