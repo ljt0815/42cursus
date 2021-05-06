@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/07 08:08:47 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/07 08:11:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int		map_update(t_dat *dat)
 				dat->sp[i].texture = -1;
 				dat->spnum -= 1;
 				dat->sp[i] = dat->sp[dat->spnum];
-				system("leaks cub3D > leaks_result; cat leaks_result | grep leaked && rm -rf leaks_result");
 			}
 	return (0);
 }
