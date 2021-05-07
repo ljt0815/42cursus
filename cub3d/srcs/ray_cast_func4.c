@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 00:19:14 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 07:55:58 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int		key_release(int key, t_dat *dat)
 int		map_update(t_dat *dat)
 {
 	int		i;
+
 	i = -1;
 	while (++i < dat->spnum)
 		if ((int)dat->p.x == (int)dat->sp[i].x)

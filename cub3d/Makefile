@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 02:33:55 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/08 04:45:33 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/08 06:34:19 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ FILES = border_chk \
 		ray_cast_func \
 		ray_cast_func2 \
 		ray_cast_func3 \
+		ray_cast_func5 \
 		screenshot \
 		cub3d \
 		$(JOIN)

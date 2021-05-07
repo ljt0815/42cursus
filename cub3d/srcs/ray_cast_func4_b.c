@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 02:07:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 07:56:08 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int		key_release(int key, t_dat *dat)
 int		map_update(t_dat *dat)
 {
 	int		i;
+
 	i = -1;
 	while (++i < dat->spnum)
 		if ((int)dat->p.x == (int)dat->sp[i].x)
@@ -119,7 +120,7 @@ int		map_update(t_dat *dat)
 				dat->spnum -= 1;
 				dat->sp[i] = dat->sp[dat->spnum];
 				dat->eat_cnt += 1;
-				system("afplay ../mp3/MP_Blop.mp3");
+				system("afplay mp3/MP_Blop.mp3");
 				free(dat->txt);
 				dat->txt = ft_itoa(dat->eat_cnt);
 			}

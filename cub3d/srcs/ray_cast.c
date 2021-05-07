@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 01:48:31 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 07:54:05 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	ray_cast(t_dat *dat)
 	dat->img.data = (int *)mlx_get_data_addr(dat->img.img, \
 			&dat->img.bpp, &dat->img.size_l, &dat->img.endian);
 	mlx_loop_hook(dat->mlx, &main_loop, dat);
+	mlx_hook(dat->win, 17, 1L << 17, &xbutton, (void *)0);
 	mlx_hook(dat->win, 2, 1, &key_press, dat);
 	mlx_hook(dat->win, 3, 2, &key_release, dat);
 	mlx_loop(dat->mlx);
