@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/06 23:04:22 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 01:48:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 void	ray_init(t_dat *dat)
 {
 	int i;
-	int x;
-	int y;
 
 	i = -1;
 	dat->mlx = mlx_init();
-	mlx_get_screen_size(dat->mlx, &x, &y);
-	if (dat->r.x > x)
-		dat->r.x = x;
-	if (dat->r.y > y)
-		dat->r.y = y;
+	mlx_get_screen_size(dat->mlx, &dat->f_sw, &dat->f_sh);
+	if (dat->r.x > dat->f_sw)
+		dat->r.x = dat->f_sw;
+	if (dat->r.y > dat->f_sh)
+		dat->r.y = dat->f_sh;
 	if (!(dat->buf = ft_calloc(dat->r.y, sizeof(int *))))
 		err_msg("memory allocate error");
 	while (++i < dat->r.y)
@@ -87,12 +85,16 @@ void	ray_cast(t_dat *dat)
 {
 	ray_init(dat);
 	load_texture(dat);
-	if (!(dat->zbuf = malloc(sizeof(double) * dat->r.x)))
+	dat->zbuf = malloc(sizeof(double) * dat->r.x);
+	if (dat->zbuf == 0)
 		err_msg("allocate error");
 	if (dat->issave)
 		dat->win = mlx_new_window(dat->mlx, 0, 0, "mlx");
 	else
 		dat->win = mlx_new_window(dat->mlx, dat->r.x, dat->r.y, "mlx");
+	dat->txt = ft_calloc(sizeof(char), 2);
+	if (dat->txt == 0)
+		err_msg("allocate error");
 	dat->fcolor = dat->f.r * 256 + dat->f.g;
 	dat->fcolor = dat->fcolor * 256 + dat->f.b;
 	dat->ccolor = dat->c.r * 256 + dat->c.g;

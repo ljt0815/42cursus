@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 02:33:55 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/04 08:03:56 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/07 23:49:53 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ FILES = border_chk \
 		ft_mapcpy \
 		ft_strncmp \
 		ft_strchr \
+		ft_itoa \
 		stack \
 		map_chk \
 		map_chk_func \

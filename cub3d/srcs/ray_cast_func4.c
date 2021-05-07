@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/07 08:11:43 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 00:19:14 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ int		map_update(t_dat *dat)
 				dat->sp[i].texture = -1;
 				dat->spnum -= 1;
 				dat->sp[i] = dat->sp[dat->spnum];
+				dat->eat_cnt += 1;
+				free(dat->txt);
+				dat->txt = ft_itoa(dat->eat_cnt);
 			}
 	return (0);
 }

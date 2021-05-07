@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/07 06:05:28 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 00:50:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ typedef struct {
 	char	*we;
 	char	*ea;
 	char	*s;
+	char	*txt;
 	void	*mlx;
 	void	*win;
 	int		**buf;
@@ -176,6 +177,9 @@ typedef struct {
 	int		k_right;
 	int		fcolor;
 	int		ccolor;
+	int		eat_cnt;
+	int		f_sw;
+	int		f_sh;
 	double	movespeed;
 	double	rotspeed;
 	double	*zbuf;
@@ -225,4 +229,5 @@ int			mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 void		screenshot(t_dat *dat);
 int			key_release(int key, t_dat *dat);
 int			map_update(t_dat *dat);
+char		*ft_itoa(int n);
 #endif

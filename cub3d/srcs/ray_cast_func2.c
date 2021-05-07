@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/07 07:11:55 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 01:02:15 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void	ray_draw(t_dat *dat)
 {
 	int	y;
 	int x;
+	int bar_y_size;
 
 	y = -1;
+	bar_y_size = 0;
 	while (++y < dat->r.y)
 	{
 		x = -1;
@@ -25,6 +27,10 @@ void	ray_draw(t_dat *dat)
 			dat->img.data[y * dat->r.x + x] = dat->buf[y][x];
 	}
 	mlx_put_image_to_window(dat->mlx, dat->win, dat->img.img, 0, 0);
+	if (dat->f_sh - 40 < dat->r.y)
+		bar_y_size = dat->r.y - (dat->f_sh - 40);
+	mlx_string_put(dat->mlx, dat->win, 0, dat->r.y - (dat->r.y * 2 / 100) \
+			- bar_y_size, 0x000000, dat->txt);
 }
 
 void	key_update2(t_dat *dat)
