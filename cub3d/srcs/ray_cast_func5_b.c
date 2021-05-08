@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 06:33:14 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 09:30:54 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 12:50:58 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int		key_release(int key, t_dat *dat)
 {
 	if (key == 53)
 	{
-		stopmusic();
 		exit(0);
 	}
 	else if (key == 13)
