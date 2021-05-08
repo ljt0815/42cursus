@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 13:19:29 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 15:50:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	screen_sprite(t_dat *dat, t_i *s, int i)
 				s->color = dat->texture[dat->sp[s->spord[i]].texture]\
 					[64 * s->texy + s->texx];
 				if ((s->color & 0x00FFFFFF) != 0)
-					dat->buf[y][st] = s->color;
+					dat->buf[y][st] = convert_color(s->color, s->tfy);
 			}
 		}
 	}
@@ -67,14 +67,14 @@ void	calc_sprite(t_dat *dat, t_i *s)
 	}
 }
 
-void	convert_color(int color, double dist, t_d *d)
+int		convert_color(int color, double dist)
 {
 	double r;
 	double g;
 	double b;
 
 	if (dist < 11)
-		return ;
+		return (color);
 	b = (color % 256);
 	color = (color - b) / 256;
 	g = (color % 256);
@@ -84,7 +84,7 @@ void	convert_color(int color, double dist, t_d *d)
 	r /= dist;
 	g /= dist;
 	b /= dist;
-	d->color = ((((int)r * 256) + (int)g) * 256) + (int)b;
+	return (((((int)r * 256) + (int)g) * 256) + (int)b);
 }
 
 void	get_scr_size(t_dat *dat)

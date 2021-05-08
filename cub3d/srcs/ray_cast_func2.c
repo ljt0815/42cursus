@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 11:40:21 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 15:48:25 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 			d->texy = (int)d->texpos & (64 - 1);
 			d->texpos += d->step;
 			d->color = dat->texture[d->texnum][64 * d->texy + d->texx];
-			convert_color(d->color, dist, d);
-			dat->buf[y][x] = d->color;
+			dat->buf[y][x] = convert_color(d->color, dist);
 		}
 		else
 			dat->buf[y][x] = dat->fcolor;
