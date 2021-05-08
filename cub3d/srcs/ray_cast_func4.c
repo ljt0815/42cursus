@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 09:16:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 09:31:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,42 +65,4 @@ void	calc_sprite(t_dat *dat, t_i *s)
 			s->drenx = dat->r.x - 1;
 		screen_sprite(dat, s, i);
 	}
-}
-
-int		key_press(int key, t_dat *dat)
-{
-	if (key == 53)
-		exit(0);
-	else if (key == 13)
-		dat->k_w = 1;
-	else if (key == 0)
-		dat->k_a = 1;
-	else if (key == 1)
-		dat->k_s = 1;
-	else if (key == 2)
-		dat->k_d = 1;
-	else if (key == 124)
-		dat->k_left = 1;
-	else if (key == 123)
-		dat->k_right = 1;
-	return (0);
-}
-
-int		key_release(int key, t_dat *dat)
-{
-	if (key == 53)
-		exit(0);
-	else if (key == 13)
-		dat->k_w = 0;
-	else if (key == 0)
-		dat->k_a = 0;
-	else if (key == 1)
-		dat->k_s = 0;
-	else if (key == 2)
-		dat->k_d = 0;
-	else if (key == 124)
-		dat->k_left = 0;
-	else if (key == 123)
-		dat->k_right = 0;
-	return (0);
 }
