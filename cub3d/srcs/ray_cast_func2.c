@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 16:02:57 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 16:11:36 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ray_draw(t_dat *dat)
 	if (dat->f_sh - 40 < dat->r.y)
 		bar_y_size = dat->r.y - (dat->f_sh - 40);
 	mlx_string_put(dat->mlx, dat->win, 4, dat->r.y - (dat->r.y * 2 / 100) \
-			- bar_y_size, 0xffd56b, "point :");
+			- bar_y_size, 0xf5f7b2, "point :");
 	mlx_string_put(dat->mlx, dat->win, 60, dat->r.y - (dat->r.y * 2 / 100) \
 			- bar_y_size, 0xffd56b, dat->txt);
 }
