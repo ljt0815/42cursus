@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/07 05:07:13 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 12:31:50 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,16 @@
 
 void	calc_select(t_dat *dat, t_d *d)
 {
-	if (d->raydirx < 0)
-	{
-		d->stepx = -1;
-		d->sidedistx = (dat->p.x - d->mapx) * d->deltadistx;
-	}
-	else
+	d->stepx = -1;
+	d->sidedistx = (dat->p.x - d->mapx) * d->deltadistx;
+	if (d->raydirx >= 0)
 	{
 		d->stepx = 1;
 		d->sidedistx = (d->mapx + 1.0 - dat->p.x) * d->deltadistx;
 	}
-	if (d->raydiry < 0)
-	{
-		d->stepy = -1;
-		d->sidedisty = (dat->p.y - d->mapy) * d->deltadisty;
-	}
-	else
+	d->stepy = -1;
+	d->sidedisty = (dat->p.y - d->mapy) * d->deltadisty;
+	if (d->raydiry >= 0)
 	{
 		d->stepy = 1;
 		d->sidedisty = (d->mapy + 1.0 - dat->p.y) * d->deltadisty;
@@ -69,12 +63,11 @@ void	calc_dda(t_dat *dat, t_d *d)
 		if (dat->map.map[d->mapx][d->mapy] > 0)
 			d->hit = 1;
 	}
+	d->perpwalldist = (d->mapy - dat->p.y + \
+			(1 - d->stepy) / 2) / d->raydiry;
 	if (d->side == 0)
 		d->perpwalldist = (d->mapx - dat->p.x + \
 				(1 - d->stepx) / 2) / d->raydirx;
-	else
-		d->perpwalldist = (d->mapy - dat->p.y + \
-				(1 - d->stepy) / 2) / d->raydiry;
 }
 
 void	calc_screen(t_dat *dat, t_d *d)

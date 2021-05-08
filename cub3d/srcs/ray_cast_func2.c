@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 06:25:48 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 01:02:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 11:40:21 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,14 @@ int		key_update(t_dat *dat)
 
 void	input_buf(t_dat *dat, t_d *d, int x)
 {
-	int y;
+	int		y;
+	double	dist;
 
 	y = -1;
+	if (d->side == 0)
+		dist = d->sidedistx;
+	else
+		dist = d->sidedisty;
 	while (++y < dat->r.y)
 	{
 		if (y < d->drawstart)
@@ -95,6 +100,7 @@ void	input_buf(t_dat *dat, t_d *d, int x)
 			d->texy = (int)d->texpos & (64 - 1);
 			d->texpos += d->step;
 			d->color = dat->texture[d->texnum][64 * d->texy + d->texx];
+			convert_color(d->color, dist, d);
 			dat->buf[y][x] = d->color;
 		}
 		else

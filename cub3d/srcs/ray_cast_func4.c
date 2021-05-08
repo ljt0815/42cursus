@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 09:31:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 12:37:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,24 @@ void	calc_sprite(t_dat *dat, t_i *s)
 			s->drenx = dat->r.x - 1;
 		screen_sprite(dat, s, i);
 	}
+}
+
+void	convert_color(int color, double dist, t_d *d)
+{
+	double r;
+	double g;
+	double b;
+
+	if (dist < 11)
+		return ;
+	b = (color % 256);
+	color = (color - b) / 256;
+	g = (color % 256);
+	r = (color - g) / 256;
+	dist -= 7;
+	dist /= 4;
+	r /= dist;
+	g /= dist;
+	b /= dist;
+	d->color = ((((int)r * 256) + (int)g) * 256) + (int)b;
 }
