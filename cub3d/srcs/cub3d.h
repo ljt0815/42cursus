@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 11:30:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 13:16:46 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,4 +233,5 @@ char		*ft_itoa(int n);
 int			xbutton(t_dat *dat);
 void		stopmusic(void);
 void		convert_color(int color, double dist, t_d *d);
+void		get_scr_size(t_dat *dat);
 #endif

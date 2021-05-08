@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 12:37:53 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 13:19:29 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,15 @@ void	convert_color(int color, double dist, t_d *d)
 	g /= dist;
 	b /= dist;
 	d->color = ((((int)r * 256) + (int)g) * 256) + (int)b;
+}
+
+void	get_scr_size(t_dat *dat)
+{
+	dat->movespeed = 0.07;
+	dat->rotspeed = 0.07;
+	mlx_get_screen_size(dat->mlx, &dat->f_sw, &dat->f_sh);
+	if (dat->r.x > dat->f_sw)
+		dat->r.x = dat->f_sw;
+	if (dat->r.y > dat->f_sh)
+		dat->r.y = dat->f_sh;
 }

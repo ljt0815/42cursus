@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 09:21:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 13:22:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,26 @@ void	ray_init(t_dat *dat)
 
 	i = -1;
 	dat->mlx = mlx_init();
-	mlx_get_screen_size(dat->mlx, &dat->f_sw, &dat->f_sh);
-	if (dat->r.x > dat->f_sw)
-		dat->r.x = dat->f_sw;
-	if (dat->r.y > dat->f_sh)
-		dat->r.y = dat->f_sh;
-	if (!(dat->buf = ft_calloc(dat->r.y, sizeof(int *))))
+	get_scr_size(dat);
+	dat->buf = ft_calloc(dat->r.y, sizeof(int *));
+	if (dat->buf == 0)
 		err_msg("memory allocate error");
 	while (++i < dat->r.y)
-		if (!(dat->buf[i] = ft_calloc(dat->r.x, sizeof(int))))
+	{
+		dat->buf[i] = ft_calloc(dat->r.x, sizeof(int));
+		if (dat->buf[i] == 0)
 			err_msg("memory allocate error");
-	if (!(dat->texture = ft_calloc(5, sizeof(int *))))
+	}
+	dat->texture = ft_calloc(5, sizeof(int *));
+	if (dat->texture == 0)
 		err_msg("memory allocate error");
 	i = -1;
 	while (++i < 5)
-		if (!(dat->texture[i] = ft_calloc(dat->r.x * dat->r.y, sizeof(int))))
+	{
+		dat->texture[i] = ft_calloc(dat->r.x * dat->r.y, sizeof(int));
+		if (dat->texture[i] == 0)
 			err_msg("memory allocate error");
-	dat->movespeed = 0.07;
-	dat->rotspeed = 0.07;
+	}
 }
 
 void	load_image(t_dat *dat, int *texture, char *path, t_img *img)
