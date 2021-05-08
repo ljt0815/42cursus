@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 02:33:55 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/08 09:17:24 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/08 15:29:23 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,21 @@ FRAME_WORK = -framework OpenGl -framework Appkit -framework OpenAl
 MLX = -lmlxo
 LIB = -Lsrcs
 BONUS = ray_cast_func5_b \
-		ray_cast_b
+		ray_cast_b \
+		ft_mapcpy_b \
+		map_chk_func3_b \
+		border_chk_b \
 
 MANDATORY = ray_cast_func5 \
-			ray_cast
+			ray_cast \
+			ft_mapcpy \
+			map_chk_func3 \
+			border_chk
 
 SELECT = MANDATORY
 JOIN = $($(SELECT))
 
-FILES = border_chk \
-		get_next_line \
+FILES = get_next_line \
 		get_next_line_utils \
 		ft_isdigit \
 		ft_strdup \
@@ -37,7 +42,6 @@ FILES = border_chk \
 		ft_strlcpy \
 		ft_strlen \
 		ft_memset \
-		ft_mapcpy \
 		ft_strncmp \
 		ft_strchr \
 		ft_itoa \
@@ -45,7 +49,6 @@ FILES = border_chk \
 		map_chk \
 		map_chk_func \
 		map_chk_func2 \
-		map_chk_func3 \
 		ray_cast_func \
 		ray_cast_func2 \
 		ray_cast_func3 \
