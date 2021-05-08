@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 05:38:56 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 12:31:50 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/08 16:19:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	calc_dda(t_dat *dat, t_d *d)
 			d->mapy += d->stepy;
 			d->side = 1;
 		}
-		if (dat->map.map[d->mapx][d->mapy] > 0)
+		if (dat->map.map[d->mapx][d->mapy] == 1)
 			d->hit = 1;
 	}
 	d->perpwalldist = (d->mapy - dat->p.y + \
