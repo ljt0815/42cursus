@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/10 14:50:16 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 16:20:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ray_init(t_dat *dat)
 	i = -1;
 	while (++i < 5)
 	{
-		dat->texture[i] = ft_calloc(dat->r.x * dat->r.y, sizeof(int));
+		dat->texture[i] = ft_calloc((64 * 64), sizeof(int));
 		if (dat->texture[i] == 0)
 			err_msg("memory allocate error");
 	}
