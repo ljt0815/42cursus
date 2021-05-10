@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/10 14:15:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 14:23:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	ray_cast(t_dat *dat)
 	dat->fcolor = dat->fcolor * 256 + dat->f.b;
 	dat->ccolor = dat->c.r * 256 + dat->c.g;
 	dat->ccolor = dat->ccolor * 256 + dat->c.b;
-	system("afplay -v 0.30 mp3/MP_BGM.mp3 &>/dev/null &");
+	if (!dat->issave)
+		system("afplay -v 0.30 mp3/MP_BGM.mp3 &>/dev/null &");
 	dat->img.img = mlx_new_image(dat->mlx, dat->r.x, dat->r.y);
 	dat->img.data = (int *)mlx_get_data_addr(dat->img.img, \
 			&dat->img.bpp, &dat->img.size_l, &dat->img.endian);
