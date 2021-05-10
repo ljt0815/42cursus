@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 02:33:55 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/08 15:29:23 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/10 14:02:06 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ FILES = get_next_line \
 		ray_cast_func2 \
 		ray_cast_func3 \
 		ray_cast_func4 \
+		ray_cast_func6 \
 		screenshot \
 		cub3d \
 		$(JOIN)

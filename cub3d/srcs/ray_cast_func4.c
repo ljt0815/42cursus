@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 15:50:31 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 14:13:50 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,16 @@ void	get_scr_size(t_dat *dat)
 		dat->r.x = dat->f_sw;
 	if (dat->r.y > dat->f_sh)
 		dat->r.y = dat->f_sh;
+}
+
+int		move_mouse(t_dat *dat)
+{
+	int		x;
+	int		y;
+
+	mlx_mouse_get_pos(dat->win, &x, &y);
+	mouse_update(dat, dat->p.dirx, dat->p.planex, x);
+	mlx_mouse_move(dat->win, dat->f_sw / 2, dat->f_sh / 4);
+	mlx_mouse_hide();
+	return (0);
 }

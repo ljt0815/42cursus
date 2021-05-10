@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 00:25:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 16:07:13 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 14:15:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		main_loop(t_dat *dat)
 		exit(1);
 	}
 	key_update(dat);
+	move_mouse(dat);
 	return (0);
 }
 

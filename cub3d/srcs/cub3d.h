@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:45:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 15:46:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 14:01:36 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,4 +234,6 @@ int			xbutton(t_dat *dat);
 void		stopmusic(void);
 int			convert_color(int color, double dist);
 void		get_scr_size(t_dat *dat);
+int			move_mouse(t_dat *dat);
+void		mouse_update(t_dat *dat, double olddirx, double oldplanex, int x);
 #endif
