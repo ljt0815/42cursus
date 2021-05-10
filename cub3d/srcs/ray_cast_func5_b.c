@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 06:33:14 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 12:50:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 15:15:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	stopmusic(void)
 {
 	system("ps -ef | grep afplay | grep -v 'grep' | awk '{print $2}' > list");
-	system("./turnoff.sh ; rm list");
+	system("./turnoff.sh &>/dev/null; rm list");
 	printf("success music stopping!!");
 }
 

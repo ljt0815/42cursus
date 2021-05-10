@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 02:33:55 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/10 14:02:06 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/10 15:02:53 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,17 @@ LIB = -Lsrcs
 BONUS = ray_cast_func5_b \
 		ray_cast_b \
 		ft_mapcpy_b \
+		ray_cast_func2_b \
+		ray_cast_func4_b \
 		map_chk_func3_b \
 		border_chk_b \
+		ray_cast_func6_b
 
 MANDATORY = ray_cast_func5 \
 			ray_cast \
 			ft_mapcpy \
+			ray_cast_func2 \
+			ray_cast_func4 \
 			map_chk_func3 \
 			border_chk
 
@@ -50,10 +55,7 @@ FILES = get_next_line \
 		map_chk_func \
 		map_chk_func2 \
 		ray_cast_func \
-		ray_cast_func2 \
 		ray_cast_func3 \
-		ray_cast_func4 \
-		ray_cast_func6 \
 		screenshot \
 		cub3d \
 		$(JOIN)

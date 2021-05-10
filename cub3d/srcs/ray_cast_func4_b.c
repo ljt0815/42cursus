@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 05:58:13 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/10 15:01:54 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 14:52:20 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	screen_sprite(t_dat *dat, t_i *s, int i)
 				s->color = dat->texture[dat->sp[s->spord[i]].texture]\
 					[64 * s->texy + s->texx];
 				if ((s->color & 0x00FFFFFF) != 0)
-					dat->buf[y][st] = s->color;
+					dat->buf[y][st] = convert_color(s->color, s->tfy);
 			}
 		}
 	}
