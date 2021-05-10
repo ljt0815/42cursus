@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 00:33:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/04 06:08:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 15:32:04 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	map_chk(char *my_path, t_dat *dat)
 		else if (line[0] == 'R')
 		{
 			if (dat->r.x != 0 || dat->r.y != 0)
-				err_msg("Duplicate Identifier \"R\"");
+				err_msg("Identifier \"R\" Exception");
 			resol_chk(&line[1], dat);
 		}
 		else if (xpm_chk(line, dat) || comma_chk(line, dat) || line[0] == '\0')
