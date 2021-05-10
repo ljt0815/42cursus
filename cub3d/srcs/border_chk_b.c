@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 09:36:43 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/08 16:19:05 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/10 17:38:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	push_loc(t_stack *s, int x, int y, char **map)
 	if (x < 0 || y < 0)
 		return ;
 	if (map[x][y] == 0 || map[x][y] == 2 || \
-			map[x][y] == 3)
+			map[x][y] == 3 || map[x][y] == 4)
 	{
 		loc.x = x;
 		loc.y = y;
@@ -68,7 +68,8 @@ void	navi_map(t_loc *st, t_stack *s, t_dat *dat, char **map)
 		if (x == 0 || y == 0 || x == (dat->map.x - 1) || y == (dat->map.y - 1))
 			err_msg("minimap border not invalid");
 		zero_space_chk(map, x, y, dat);
-		map[x][y] = 88;
+		if (map[x][y] != 4)
+			map[x][y] = 88;
 		push_loc(s, x - 1, y, map);
 		push_loc(s, x + 1, y, map);
 		push_loc(s, x, y - 1, map);
