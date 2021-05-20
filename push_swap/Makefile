@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 13:08:10 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/20 13:17:21 by jitlee           ###   ########.fr        #
+#    Updated: 2021/05/20 14:49:36 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Wall -Wextra -Werror
 IFLAG = -I
 LIBFT_F = ./libft
 
-FILES = push_swap
+FILES = push_swap \
+		listnode
 LIBFT_A = -L$(LIBFT_F) -lft
 SRCS_DIR = ./srcs/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
