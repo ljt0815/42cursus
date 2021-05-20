@@ -6,21 +6,24 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:34:17 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/20 16:34:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/20 18:43:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_NODE_H
-# define LIST_NODE_H
+#ifndef LISTNODE_H
+# define LISTNODE_H
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_node{
+typedef struct	s_node{
 	int				data;
-	struct s_node	*link;
-}					t_node;
+	struct s_node	*llink;
+	struct s_node	*rlink;
+}				t_node;
 
-t_node	*in_first(t_node *head, int data);
-t_node	*in_last(t_node *head, int data);
-void	print_list(t_node *head);
+void			init_node(t_node *phead);
+void			print_list(t_node *phead);
+void			node_lin(t_node *before, int data);
+void			node_rin(t_node *before, int data);
+void			node_del(t_node *head, t_node *removed);
 #endif

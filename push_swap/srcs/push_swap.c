@@ -6,12 +6,11 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:38:39 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/20 16:35:04 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/20 19:47:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "listnode.h"
 
 void	err_msg(char *msg)
 {
@@ -40,12 +39,24 @@ void	all_digit_chk(int ac, char **av)
 int		main(int ac, char **av)
 {
 	t_node	*a;
+	t_node	*b;
+	int		i;
 
-	a = 0;
+	a = malloc(sizeof(t_node));
+	b = malloc(sizeof(t_node));
+	init_node(a);
+	init_node(b);
+	i = 0;
 	if (ac == 1)
 		err_msg("Not enough arguments.");
 	all_digit_chk(ac, av);
-	a = in_first(a, ft_atoi(av[1]));
+	while (++i <= ac - 1)
+		node_lin(a, ft_atoi(av[i]));
+	swap(a);
+	push(b, a);
+	push(b, a);
+	push(b, a);
 	print_list(a);
+	print_list(b);
 	return (0);
 }

@@ -6,63 +6,60 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:34:40 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/20 15:00:18 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/20 19:06:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "listnode.h"
 #include "push_swap.h"
 
-t_node	*in_first(t_node *head, int data)
+void	init_node(t_node *phead)
 {
-	t_node	*node;
+	phead->llink = phead;
+	phead->rlink = phead;
+}
+
+void	print_list(t_node *phead)
+{
+	t_node	*p;
+
+	p = phead->rlink;
+	while (p != phead)
+	{
+		printf("<-| |%d| |-> ", p->data);
+		p = p->rlink;
+	}
+	printf("\n");
+}
+
+void	node_lin(t_node *before, int data)
+{
+	t_node *node;
 
 	node = malloc(sizeof(t_node));
 	node->data = data;
-	if (head == 0)
-	{
-		head = node;
-		node->link = head;
-	}
-	else
-	{
-		node->link = head->link;
-		head->link = node;
-	}
-	return (head);
+	node->llink = before->llink;
+	node->rlink = before;
+	before->llink->rlink = node;
+	before->llink = node;
 }
 
-t_node	*in_last(t_node *head, int data)
+void	node_rin(t_node *before, int data)
 {
-	t_node	*node;
+	t_node *node;
 
 	node = malloc(sizeof(t_node));
 	node->data = data;
-	if (head == 0)
-	{
-		head = node;
-		node->link = head;
-	}
-	else
-	{
-		node->link = head->link;
-		head->link = node;
-		head = node;
-	}
-	return (head);
+	node->llink = before;
+	node->rlink = before->rlink;
+	before->rlink->llink = node;
+	before->rlink = node;
 }
 
-void	print_list(t_node *head)
+void	node_del(t_node *head, t_node *removed)
 {
-	t_node *p;
-
-	if (head == 0)
+	if (removed == head)
 		return ;
-	printf("%d->", head->data);
-	p = head->link;
-	while (p != head)
-	{
-		printf("%d->", p->data);
-		p = p->link;
-	}
+	removed->llink->rlink = removed->rlink;
+	removed->rlink->llink = removed->llink;
+	free(removed);
 }

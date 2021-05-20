@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:40:25 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/20 13:04:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/20 19:33:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 # define PUSH_SWAP_H
 # include "libft.h"
+# include "listnode.h"
 # include <unistd.h>
 # include <stdlib.h>
+
+void	swap(t_node *n);
+void	push(t_node *n1, t_node *n2);
 
 #endif
