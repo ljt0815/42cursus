@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_func.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 17:37:10 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/20 21:01:23 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/21 17:35:24 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,32 @@ void	push(t_node *n1, t_node *n2)
 	tmp->llink = n1;
 }
 
-void	reverse(t_node *n)
+void	rotate(t_node *n)
 {
-	
+	t_node	*tmp;
+
+	if (n->rlink == n)
+		return ;
+	tmp = n->rlink;
+	n->rlink->rlink->llink = n;
+	n->rlink = n->rlink->rlink;
+	n->llink->rlink = tmp;
+	tmp->llink = n->llink;
+	tmp->rlink = n;
+	n->llink = tmp;
+}
+
+void	r_rotate(t_node *n)
+{
+	t_node	*tmp;
+
+	if (n->llink == n)
+		return ;
+	tmp = n->llink;
+	n->llink->llink->rlink = n;
+	n->llink = n->llink->llink;
+	n->rlink->llink = tmp;
+	tmp->rlink = n->rlink;
+	tmp->llink = n;
+	n->rlink = tmp;
 }
