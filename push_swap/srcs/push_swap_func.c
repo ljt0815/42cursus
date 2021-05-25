@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 17:37:10 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/21 17:35:24 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2021/05/24 16:27:37 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	rotate(t_node *n)
 {
 	t_node	*tmp;
 
-	if (n->rlink == n)
+	if (n->rlink == n || n->llink == n)
 		return ;
 	tmp = n->rlink;
 	n->rlink->rlink->llink = n;
@@ -60,7 +60,7 @@ void	r_rotate(t_node *n)
 {
 	t_node	*tmp;
 
-	if (n->llink == n)
+	if (n->llink == n || n->rlink == n)
 		return ;
 	tmp = n->llink;
 	n->llink->llink->rlink = n;

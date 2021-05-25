@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 12:38:39 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/21 17:37:46 by marvin           ###   ########seoul.kr  */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 void	err_msg(char *msg)
@@ -52,7 +40,6 @@ int		main(int ac, char **av)
 	all_digit_chk(ac, av);
 	while (++i <= ac - 1)
 		node_lin(a, ft_atoi(av[i]));
-	r_rotate(a);
-	print_list(a);
+	quick_sort(a, b, ac);
 	return (0);
 }
