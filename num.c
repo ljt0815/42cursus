@@ -2,7 +2,6 @@
 #include<stdlib.h>  //rand(), srand();
 #include<time.h>    //time()
 #include<string.h>  //memset()
-#define SIZE 100
 void mkArr(int* arr, int size){
         int cnt = 0;
         int test[size];
@@ -17,10 +16,16 @@ void mkArr(int* arr, int size){
                 }
         }
 }
-int main (){
-        int arr[SIZE];
-        mkArr(arr,SIZE);
-        for(int i = 0; i<SIZE; i++){
+int main (int argc, char **argv){
+	if (argc < 2)
+		printf("argument only one\n");
+	else if (argc > 2)
+		printf("argument only one\n");
+	int *arr;
+	int ssize = atoi(argv[1]);
+	arr = malloc(4 * ssize + 1);
+        mkArr(arr,ssize);
+        for(int i = 0; i<ssize; i++){
                 printf("%d ",arr[i]);
         }
         return 0;
