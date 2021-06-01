@@ -40,6 +40,6 @@ int		main(int ac, char **av)
 	all_digit_chk(ac, av);
 	while (++i <= ac - 1)
 		node_lin(a, ft_atoi(av[i]));
-	quick_sort(a, b, ac - 1);
+	merge_sort(a, b, ac - 1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listnode.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:34:40 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/20 19:06:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/05/31 21:07:08 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_node(t_node *phead)
 {
 	phead->llink = phead;
 	phead->rlink = phead;
+	phead->data = -2147483648;
 }
 
 void	print_list(t_node *phead)
