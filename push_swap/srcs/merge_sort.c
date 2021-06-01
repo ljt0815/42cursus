@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:46:22 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/01 00:20:00 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2021/06/01 01:31:30 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,14 @@ void	sorting_b(t_node *a, t_node *b)
 		rotate(a);
 		return ;
 	}
+	if (b->rlink->data > a->llink->llink->data)
+	{
+		r_rotate(a);
+		push(a, b);
+		rotate(a);
+		rotate(a);
+		return ;
+	}
 	while (a->rlink->data != last)
 	{
 		if (b->rlink->data < a->rlink->data)
@@ -90,7 +98,7 @@ void	sorting_b(t_node *a, t_node *b)
 			break;
 		}
 		else
-			rotate(a);	
+			rotate(a);
 		cnt++;	
 	}
 	if (cnt < size / 2)
@@ -103,7 +111,6 @@ void	sorting_b(t_node *a, t_node *b)
 
 void	a_to_b(t_node *a, t_node *b, int n)
 {
-	printf("a_to_b%d\n",n);
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
@@ -121,18 +128,17 @@ void	a_to_b(t_node *a, t_node *b, int n)
 			push(b, a);
 			if (a->rlink->data > a->rlink->rlink->data)
 				swap(a);
-		}			
+		}
 		return ;
 	}
 	while (++(d.i) < n)
 		push(b, a);
 	a_to_b(a, b, d.next_n);
-	//b_to_a(a, b, d.next_n);
+	b_to_a(a, b, d.next_n);
 }
 
 void	b_to_a(t_node *a, t_node *b, int n)
 {
-	printf("b_to_a%d\n",n);
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
@@ -147,26 +153,26 @@ void	b_to_a(t_node *a, t_node *b, int n)
 			sorting_a(a, 1);
 			sorting_a(a, 0);
 			sorting_b(a, b);
+			sorting_b(a, b);
 		}
 		return ;
 	}
 	while (++(d.i) < n)
-		push(b,a);
+		push(a,b);
 	a_to_b(a, b, d.next_n);
-	//b_to_a(a, b, d.next_n);
+	b_to_a(a, b, d.next_n);
 }
 
 void	merge_sort(t_node *a, t_node *b, int n)
 {
-	/*if (n % 2 == 0)
+	if (n % 2 == 0)
 		a_to_b(a, b, n / 2);
 	else
-		a_to_b(a, b, (n / 2) + 1);*/
-	n += 0;
-	push(b, a);
-	push(b, a);
-	sorting_b(a, b);
-	sorting_b(a, b);
+		a_to_b(a, b, (n / 2) + 1);
+	if (n % 2 == 0)
+		b_to_a(a, b, n / 2);
+	else
+		b_to_a(a, b, (n / 2) + 1);
 	print_list(a);
 	print_list(b);
 }
