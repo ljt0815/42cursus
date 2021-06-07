@@ -6,14 +6,35 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:46:22 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/07 00:17:50 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2021/06/07 05:17:27 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int		sorting_chk(t_node *node, int n)
+{
+	int		max;
+	int		i;
+	
+	i = 0;
+	node = node->rlink;
+	max = node->data;
+	while (++i < n)
+	{
+		node = node->rlink;
+		if (max < node->data)
+			max = node->data;
+		else
+			break;
+	}
+	if (i == n)
+		return 1;
+	return 0;
+}
 void	a_sort(t_node *a, t_node *b, int asize, int bsize)
 {
+	//printf("a_sort(%d, %d)\n", asize, bsize);
 	int i;
 	int n;
 
@@ -60,9 +81,10 @@ void	a_sort(t_node *a, t_node *b, int asize, int bsize)
 
 void	b_sort(t_node *a, t_node *b, int asize, int bsize)
 {
+	//printf("b_sort(%d, %d)\n", asize, bsize);
 	int i;
 	int n;
-
+	
 	i = -1;
 	n = asize + bsize;
 	while (++i < n)
@@ -110,6 +132,17 @@ void	a_to_b(t_node *a, t_node *b, int n)
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
+	if (sorting_chk(a, n))
+		return ;
+	if (n == 2)
+	{
+		if (a->rlink->data > a->rlink->rlink->data)
+		{
+			swap(a);
+			write(1, "sa\n", 3);
+		}
+		return ;
+	}
 	if (n == 1)
 		return ;
 	while (++(d.i) < n / 2)
@@ -129,6 +162,17 @@ void	b_to_a(t_node *a, t_node *b, int n)
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
+	if (sorting_chk(b, n))
+		return ;
+	if (n == 2)
+	{
+		if (b->rlink->data > b->rlink->rlink->data)
+		{
+			swap(b);
+			write(1, "sb\n", 3);
+		}
+		return ;
+	}
 	if (n == 1)
 		return ;
 	while (++(d.i) < n / 2)
@@ -145,5 +189,5 @@ void	b_to_a(t_node *a, t_node *b, int n)
 void	merge_sort(t_node *a, t_node *b, int n)
 {
 	a_to_b(a, b, n);
-	print_list(a);
+	//print_list(a);
 }

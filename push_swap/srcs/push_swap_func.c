@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 17:37:10 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/25 19:58:53 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2021/06/07 04:39:02 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	swap(t_node *n)
 	tmp = n->rlink;
 	tmp2 = n->rlink->rlink;
 	n->rlink = tmp2;
+	tmp2->rlink->llink = tmp;
 	tmp->rlink = tmp2->rlink;
 	tmp2->rlink = tmp;
 	tmp->llink = tmp2;
