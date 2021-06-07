@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:40:25 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/31 20:07:02 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2021/06/06 23:46:43 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@
 
 typedef struct {
 	int		i;
-    int     next_n;
-	int		ra;
-	int		rb;
-    int     pb;
+    int     tmp;
     int     pa;
+    int     pb;
 }   t_dat;
 
 void	swap(t_node *n);
