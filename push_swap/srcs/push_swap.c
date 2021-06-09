@@ -19,7 +19,7 @@ void	all_digit_chk(int ac, char **av)
 		j = -1;
 		len = ft_strlen(av[i]);
 		while (++j < len)
-			if (!ft_isdigit(av[i][j]))
+			if (!(ft_isdigit(av[i][j]) || av[i][j] == '-'))
 				err_msg("argument is ONLY number");
 	}
 }
@@ -40,6 +40,6 @@ int		main(int ac, char **av)
 	all_digit_chk(ac, av);
 	while (++i <= ac - 1)
 		node_lin(a, ft_atoi(av[i]));
-	merge_sort(a, b, ac - 1);
+	quick_sort(a, b, ac - 1);
 	return (0);
 }

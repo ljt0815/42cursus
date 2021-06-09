@@ -20,7 +20,7 @@ LIBFT_F = ./libft
 FILES = push_swap		\
 		push_swap_func	\
 		listnode		\
-		merge_sort
+		quick_sort
 LIBFT_A = -L$(LIBFT_F) -lft
 SRCS_DIR = ./srcs/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
