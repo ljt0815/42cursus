@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 05:39:09 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/09 03:27:58 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2021/06/09 04:03:59 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,12 @@ int		sorting_chk(t_node *node, int n)
 	return 0;
 }
 
-void	a_to_b(t_node *a, t_node *b, int n, int *debug)
+void	a_to_b(t_node *a, t_node *b, int n)
 {
 	//printf("a_to_b(%d)\n", n);
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
-	if (sorting_chk(a, n))
-		return ;
 	if (n == 2)
 	{
 		if (a->rlink->data > a->rlink->rlink->data)
@@ -110,12 +108,6 @@ void	a_to_b(t_node *a, t_node *b, int n, int *debug)
 	}
 	if (n <= 1)
 		return ;
-	/*if (n == 13)
-	{
-		if (*debug > 4)
-			exit(1);
-		*debug += 1;
-	}*/
 	find_fivot(a, n, &d.f1, &d.f2);
 	//printf("fivot : %d, %d\n", d.f1, d.f2);
 	while (++(d.i) < n)
@@ -151,19 +143,17 @@ void	a_to_b(t_node *a, t_node *b, int n, int *debug)
 		r_rotate(b);
 		write(1, "rrb\n", 4);
 	}
-	a_to_b(a, b, d.ra, debug);
-	b_to_a(a, b, d.rb, debug);
-	b_to_a(a, b, d.pb - d.rb, debug);
+	a_to_b(a, b, d.ra);
+	b_to_a(a, b, d.rb);
+	b_to_a(a, b, d.pb - d.rb);
 }
 
-void	b_to_a(t_node *a, t_node *b, int n, int *debug)
+void	b_to_a(t_node *a, t_node *b, int n)
 {
 	//printf("b_to_a(%d)\n", n);
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
-	if (sorting_chk(b, n))
-		return ;
 	if (n == 2)
 	{
 		if (b->rlink->data < b->rlink->rlink->data)
@@ -207,9 +197,8 @@ void	b_to_a(t_node *a, t_node *b, int n, int *debug)
 				d.ra++;
 			}
 		}
-		
 	}
-	a_to_b(a, b, d.pa - d.ra, debug);
+	a_to_b(a, b, d.pa - d.ra);
 	d.i = -1;
 	while (++d.i < d.ra)
 	{
@@ -222,17 +211,13 @@ void	b_to_a(t_node *a, t_node *b, int n, int *debug)
 		r_rotate(b);
 		write(1, "rrb\n", 4);
 	}
-	a_to_b(a, b, d.ra, debug);
-	b_to_a(a, b, d.rb, debug);
+	a_to_b(a, b, d.ra);
+	b_to_a(a, b, d.rb);
 }
 
 void	quick_sort(t_node *a, t_node *b, int n)
 {
-	int debug;
-
-	debug = 0;
-	a_to_b(a, b, n, &debug);
-	//find_fivot(a, n, &f1, &f2);
+	a_to_b(a, b, n);
 	print_list(a);
 	print_list(b);
 }
