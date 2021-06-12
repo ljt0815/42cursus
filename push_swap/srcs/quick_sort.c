@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 05:39:09 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/12 20:34:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/12 21:08:14 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -360,6 +360,47 @@ void	print_msg(t_node *msg)
 	}
 }
 
+void	optimize_msg(t_node *msg)
+{
+	t_node *p;
+
+	p = msg->rlink;
+	while (p != msg)
+	{
+		if (p->data == RA && p->llink->data == RB)
+		{
+			node_del(msg, p->llink);
+			p->data = RR;
+		}
+		else if (p->data == RB && p->llink->data == RA)
+		{
+			node_del(msg, p->llink);
+			p->data = RR;
+		}
+		else if (p->data == RRA && p->llink->data == RRB)
+		{
+			node_del(msg, p->llink);
+			p->data = RRR;
+		}
+		else if (p->data == RRB && p->llink->data == RRA)
+		{
+			node_del(msg, p->llink);
+			p->data = RRR;
+		}
+		else if (p->data == SB && p->llink->data == SA)
+		{
+			node_del(msg, p->llink);
+			p->data = SS;
+		}
+		else if (p->data == SA && p->llink->data == SB)
+		{
+			node_del(msg, p->llink);
+			p->data = SS;
+		}
+		p = p->rlink;
+	}
+}
+
 void	quick_sort(t_node *a, t_node *b, int n)
 {
 	t_node	msg;
@@ -373,5 +414,6 @@ void	quick_sort(t_node *a, t_node *b, int n)
 		mini_a_to_b(a, b, n, &msg);
 	else
 		a_to_b(a, b, n, &msg);
+	optimize_msg(&msg);
 	print_msg(&msg);
 }
