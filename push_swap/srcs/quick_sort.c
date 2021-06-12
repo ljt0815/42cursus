@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 05:39:09 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/12 12:38:11 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/12 20:34:25 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	bubble_sort(int *arr, int n)
 {
-	int i;
-	int j;
-	int tmp;
-	
+	int	i;
+	int	j;
+	int	tmp;
+
 	i = -1;
 	while (++i < n)
 	{
@@ -34,29 +34,36 @@ void	bubble_sort(int *arr, int n)
 	}
 }
 
-void	find_fivot(t_node *node, int n, int *f1, int *f2)
+void	mini_find_fivot(t_node *node, int n, int *f)
 {
-	//t_node	*head;
 	int		*arr;
 	int		i;
 
 	i = -1;
-	//head = node;
 	arr = malloc(sizeof(int) * (n + 1));
 	while (++i < n)
 	{
 		node = node->rlink;
 		arr[i] = node->data;
 	}
-	/*printf("before ");
-	for (i = 0; i < n; i++)
-		printf("%d ", arr[i]);
-	puts("");*/
 	bubble_sort(arr, n);
-	/*
-	printf("after ");
-	for (i = 0; i < n; i++)
-		printf("%d ", arr[i]);*/
+	*f = arr[(n / 2)];
+	free(arr);
+}
+
+void	find_fivot(t_node *node, int n, int *f1, int *f2)
+{
+	int		*arr;
+	int		i;
+
+	i = -1;
+	arr = malloc(sizeof(int) * (n + 1));
+	while (++i < n)
+	{
+		node = node->rlink;
+		arr[i] = node->data;
+	}
+	bubble_sort(arr, n);
 	if (n % 3 == 2)
 	{
 		*f1 = arr[(n / 3)];
@@ -70,7 +77,7 @@ void	find_fivot(t_node *node, int n, int *f1, int *f2)
 	free(arr);
 }
 
-void	rrx(t_node *a, t_node *b, t_dat *d)
+void	rrx(t_node *a, t_node *b, t_dat *d, t_node *msg)
 {
 	int flag;
 
@@ -83,21 +90,21 @@ void	rrx(t_node *a, t_node *b, t_dat *d)
 	}
 	d->i = -1;
 	while (++d->i < d->tmp)
-		rr('r', a, b);
+		rr('r', a, b, msg);
 	d->i = -1;
 	if (flag == 0)
 		while (++d->i < d->rb - d->ra)
-			rr('b', a, b);
+			rr('b', a, b, msg);
 	else
 		while (++d->i < d->ra - d->rb)
-			rr('a', a, b);
+			rr('a', a, b, msg);
 }
 
 int		sorting_chk_a(t_node *node, int n)
 {
 	int		max;
 	int		i;
-	
+
 	i = 0;
 	node = node->rlink;
 	max = node->data;
@@ -107,18 +114,47 @@ int		sorting_chk_a(t_node *node, int n)
 		if (max < node->data)
 			max = node->data;
 		else
-			break;
+			break ;
 	}
 	if (i == n)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
+}
+
+void	micro_a_to_b(t_node *a, t_node *b, t_node *msg)
+{
+	if (a->rlink->data > a->rlink->rlink->data)
+	{
+		if (a->rlink->rlink->data > a->llink->data)
+		{
+			s('a', a, b, msg);
+			rr('a', a, b, msg);
+		}
+		else
+		{
+			if (a->rlink->data < a->llink->data)
+				s('a', a, b, msg);
+			else
+				r('a', a, b, msg);
+		}
+	}
+	else
+	{
+		if (a->rlink->data < a->llink->data)
+		{
+			rr('a', a, b, msg);
+			s('a', a, b, msg);
+		}
+		else
+			rr('a', a, b, msg);
+	}
 }
 
 int		sorting_chk_b(t_node *node, int n)
 {
 	int		min;
 	int		i;
-	
+
 	i = 0;
 	node = node->rlink;
 	min = node->data;
@@ -128,109 +164,214 @@ int		sorting_chk_b(t_node *node, int n)
 		if (min > node->data)
 			min = node->data;
 		else
-			break;
+			break ;
 	}
 	if (i == n)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-void	a_to_b(t_node *a, t_node *b, int n)
+void	mini_a_to_b(t_node *a, t_node *b, int n, t_node *msg)
 {
-	//printf("a_to_b(%d)\n", n);
 	t_dat d;
+
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
 	if (sorting_chk_a(a, n))
 		return ;
-	if (n == 2)
+	if (n <= 2)
 	{
-		s('a', a, b);
+		if (n == 2)
+			s('a', a, b, msg);
 		return ;
 	}
-	if (n <= 1)
-		return ;
-	find_fivot(a, n, &d.f1, &d.f2);
-	//printf("fivot : %d, %d\n", d.f1, d.f2);
-	while (++(d.i) < n)
+	mini_find_fivot(a, n, &d.f1);
+	while (++d.i < n)
 	{
-		if (a->rlink->data >= d.f2)
+		if (a->rlink->data <= d.f1)
 		{
-			r('a', a, b);
-			d.ra++;
+			p('b', a, b, msg);
+			d.pb++;
 		}
 		else
 		{
-			p('b', a, b);
-			d.pb++;
-			if (b->rlink->data >= d.f1)
-			{
-				r('b', a, b);
-				d.rb++;
-			}
+			r('a', a, b, msg);
+			d.ra++;
 		}
 	}
-	rrx(a, b, &d);
-	a_to_b(a, b, d.ra);
-	b_to_a(a, b, d.rb);
-	b_to_a(a, b, d.pb - d.rb);
+	mini_a_to_b(a, b, d.ra, msg);
+	mini_b_to_a(a, b, d.pb, msg);
 }
 
-void	b_to_a(t_node *a, t_node *b, int n)
+void	mini_b_to_a(t_node *a, t_node *b, int n, t_node *msg)
 {
-	//printf("b_to_a(%d)\n", n);
 	t_dat d;
+
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
 	if (sorting_chk_b(b, n))
 	{
 		while (++d.i < n)
-			p('a', a, b);
+			p('a', a, b, msg);
 		return ;
 	}
-	if (n == 2)
+	if (n <= 2)
 	{
-		s('b', a, b);
-		p('a', a, b);
-		p('a', a, b);
+		if (n == 2)
+			s('b', a, b, msg);
+		while (++d.i < n)
+			p('a', a, b, msg);
 		return ;
 	}
-	if (n == 1)
+	mini_find_fivot(b, n, &d.f1);
+	while (++d.i < n)
 	{
-		p('a', a, b);
-		return ;
-	}
-	if (n <= 0)
-		return;
-	find_fivot(b, n, &d.f1, &d.f2);
-	//printf("fivot : %d, %d\n", d.f1, d.f2);
-	while (++(d.i) < n)
-	{
-		if (b->rlink->data < d.f1)
+		if (b->rlink->data <= d.f1)
 		{
-			r('b', a, b);
+			r('b', a, b, msg);
 			d.rb++;
 		}
 		else
 		{
-			p('a', a, b);
+			p('a', a, b, msg);
+			d.pa++;
+		}
+	}
+	mini_a_to_b(a, b, d.pa, msg);
+	mini_b_to_a(a, b, d.rb, msg);
+}
+
+void	a_to_b(t_node *a, t_node *b, int n, t_node *msg)
+{
+	t_dat d;
+
+	ft_bzero(&d, sizeof(t_dat));
+	d.i = -1;
+	if (sorting_chk_a(a, n))
+		return ;
+	if (n <= 2)
+	{
+		if (n == 2)
+			s('a', a, b, msg);
+		return ;
+	}
+	find_fivot(a, n, &d.f1, &d.f2);
+	while (++(d.i) < n)
+	{
+		if (a->rlink->data >= d.f2)
+		{
+			r('a', a, b, msg);
+			d.ra++;
+		}
+		else
+		{
+			p('b', a, b, msg);
+			d.pb++;
+			if (b->rlink->data >= d.f1)
+			{
+				r('b', a, b, msg);
+				d.rb++;
+			}
+		}
+	}
+	rrx(a, b, &d, msg);
+	a_to_b(a, b, d.ra, msg);
+	b_to_a(a, b, d.rb, msg);
+	b_to_a(a, b, d.pb - d.rb, msg);
+}
+
+void	b_to_a(t_node *a, t_node *b, int n, t_node *msg)
+{
+	t_dat d;
+
+	ft_bzero(&d, sizeof(t_dat));
+	d.i = -1;
+	if (sorting_chk_b(b, n))
+	{
+		while (++d.i < n)
+			p('a', a, b, msg);
+		return ;
+	}
+	if (n <= 2)
+	{
+		if (n == 2)
+			s('b', a, b, msg);
+		while (++d.i < n)
+			p('a', a, b, msg);
+		return ;
+	}
+	find_fivot(b, n, &d.f1, &d.f2);
+	while (++(d.i) < n)
+	{
+		if (b->rlink->data < d.f1)
+		{
+			r('b', a, b, msg);
+			d.rb++;
+		}
+		else
+		{
+			p('a', a, b, msg);
 			d.pa++;
 			if (a->rlink->data < d.f2)
 			{
-				r('a', a, b);
+				r('a', a, b, msg);
 				d.ra++;
 			}
 		}
 	}
-	a_to_b(a, b, d.pa - d.ra);
-	rrx(a, b, &d);
-	a_to_b(a, b, d.ra);
-	b_to_a(a, b, d.rb);
+	a_to_b(a, b, d.pa - d.ra, msg);
+	rrx(a, b, &d, msg);
+	a_to_b(a, b, d.ra, msg);
+	b_to_a(a, b, d.rb, msg);
+}
+
+void	print_msg(t_node *msg)
+{
+	t_node *p;
+
+	p = msg->rlink;
+	while (p != msg)
+	{
+		if (p->data == RA)
+			write(1, "ra\n", 3);
+		else if (p->data == RB)
+			write(1, "rb\n", 3);
+		else if (p->data == RR)
+			write(1, "rr\n", 3);
+		else if (p->data == RRA)
+			write(1, "rra\n", 4);
+		else if (p->data == RRB)
+			write(1, "rrb\n", 4);
+		else if (p->data == RRR)
+			write(1, "rrr\n", 4);
+		else if (p->data == PA)
+			write(1, "pa\n", 3);
+		else if (p->data == PB)
+			write(1, "pb\n", 3);
+		else if (p->data == SA)
+			write(1, "sa\n", 3);
+		else if (p->data == SB)
+			write(1, "sb\n", 3);
+		else if (p->data == SS)
+			write(1, "ss\n", 3);
+		else
+			write(2, "ERROR\n", 6);
+		p = p->rlink;
+	}
 }
 
 void	quick_sort(t_node *a, t_node *b, int n)
 {
-	a_to_b(a, b, n);
-	print_list(a);
-	print_list(b);
+	t_node	msg;
+
+	init_node(&msg);
+	if (sorting_chk_a(a, n))
+		return ;
+	else if (n == 3)
+		micro_a_to_b(a, b, &msg);
+	else if (n <= 8)
+		mini_a_to_b(a, b, n, &msg);
+	else
+		a_to_b(a, b, n, &msg);
+	print_msg(&msg);
 }

@@ -6,82 +6,82 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 09:06:05 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/12 12:39:12 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/12 20:15:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	r(char c, t_node *a, t_node *b)
+void	r(char c, t_node *a, t_node *b, t_node *msg)
 {
 	if (c == 'a')
 	{
 		rotate(a);
-		write(1, "ra\n", 3);
+		node_lin(msg, RA);
 	}
 	else if (c == 'b')
 	{
 		rotate(b);
-		write(1, "rb\n", 3);
+		node_lin(msg, RB);
 	}
 	else if (c == 'r')
 	{
 		rotate(a);
 		rotate(b);
-		write(1, "rr\n", 3);
+		node_lin(msg, RR);
 	}
 }
 
-void	rr(char c, t_node *a, t_node *b)
+void	rr(char c, t_node *a, t_node *b, t_node *msg)
 {
 	if (c == 'a')
 	{
 		r_rotate(a);
-		write(1, "rra\n", 4);
+		node_lin(msg, RRA);
 	}
 	else if (c == 'b')
 	{
 		r_rotate(b);
-		write(1, "rrb\n", 4);
+		node_lin(msg, RRB);
 	}
 	else if (c == 'r')
 	{
 		r_rotate(a);
 		r_rotate(b);
-		write(1, "rrr\n", 4);
+		node_lin(msg, RRR);
 	}
 }
 
-void	p(char c, t_node *a, t_node *b)
+void	p(char c, t_node *a, t_node *b, t_node *msg)
 {
 	if (c == 'a')
 	{
 		push(a, b);
-		write(1, "pa\n", 3);
+		node_lin(msg, PA);
 	}
 	else if (c == 'b')
 	{
 		push(b, a);
-		write(1, "pb\n", 3);
+		node_lin(msg, PB);
 	}
 }
 
-void	s(char c, t_node *a, t_node *b)
+void	s(char c, t_node *a, t_node *b, t_node *msg)
 {
 	if (c == 'a')
 	{
 		swap(a);
-		write(1, "sa\n", 3);
+		node_lin(msg, SA);
 	}
 	else if (c == 'b')
 	{
 		swap(b);
-		write(1, "sb\n", 3);
+		node_lin(msg, SB);
 	}
 	else if (c == 's')
 	{
 		swap(a);
 		swap(b);
-		write(1, "ss\n", 3);
+		node_lin(msg, SS);
 	}
 }
