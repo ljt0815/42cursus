@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 05:39:09 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/09 04:03:59 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2021/06/12 12:38:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,30 @@ void	find_fivot(t_node *node, int n, int *f1, int *f2)
 	free(arr);
 }
 
-int		sorting_chk(t_node *node, int n)
+void	rrx(t_node *a, t_node *b, t_dat *d)
+{
+	int flag;
+
+	flag = 0;
+	d->tmp = d->ra;
+	if (d->rb < d->tmp)
+	{
+		d->tmp = d->rb;
+		flag = 1;
+	}
+	d->i = -1;
+	while (++d->i < d->tmp)
+		rr('r', a, b);
+	d->i = -1;
+	if (flag == 0)
+		while (++d->i < d->rb - d->ra)
+			rr('b', a, b);
+	else
+		while (++d->i < d->ra - d->rb)
+			rr('a', a, b);
+}
+
+int		sorting_chk_a(t_node *node, int n)
 {
 	int		max;
 	int		i;
@@ -91,19 +114,38 @@ int		sorting_chk(t_node *node, int n)
 	return 0;
 }
 
+int		sorting_chk_b(t_node *node, int n)
+{
+	int		min;
+	int		i;
+	
+	i = 0;
+	node = node->rlink;
+	min = node->data;
+	while (++i < n)
+	{
+		node = node->rlink;
+		if (min > node->data)
+			min = node->data;
+		else
+			break;
+	}
+	if (i == n)
+		return 1;
+	return 0;
+}
+
 void	a_to_b(t_node *a, t_node *b, int n)
 {
 	//printf("a_to_b(%d)\n", n);
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
+	if (sorting_chk_a(a, n))
+		return ;
 	if (n == 2)
 	{
-		if (a->rlink->data > a->rlink->rlink->data)
-		{
-			swap(a);
-			write(1, "sa\n", 3);
-		}
+		s('a', a, b);
 		return ;
 	}
 	if (n <= 1)
@@ -114,35 +156,21 @@ void	a_to_b(t_node *a, t_node *b, int n)
 	{
 		if (a->rlink->data >= d.f2)
 		{
-			rotate(a);
-			write(1, "ra\n", 3);
+			r('a', a, b);
 			d.ra++;
 		}
 		else
 		{
-			push(b, a);
-			write(1, "pb\n", 3);
+			p('b', a, b);
 			d.pb++;
 			if (b->rlink->data >= d.f1)
 			{
-				rotate(b);
-				write(1, "rb\n", 3);
+				r('b', a, b);
 				d.rb++;
 			}
 		}
 	}
-	d.i = -1;
-	while (++d.i < d.ra)
-	{
-		r_rotate(a);
-		write(1, "rra\n", 4);
-	}
-	d.i = -1;
-	while (++d.i < d.rb)
-	{
-		r_rotate(b);
-		write(1, "rrb\n", 4);
-	}
+	rrx(a, b, &d);
 	a_to_b(a, b, d.ra);
 	b_to_a(a, b, d.rb);
 	b_to_a(a, b, d.pb - d.rb);
@@ -154,23 +182,22 @@ void	b_to_a(t_node *a, t_node *b, int n)
 	t_dat d;
 	ft_bzero(&d, sizeof(t_dat));
 	d.i = -1;
+	if (sorting_chk_b(b, n))
+	{
+		while (++d.i < n)
+			p('a', a, b);
+		return ;
+	}
 	if (n == 2)
 	{
-		if (b->rlink->data < b->rlink->rlink->data)
-		{
-			swap(b);
-			write(1, "sb\n", 3);
-		}
-		push(a, b);
-		write(1, "pa\n", 3);
-		push(a, b);
-		write(1, "pa\n", 3);
+		s('b', a, b);
+		p('a', a, b);
+		p('a', a, b);
 		return ;
 	}
 	if (n == 1)
 	{
-		push(a, b);
-		write(1, "pa\n", 3);
+		p('a', a, b);
 		return ;
 	}
 	if (n <= 0)
@@ -181,36 +208,22 @@ void	b_to_a(t_node *a, t_node *b, int n)
 	{
 		if (b->rlink->data < d.f1)
 		{
-			rotate(b);
-			write(1, "rb\n", 3);
+			r('b', a, b);
 			d.rb++;
 		}
 		else
 		{
-			push(a, b);
-			write(1, "pa\n", 3);
+			p('a', a, b);
 			d.pa++;
 			if (a->rlink->data < d.f2)
 			{
-				rotate(a);
-				write(1, "ra\n", 3);
+				r('a', a, b);
 				d.ra++;
 			}
 		}
 	}
 	a_to_b(a, b, d.pa - d.ra);
-	d.i = -1;
-	while (++d.i < d.ra)
-	{
-		r_rotate(a);
-		write(1, "rra\n", 4);
-	}
-	d.i = -1;
-	while (++d.i < d.rb)
-	{
-		r_rotate(b);
-		write(1, "rrb\n", 4);
-	}
+	rrx(a, b, &d);
 	a_to_b(a, b, d.ra);
 	b_to_a(a, b, d.rb);
 }

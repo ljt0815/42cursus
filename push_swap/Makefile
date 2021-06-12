@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 13:08:10 by jitlee            #+#    #+#              #
-#    Updated: 2021/05/24 12:58:27 by marvin           ###   ########seoul.kr   #
+#    Updated: 2021/06/12 10:41:04 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,10 @@ CFLAGS = -Wall -Wextra -Werror
 IFLAG = -I
 LIBFT_F = ./libft
 
-FILES = push_swap		\
-		push_swap_func	\
-		listnode		\
+FILES = push_swap			\
+		push_swap_func		\
+		push_swap_command	\
+		listnode			\
 		quick_sort
 LIBFT_A = -L$(LIBFT_F) -lft
 SRCS_DIR = ./srcs/
