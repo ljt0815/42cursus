@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:40:25 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/12 20:22:32 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 05:34:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,20 @@ void		p(char c, t_node *a, t_node *b, t_node *msg);
 void		s(char c, t_node *a, t_node *b, t_node *msg);
 void		mini_a_to_b(t_node *a, t_node *b, int n, t_node *msg);
 void		mini_b_to_a(t_node *a, t_node *b, int n, t_node *msg);
+void		print_msg(t_node *msg);
+void		optimize_msg(t_node *msg);
+void		err_msg(char *msg);
+void		bubble_sort(int *arr, int n);
+int			sorting_chk_a(t_node *node, int n);
+int			sorting_chk_b(t_node *node, int n);
+void		find_fivot(t_node *node, int n, int *f1, int *f2);
+void		mini_find_fivot(t_node *node, int n, int *f);
+void		rrx(t_node *a, t_node *b, t_dat *d, t_node *msg);
+void		micro_a_to_b(t_node *a, t_node *b, t_node *msg);
+void		mini_a_to_b(t_node *a, t_node *b, int n, t_node *msg);
+void		mini_b_to_a(t_node *a, t_node *b, int n, t_node *msg);
+int			a_to_b_exit_chk(t_node *a, t_node *b, int n, t_node *msg);
+void		a_to_b_func(t_node *a, t_node *b, t_dat *d, t_node *msg);
+int			b_to_a_exit_chk(t_node *a, t_node *b, int n, t_node *msg);
+void		b_to_a_func(t_node *a, t_node *b, t_dat *d, t_node *msg);
 #endif

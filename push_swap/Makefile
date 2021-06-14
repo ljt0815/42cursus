@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 13:08:10 by jitlee            #+#    #+#              #
-#    Updated: 2021/06/12 10:41:04 by jitlee           ###   ########.fr        #
+#    Updated: 2021/06/15 04:51:37 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,12 @@ FILES = push_swap			\
 		push_swap_func		\
 		push_swap_command	\
 		listnode			\
-		quick_sort
+		quick_sort			\
+		quick_sort2			\
+		quick_sort_func		\
+		quick_sort_util		\
+		msg_func			\
+		sorting_func
 LIBFT_A = -L$(LIBFT_F) -lft
 SRCS_DIR = ./srcs/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

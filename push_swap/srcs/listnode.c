@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:34:40 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/12 07:27:28 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 04:00:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,24 @@ void	init_node(t_node *phead)
 {
 	phead->llink = phead;
 	phead->rlink = phead;
-	phead->data = -2147483648;
+	phead->data = 0;
 }
 
 void	print_list(t_node *phead)
 {
+	char	*num;
 	t_node	*p;
 
 	p = phead->rlink;
 	while (p != phead)
 	{
-		printf("<-| |%d| |-> ", p->data);
+		num = ft_itoa(p->data);
+		write(1, "<-| |", 5);
+		write(1, num, ft_strlen(num));
+		write(1, "| |->", 5);
 		p = p->rlink;
 	}
-	printf("\n");
+	write(1, "\n", 1);
 }
 
 void	node_lin(t_node *before, int data)
