@@ -6,13 +6,12 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:34:17 by jitlee            #+#    #+#             */
-/*   Updated: 2021/05/20 18:43:33 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 12:44:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LISTNODE_H
 # define LISTNODE_H
-# include <stdio.h>
 # include <stdlib.h>
 
 typedef struct	s_node{
