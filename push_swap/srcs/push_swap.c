@@ -6,16 +6,15 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 16:11:24 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 10:10:04 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:25:55 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	err_msg(char *msg)
+void	err_msg(void)
 {
 	write(2, "Error\n", 6);
-	write(2, msg, ft_strlen(msg));
 	exit(1);
 }
 
@@ -30,21 +29,21 @@ void	overflow_chk(char *num, int len, int i)
 	{
 		i = 0;
 		if (len > 11)
-			err_msg("argument Overflow Minus");
+			err_msg();
 		if (len == 11)
 			while (++i < 11)
 				if (num[i] > u_num[i])
-					err_msg("argument Overflow Minus");
+					err_msg();
 	}
 	else
 	{
 		i = -1;
 		if (len > 10)
-			err_msg("argument Overflow Plus");
+			err_msg();
 		if (len == 10)
 			while (++i < 10)
 				if (num[i] > o_num[i])
-					err_msg("argument Overflow Plus");
+					err_msg();
 	}
 }
 
@@ -70,7 +69,7 @@ void	all_digit_chk(int *ac, char **av)
 			else if (j == 0 && av[i][j] == '-' && av[i][1] != 0)
 				;
 			else
-				err_msg("argument Error");
+				err_msg();
 		overflow_chk(av[i], j, 0);
 	}
 }
@@ -97,7 +96,7 @@ void	node_dup_chk(char **av, int len, int flag)
 			if (av_len > nums_len)
 				nums_len = av_len;
 			if (ft_strncmp(av[i + flag], nums[j], nums_len) == 0)
-				err_msg("argument duplicate");
+				err_msg();
 		}
 		nums[i] = av[i + flag];
 	}
@@ -117,7 +116,7 @@ int		main(int ac, char **av)
 	init_node(a);
 	init_node(b);
 	if (ac == 1)
-		err_msg("Not enough arguments.");
+		err_msg();
 	if (ac == 2)
 	{
 		av = ft_split(av[1], ' ');

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:40:25 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 09:50:16 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:26:04 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		mini_a_to_b(t_node *a, t_node *b, int n, t_node *msg);
 void		mini_b_to_a(t_node *a, t_node *b, int n, t_node *msg);
 void		print_msg(t_node *msg);
 void		optimize_msg(t_node *msg);
-void		err_msg(char *msg);
+void		err_msg(void);
 void		bubble_sort(int *arr, int n);
 int			sorting_chk_a(t_node *node, int n);
 int			sorting_chk_b(t_node *node, int n);

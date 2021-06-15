@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 04:04:17 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 04:21:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:24:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	print_msg(t_node *msg)
 		else if (print_msg2(p))
 			;
 		else
-			err_msg("unknown error");
+			err_msg();
 		p = p->rlink;
 	}
 }
