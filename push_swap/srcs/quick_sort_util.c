@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 04:30:06 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 04:31:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:03:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,19 @@ void	rrx(t_node *a, t_node *b, t_dat *d, t_node *msg)
 	else
 		while (++d->i < d->ra - d->rb)
 			rr('a', a, b, msg);
+}
+
+void	free_split(int flag, char **av)
+{
+	int i;
+
+	i = -1;
+	if (flag == 1)
+	{
+		while (av[++i] != 0)
+		{
+			free(av[i]);
+			av[i] = 0;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 05:39:09 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/15 05:41:05 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:04:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,7 @@ void	quick_sort(t_node *a, t_node *b, int n)
 		a_to_b(a, b, n, &msg);
 	optimize_msg(&msg);
 	print_msg(&msg);
+	free_node(&msg);
+	free_node(a);
+	free_node(b);
 }

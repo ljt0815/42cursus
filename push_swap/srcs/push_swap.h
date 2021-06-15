@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:40:25 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 05:34:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 09:50:16 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		swap(t_node *n);
 void		push(t_node *n1, t_node *n2);
 void		r_rotate(t_node *n);
 void		rotate(t_node *n);
+void		free_node(t_node *n);
 void		quick_sort(t_node *a, t_node *b, int n);
 void		a_to_b(t_node *a, t_node *b, int n, t_node *msg);
 void		b_to_a(t_node *a, t_node *b, int n, t_node *msg);
@@ -70,4 +71,5 @@ int			a_to_b_exit_chk(t_node *a, t_node *b, int n, t_node *msg);
 void		a_to_b_func(t_node *a, t_node *b, t_dat *d, t_node *msg);
 int			b_to_a_exit_chk(t_node *a, t_node *b, int n, t_node *msg);
 void		b_to_a_func(t_node *a, t_node *b, t_dat *d, t_node *msg);
+void		free_split(int flag, char **av);
 #endif

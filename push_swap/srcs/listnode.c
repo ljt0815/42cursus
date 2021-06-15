@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:34:40 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 04:00:11 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 09:43:07 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	print_list(t_node *phead)
 		write(1, "<-| |", 5);
 		write(1, num, ft_strlen(num));
 		write(1, "| |->", 5);
+		free(num);
 		p = p->rlink;
 	}
 	write(1, "\n", 1);

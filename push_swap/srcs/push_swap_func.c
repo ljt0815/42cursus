@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 17:37:10 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/12 07:28:06 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:14:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,22 @@ void	r_rotate(t_node *n)
 	tmp->rlink = n->rlink;
 	tmp->llink = n;
 	n->rlink = tmp;
+}
+
+void	free_node(t_node *n)
+{
+	t_node	*p;
+	t_node	*tmp;
+
+	p = n->rlink;
+	while (p != n)
+	{
+		tmp = p;
+		p = p->rlink;
+		tmp->rlink = 0;
+		tmp->llink = 0;
+		tmp->data = 0;
+		free(tmp);
+		tmp = 0;
+	}
 }

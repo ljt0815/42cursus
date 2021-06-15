@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 16:11:24 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 05:38:39 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:10:04 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	node_dup_chk(char **av, int len, int flag)
 		}
 		nums[i] = av[i + flag];
 	}
+	free(nums);
 }
 
 int		main(int ac, char **av)
@@ -128,5 +129,6 @@ int		main(int ac, char **av)
 	while (++i <= ac - 1)
 		node_lin(a, ft_atoi(av[i]));
 	quick_sort(a, b, ac - 1 + flag);
+	free_split(flag, av);
 	return (0);
 }
