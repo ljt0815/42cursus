@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 16:11:24 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/15 10:25:55 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/15 10:29:29 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int		main(int ac, char **av)
 	init_node(a);
 	init_node(b);
 	if (ac == 1)
-		err_msg();
+		return (0);
 	if (ac == 2)
 	{
 		av = ft_split(av[1], ' ');
