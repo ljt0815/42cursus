@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 10:27:57 by marvin            #+#    #+#             */
-/*   Updated: 2021/06/25 16:24:08 by marvin           ###   ########seoul.kr  */
+/*   Created: 2020/10/09 17:37:00 by jitlee            #+#    #+#             */
+/*   Updated: 2020/10/09 17:41:36 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
-# include <signal.h>
-# include <unistd.h>
+#include "libft.h"
 
-typedef struct {
-	char	*buf;
-	int		len;
-}	t_buf;
-
-typedef struct {
-	t_buf	buf;
-	char	ch;
-	int		n;
-}	t_dat;
-#endif
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
+}
