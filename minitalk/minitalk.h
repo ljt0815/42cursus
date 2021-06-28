@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 01:47:10 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/28 11:51:48 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/06/28 12:33:20 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ typedef struct {
 typedef struct {
 	t_buf	buf[MAX_CLIENT];
 	char	ch;
-	int		number_of_client;
+	int		client_num;
 	int		all_recived_n;
 	int		n;
 }	t_dat;
 
+extern	g_dat;
 void	send_signal(int pid, int signo);
 void	ft_putnbr(int num, int isnewline);
 #endif
