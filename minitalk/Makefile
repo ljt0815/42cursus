@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 13:08:10 by jitlee            #+#    #+#              #
-#    Updated: 2021/06/26 04:35:06 by jitlee           ###   ########.fr        #
+#    Updated: 2021/06/28 11:49:32 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,10 @@ LIBFT_F = ./libft
 LIBFT = libft.a
 RM = rm -f
 
-S_FILES = server
-C_FILES = client
+S_FILES =	server	\
+			util
+C_FILES =	client	\
+			util
 
 LIBFT_A = -L$(LIBFT_F) -lft
 
