@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 13:08:10 by jitlee            #+#    #+#              #
-#    Updated: 2021/06/28 11:49:32 by jitlee           ###   ########.fr        #
+#    Updated: 2021/07/05 01:47:28 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 IFLAG = -I
 LIBFT_F = ./libft
-LIBFT = libft.a
 RM = rm -f
 
 S_FILES =	server	\
@@ -33,15 +32,14 @@ S_OBJS = $(addsuffix .o, $(S_FILES))
 C_SRCS = $(addsuffix .c, $(C_FILES))
 C_OBJS = $(addsuffix .o, $(C_FILES))
 
-all: $(LIBFT) $(S_NAME) $(C_NAME)
-
-$(LIBFT) :
-	make -C $(LIBFT_F)
+all: $(S_NAME) $(C_NAME)
 
 $(S_NAME): $(S_OBJS)
+	make -C $(LIBFT_F)
 	$(CC) $(CFLAGS) $(IFLAG)$(LIBFT_F) $(S_OBJS) $(LIBFT_A) -o $(S_NAME)
 
 $(C_NAME): $(C_OBJS)
+	make -C $(LIBFT_F)
 	$(CC) $(CFLAGS) $(IFLAG)$(LIBFT_F) $(C_OBJS) $(LIBFT_A) -o $(C_NAME)
 
 %.o: %.c $(LIBFT_F)/libft.h
