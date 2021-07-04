@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 20:44:49 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/15 20:46:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/05 00:11:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (fd < 0)

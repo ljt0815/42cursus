@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:23:57 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/17 20:33:06 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/05 00:04:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (lst == 0 || new == 0)
 		return ;

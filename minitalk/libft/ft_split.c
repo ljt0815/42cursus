@@ -6,11 +6,22 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 15:58:49 by jitlee            #+#    #+#             */
-/*   Updated: 2020/10/20 09:22:48 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/05 01:08:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	malloc_func(void *target, int size)
+{
+	void	**p;
+
+	p = (void **)target;
+	*p = malloc(size);
+	if (*p == 0)
+		return (0);
+	return (1);
+}
 
 char	**ft_malloc_error(char **result)
 {
@@ -26,7 +37,7 @@ char	**ft_malloc_error(char **result)
 	return (0);
 }
 
-int		make_result(char const *s, char c, int cnt, char **result)
+int	make_result(char const *s, char c, int cnt, char **result)
 {
 	int		i;
 	int		start;
@@ -45,7 +56,7 @@ int		make_result(char const *s, char c, int cnt, char **result)
 			i++;
 		if (start != -1)
 		{
-			if ((result[idx] = (char *)malloc(i - start + 2)) == 0)
+			if (!malloc_func(&result[idx], i - start + 2))
 				return (0);
 			ft_strlcpy(result[idx], s + start, i - start + 1);
 			idx++;
@@ -61,7 +72,7 @@ char	**null_process(char const *s, char c, char **result, int *iserror)
 	{
 		if (*s == 0)
 		{
-			if ((result = (char **)malloc(sizeof(char *))) == 0)
+			if (!malloc_func(&result, sizeof(char *)))
 			{
 				*iserror = 1;
 				return (0);
@@ -69,7 +80,7 @@ char	**null_process(char const *s, char c, char **result, int *iserror)
 			result[0] = 0;
 			return (result);
 		}
-		if ((result = (char **)malloc(sizeof(char *) * 2)) == 0)
+		if (!malloc_func(&result, sizeof(char *) * 2))
 		{
 			*iserror = 1;
 			return (0);
@@ -84,28 +95,27 @@ char	**null_process(char const *s, char c, char **result, int *iserror)
 char	**ft_split(char const *s, char c)
 {
 	int		i;
-	int		cnt;
-	int		iserror;
+	int		tmp;
 	char	**result;
 
 	result = 0;
-	cnt = 0;
+	tmp = 0;
 	i = 0;
-	iserror = 0;
-	if ((result = null_process(s, c, result, &iserror)) != 0 || iserror == 1)
+	result = null_process(s, c, result, &tmp);
+	if (result != 0 || tmp == 1)
 		return (result);
 	while (s[i])
 	{
 		while (s[i] != 0 && s[i] == c)
 			i++;
 		if (s[i])
-			cnt++;
+			tmp++;
 		while (s[i] != 0 && s[i] != c)
 			i++;
 	}
-	if ((result = (char **)malloc(sizeof(char *) * (cnt + 1))) == 0)
+	if (!malloc_func(&result, sizeof(char *) * (tmp + 1)))
 		return (0);
-	if ((make_result(s, c, cnt, result)) == 0)
+	if ((make_result(s, c, tmp, result)) == 0)
 		return (ft_malloc_error(result));
 	return (result);
 }

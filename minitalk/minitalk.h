@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 01:47:10 by jitlee            #+#    #+#             */
-/*   Updated: 2021/06/28 12:33:20 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:12:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct {
 	int		n;
 }	t_dat;
 
-extern	g_dat;
+extern	t_dat g_dat;
 void	send_signal(int pid, int signo);
 void	ft_putnbr(int num, int isnewline);
 #endif
