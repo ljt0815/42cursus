@@ -6,21 +6,24 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 10:27:17 by marvin            #+#    #+#             */
-/*   Updated: 2021/07/05 07:54:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/05 12:46:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdio.h>
 
 t_dat	g_dat;
 
-void	usr1_handler(int signo, siginfo_t *info, void *context)
+void	usr_handler(int signo, siginfo_t *info, void *context)
 {
 	int	i;
-
-	i = -1;
+	//int j;//
+	
 	(void)context;
-	(void)signo;
+	//j = -1;//
+	i = -1;
+
 	while (++i < g_dat.client_num)
 		if (g_dat.buf[i].pid == info->si_pid)
 			break ;
@@ -29,6 +32,9 @@ void	usr1_handler(int signo, siginfo_t *info, void *context)
 		g_dat.buf[i].pid = info->si_pid;
 		g_dat.client_num += 1;
 	}
+	//printf("g_dat.client_num : %d\n", g_dat.client_num);//
+	//while (++j < g_dat.client_num)
+	//	printf("pid[%d]: %d\n", j, g_dat.buf[j].pid);//
 	if (g_dat.buf[i].n < 32)
 	{
 		g_dat.buf[i].len <<= 1;
@@ -62,7 +68,7 @@ void	usr1_handler(int signo, siginfo_t *info, void *context)
 			ft_memcpy(&g_dat.buf[i], &g_dat.buf[g_dat.client_num - 1], sizeof(t_buf));
 			ft_bzero(&g_dat.buf[g_dat.client_num - 1], sizeof(t_buf));
 		}
-
+		g_dat.client_num -= 1;
 	}
 }
 
@@ -73,7 +79,7 @@ int		main(void)
 	write(1, "server pid : ", 13);
 	ft_putnbr(getpid(), 1);
 	ft_bzero(&g_dat, sizeof(g_dat));
-	usrsig.sa_sigaction = usr1_handler;
+	usrsig.sa_sigaction = usr_handler;
 	usrsig.sa_flags = SA_SIGINFO;
 
 	sigaction(SIGUSR1, &usrsig, 0);
