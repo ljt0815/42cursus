@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 01:47:10 by jitlee            #+#    #+#             */
-/*   Updated: 2021/07/05 05:17:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/18 13:57:40 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # define MAX_CLIENT 100
 
-typedef struct {
+typedef struct s_buf{
 	char	*buf;
 	char	ch;
 	int		len;
@@ -26,12 +26,12 @@ typedef struct {
 	int		n;
 }	t_buf;
 
-typedef struct {
+typedef struct s_dat{
 	t_buf	buf[MAX_CLIENT];
 	int		client_num;
 }	t_dat;
 
-extern	t_dat g_dat;
+extern t_dat	g_dat;
 void	send_signal(int pid, int signo);
 void	ft_putnbr(int num, int isnewline);
 #endif
