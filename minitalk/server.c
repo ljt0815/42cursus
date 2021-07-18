@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 10:27:17 by marvin            #+#    #+#             */
-/*   Updated: 2021/07/18 14:08:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/18 06:16:54 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,28 @@
 
 t_dat	g_dat;
 
-void	usr_handler(int signo, siginfo_t *info, void *context)
+void	recive_last_chk(int i)
 {
-	int	i;
-
-	(void)context;
-	i = -1;
-	while (++i < g_dat.client_num)
-		if (g_dat.buf[i].pid == info->si_pid)
-			break ;
-	if (i == g_dat.client_num)
+	if ((g_dat.buf[i].n / 8) - 4 == g_dat.buf[i].len)
 	{
-		g_dat.buf[i].pid = info->si_pid;
-		g_dat.client_num += 1;
+		g_dat.buf[i].buf[(g_dat.buf[i].n / 8) - 5] = g_dat.buf[i].ch;
+		write(1, g_dat.buf[i].buf, g_dat.buf[i].len);
+		write(1, "\n", 1);
+		free(g_dat.buf[i].buf);
+		if (i == g_dat.client_num - 1)
+			ft_bzero(&g_dat.buf[i], sizeof(t_buf));
+		else
+		{
+			ft_memcpy(&g_dat.buf[i], &g_dat.buf[g_dat.client_num - 1], \
+			sizeof(t_buf));
+			ft_bzero(&g_dat.buf[g_dat.client_num - 1], sizeof(t_buf));
+		}
+		g_dat.client_num -= 1;
 	}
+}
+
+void	bit_process(int i, int signo)
+{
 	if (g_dat.buf[i].n < 32)
 	{
 		g_dat.buf[i].len <<= 1;
@@ -47,22 +55,25 @@ void	usr_handler(int signo, siginfo_t *info, void *context)
 		 if (signo == SIGUSR2)
 			 g_dat.buf[i].ch += 1;
 	}
-	g_dat.buf[i].n += 1;
-	if ((g_dat.buf[i].n / 8) - 4 == g_dat.buf[i].len)
+}
+
+void	usr_handler(int signo, siginfo_t *info, void *context)
+{
+	int	i;
+
+	(void)context;
+	i = -1;
+	while (++i < g_dat.client_num)
+		if (g_dat.buf[i].pid == info->si_pid)
+			break ;
+	if (i == g_dat.client_num)
 	{
-		g_dat.buf[i].buf[(g_dat.buf[i].n / 8) - 5] = g_dat.buf[i].ch;
-		write(1, g_dat.buf[i].buf, g_dat.buf[i].len);
-		write(1, "\n", 1);
-		free(g_dat.buf[i].buf);
-		if (i == g_dat.client_num - 1)
-			ft_bzero(&g_dat.buf[i], sizeof(t_buf));
-		else
-		{
-			ft_memcpy(&g_dat.buf[i], &g_dat.buf[g_dat.client_num - 1], sizeof(t_buf));
-			ft_bzero(&g_dat.buf[g_dat.client_num - 1], sizeof(t_buf));
-		}
-		g_dat.client_num -= 1;
+		g_dat.buf[i].pid = info->si_pid;
+		g_dat.client_num += 1;
 	}
+	bit_process(i, signo);
+	g_dat.buf[i].n += 1;
+	recive_last_chk(i);
 }
 
 int	main(void)
