@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 01:45:30 by jitlee            #+#    #+#             */
-/*   Updated: 2021/07/05 12:43:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/07/21 14:25:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	parse_num(int pid, int len)
 		else
 			send_signal(pid, SIGUSR1);
 		i >>= 1;
-		usleep(300);
+		usleep(50);
 	}
 }
 
@@ -44,7 +44,7 @@ void	parse_ch(int pid, char *s)
 			else
 				send_signal(pid, SIGUSR1);
 			j >>= 1;
-			usleep(300);
+			usleep(50);
 		}
 	}
 }
