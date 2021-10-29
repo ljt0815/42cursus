@@ -6,7 +6,7 @@
 /*   By: sgang <sgang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 00:56:58 by sgang             #+#    #+#             */
-/*   Updated: 2021/10/22 00:56:58 by sgang            ###   ########.fr       */
+/*   Updated: 2021/10/30 06:32:40 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print(t_nin *gen, t_status *st, const char *msg)
 		pthread_mutex_unlock(&(st->safe));
 		return ;
 	}
-	printf("%lld %d%s", cur_time - st->gstamp, gen->num, msg);
+	printf("%lld %d%s", cur_time - st->gstamp, gen->num + 1, msg);
 	pthread_mutex_unlock(&(st->safe));
 	return ;
 }

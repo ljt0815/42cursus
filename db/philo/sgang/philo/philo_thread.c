@@ -6,7 +6,7 @@
 /*   By: sgang <sgang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 00:56:50 by sgang             #+#    #+#             */
-/*   Updated: 2021/10/28 02:08:16 by sgang            ###   ########.fr       */
+/*   Updated: 2021/10/30 06:30:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	grab_fork(t_nin *gen, t_status *st)
 {
-	static const char	*grab = " taken fork\n";
-	static const char	*eat = " eating\n";
+	static const char	*grab = " has taken fork\n";
+	static const char	*eat = " is eating\n";
 
 	pthread_mutex_lock(gen->l_fork);
 	print(gen, st, grab);
@@ -40,8 +40,8 @@ static void	grab_fork(t_nin *gen, t_status *st)
 
 static void	hit_the_sack(t_status *st, t_nin *gen)
 {
-	static const char	*sleeping = " sleeping\n";
-	static const char	*thinking = " thinking\n";
+	static const char	*sleeping = " is sleeping\n";
+	static const char	*thinking = " is thinking\n";
 
 	if (st->die != -1)
 		return ;
