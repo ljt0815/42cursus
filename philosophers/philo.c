@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:21:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/30 05:54:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/30 07:12:16 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ int	init_philo(int ac, char *av[], t_dat *d)
 	else if (make_philo_info(d) == -1)
 		printf("make philo error\n");
 	else
+	{
+		d->die = -1;
 		return (1);
+	}
 	return (0);
 }
 

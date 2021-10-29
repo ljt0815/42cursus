@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:22:26 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/30 06:09:06 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/30 07:22:10 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,24 @@
 # define EAT_NUM 4
 
 typedef struct	s_pinfo {
-	pthread_t	th;
-	long long	last_eat;
+	pthread_t		th;
+	pthread_mutex_t	l_hand;
+	pthread_mutex_t	r_hand;
+	long long		last_eat;
 }	t_pinfo;
 
 typedef struct	s_dat {
-	t_pinfo		*philo;
-	int			args[5];
-	int			err;
-	long long	timestamp;
-	pthread_t	monitor;
+	t_pinfo			*philo;
+	pthread_mutex_t	*forks;
+	int				args[5];
+	int				err;
+	int				die;
+	long long		timestamp;
+	pthread_mutex_t	print;
+	pthread_t		monitor;
 }	t_dat;
 
-int	parse_arg(int ac, char *av[], t_dat *d);
+int			parse_arg(int ac, char *av[], t_dat *d);
+void		start_meal_time(t_dat *d);
+long long	get_timestamp(void);
 #endif
