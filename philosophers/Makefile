@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 23:40:38 by jitlee            #+#    #+#              #
-#    Updated: 2021/10/30 03:51:26 by jitlee           ###   ########.fr        #
+#    Updated: 2021/10/30 04:45:29 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ IFLAG = -I
 
 RM = rm -f
 
-FILES = philo
+FILES = philo			\
+		philo_parsing
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
