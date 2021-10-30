@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 23:40:38 by jitlee            #+#    #+#              #
-#    Updated: 2021/10/30 23:57:01 by jitlee           ###   ########.fr        #
+#    Updated: 2021/10/31 07:00:32 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ RM = rm -f
 
 FILES = philo			\
 		philo_parsing	\
+		philo_utils		\
 		philo_meal_time
 
 SRCS_DIR = ./

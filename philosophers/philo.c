@@ -6,19 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:21:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 05:33:27 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 06:59:52 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-long long	get_timestamp(void)
-{
-	struct timeval	tmp;
-
-	gettimeofday(&tmp, 0);
-	return ((tmp.tv_sec * 1000) + (tmp.tv_usec / 1000));
-}
 
 void	end_meal_time(t_dat *d)
 {
