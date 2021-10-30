@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:22:26 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 04:34:18 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 06:54:34 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ typedef struct s_dat {
 	int				args[5];
 	int				err;
 	int				die;
+	int				end;
+	int				i;
 	long long		timestamp;
 	pthread_mutex_t	print;
 	pthread_t		monitor;
+	int				infinite;
 }	t_dat;
 
 int			parse_arg(int ac, char *av[], t_dat *d);

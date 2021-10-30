@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:21:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 04:48:19 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 05:33:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int	make_philo_info(t_dat *d)
 	if (d->philo == 0 || d->forks == 0)
 		return (-1);
 	d->timestamp = get_timestamp();
+	if (d->args[EAT_NUM] == 0)
+		d->infinite = 1;
 	while (++i < d->args[PHILO_LEN])
 	{
+		memset(&d->philo[i], 0, sizeof(t_pinfo));
 		d->philo[i].idx = i;
 		d->philo[i].last_eat = d->timestamp;
 		d->philo[i].d = d;
