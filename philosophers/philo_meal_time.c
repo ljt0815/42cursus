@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 06:07:44 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 00:36:22 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 03:46:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*monitor(void *arg)
 	while (d->die < 0)
 	{
 		i = -1;
-		while (++i < d->args[0])
+		while ((++i < d->args[0]) && d->die < 0)
 		{
 			now = get_timestamp();
 			if (now - d->philo[i].last_eat <= d->args[TTD])
@@ -43,6 +43,11 @@ void	print_state(t_pinfo *philo, t_dat *d, char *str)
 
 	pthread_mutex_lock(&d->print);
 	now = get_timestamp();
+	if (d->die != -1)
+	{
+		pthread_mutex_unlock(&d->print);
+		return ;
+	}
 	printf("%lld %d%s", now - d->timestamp, philo->idx + 1, str);
 	pthread_mutex_unlock(&d->print);
 }
@@ -59,23 +64,27 @@ void	my_usleep(int ms)
 		if ((long long)100 > usleep_time)
 			usleep(100);
 		else
-			usleep(usleep_time / 2);
+			usleep(usleep_time);
 	}
 }
 
 void	pick_up_fork(t_pinfo *philo, t_dat *d)
 {
-	if (philo->last_eat != 0)
-		usleep(100);
 	if (philo->idx % 2 == 0)
-		pthread_mutex_lock(philo->r_hand);
-	else
 		pthread_mutex_lock(philo->l_hand);
+	else
+		pthread_mutex_lock(philo->r_hand);
 	print_state(philo, d, " is taken fork\n");
+	if (philo->l_hand == philo->r_hand)
+	{
+		my_usleep(d->args[TTD] + 100);
+		pthread_mutex_unlock(philo->l_hand);
+		return ;
+	}
 	if (philo->idx % 2 == 0)
-		pthread_mutex_lock(philo->l_hand);
-	else
 		pthread_mutex_lock(philo->r_hand);
+	else
+		pthread_mutex_lock(philo->l_hand);
 	print_state(philo, d, " is taken fork\n");
 	print_state(philo, d, " is eating\n");
 	philo->last_eat = get_timestamp();
@@ -96,11 +105,9 @@ void	go_to_sleep(t_pinfo *philo, t_dat *d)
 void	*simulator(void *arg)
 {
 	t_pinfo	*philo;
-	int		i;
 
-	i = -1;
 	philo = (t_pinfo *)arg;
-	while (++i < philo->d->args[PHILO_LEN])
+	while (philo->d->die == -1)
 	{
 		pick_up_fork(philo, philo->d);
 		go_to_sleep(philo, philo->d);

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:21:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/30 23:55:08 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 03:11:52 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,18 @@ void	end_meal_time(t_dat *d)
 
 	i = -1;
 	pthread_join(d->monitor, 0);
-	write(1, "kk", 2);
 	while (++i < d->args[PHILO_LEN])
 		pthread_join(d->philo[i].th, 0);
+	/*while (d->args[PHILO_LEN] == 1 && d->die == 0)
+	{
+		pthread_mutex_unlock(&d->forks[0]);
+		usleep(100);
+	}*/
+	i = -1;
+	while (++i < d->args[PHILO_LEN])
+		pthread_mutex_destroy(&d->forks[i]);
 	free(d->philo);
+	free(d->forks);
 }
 
 int	make_philo_info(t_dat *d)
@@ -39,7 +47,7 @@ int	make_philo_info(t_dat *d)
 	i = -1;
 	d->philo = malloc(sizeof(t_pinfo) * d->args[PHILO_LEN]);
 	d->forks = malloc(sizeof(pthread_mutex_t) * d->args[PHILO_LEN]);
-	if (d->philo == 0)
+	if (d->philo == 0 || d->forks == 0)
 		return (-1);
 	d->timestamp = get_timestamp();
 	while (++i < d->args[PHILO_LEN])
