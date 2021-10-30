@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:22:26 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/30 07:22:10 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/30 17:33:34 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_pinfo {
 	pthread_mutex_t	l_hand;
 	pthread_mutex_t	r_hand;
 	long long		last_eat;
+	int				idx;
 }	t_pinfo;
 
 typedef struct	s_dat {
