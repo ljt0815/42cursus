@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:22:26 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/30 17:33:34 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 00:38:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,24 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-# define PHILO_NUM 0
+# define PHILO_LEN 0
 # define TTD 1
 # define TTE 2
 # define TTS 3
 # define EAT_NUM 4
 
-typedef struct	s_pinfo {
+typedef struct s_dat	t_dat;
+typedef struct s_pinfo {
 	pthread_t		th;
-	pthread_mutex_t	l_hand;
-	pthread_mutex_t	r_hand;
+	pthread_mutex_t	*l_hand;
+	pthread_mutex_t	*r_hand;
 	long long		last_eat;
+	long long		last_sleep;
 	int				idx;
+	t_dat			*d;
 }	t_pinfo;
 
-typedef struct	s_dat {
+typedef struct s_dat {
 	t_pinfo			*philo;
 	pthread_mutex_t	*forks;
 	int				args[5];

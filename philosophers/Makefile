@@ -6,14 +6,14 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 23:40:38 by jitlee            #+#    #+#              #
-#    Updated: 2021/10/30 07:02:54 by jitlee           ###   ########.fr        #
+#    Updated: 2021/10/30 23:57:01 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 IFLAG = -I
 
 RM = rm -f

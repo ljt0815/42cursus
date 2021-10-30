@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 06:07:44 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/30 18:28:05 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 00:36:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,74 @@ void	*monitor(void *arg)
 	return (0);
 }
 
+void	print_state(t_pinfo *philo, t_dat *d, char *str)
+{
+	long long	now;
+
+	pthread_mutex_lock(&d->print);
+	now = get_timestamp();
+	printf("%lld %d%s", now - d->timestamp, philo->idx + 1, str);
+	pthread_mutex_unlock(&d->print);
+}
+
+void	my_usleep(int ms)
+{
+	long long	goal_time;
+	long long	usleep_time;
+
+	goal_time = ms + get_timestamp();
+	while (goal_time > get_timestamp())
+	{
+		usleep_time = (goal_time - get_timestamp()) / 2;
+		if ((long long)100 > usleep_time)
+			usleep(100);
+		else
+			usleep(usleep_time / 2);
+	}
+}
+
+void	pick_up_fork(t_pinfo *philo, t_dat *d)
+{
+	if (philo->last_eat != 0)
+		usleep(100);
+	if (philo->idx % 2 == 0)
+		pthread_mutex_lock(philo->r_hand);
+	else
+		pthread_mutex_lock(philo->l_hand);
+	print_state(philo, d, " is taken fork\n");
+	if (philo->idx % 2 == 0)
+		pthread_mutex_lock(philo->l_hand);
+	else
+		pthread_mutex_lock(philo->r_hand);
+	print_state(philo, d, " is taken fork\n");
+	print_state(philo, d, " is eating\n");
+	philo->last_eat = get_timestamp();
+	my_usleep(d->args[TTE]);
+	pthread_mutex_unlock(philo->l_hand);
+	pthread_mutex_unlock(philo->r_hand);
+}
+
+void	go_to_sleep(t_pinfo *philo, t_dat *d)
+{
+	if (d->die != -1)
+		return ;
+	print_state(philo, d, " is sleeping\n");
+	my_usleep(d->args[TTS]);
+	print_state(philo, d, " is thinking\n");
+}
+
 void	*simulator(void *arg)
 {
-	t_dat	*d;
-	
-	d = (t_dat *)arg;	
+	t_pinfo	*philo;
+	int		i;
+
+	i = -1;
+	philo = (t_pinfo *)arg;
+	while (++i < philo->d->args[PHILO_LEN])
+	{
+		pick_up_fork(philo, philo->d);
+		go_to_sleep(philo, philo->d);
+	}
 	return (0);
 }
 
@@ -52,14 +115,14 @@ void	start_meal_time(t_dat *d)
 	i = -1;
 	if (pthread_create(&d->monitor, 0, &monitor, (void *)d))
 		d->err = 1;
-	while (++i < d->args[PHILO_NUM])
+	while (++i < d->args[PHILO_LEN])
 		if (i % 2 == 0)
-			if (pthread_create(&d->philo[i].th, 0, &simulator, (void *)d))
+			if (pthread_create(&d->philo[i].th, 0, &simulator, (void *)&d->philo[i]))
 				d->err = 1;
 	i = 0;
-	while (++i < d->args[PHILO_NUM])
+	while (++i < d->args[PHILO_LEN])
 		if (i % 2 == 1)
-			if (pthread_create(&d->philo[i].th, 0, &simulator, (void *)d))
+			if (pthread_create(&d->philo[i].th, 0, &simulator, (void *)&d->philo[i]))
 				d->err = 1;
 	if (d->err == 1)
 		printf("Thread Create Fail!\n");
