@@ -6,11 +6,21 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 06:59:34 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 07:03:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 07:49:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	err_print(char *msg)
+{
+	int	len;
+
+	len = -1;
+	while (msg[++len])
+		;
+	write(2, msg, len);
+}
 
 long long	get_timestamp(void)
 {

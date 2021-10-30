@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:22:26 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 07:03:33 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 07:46:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ long long	get_timestamp(void);
 void		print_state(t_pinfo *philo, t_dat *d, char *str);
 void		my_usleep(int ms);
 int			eat_num_cnt(t_dat *d);
+void		err_print(char *msg);
 #endif

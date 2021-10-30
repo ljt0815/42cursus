@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 06:07:44 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 07:03:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 07:46:05 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	pick_up_fork(t_pinfo *philo, t_dat *d)
 	else
 		pthread_mutex_lock(philo->l_hand);
 	print_state(philo, d, " has taken fork\n");
-	(philo->meal)++;
 	print_state(philo, d, " is eating\n");
+	(philo->meal)++;
 	philo->last_eat = get_timestamp();
 	my_usleep(d->args[TTE]);
 	pthread_mutex_unlock(philo->l_hand);
@@ -110,5 +110,5 @@ void	start_meal_time(t_dat *d)
 						&simulator, (void *)&d->philo[i]))
 				d->err = 1;
 	if (d->err == 1)
-		printf("Thread Create Fail!\n");
+		err_print("Thread Create Fail!\n");
 }

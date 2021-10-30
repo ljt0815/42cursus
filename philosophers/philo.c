@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:21:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 06:59:52 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 07:43:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ int	init_philo(int ac, char *av[], t_dat *d)
 {
 	if (parse_arg(ac, av, d) == -1)
 	{
-		printf("arguments not valid\n");
+		err_print("arguments not valid\n");
 		return (-1);
 	}
 	else if (make_philo_info(d) == -1)
-		printf("make philo error\n");
+		err_print("make philo error\n");
 	else if (put_fork_table(d) == -1)
-		printf("mutex init error\n");
+		err_print("mutex init error\n");
 	else
 	{
 		d->die = -1;
@@ -93,7 +93,7 @@ int	main(int ac, char *av[])
 	memset(&d, 0, sizeof(t_dat));
 	if (!(ac == 5 || ac == 6))
 	{
-		printf("argument error!\n");
+		err_print("argument error!\n");
 		return (0);
 	}
 	flag = init_philo(ac, av, &d);
