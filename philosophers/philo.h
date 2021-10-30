@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:22:26 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 00:38:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 04:34:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_pinfo {
 	long long		last_eat;
 	long long		last_sleep;
 	int				idx;
+	int				meal;
 	t_dat			*d;
 }	t_pinfo;
 

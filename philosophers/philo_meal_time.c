@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 06:07:44 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 03:46:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 04:55:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	pick_up_fork(t_pinfo *philo, t_dat *d)
 		pthread_mutex_lock(philo->r_hand);
 	else
 		pthread_mutex_lock(philo->l_hand);
-	print_state(philo, d, " is taken fork\n");
+	print_state(philo, d, " has taken fork\n");
 	print_state(philo, d, " is eating\n");
 	philo->last_eat = get_timestamp();
 	my_usleep(d->args[TTE]);

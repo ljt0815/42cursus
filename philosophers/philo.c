@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 03:21:49 by jitlee            #+#    #+#             */
-/*   Updated: 2021/10/31 03:11:52 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/10/31 04:48:19 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ void	end_meal_time(t_dat *d)
 	pthread_join(d->monitor, 0);
 	while (++i < d->args[PHILO_LEN])
 		pthread_join(d->philo[i].th, 0);
-	/*while (d->args[PHILO_LEN] == 1 && d->die == 0)
-	{
-		pthread_mutex_unlock(&d->forks[0]);
-		usleep(100);
-	}*/
 	i = -1;
 	while (++i < d->args[PHILO_LEN])
 		pthread_mutex_destroy(&d->forks[i]);
@@ -79,7 +74,10 @@ int	put_fork_table(t_dat *d)
 int	init_philo(int ac, char *av[], t_dat *d)
 {
 	if (parse_arg(ac, av, d) == -1)
+	{
 		printf("arguments not valid\n");
+		return (-1);
+	}
 	else if (make_philo_info(d) == -1)
 		printf("make philo error\n");
 	else if (put_fork_table(d) == -1)
@@ -95,12 +93,18 @@ int	init_philo(int ac, char *av[], t_dat *d)
 int	main(int ac, char *av[])
 {
 	t_dat	d;
+	int		flag;
 
 	memset(&d, 0, sizeof(t_dat));
 	if (!(ac == 5 || ac == 6))
+	{
 		printf("argument error!\n");
-	else if (init_philo(ac, av, &d))
+		return (0);
+	}
+	flag = init_philo(ac, av, &d);
+	if (flag == 1)
 		start_meal_time(&d);
-	end_meal_time(&d);
+	if (flag != -1)
+		end_meal_time(&d);
 	return (0);
 }
