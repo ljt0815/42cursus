@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:58:41 by jitlee            #+#    #+#             */
-/*   Updated: 2021/11/11 22:56:23 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/11/12 00:21:47 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(void)
 	PhoneBook	p;
 	while (1)
 	{
+		if (std::cin.eof())
+			break ;
 		std::cout << "PhoneBook $ ";
 		std::cin >> cmd;
 		if (cmd == "ADD")

@@ -6,15 +6,12 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 21:02:45 by jitlee            #+#    #+#             */
-/*   Updated: 2021/11/11 22:50:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/11/11 22:58:50 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
-# include <iostream>
-# include <string>
-# include <iomanip>
 # include "contact.hpp"
 
 class	PhoneBook {

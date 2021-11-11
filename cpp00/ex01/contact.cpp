@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 17:46:00 by jitlee            #+#    #+#             */
-/*   Updated: 2021/11/11 22:24:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/11/12 00:19:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,24 @@ void	Contact::fill_contact(int idx)
 	std::cout << "contact info? : " << std::endl;
 	std::cout << "first name : ";
 	std::cin >> this->first_name;
+	if (std::cin.eof())
+		return ;
 	std::cout << "last name : ";
 	std::cin >> this->last_name;
+	if (std::cin.eof())
+		return ;
 	std::cout << "nickname : ";
 	std::cin >> this->nickname;
+	if (std::cin.eof())
+		return ;
 	std::cout << "phone number : ";
 	std::cin >> this->phone_number;
+	if (std::cin.eof())
+		return ;
 	std::cout << "darkest secret : ";
 	std::cin >> this->darkest_secret;
+	if (std::cin.eof())
+		return ;
 }
 
 void	Contact::print_contact()
