@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 21:02:45 by jitlee            #+#    #+#             */
-/*   Updated: 2021/11/11 22:58:50 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/11/12 03:34:18 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class	PhoneBook {
 		PhoneBook();
 		void	p_add();
 		void	p_search();
+		int		my_atoi(std::string str);
 		void	print_contact();
 		void	print_contact_list();
 };

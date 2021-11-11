@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 21:01:36 by jitlee            #+#    #+#             */
-/*   Updated: 2021/11/12 00:18:04 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/11/12 03:43:14 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,48 @@ PhoneBook::PhoneBook()
 void	PhoneBook::p_add()
 {
 	Contact	contact;
-	contact.fill_contact(len + 1);
-	this->contacts[len % 8] = contact;
-	idx[len % 8] = len + 1;
+	contact.fill_contact(this->len + 1);
+	this->contacts[this->len % 8] = contact;
+	idx[this->len % 8] = this->len + 1;
 	this->len++;
+}
+
+int		PhoneBook::my_atoi(std::string str)
+{
+	int i;
+	int	ret;
+
+	ret = 0;
+	i = -1;
+	if ((int)str.length() == 0)
+		return (-1);
+	while (++i < (int)str.length())
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			break ;
+	if (i != (int)str.length())
+		return (-1);
+	i = -1;
+	while (++i < (int)str.length())
+		ret = (ret * 10) + (str[i] - '0');
+	return (ret);
 }
 
 void	PhoneBook::print_contact()
 {
-	int i;
-	int	index;
+	int 		i;
+	int			index;
+	std::string	tmp;
 
 	std::cout << "Enter index : ";
-	std::cin >> index;
-	if (std::cin.fail())
+	if (!std::getline(std::cin, tmp))
+		return ;
+	i = -1;
+	index = my_atoi(tmp);
+	if (index == -1)
 	{
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-		std::cout << "Input Error!" << std::endl;
+		std::cout << "INDEX IS ONLY NUMBER" << std::endl;
 		return ;
 	}
-	i = -1;
 	while (++i < 8)
 	{
 		if (idx[i] == index)
