@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:40:48 by jitlee            #+#    #+#              #
-#    Updated: 2021/11/11 15:00:57 by jitlee           ###   ########.fr        #
+#    Updated: 2021/11/11 15:25:17 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ SRCS = $(addsuffix .cpp, $(FILES))
 OBJS = $(addsuffix .o, $(FILES))
 
 .cpp.o: $(SRCS)
-	$(CLANG) $(CFLAGS) -c -o $@ $<
+	@$(CLANG) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
-	$(CLANG) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CLANG) $(CFLAGS) $(OBJS) -o $(NAME)
 
 all: $(NAME)
 
