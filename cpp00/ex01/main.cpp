@@ -6,11 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:58:41 by jitlee            #+#    #+#             */
-/*   Updated: 2021/11/12 03:16:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/11/12 04:24:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
 int	main(void)
 {
@@ -19,10 +19,13 @@ int	main(void)
 	while (1)
 	{
 		if (std::cin.eof())
+		{
+			std::cout << std::endl;
 			break ;
+		}
 		std::cout << "PhoneBook[ADD|SEARCH|EXIT] : ";
 		if(!std::getline(std::cin, cmd))
-			std::cout << "Wrong Input!!" << std::endl;	
+			std::cout << "Wrong Input!!";	
 		else if (cmd == "ADD")
 			p.p_add();
 		else if (cmd == "SEARCH")
