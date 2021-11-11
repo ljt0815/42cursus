@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 14:50:23 by jitlee            #+#    #+#             */
-/*   Updated: 2021/11/11 16:19:09 by jitlee           ###   ########.fr       */
+/*   Created: 2021/11/11 16:58:41 by jitlee            #+#    #+#             */
+/*   Updated: 2021/11/11 22:56:23 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "phonebook.hpp"
 
-int	main(int ac, char *av[])
+int	main(void)
 {
-	int	i;
-	int	j;
-
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
+	std::string	cmd;
+	PhoneBook	p;
+	while (1)
 	{
-		i = 0;
-		while (++i < ac)
-		{
-			j = -1;
-			while (av[i][++j])
-				std::cout << (char)std::toupper(av[i][j]);
-		}
+		std::cout << "PhoneBook $ ";
+		std::cin >> cmd;
+		if (cmd == "ADD")
+			p.p_add();
+		else if (cmd == "SEARCH")
+			p.p_search();
+		else if (cmd == "EXIT")
+			break ;
+		else
+			std::cout << "command not found" << std::endl;
 	}
-	std::cout << std::endl;
 	return (0);
 }

@@ -6,18 +6,20 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:40:48 by jitlee            #+#    #+#              #
-#    Updated: 2021/11/11 16:28:47 by jitlee           ###   ########.fr        #
+#    Updated: 2021/11/11 21:59:23 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
 CLANG = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-FILES = megaphone
+FILES = main		\
+		contact		\
+		phonebook
 
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJS = $(addsuffix .o, $(FILES))
