@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 00:02:20 by jitlee            #+#    #+#             */
-/*   Updated: 2021/12/31 01:21:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2021/12/31 02:37:56 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 class Weapon {
 	private	:
 		std::string str;
+		Weapon(void);
 	public	:
 		Weapon(std::string str);
-		std::string	getType(void);
+		const std::string	&getType(void);
 		void		setType(std::string str);
 };
 
