@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 23:21:19 by jitlee            #+#    #+#             */
-/*   Updated: 2021/12/31 00:01:33 by jitlee           ###   ########.fr       */
+/*   Created: 2021/12/31 00:19:07 by jitlee            #+#    #+#             */
+/*   Updated: 2021/12/31 00:30:39 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "HumanA.hpp"
 
-int	main(void)
+HumanA::HumanA(std::string name, Weapon &w)
 {
-	std::string str = "HI THIS IS BRAIN";
-	std::string *stringPTR = &str;
-	std::string &stringREF = str;
-	
-	std::cout << &str << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
-	return (0);
+	this->w = &w;
+	this->name = name;
+}
+
+void	HumanA::attack(void)
+{
+	std::cout << this->name << " attacks with his " << this->w->getType() << std::endl;
 }

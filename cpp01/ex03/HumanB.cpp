@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 23:21:19 by jitlee            #+#    #+#             */
-/*   Updated: 2021/12/31 00:01:33 by jitlee           ###   ########.fr       */
+/*   Created: 2021/12/31 00:31:10 by jitlee            #+#    #+#             */
+/*   Updated: 2021/12/31 01:08:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "HumanB.hpp"
 
-int	main(void)
+HumanB::HumanB(std::string name)
 {
-	std::string str = "HI THIS IS BRAIN";
-	std::string *stringPTR = &str;
-	std::string &stringREF = str;
-	
-	std::cout << &str << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
-	return (0);
+	this->name = name;
+	this->w = NULL;
+}
+
+void	HumanB::setWeapon(Weapon &w)
+{
+	this->w = &w;
+}
+
+void	HumanB::attack(void)
+{
+	if (this->w == NULL)
+		std::cout << this->name << " attacks with his right hand" << std::endl;
+	else
+		std::cout << this->name << " attacks with his " << this->w->getType() << std::endl;
 }

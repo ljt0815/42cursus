@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 23:21:19 by jitlee            #+#    #+#             */
-/*   Updated: 2021/12/31 00:01:33 by jitlee           ###   ########.fr       */
+/*   Created: 2021/12/31 00:31:35 by jitlee            #+#    #+#             */
+/*   Updated: 2021/12/31 00:39:40 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
+# include "Weapon.hpp"
 
-int	main(void)
-{
-	std::string str = "HI THIS IS BRAIN";
-	std::string *stringPTR = &str;
-	std::string &stringREF = str;
-	
-	std::cout << &str << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
-	return (0);
-}
+class HumanB {
+	private	:
+		std::string name;
+		Weapon		*w;
+	public	:
+		HumanB(std::string name);
+		void	setWeapon(Weapon &w);
+		void	attack(void);
+};
+#endif

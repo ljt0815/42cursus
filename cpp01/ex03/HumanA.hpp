@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 23:21:19 by jitlee            #+#    #+#             */
-/*   Updated: 2021/12/31 00:01:33 by jitlee           ###   ########.fr       */
+/*   Created: 2021/12/31 00:19:28 by jitlee            #+#    #+#             */
+/*   Updated: 2021/12/31 00:39:33 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
+# include "Weapon.hpp"
 
-int	main(void)
-{
-	std::string str = "HI THIS IS BRAIN";
-	std::string *stringPTR = &str;
-	std::string &stringREF = str;
-	
-	std::cout << &str << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
-	return (0);
-}
+class HumanA {
+	private	:
+		std::string	name;
+		Weapon		*w;
+	public	:
+		HumanA(std::string name, Weapon &w);
+		void	attack(void);
+};
+#endif
