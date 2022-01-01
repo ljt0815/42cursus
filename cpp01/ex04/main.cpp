@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:10:58 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/01 19:23:29 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/01 19:32:36 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int	main(int ac, char *av[])
 	if (ac != 4)
 	{
 		std::cout << "arguments only filename, str1, str2" << std::endl;
+		return (1);
+	}
+	if (av[2][0] == 0 || av[3][0] == 0)
+	{
+		std::cout << "str is not emptyString" << std::endl;
 		return (1);
 	}
 	readFile.open(av[1]);
