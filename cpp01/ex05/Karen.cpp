@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 23:16:56 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/02 00:07:59 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/02 00:45:25 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,19 @@ void	Karen::error(void)
 	std::cout << "This is unacceptable, I want to speak to the manager now." << std::endl;
 }
 
+void	Karen::unknown(void)
+{
+	std::cout << "[unknown]" << std::endl;
+	std::cout << "I don't know what i'm say" << std::endl;
+}
+
 void	Karen::complain(std::string level)
 {
-	void	(Karen::*f[27])(void) = {0};
+	void	(Karen::*f[5])(void) = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error, &Karen::unknown};
+	std::string	words[4] = {"debug", "info", "warning", "error"};
+	int		i = -1;
 
-	f[3] = &Karen::debug;
-	f[4] = &Karen::error;
-	f[8] = &Karen::info;
-	f[22] = &Karen::warning;
-	(this->*(f[level[0] - 'a']))();
+	while (level != words[++i] && i < 4)
+		;
+	(this->*(f[i]))();
 }
