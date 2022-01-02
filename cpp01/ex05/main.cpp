@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:04:31 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/02 00:46:08 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/03 06:03:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int	main(void)
 {
 	Karen k;
-	k.complain("debug");
-	k.complain("error");
-	k.complain("warning");
-	k.complain("info");
+	k.complain("DEBUG");
+	k.complain("ERROR");
+	k.complain("WARNING");
+	k.complain("INFO");
 	k.complain("asdfrwqer");
 	return (0);
 }
