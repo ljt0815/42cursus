@@ -6,11 +6,11 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 16:18:08 by jitlee            #+#    #+#              #
-#    Updated: 2022/01/13 18:33:24 by jitlee           ###   ########.fr        #
+#    Updated: 2022/01/20 18:52:44 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Fixed
+NAME = a.out
 
 CLANG = clang++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
