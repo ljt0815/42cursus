@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 18:53:20 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/20 18:53:20 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/20 19:15:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ void	Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	this->fixed_point = raw;
+}
+
+int	Fixed::toInt(void) const
+{
+	return (fixed_point >> 8);
+}
+
+Fixed::Fixed(const int raw)
+{
+	fixed_point = raw;
+	fixed_point <<= 8;
 }
 
 Fixed::Fixed(const Fixed &f)

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 18:53:38 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/20 18:53:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/20 19:18:58 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	main(void)
 {
-	Fixed a;
-	Fixed b(a);
-	Fixed c;
+	Fixed		a;
+	Fixed const	b( 10 );
+	//Fixed const	c( 42.42f );
+	//Fixed const	d( b );
+	
+	//a = Fixed( 1234.4321f );
 
-	c = b;
+	//std::cout << "a is " << a << std::endl;
+	//std::cout << "b is " << b << std::endl;
 
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	return (0);
 }
