@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 16:32:58 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/20 18:54:57 by jitlee           ###   ########.fr       */
+/*   Created: 2022/01/20 18:53:38 by jitlee            #+#    #+#             */
+/*   Updated: 2022/01/20 18:53:38 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
-# include <iostream>
+#include "Fixed.hpp"
 
-class Fixed {
-	private	:
-		int	fixed_point;
-		static const int fixed_bit = 8;
+int	main(void)
+{
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
 
-	public	:
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+	c = b;
 
-		Fixed &operator=(const Fixed &f);
-		Fixed(void);
-		Fixed(const Fixed &f);
-		~Fixed(void);
-};
-#endif
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return (0);
+}

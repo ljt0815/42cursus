@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 16:32:58 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/20 18:54:57 by jitlee           ###   ########.fr       */
+/*   Created: 2022/01/20 18:53:23 by jitlee            #+#    #+#             */
+/*   Updated: 2022/01/20 18:53:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 # include <iostream>
+# include <cmath>
 
 class Fixed {
 	private	:
