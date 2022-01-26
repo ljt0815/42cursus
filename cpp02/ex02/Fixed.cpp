@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:19 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/26 21:06:48 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/26 21:36:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,54 @@ bool Fixed::operator<(const Fixed &f) const
 bool Fixed::operator>(const Fixed &f) const
 {
 	return fixed_point > f.getRawBits();
+}
+
+bool Fixed::operator<=(const Fixed &f) const
+{
+	return fixed_point <= f.getRawBits();
+}
+
+bool Fixed::operator>=(const Fixed &f) const
+{
+	return fixed_point >= f.getRawBits();
+}
+
+bool Fixed::operator==(const Fixed &f) const
+{
+	return fixed_point == f.getRawBits();
+}
+
+bool Fixed::operator!=(const Fixed &f) const
+{
+	return fixed_point != f.getRawBits();
+}
+
+Fixed Fixed::operator+(const Fixed &f)
+{
+	Fixed tmp(this->toFloat() + f.toFloat());
+
+	return tmp;
+}
+
+Fixed Fixed::operator-(const Fixed &f)
+{
+	Fixed tmp(this->toFloat() - f.toFloat());
+
+	return tmp;
+}
+
+Fixed Fixed::operator*(const Fixed &f)
+{
+	Fixed tmp(this->toFloat() * f.toFloat());
+
+	return tmp;
+}
+
+Fixed Fixed::operator/(const Fixed &f)
+{
+	Fixed tmp(this->toFloat() / f.toFloat());
+
+	return tmp;
 }
 
 int	Fixed::getRawBits(void) const
