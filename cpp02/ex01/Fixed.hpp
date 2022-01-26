@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 18:53:23 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/20 19:08:06 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/26 19:22:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ class Fixed {
 		Fixed(const Fixed &f);
 		~Fixed(void);
 };
+std::ostream& operator<<(std::ostream& o, const Fixed& f);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 18:53:20 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/20 19:15:31 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/26 19:21:15 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,38 @@ Fixed &Fixed::operator=(const Fixed &f)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixed_point);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	this->fixed_point = raw;
+}
+
+float	Fixed::toFloat(void) const
+{
+	return (static_cast<float>(fixed_point) / (1 << fixed_bit));
 }
 
 int	Fixed::toInt(void) const
 {
-	return (fixed_point >> 8);
+	return (fixed_point >> fixed_bit);
+}
+
+Fixed::Fixed(const float raw)
+{
+	std::cout << "Float constructor called" << std::endl;
+	fixed_point = roundf(raw * (1<<fixed_bit));
 }
 
 Fixed::Fixed(const int raw)
 {
-	fixed_point = raw;
-	fixed_point <<= 8;
+	std::cout << "Int constructor called" << std::endl;
+	if (raw >= 8388608)
+	{
+		std::cout << "INTEGER OVERFLOW" << std::endl;
+	}
+	fixed_point = raw << fixed_bit;
 }
 
 Fixed::Fixed(const Fixed &f)
@@ -58,4 +71,9 @@ Fixed::Fixed(const Fixed &f)
 Fixed::~Fixed(void)
 {
 	std::cout << "Destructor called" << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& o, const Fixed& f)
+{
+	return o << f.toFloat();
 }
