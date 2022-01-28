@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:19 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/28 13:33:48 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/28 17:53:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Fixed::Fixed(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 	this->fixed_point = 0;
 }
 
 Fixed &Fixed::operator=(const Fixed &f)
 {
-	std::cout << "Assignation operator called" << std::endl;
+	//std::cout << "Assignation operator called" << std::endl;
 	if (this != &f)
 		this->fixed_point = f.getRawBits();
 	return (*this);
@@ -91,7 +91,7 @@ Fixed Fixed::operator++()
 	return *this;
 }
 
-Fixed Fixed::operator++(int)
+const Fixed Fixed::operator++(int)
 {
 	Fixed tmp(*this);
 	fixed_point += 1;
@@ -106,7 +106,7 @@ Fixed Fixed::operator--()
 	return *this;
 }
 
-Fixed Fixed::operator--(int)
+const Fixed Fixed::operator--(int)
 {
 	Fixed tmp(*this);
 	fixed_point -= 1;
@@ -136,13 +136,13 @@ int	Fixed::toInt(void) const
 
 Fixed::Fixed(const float raw)
 {
-	std::cout << "Float constructor called" << std::endl;
+	//std::cout << "Float constructor called" << std::endl;
 	fixed_point = roundf(raw * (1<<fixed_bit));
 }
 
 Fixed::Fixed(const int raw)
 {
-	std::cout << "Int constructor called" << std::endl;
+	//std::cout << "Int constructor called" << std::endl;
 	if (raw >= 8388608)
 	{
 		std::cout << "INTEGER OVERFLOW" << std::endl;
@@ -152,13 +152,45 @@ Fixed::Fixed(const int raw)
 
 Fixed::Fixed(const Fixed &f)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	*this = f;
+}
+
+Fixed	&Fixed::min(Fixed &f1, Fixed &f2)
+{
+	//std::cout << "static min" << std::endl;
+	if (f1.getRawBits() < f2.getRawBits())
+		return f1;
+	return f2;
+}
+
+const Fixed	&Fixed::min(const Fixed &f1, const Fixed &f2)
+{
+	//std::cout << "const min" << std::endl;
+	if (f1.getRawBits() < f2.getRawBits())
+		return f1;
+	return f2;
+}
+
+Fixed	&Fixed::max(Fixed &f1, Fixed &f2)
+{
+	//std::cout << "static max" << std::endl;
+	if (f1.getRawBits() > f2.getRawBits())
+		return f1;
+	return f2;
+}
+
+const Fixed	&Fixed::max(const Fixed &f1, const Fixed &f2)
+{
+	//std::cout << "const max" << std::endl;
+	if ((Fixed)f1.getRawBits() > (Fixed)f2.getRawBits())
+		return f1;
+	return f2;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& o, const Fixed& f)
