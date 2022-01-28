@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:15 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/26 21:36:55 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/28 13:33:30 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,9 @@ int	main(void)
 	std::cout << a - c << std::endl;
 	std::cout << a * c << std::endl;
 	std::cout << a / c << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << b-- << std::endl;
+	std::cout << --b << std::endl;
 	return (0);
 }

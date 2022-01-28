@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:24 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/26 21:37:20 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/28 13:33:09 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ class Fixed {
 		Fixed operator-(const Fixed &f);
 		Fixed operator*(const Fixed &f);
 		Fixed operator/(const Fixed &f);
+		Fixed operator++();
+		Fixed operator++(int);
+		Fixed operator--();
+		Fixed operator--(int);
 		bool operator<(const Fixed &f) const;
 		bool operator>(const Fixed &f) const;
 		bool operator<=(const Fixed &f) const;

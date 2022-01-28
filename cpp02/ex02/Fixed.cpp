@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:19 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/26 21:36:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/28 13:33:48 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,36 @@ Fixed Fixed::operator*(const Fixed &f)
 Fixed Fixed::operator/(const Fixed &f)
 {
 	Fixed tmp(this->toFloat() / f.toFloat());
+
+	return tmp;
+}
+
+Fixed Fixed::operator++()
+{
+	fixed_point += 1;
+
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp(*this);
+	fixed_point += 1;
+
+	return tmp;
+}
+
+Fixed Fixed::operator--()
+{
+	fixed_point -= 1;
+
+	return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	fixed_point -= 1;
 
 	return tmp;
 }
