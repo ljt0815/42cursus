@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:19 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/29 09:27:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/29 10:58:27 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ Fixed Fixed::operator*(const Fixed &f)
 
 Fixed Fixed::operator/(const Fixed &f)
 {
+	if (f.toFloat() == 0)
+	{
+		std::cout << "divide zero Error" << std::endl;
+		exit(1);
+	}
 	Fixed tmp(this->toFloat() / f.toFloat());
 
 	return tmp;
@@ -143,10 +148,6 @@ Fixed::Fixed(const float raw)
 Fixed::Fixed(const int raw)
 {
 	//std::cout << "Int constructor called" << std::endl;
-	if (raw >= 8388608)
-	{
-		std::cout << "INTEGER OVERFLOW" << std::endl;
-	}
 	fixed_point = raw << fixed_bit;
 }
 
