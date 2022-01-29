@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:19 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/28 17:53:00 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/29 09:27:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ Fixed::Fixed(const Fixed &f)
 Fixed	&Fixed::min(Fixed &f1, Fixed &f2)
 {
 	//std::cout << "static min" << std::endl;
-	if (f1.getRawBits() < f2.getRawBits())
+	if (f1 < f2)
 		return f1;
 	return f2;
 }
@@ -167,7 +167,7 @@ Fixed	&Fixed::min(Fixed &f1, Fixed &f2)
 const Fixed	&Fixed::min(const Fixed &f1, const Fixed &f2)
 {
 	//std::cout << "const min" << std::endl;
-	if (f1.getRawBits() < f2.getRawBits())
+	if (f1 < f2)
 		return f1;
 	return f2;
 }
@@ -175,7 +175,7 @@ const Fixed	&Fixed::min(const Fixed &f1, const Fixed &f2)
 Fixed	&Fixed::max(Fixed &f1, Fixed &f2)
 {
 	//std::cout << "static max" << std::endl;
-	if (f1.getRawBits() > f2.getRawBits())
+	if (f1 > f2)
 		return f1;
 	return f2;
 }
@@ -183,7 +183,7 @@ Fixed	&Fixed::max(Fixed &f1, Fixed &f2)
 const Fixed	&Fixed::max(const Fixed &f1, const Fixed &f2)
 {
 	//std::cout << "const max" << std::endl;
-	if ((Fixed)f1.getRawBits() > (Fixed)f2.getRawBits())
+	if (f1 > f2)
 		return f1;
 	return f2;
 }
