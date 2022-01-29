@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 23:54:40 by jitlee            #+#    #+#             */
-/*   Updated: 2021/12/30 22:43:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/29 11:09:16 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Zombie::Zombie(void)
 {
-	
+	std::cout << "Unnamed Zombie Create!" << std::endl;
 }
 
 Zombie::Zombie(std::string name)
