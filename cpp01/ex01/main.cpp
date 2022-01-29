@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 21:36:26 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/29 11:02:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/01/29 11:21:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int main(void)
 	Zombie *z = zombieHorde(3, "ASAP");
 	for (int i = 0; i < 3; i++)
 		z[i].announce();
-	delete []z;
+	delete[] z;
 }
