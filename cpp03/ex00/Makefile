@@ -6,13 +6,13 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 12:04:52 by jitlee            #+#    #+#              #
-#    Updated: 2022/01/31 12:05:08 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/03 17:26:36 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ClapTrap
 
-CLANG = clang++
+CLANG = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
