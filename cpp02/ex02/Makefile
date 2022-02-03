@@ -6,13 +6,13 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 19:37:09 by jitlee            #+#    #+#              #
-#    Updated: 2022/01/26 19:37:11 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/03 13:18:14 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 
-CLANG = clang++
+CLANG = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
