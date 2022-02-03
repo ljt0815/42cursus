@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 18:53:20 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/26 19:21:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/03 14:42:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,12 @@ int	Fixed::toInt(void) const
 Fixed::Fixed(const float raw)
 {
 	std::cout << "Float constructor called" << std::endl;
-	fixed_point = roundf(raw * (1<<fixed_bit));
+	fixed_point = static_cast<int>(roundf(raw * (1<<fixed_bit)));
 }
 
 Fixed::Fixed(const int raw)
 {
 	std::cout << "Int constructor called" << std::endl;
-	if (raw >= 8388608)
-	{
-		std::cout << "INTEGER OVERFLOW" << std::endl;
-	}
 	fixed_point = raw << fixed_bit;
 }
 

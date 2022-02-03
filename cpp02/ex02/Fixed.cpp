@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 19:37:19 by jitlee            #+#    #+#             */
-/*   Updated: 2022/01/29 10:58:27 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/03 14:24:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int	Fixed::toInt(void) const
 Fixed::Fixed(const float raw)
 {
 	//std::cout << "Float constructor called" << std::endl;
-	fixed_point = roundf(raw * (1<<fixed_bit));
+	fixed_point = static_cast<int>(roundf(raw * (1<<fixed_bit)));
 }
 
 Fixed::Fixed(const int raw)
