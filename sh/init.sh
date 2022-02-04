@@ -10,6 +10,7 @@ echo "set smartindent" >> ~/.vimrc
 echo "set cindent" >> ~/.vimrc
 echo "set showmatch" >> ~/.vimrc
 echo "let @t = \":Stdheader\\<CR>\"" >> ~/.vimrc
+echo "map <F4> <c-w><c-w>" >> ~/.vimrc
 export MAIL="jitlee@student.42seoul.kr"
 #mkdir -p ~/.vim/plugin
 #cp stdheader.vim ~/.vim/plugin/
