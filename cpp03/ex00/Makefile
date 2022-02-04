@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 12:04:52 by jitlee            #+#    #+#              #
-#    Updated: 2022/02/03 17:26:36 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/05 01:55:05 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
 FILES = main		\
-		Fixed
+		ClapTrap
 
 
 SRCS = $(addsuffix .cpp, $(FILES))
