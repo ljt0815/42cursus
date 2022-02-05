@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 05:02:11 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 20:30:32 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/05 21:18:45 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 FragTrap::~FragTrap(void)
 {
 	std::cout << "FragTrap<" << _name << ">" << " destroyed" << std::endl;
-}
-
-void	FragTrap::attack(std::string const & target)
-{
-	std::cout << "FragTrap <" << _name << "> attacks <" << target << ">, causing <" << _ad << "> points of damage!" << std::endl;
 }
 
 void	FragTrap::highFivesGuys(void)

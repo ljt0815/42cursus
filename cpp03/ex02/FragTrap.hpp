@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 05:02:26 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 05:11:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/05 21:19:15 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 class FragTrap : public ClapTrap {
 	public	:
-		void	attack(std::string const & target);
 		void	highFivesGuys(void);
 		FragTrap(void);
 		FragTrap(std::string name);
