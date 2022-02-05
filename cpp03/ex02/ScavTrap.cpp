@@ -6,13 +6,13 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 03:39:22 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 04:29:01 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/05 18:46:57 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	_name = "unnamed";
 	_hp = _hpMax = 100;

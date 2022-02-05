@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 05:02:11 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 18:47:06 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/05 20:30:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ FragTrap::FragTrap(void) : ClapTrap()
 	std::cout << "FragTrap<" << _name << ">" << " created" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	_name = name;
 	_hp = _hpMax = 100;
