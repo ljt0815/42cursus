@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 05:02:11 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 21:18:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/05 23:55:07 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,31 @@
 
 FragTrap::FragTrap(void) : ClapTrap()
 {
-	_name = "unnamed";
-	_hp = _hpMax = 100;
-	_ep = _epMax = 100;
-	_ad = 30;
+	_hp = _hpMax = F_HP;
+	_ep = F_EP;
+	_ad = F_AD;
 	std::cout << "FragTrap<" << _name << ">" << " created" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	_name = name;
-	_hp = _hpMax = 100;
-	_ep = _epMax = 100;
-	_ad = 30;
+	_hp = _hpMax = F_HP;
+	_ep = F_EP;
+	_ad = F_AD;
 	std::cout << "FragTrap<" << _name << ">" << "created" << std::endl;
+}
+
+FragTrap &FragTrap::operator=(const FragTrap &f)
+{
+	if (this != &f)
+	{
+		_name = f.getName();
+		_hp = f.getHp();
+		_hpMax = f.getHpMax();
+		_ep = f.getEp();
+		_ad = f.getAd();
+	}
+	return (*this);
 }
 
 FragTrap::~FragTrap(void)
