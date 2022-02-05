@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 01:53:46 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 04:37:12 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 01:18:45 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,6 @@
 
 int main(void)
 {
-	
-	ClapTrap bot("bot");
-	ClapTrap enemy("enemy");
-
-	std::cout << "enemy HP : " << enemy.getHp() << std::endl;
-	bot.attack("enemy");
-	enemy.takeDamage(bot.getAd());
-	std::cout << "enemy HP : " << enemy.getHp() << std::endl;
-	std::cout << "---------------------------------" << std::endl;
-	std::cout << "bot Attack Damage setting 10!!!" << std::endl;
-	bot.setAd(10);
-	bot.attack("enemy");
-	enemy.takeDamage(bot.getAd());
-	std::cout << "enemy HP : " << enemy.getHp() << std::endl;
-	std::cout << "enemy self repaired 5" << std::endl;
-	enemy.beRepaired(5);
-	std::cout << "enemy HP : " << enemy.getHp() << std::endl;
-	//enemy.guardGate();
-
-	std::cout << std::endl << "-------------------------------------------------" << std::endl << std::endl;
-
 	ScavTrap bot2("bot");
 	ScavTrap enemy2("enemy");
 

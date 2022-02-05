@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:10:56 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 21:58:59 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 01:11:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # define C_AD	0
 
 class ClapTrap {
-	protected	:
+	private	:
 		std::string		_name;
 		unsigned int	_hp;
 		unsigned int	_hpMax;
 		unsigned int	_ep;
 		unsigned int	_ad;
 
-	public		:
+	public	:
 		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap &operator=(const ClapTrap &c);

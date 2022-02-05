@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 03:39:36 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 22:07:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 01:26:05 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define S_EP	50
 # define S_AD	20
 
-class ScavTrap : virtual public ClapTrap {
+class ScavTrap : public ClapTrap {
 	public :
 		void	guardGate(void);
 		void	attack(std::string const & target);
