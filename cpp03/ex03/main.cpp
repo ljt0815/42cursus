@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 01:53:46 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 01:33:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:43:07 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main(void)
 	a.guardGate();
 	a.highFivesGuys();
 	a.attack("bot");
+	std::cout << "--------------------whoAmI()---------------------" << std::endl;
 	a.whoAmI();
-	a.takeDamage(30);
-	std::cout << a.getHp() << std::endl;
+	std::cout << "-------------------------------------------------" << std::endl;
 
 	return (0);
 }
