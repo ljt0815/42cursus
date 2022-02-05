@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:07:05 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 21:58:45 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 00:47:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_hp + amount > _hpMax)
-		_hp = C_HP;
+		_hp = _hpMax;
 	else
 		_hp += amount;
 }
