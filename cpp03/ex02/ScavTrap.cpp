@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 03:39:22 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 23:55:15 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:21:50 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &s)
 		_ad = s.getAd();
 	}
 	return (*this);
+}
+
+ScavTrap::ScavTrap(const ScavTrap &s)
+{
+	_name = s.getName();
+	_hp = s.getHp();
+	_hpMax = s.getHpMax();
+	_ep = s.getEp();
+	_ad = s.getAd();
+	std::cout << "ScavTrap copy constructor called" << std::endl;
 }
 
 ScavTrap::~ScavTrap(void)

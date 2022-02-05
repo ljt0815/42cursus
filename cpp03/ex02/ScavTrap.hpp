@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 03:39:36 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 01:26:05 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:22:09 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class ScavTrap : public ClapTrap {
 		void	guardGate(void);
 		void	attack(std::string const & target);
 		ScavTrap &operator=(const ScavTrap &s);
+		ScavTrap(const ScavTrap &s);
 		ScavTrap(void);
 		ScavTrap(std::string name);
 		virtual ~ScavTrap(void);

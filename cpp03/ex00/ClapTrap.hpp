@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:10:56 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 01:11:00 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:12:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class ClapTrap {
 	public	:
 		ClapTrap(void);
 		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &c);
 		ClapTrap &operator=(const ClapTrap &c);
 		std::string	getName(void) const;
 		unsigned int	getHp(void) const;

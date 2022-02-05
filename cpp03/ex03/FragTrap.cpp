@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 05:02:11 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 01:45:43 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:29:26 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	_ep = F_EP;
 	_ad = F_AD;
 	std::cout << "FragTrap<" << _name << ">" << "created" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &f)
+{
+	_name = f.getName();
+	_hp = f.getHp();
+	_hpMax = f.getHpMax();
+	_ep = f.getEp();
+	_ad = f.getAd();
+	std::cout << "FragTrap copy constructor called" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &f)

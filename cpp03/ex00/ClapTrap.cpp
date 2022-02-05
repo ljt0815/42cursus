@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:07:05 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 00:46:47 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:16:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,16 @@ void	ClapTrap::setEp(const int &ep)
 void	ClapTrap::setAd(const int &ad)
 {
 	_ad = ad;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &c)
+{
+	_name = c.getName();
+	_hp = c.getHp();
+	_hpMax = c.getHpMax();
+	_ep = c.getEp();
+	_ad = c.getAd();
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)

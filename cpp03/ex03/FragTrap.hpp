@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 05:02:26 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 01:46:14 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:30:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class FragTrap : virtual public ClapTrap {
 		void	attack(std::string const & target);
 		void	highFivesGuys(void);
 		FragTrap &operator=(const FragTrap &f);
+		FragTrap(const FragTrap &f);
 		FragTrap(void);
 		FragTrap(std::string name);
 		virtual ~FragTrap(void);

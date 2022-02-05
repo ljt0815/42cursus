@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:09:54 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 01:48:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 03:32:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
 	_ep = S_EP;
 	_ad = F_AD;
 	std::cout << "DiamondTrap<" << this->_name << ">" << " created" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &d)
+{
+	_name = d.getName();
+	_hp = d.getHp();
+	_hpMax = d.getHpMax();
+	_ep = d.getEp();
+	_ad = d.getAd();
+	std::cout << "DiamondTrap copy constructor called" << std::endl;
 }
 
 DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &d)
