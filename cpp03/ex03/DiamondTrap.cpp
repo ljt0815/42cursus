@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:09:54 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/06 00:04:22 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 01:48:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	DiamondTrap::whoAmI(void)
 {
 	std::cout << "DiamondTrap <" << _name << "> : my name is " << _name << "!!!" << std::endl \
 		<< "ClapTrap <" << ClapTrap::_name << "> : my name is " << ClapTrap::_name << "!!!!" << std::endl;
+}
+
+void	DiamondTrap::attack(std::string const & target)
+{
+	ScavTrap::attack(target);
 }
 
 std::string	DiamondTrap::getName(void) const

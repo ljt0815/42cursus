@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 05:02:11 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 23:55:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 01:27:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,9 @@ FragTrap::~FragTrap(void)
 void	FragTrap::highFivesGuys(void)
 {
 	std::cout << "Let's HIGHFIVES!!?" << std::endl;
+}
+
+void	FragTrap::attack(std::string const & target)
+{
+	std::cout << "FragTrap <" << _name << "> attacks <" << target << ">, causing <" << _ad << "> points of damage!" << std::endl;
 }
