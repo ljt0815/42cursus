@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 03:39:36 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 04:26:54 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/05 22:07:15 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 # define SCAVTRAP_HPP
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+# define S_HP	100
+# define S_EP	50
+# define S_AD	20
+
+class ScavTrap : virtual public ClapTrap {
 	public :
 		void	guardGate(void);
 		void	attack(std::string const & target);
+		ScavTrap &operator=(const ScavTrap &s);
 		ScavTrap(void);
 		ScavTrap(std::string name);
-		~ScavTrap(void);
+		virtual ~ScavTrap(void);
 };
 #endif

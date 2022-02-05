@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:07:05 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 04:13:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/06 00:47:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 ClapTrap::ClapTrap(void)
 {
 	_name = "unnamed";
-	_hp = _hpMax = 10;
-	_ep = _epMax = 10;
-	_ad = 0;
+	_hp = _hpMax = C_HP;
+	_ep = C_EP;
+	_ad = C_AD;
 	std::cout << "ClapTrap<" << _name << ">" << " created" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name)
+{
+	_name = name;
+	_hp = _hpMax = C_HP;
+	_ep = C_EP;
+	_ad = C_AD;
+	std::cout << "ClapTrap<" << _name << ">" << "created" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &c)
@@ -27,19 +36,11 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &c)
 	{
 		_name = c.getName();
 		_hp = c.getHp();
+		_hpMax = c.getHpMax();
 		_ep = c.getEp();
 		_ad = c.getAd();
 	}
 	return (*this);
-}
-
-ClapTrap::ClapTrap(std::string name)
-{
-	_name = name;
-	_hp = _hpMax = 10;
-	_ep = _epMax = 10;
-	_ad = 0;
-	std::cout << "ClapTrap<" << _name << ">" << "created" << std::endl;
 }
 
 void	ClapTrap::attack(std::string const & target)
@@ -68,27 +69,22 @@ std::string	ClapTrap::getName(void) const
 	return (_name);
 }
 
-int	ClapTrap::getHp(void) const
+unsigned int	ClapTrap::getHp(void) const
 {
 	return (_hp);
 }
 
-int	ClapTrap::getEp(void) const
+unsigned int	ClapTrap::getHpMax(void) const
+{
+	return (_hpMax);
+}
+
+unsigned int	ClapTrap::getEp(void) const
 {
 	return (_ep);
 }
 
-int	ClapTrap::getHpMax(void) const
-{
-	return (_hp);
-}
-
-int	ClapTrap::getEpMax(void) const
-{
-	return (_ep);
-}
-
-int	ClapTrap::getAd(void) const
+unsigned int	ClapTrap::getAd(void) const
 {
 	return (_ad);
 }

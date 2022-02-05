@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 03:39:22 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/05 18:47:56 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/05 23:55:15 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,31 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
-	_name = "unnamed";
-	_hp = _hpMax = 100;
-	_ep = _epMax = 50;
-	_ad = 20;
+	_hp = _hpMax = S_HP;
+	_ep = S_EP;
+	_ad = S_AD;
 	std::cout << "ScavTrap<" << _name << ">" << " created" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	_name = name;
-	_hp = _hpMax = 100;
-	_ep = _epMax = 50;
-	_ad = 20;
+	_hp = _hpMax = S_HP;
+	_ep = S_EP;
+	_ad = S_AD;
 	std::cout << "ScavTrap<" << _name << ">" << "created" << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &s)
+{
+	if (this != &s)
+	{
+		_name = s.getName();
+		_hp = s.getHp();
+		_hpMax = s.getHpMax();
+		_ep = s.getEp();
+		_ad = s.getAd();
+	}
+	return (*this);
 }
 
 ScavTrap::~ScavTrap(void)
