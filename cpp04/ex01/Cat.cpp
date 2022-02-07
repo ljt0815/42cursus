@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 06:13:38 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 04:25:23 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 06:26:57 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ Cat::Cat(void) : Animal()
 Cat::Cat(const Cat &c)
 {
 	_type = c.getType();
-	
+	for (int i = 0; i < 100; i++)
+		_b->setString(c.getBrainStr(i), i);
 	std::cout << "Cat copy constructor called" << std::endl;
 }
 
@@ -39,8 +40,25 @@ Cat	&Cat::operator=(const Cat &c)
 	if (this != &c)
 	{
 		_type = c.getType();
+		for (int i = 0; i < 100; i++)
+			_b->setString(c.getBrainStr(i), i);
 	}
 	return (*this);
+}
+
+std::string	Cat::getBrainStr(int i) const
+{
+	return (_b->getString(i));
+}
+
+void	Cat::setBrainStr(std::string tmp, int i)
+{
+	_b->setString(tmp, i);
+}
+
+void	Cat::brainScan(void)
+{
+	_b->print();
 }
 
 Cat::~Cat(void)

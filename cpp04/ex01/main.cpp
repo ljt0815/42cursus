@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 06:03:34 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 06:07:21 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 06:18:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main()
 	d->setBrainStr("asdfasdfaf", 3);
 
 	d->brainScan();
-	Dog d4(*d);
+	Dog d4 = *d;
 	std::cout << "-----------------------------------------------" << std::endl;
 	delete a[19];
 	d4.brainScan();

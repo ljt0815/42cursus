@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:57:18 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 06:05:30 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 06:20:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ Dog::Dog(const Dog &d)
 {
 	_b = new Brain();
 	_type = d.getType();
-	std::cout << "Dog copy constructor called" << std::endl;
 	for (int i = 0; i < 100; i++)
 		_b->setString(d.getBrainStr(i), i);
 	std::cout << "Dog copy constructor called" << std::endl;
