@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 23:02:21 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/07 23:09:03 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 06:41:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ class	WrongCat : public WrongAnimal {
 		WrongCat(void);
 		WrongCat(const WrongCat &wc);
 		WrongCat	&operator=(const WrongCat &wc);
-		~WrongCat(void);
+		virtual ~WrongCat(void);
 };
 #endif

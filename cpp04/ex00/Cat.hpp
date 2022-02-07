@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:58:41 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/07 06:39:29 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 06:42:09 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ class	Cat : public Animal {
 		Cat(void);
 		Cat(const Cat &c);
 		Cat	&operator=(const Cat &c);
-		~Cat(void);
+		virtual ~Cat(void);
 };
 #endif
