@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 05:23:26 by jitlee            #+#    #+#              #
-#    Updated: 2022/02/07 06:03:28 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/07 23:03:21 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,12 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-FILES = main	\
-		Animal	\
-		Dog		\
-		Cat
+FILES = main		\
+		Animal		\
+		Dog			\
+		Cat			\
+		WrongAnimal	\
+		WrongCat
 
 
 SRCS = $(addsuffix .cpp, $(FILES))
