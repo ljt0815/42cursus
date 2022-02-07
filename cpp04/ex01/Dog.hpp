@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:57:27 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 05:54:54 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 06:31:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ class	Dog : public Animal {
 		void	setBrainStr(std::string tmp, int i);
 		Dog &operator=(const Dog &d);
 		void	brainScan(void);
-		~Dog(void);
+		virtual ~Dog(void);
 };
 #endif
