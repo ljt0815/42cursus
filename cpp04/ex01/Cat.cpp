@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 06:13:38 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 06:26:57 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 08:16:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Cat::Cat(void) : Animal()
 
 Cat::Cat(const Cat &c)
 {
+	_b = new Brain();
 	_type = c.getType();
 	for (int i = 0; i < 100; i++)
 		_b->setString(c.getBrainStr(i), i);
