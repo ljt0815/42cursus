@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:57:27 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 01:08:26 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 05:54:54 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 
 class	Dog : public Animal {
 	private	:
-		Brain	*b;
+		Brain	*_b;
 	public	:
 		void	makeSound(void) const;
 		Dog(void);
 		Dog(const Dog &d);
+		std::string	getBrainStr(int i) const;
+		void	setBrainStr(std::string tmp, int i);
 		Dog &operator=(const Dog &d);
+		void	brainScan(void);
 		~Dog(void);
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 06:03:34 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 01:41:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 06:07:21 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@
 
 int main()
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+	Animal* a[20];
+	Dog *d;
+	
+	for (int i = 0; i < 10; i++)
+		a[i] = new Cat();
+	for (int i = 10; i < 20; i++)
+		a[i] = new Dog();
 
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+	d = dynamic_cast<Dog *>(a[19]);
+	d->setBrainStr("asdfasdfaf", 3);
 
-	delete i;
-	delete j;
-	delete meta;
+	d->brainScan();
+	Dog d4(*d);
+	std::cout << "-----------------------------------------------" << std::endl;
+	delete a[19];
+	d4.brainScan();
+	for (int i = 0; i < 19; i++)
+		delete a[i];
 }

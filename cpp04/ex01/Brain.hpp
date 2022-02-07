@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 23:50:30 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 01:39:13 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 05:45:43 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ class	Brain {
 	public	:
 		Brain(void);
 		Brain(const Brain &b);
+		std::string	getString(int i) const;
+		void	setString(std::string tmp, int i);
+		void	print(void);
 		Brain &operator=(const Brain &b);
 		~Brain(void);
 };
