@@ -6,12 +6,14 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 10:46:55 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 10:48:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 06:38:04 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
+# include <iostream>
+# include "AMateria.hpp"
 
 class	ICharacter
 {

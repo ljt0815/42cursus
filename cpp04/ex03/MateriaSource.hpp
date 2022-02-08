@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 09:46:39 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 06:53:33 by jitlee           ###   ########.fr       */
+/*   Created: 2022/02/09 04:13:04 by jitlee            #+#    #+#             */
+/*   Updated: 2022/02/09 04:36:14 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-AMateria::AMateria(std::string const & type)
-{
-	_type = type;
-}
+# include "IMateriaSource.hpp"
 
-std::string	const &Amateria::getType() const
-{
-	return (_type);
-}
+class	MateriaSource : public ImateriaSource {
+	private	:
+		AMateria* _am[4];
 
-void	Amateria::use(ICharacter& target)
-{
-	std::cout << "[Amateria] can't do anything to " << target.getName() << std::endl;
-}
+	public	:
+		AMateria* createMateria(std::string const & type);
+		void	learnMateria(AMateria *am);
+		virtual	~MateriaSource();
+};
+#endif
