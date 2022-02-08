@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 06:03:34 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/08 08:46:44 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 09:11:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int main()
 {
 	Animal* a[20];
 	Dog *d;
-	Animal aa;
+	//Animal aa;
 	
 	for (int i = 0; i < 10; i++)
 		a[i] = new Cat();
+		//a[i] = new Animal();
 	for (int i = 10; i < 20; i++)
 		a[i] = new Dog();
 

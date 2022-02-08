@@ -6,16 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:24:30 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/07 06:45:54 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/08 09:10:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "..." << std::endl;
-}
 
 std::string	Animal::getType(void) const
 {
