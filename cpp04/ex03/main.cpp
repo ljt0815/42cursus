@@ -6,10 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 03:54:40 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 07:31:35 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 08:13:36 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AMateria.hpp"
 #include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"

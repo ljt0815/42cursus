@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 07:19:33 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 07:22:43 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 07:34:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ class	Cure : public AMateria {
 		AMateria*	clone(void) const;
 		void	use(ICharacter& target);
 		virtual ~Cure(void);
-}
+};
+#endif

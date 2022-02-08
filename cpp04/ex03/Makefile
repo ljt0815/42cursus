@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/08 09:24:15 by jitlee            #+#    #+#              #
-#    Updated: 2022/02/08 09:24:27 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/09 07:33:10 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,12 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-FILES = main
+FILES = main			\
+		AMateria		\
+		MateriaSource	\
+		Character		\
+		Ice				\
+		Cure
 
 
 SRCS = $(addsuffix .cpp, $(FILES))

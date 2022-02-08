@@ -6,14 +6,16 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:54:47 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 07:29:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 08:37:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
+#include "ICharacter.hpp"
 
 Ice::Ice(void) : AMateria()
 {
+	_type = "ice";
 	std::cout << "Ice default constructor called" << std::endl;
 }
 

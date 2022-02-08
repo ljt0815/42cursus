@@ -6,11 +6,12 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:46:39 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 07:01:57 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 07:48:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 AMateria::AMateria(void)
 {
