@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 04:09:09 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 08:37:58 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 09:04:29 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ MateriaSource::~MateriaSource(void)
 	for (int i = 0; i < 4; i++)
 		if (_am[i] != NULL)
 			delete _am[i];
+	std::cout << "MateriaSource destructor  called" << std::endl;
 }

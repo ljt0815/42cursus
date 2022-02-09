@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 03:54:40 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 08:13:36 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 09:37:39 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Character.hpp"
+#include <stdio.h>
 
 int main(void)
 {

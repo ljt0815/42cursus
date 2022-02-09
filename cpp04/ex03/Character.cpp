@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:35:32 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 08:38:57 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 09:39:13 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 Character::Character(void)
 {
 	std::cout << "Character default constructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+		_am[i] = NULL;
 }
 
 Character::Character(std::string const & name)
 {
 	_name = name;
 	std::cout << "Character string constructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+		_am[i] = NULL;
 }
 
 std::string	const &Character::getName() const
@@ -57,10 +61,16 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter &target)
 {
-	_am[idx]->use(target);
+	if (_am[idx] != NULL)
+		_am[idx]->use(target);
 }
 
 Character::~Character(void)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		if (_am[i] != NULL)
+			delete _am[i];
+	}
 	std::cout << "Character destructor called" << std::endl;
 }
