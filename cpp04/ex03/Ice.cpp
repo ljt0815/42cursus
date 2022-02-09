@@ -6,12 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:54:47 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 10:37:11 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 14:21:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
-#include "ICharacter.hpp"
 
 Ice::Ice(void) : AMateria()
 {

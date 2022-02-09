@@ -6,12 +6,11 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 07:19:23 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 10:29:29 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 14:21:52 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
-#include "ICharacter.hpp"
 
 Cure::Cure(void) : AMateria()
 {

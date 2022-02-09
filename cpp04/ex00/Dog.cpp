@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:57:18 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/07 06:48:48 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 12:52:52 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	Dog::makeSound(void) const
 
 Dog::Dog(void) : Animal()
 {
-	_type = "";
+	_type = "Dog";
 	std::cout << "Dog default constructor called" << std::endl;
 }
 

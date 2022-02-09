@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 06:13:38 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/07 06:47:47 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 12:52:46 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	Cat::makeSound(void) const
 
 Cat::Cat(void) : Animal()
 {
-	_type = "";
+	_type = "Cat";
 	std::cout << "Cat default constructor called" << std::endl;
 }
 

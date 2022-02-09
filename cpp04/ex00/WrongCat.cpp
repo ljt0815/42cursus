@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 22:35:16 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/07 23:10:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 12:55:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	WrongCat::makeSound(void) const
 
 WrongCat::WrongCat(void) : WrongAnimal()
 {
-	_type = "";
+	_type = "WrongCat";
 	std::cout << "WrongCat default constructor called" << std::endl;
 }
 

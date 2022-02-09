@@ -6,14 +6,15 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:55:00 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 10:33:17 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 14:22:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	ICE_HPP
 # define ICE_HPP
 
-#include "AMateria.hpp"
+# include "ICharacter.hpp"
+# include "AMateria.hpp"
 
 class	Ice : public AMateria {
 	public	:

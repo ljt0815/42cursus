@@ -6,13 +6,14 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 07:19:33 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 10:18:59 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 14:21:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	CURE_HPP
 # define CURE_HPP
 
+# include "ICharacter.hpp"
 # include "AMateria.hpp"
 
 class	Cure : public AMateria {
