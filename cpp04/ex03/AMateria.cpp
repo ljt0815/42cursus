@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:46:39 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 07:48:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:03:52 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ AMateria::AMateria(void)
 AMateria::AMateria(std::string const & type)
 {
 	_type = type;
+}
+
+AMateria::AMateria(const AMateria &am)
+{
+	_type = am.getType();
+}
+
+AMateria &AMateria::operator=(const AMateria &am)
+{
+	if (this != &am)
+	{
+		_type = am.getType();
+	}
+	return (*this);
 }
 
 std::string	const &AMateria::getType() const

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:35:32 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 09:39:13 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:04:04 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,36 @@ Character::Character(std::string const & name)
 	std::cout << "Character string constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		_am[i] = NULL;
+}
+
+Character::Character(const Character &c)
+{
+	_name = c.getName();
+	for (int i = 0; i < 4; i++)
+	{
+		if (c._am[i] != NULL)
+			_am[i] = c._am[i]->clone();
+		else
+			_am[i] = NULL;
+	}
+	std::cout << "Character copy constructor called" << std::endl;
+}
+
+Character &Character::operator=(const Character &c)
+{
+	if (this != &c)
+	{
+		_name = c.getName();
+		for (int i = 0; i < 4; i++)
+		{
+			if (c._am[i] != NULL)
+				_am[i] = c._am[i]->clone();
+			else
+				_am[i] = NULL;
+		}
+	}
+	std::cout << "Character assign operator called" << std::endl;
+	return (*this);
 }
 
 std::string	const &Character::getName() const
