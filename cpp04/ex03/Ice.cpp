@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:54:47 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 08:37:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:37:11 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ Ice::Ice(const Ice &i)
 {
 	_type = i.getType();
 	std::cout << "Ice copy constructor called" << std::endl;
+}
+
+Ice	&Ice::operator=(const Ice &i)
+{
+	if (this != &i)
+	{
+		_type = i.getType();
+	}
+	std::cout << "Ice copy constructor called" << std::endl;
+	return (*this);
 }
 
 AMateria	*Ice::clone(void) const

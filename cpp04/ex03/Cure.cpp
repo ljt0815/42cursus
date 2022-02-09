@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 07:19:23 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 08:37:36 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:29:29 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ Cure::Cure(const Cure &c)
 {
 	_type = c.getType();
 	std::cout << "Cure copy constructor called" << std::endl;
+}
+
+Cure	&Cure::operator=(const Cure &c)
+{
+	if (this != &c)
+	{
+		_type = c.getType();
+	}
+	std::cout << "Cure assign operator called" << std::endl;
+	return (*this);
 }
 
 AMateria	*Cure::clone(void) const

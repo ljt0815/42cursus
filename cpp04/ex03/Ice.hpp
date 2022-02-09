@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:55:00 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 07:22:16 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:33:17 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class	Ice : public AMateria {
 		Ice(void);
 		Ice(std::string const & type);
 		Ice(const Ice &i);
+		Ice &operator=(const Ice &i);
 		AMateria*	clone(void) const;
 		void	use(ICharacter& target);
 		virtual ~Ice(void);

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:46:39 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 10:03:52 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:28:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ AMateria::AMateria(void)
 AMateria::AMateria(std::string const & type)
 {
 	_type = type;
+	std::cout << "AMateria string constructor called" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &am)
 {
 	_type = am.getType();
+	std::cout << "AMateria copy constructor called" << std::endl;
 }
 
 AMateria &AMateria::operator=(const AMateria &am)
@@ -35,6 +37,7 @@ AMateria &AMateria::operator=(const AMateria &am)
 	{
 		_type = am.getType();
 	}
+	std::cout << "AMateria assign operator called" << std::endl;
 	return (*this);
 }
 

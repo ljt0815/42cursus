@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 04:13:04 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 07:58:53 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:44:59 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class	MateriaSource : public IMateriaSource {
 
 	public	:
 		MateriaSource(void);
+		MateriaSource(const MateriaSource &ms);
+		MateriaSource &operator=(const MateriaSource &ms);
 		AMateria* createMateria(std::string const & type);
 		void	learnMateria(AMateria *am);
 		virtual	~MateriaSource();

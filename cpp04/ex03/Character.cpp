@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 06:35:32 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/09 10:04:04 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/09 10:26:03 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,13 @@ Character &Character::operator=(const Character &c)
 		_name = c.getName();
 		for (int i = 0; i < 4; i++)
 		{
+			if (_am[i] != NULL)
+			{
+				delete _am[i];
+				_am[i] = NULL;
+			}
 			if (c._am[i] != NULL)
 				_am[i] = c._am[i]->clone();
-			else
-				_am[i] = NULL;
 		}
 	}
 	std::cout << "Character assign operator called" << std::endl;
