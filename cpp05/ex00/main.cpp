@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:11:46 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/10 13:23:21 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/10 14:18:48 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << b << std::endl;
 }

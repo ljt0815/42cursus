@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:38:00 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/10 13:22:19 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/10 14:19:10 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,9 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &b)
 Bureaucrat::~Bureaucrat(void)
 {
 	std::cout << "Bureaucrat destructor called" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &o, const Bureaucrat &b)
+{
+	return o << b.getName() << "'s grade ["<< b.getGrade() << "]";
 }

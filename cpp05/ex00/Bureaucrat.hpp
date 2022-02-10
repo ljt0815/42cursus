@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:54:06 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/10 10:21:10 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/10 14:12:51 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ class	Bureaucrat {
 		Bureaucrat &operator=(const	Bureaucrat &b);
 		~Bureaucrat(void);
 };
+std::ostream &operator<<(std::ostream &o, const Bureaucrat &b);
 #endif
