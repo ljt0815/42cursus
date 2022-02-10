@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:38:00 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/10 10:29:40 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/10 13:22:19 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ Bureaucrat::Bureaucrat(void) : _name("unnamed"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
+	if (_grade > 150)
+		throw GradeTooLowException();
+	else if (_grade < 1)
+		throw GradeTooHighException();
 	std::cout << "Bureaucrat name, grade constructor called" << std::endl;
 }
 
