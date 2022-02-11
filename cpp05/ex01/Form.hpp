@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:16:44 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/12 01:58:46 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/12 04:23:02 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class	Form {
 		const std::string	_name;
 		const int	_signGrade;
 		const int	_excuteGrade;
-		bool		_sign;
+		bool		_signed;
 	public	:
 		class	GradeTooHighException : public std::exception {
 			const char* what(void) const throw();
@@ -38,6 +38,8 @@ class	Form {
 
 		Form(void);
 		Form(const Form &f);
+		Form(std::string name, int signGrade, int excuteGrade);
 		Form &operator=(const Form &f);
 		~Form(void);
-}
+};
+#endif

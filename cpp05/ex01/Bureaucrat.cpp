@@ -6,18 +6,18 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:38:00 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/10 14:19:10 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/12 03:48:37 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
-	return ("GradeTooHigh!!");
+	return ("[Bureaucrat]GradeTooHigh!!");
 }
 
 const char* Bureaucrat::GradeTooLowException::what(void) const throw() {
-	return ("GradeTooLow!!");
+	return ("[Bureaucrat]GradeTooLow!!");
 }
 
 std::string	Bureaucrat::getName(void) const
