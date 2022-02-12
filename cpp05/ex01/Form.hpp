@@ -6,14 +6,15 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:16:44 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/12 04:23:02 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 03:06:35 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
+# include "Bureaucrat.hpp"
 
-# include <exception>
+class	Bureaucrat;
 
 class	Form {
 	private	:
@@ -42,4 +43,5 @@ class	Form {
 		Form &operator=(const Form &f);
 		~Form(void);
 };
+std::ostream &operator<<(std::ostream &o, const Form &f);
 #endif

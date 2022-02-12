@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:03:22 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/12 04:31:04 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 03:43:14 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,32 @@ bool Form::getSigned(void) const
 	return (_signed);
 }
 
-Form::Form(void) : _name("unnamed"), _signGrade(150), _excuteGrade(150)
+void	Form::beSigned(Bureaucrat &b)
+{
+	if (b.getGrade() <= _signGrade)
+		_signed = true;
+	else
+		throw Form::GradeTooLowException();
+}
+
+Form::Form(void) :  _name("unnamed"), _signGrade(150), _excuteGrade(150), _signed(false)
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(std::string name, int signGrade, int excuteGrade) : _name(name), _signGrade(signGrade), _excuteGrade(excuteGrade)
+Form::Form(std::string name, int signGrade, int excuteGrade) : _name(name), _signGrade(signGrade), _excuteGrade(excuteGrade), _signed(false)
 {
+	if (_signGrade > 150 || _excuteGrade > 150)
+		throw Form::GradeTooLowException();
+	else if (_signGrade < 1 || _excuteGrade < 1)
+		throw Form::GradeTooHighException();
 	std::cout << "Form string, int, int constructor called" << std::endl;
 }
 
-Form::Form(const Form &f)
+Form::Form(const Form &f) : _name(f.getName()), _signGrade(f.getSignGrade()), _excuteGrade(f.getExcuteGrade())
 {
-	*(const_cast<std::string *>(&_name)) = f.getName();
-	*(const_cast<int *>(&_signGrade)) = f.getSignGrade();
-	*(const_cast<int *>(&_excuteGrade)) = f.getExcuteGrade();
 	_signed = f.getSigned();
+	std::cout << "Form copy constructor called" << std::endl;
 }
 
 Form &Form::operator=(const Form &f)
@@ -69,10 +79,21 @@ Form &Form::operator=(const Form &f)
 		*(const_cast<int *>(&_excuteGrade)) = f.getExcuteGrade();
 		_signed = f.getSigned();
 	}
+	std::cout << "Form assign operater called" << std::endl;
 	return (*this);
 }
 
 Form::~Form(void)
 {
 	std::cout << "Form destructor called" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &o, const Form &f)
+{
+	o << f.getName() << "'s signGrade ["<< f.getSignGrade() << "] excuteGrade [" << f.getExcuteGrade() << "] signed [";
+	if (f.getSigned())
+		o << "true";
+	else
+		o << "false";
+	return o << "]";
 }

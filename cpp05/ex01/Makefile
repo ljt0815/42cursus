@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 14:53:42 by jitlee            #+#    #+#              #
-#    Updated: 2022/02/09 15:41:48 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/13 01:37:32 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
 FILES = main		\
-		Bureaucrat
+		Bureaucrat	\
+		Form
 
 
 SRCS = $(addsuffix .cpp, $(FILES))

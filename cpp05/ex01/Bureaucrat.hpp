@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:54:06 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/10 14:12:51 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 03:06:24 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <exception>
+# include "Form.hpp"
+
+class	Form;
 
 class	Bureaucrat {
 	private	:
@@ -33,6 +36,7 @@ class	Bureaucrat {
 		int			getGrade(void) const;
 		int	incrementGrade(void);
 		int	decrementGrade(void);
+		void	signForm(Form &f);
 		Bureaucrat(void);
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &b);

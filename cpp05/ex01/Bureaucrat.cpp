@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:38:00 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/12 03:48:37 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 03:22:32 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,19 @@ int	Bureaucrat::decrementGrade(void)
 	std::cout << "decrementGrade" << std::endl;
 	_grade += 1;
 	return (_grade);
+}
+
+void	Bureaucrat::signForm(Form &f)
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout << "<" << _name << "> signs <" << f.getName() << ">" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "<" << _name << "> cannot sign <" << f.getName() << "> because <" << e.what() << ">" << std::endl;
+	}
 }
 
 Bureaucrat::Bureaucrat(void) : _name("unnamed"), _grade(150)
