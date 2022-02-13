@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 14:53:42 by jitlee            #+#    #+#              #
-#    Updated: 2022/02/13 12:37:17 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/13 13:46:21 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FILES = main					\
 		Bureaucrat				\
 		ShrubberyCreationForm	\
 		RobotomyRequestForm		\
+		PresidentialPardonForm	\
 		Form
 
 
@@ -37,6 +38,7 @@ all: $(NAME)
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) \<*
 
 fclean: clean
 	$(RM) $(NAME)

@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:54:45 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 12:40:04 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 13:21:42 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ void	RobotomyRequestForm::execute(const Bureaucrat &b) const
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form(target, "RobotomyRequestForm", 72, 45)
 {
 	std::cout << "RobotomyRequestForm target constructor called" << std::endl;
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r)
+{
+	Form::operator=(r);
+	std::cout << "RobotomyRequestForm assign operator called" << std::endl;
+	return (*this);
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &r) : Form(r)

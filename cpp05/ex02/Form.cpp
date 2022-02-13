@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:03:22 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 10:52:06 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 14:03:19 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ void	Form::chkExecute(const Bureaucrat &b) const
 	if (getSigned() == false)
 		throw NotSignedException();
 	else if (_executeGrade < b.getGrade())
-	{
-		std::cout << "_executeGrade " << _executeGrade << " b.getGrade()" << b.getGrade();
 		throw Form::GradeTooLowException();
-	}
 }
 
 Form::Form(void) :  _target("notarget"), _name("unnamed"), _signGrade(150), _executeGrade(150), _signed(false)
