@@ -6,7 +6,7 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 14:53:42 by jitlee            #+#    #+#              #
-#    Updated: 2022/02/13 10:17:33 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/13 12:37:17 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ RM = rm -f
 FILES = main					\
 		Bureaucrat				\
 		ShrubberyCreationForm	\
+		RobotomyRequestForm		\
 		Form
 
 

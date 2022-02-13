@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:16:44 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 10:26:53 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 11:59:01 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ class	Form {
 		Form(const Form &f);
 		Form(std::string type, std::string name, int signGrade, int executeGrade);
 		Form &operator=(const Form &f);
-		~Form(void);
+		virtual ~Form(void);
 };
 std::ostream &operator<<(std::ostream &o, const Form &f);
 #endif

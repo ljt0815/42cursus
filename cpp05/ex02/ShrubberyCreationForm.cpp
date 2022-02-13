@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 05:34:09 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 11:44:50 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 12:41:25 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &b) const
 {
 	chkExecute(b);
 	std::ofstream file;
-	file.open("<" + getName() + ">_shrubbery");
+	file.open("<" + getTarget() + ">_shrubbery");
 	if (!file.is_open() || !file.good())
 		throw FileErrorException();
 	std::string tree = "          &&& &&  & &&\n\
