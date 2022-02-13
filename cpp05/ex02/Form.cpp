@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:03:22 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 03:43:14 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 10:52:06 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@ const char *Form::GradeTooLowException::what(void) const throw()
 	return ("[Form]GradeTooLow!!");
 }
 
+const char *Form::NotSignedException::what(void) const throw()
+{
+	return ("[Form]ItIsNotSigned!!");
+}
+
+const char *Form::FileErrorException::what(void) const throw()
+{
+	return ("[Form]FileError!!");
+}
+
+std::string Form::getTarget(void) const
+{
+	return (_target);
+}
+
 std::string Form::getName(void) const
 {
 	return (_name);
@@ -32,9 +47,9 @@ int	Form::getSignGrade(void) const
 	return (_signGrade);
 }
 
-int	Form::getExcuteGrade(void) const
+int	Form::getExecuteGrade(void) const
 {
-	return (_excuteGrade);
+	return (_executeGrade);
 }
 
 bool Form::getSigned(void) const
@@ -50,21 +65,32 @@ void	Form::beSigned(Bureaucrat &b)
 		throw Form::GradeTooLowException();
 }
 
-Form::Form(void) :  _name("unnamed"), _signGrade(150), _excuteGrade(150), _signed(false)
+void	Form::chkExecute(const Bureaucrat &b) const
+{
+	if (getSigned() == false)
+		throw NotSignedException();
+	else if (_executeGrade < b.getGrade())
+	{
+		std::cout << "_executeGrade " << _executeGrade << " b.getGrade()" << b.getGrade();
+		throw Form::GradeTooLowException();
+	}
+}
+
+Form::Form(void) :  _target("notarget"), _name("unnamed"), _signGrade(150), _executeGrade(150), _signed(false)
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(std::string name, int signGrade, int excuteGrade) : _name(name), _signGrade(signGrade), _excuteGrade(excuteGrade), _signed(false)
+Form::Form(std::string target, std::string name, int signGrade, int executeGrade) : _target(target), _name(name), _signGrade(signGrade), _executeGrade(executeGrade), _signed(false)
 {
-	if (_signGrade > 150 || _excuteGrade > 150)
+	if (_signGrade > 150 || _executeGrade > 150)
 		throw Form::GradeTooLowException();
-	else if (_signGrade < 1 || _excuteGrade < 1)
+	else if (_signGrade < 1 || _executeGrade < 1)
 		throw Form::GradeTooHighException();
 	std::cout << "Form string, int, int constructor called" << std::endl;
 }
 
-Form::Form(const Form &f) : _name(f.getName()), _signGrade(f.getSignGrade()), _excuteGrade(f.getExcuteGrade())
+Form::Form(const Form &f) : _target(f.getTarget()), _name(f.getName()), _signGrade(f.getSignGrade()), _executeGrade(f.getExecuteGrade())
 {
 	_signed = f.getSigned();
 	std::cout << "Form copy constructor called" << std::endl;
@@ -74,9 +100,10 @@ Form &Form::operator=(const Form &f)
 {
 	if (this != &f)
 	{
+		*(const_cast<std::string *>(&_target)) = f.getTarget();
 		*(const_cast<std::string *>(&_name)) = f.getName();
 		*(const_cast<int *>(&_signGrade)) = f.getSignGrade();
-		*(const_cast<int *>(&_excuteGrade)) = f.getExcuteGrade();
+		*(const_cast<int *>(&_executeGrade)) = f.getExecuteGrade();
 		_signed = f.getSigned();
 	}
 	std::cout << "Form assign operater called" << std::endl;
@@ -90,7 +117,7 @@ Form::~Form(void)
 
 std::ostream &operator<<(std::ostream &o, const Form &f)
 {
-	o << f.getName() << "'s signGrade ["<< f.getSignGrade() << "] excuteGrade [" << f.getExcuteGrade() << "] signed [";
+	o << f.getName() << "'s signGrade ["<< f.getSignGrade() << "] executeGrade [" << f.getExecuteGrade() << "] signed [";
 	if (f.getSigned())
 		o << "true";
 	else

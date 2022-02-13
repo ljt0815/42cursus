@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:54:06 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 03:06:24 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 10:16:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class	Bureaucrat {
 		int	incrementGrade(void);
 		int	decrementGrade(void);
 		void	signForm(Form &f);
+		void	executeForm(Form const &f);
 		Bureaucrat(void);
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &b);
