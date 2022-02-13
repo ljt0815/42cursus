@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 05:34:37 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 11:44:56 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 16:00:00 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ class	ShrubberyCreationForm : public Form {
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &s);
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &s);
-		~ShrubberyCreationForm(void);
+		virtual	~ShrubberyCreationForm(void);
 };
 #endif

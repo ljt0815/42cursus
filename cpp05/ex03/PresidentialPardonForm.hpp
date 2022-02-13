@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:51:37 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 15:12:39 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 16:00:26 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ class	PresidentialPardonForm : public Form {
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &p);
 		PresidentialPardonForm(const PresidentialPardonForm &p);
-		~PresidentialPardonForm(void);
+		virtual ~PresidentialPardonForm(void);
 };
 #endif

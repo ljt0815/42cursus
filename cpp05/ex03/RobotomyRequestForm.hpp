@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:54:55 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 15:12:10 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 16:00:39 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ class	RobotomyRequestForm : public Form {
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &r);
 		RobotomyRequestForm(const RobotomyRequestForm &r);
-		~RobotomyRequestForm(void);
+		virtual ~RobotomyRequestForm(void);
 };
 #endif
