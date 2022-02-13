@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:11:46 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 11:31:09 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 11:44:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ int main(void)
 	s2 = s;
 	j.executeForm(s2);
 	j.executeForm(s);
-	s2.test(123);
 }

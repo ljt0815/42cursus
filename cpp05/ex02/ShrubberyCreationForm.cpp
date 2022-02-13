@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 05:34:09 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/13 11:31:21 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/13 11:44:50 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &b) const
        , -=-~  .-^- _\n";
 	file.write(tree.c_str(), tree.length());
 	file.close();
-}
-
-void	ShrubberyCreationForm::test(int val)
-{
-	std::cout << val << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &s)

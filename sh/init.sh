@@ -12,6 +12,9 @@ echo "set showmatch" >> ~/.vimrc
 echo "let @t = \":Stdheader\\<CR>\"" >> ~/.vimrc
 echo "map <F2> <c-w><c-w>" >> ~/.vimrc
 echo "map <F3> <c-w><c-r>" >> ~/.vimrc
+echo "map <F4> :tabnew " >> ~/.vimrc
+echo "map [ :tabprev<CR>" >> ~/.vimrc
+echo "map ] :tabnext<CR>" >> ~/.vimrc
 export MAIL="jitlee@student.42seoul.kr"
 #mkdir -p ~/.vim/plugin
 #cp stdheader.vim ~/.vim/plugin/
