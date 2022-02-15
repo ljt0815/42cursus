@@ -4,14 +4,14 @@
 # include <iostream>
 # include <cstdlib>
 # include <ctime>
+# include <exception>
+
 class	Base {
-	private	:
-		char _type;
-	public	:
-		char getType(void) const;
-		Base(void);
-		Base(const Base &b);
-		Base &operator=(const Base &b);
-		virtual ~Base(void);
+	public		:
+		virtual ~Base(void) {};
 };
+
+class	A : public Base {};
+class	B : public Base {};
+class	C : public Base {};
 #endif
