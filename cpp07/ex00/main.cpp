@@ -17,4 +17,7 @@ int main(void)
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+
+	std::cout << "min( 5, 10 ) = " << ::min( 5, 10 ) << std::endl;
+	std::cout << "max( 5, 10 ) = " << ::max( 5, 10 ) << std::endl;
 }

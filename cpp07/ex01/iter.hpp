@@ -4,10 +4,9 @@
 # include <iostream>
 
 template <typename T>
-void	iter(T *t, int len, void (*f)(T &))
+void	iter(T *t, int len, void (*f)(const T &))
 {
 	for (int i = 0; i < len; i++)
 		f(t[i]);
-	std::cout << std::endl;
 }
 #endif
