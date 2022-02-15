@@ -11,6 +11,7 @@ class	Casting {
 		std::string _str;
 		double	_val;
 		bool	_err;
+		Casting(void);
 
 	public	:
 		char	toChar(void) const;

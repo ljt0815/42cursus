@@ -20,20 +20,23 @@ double	Casting::getDouble(void) const
 	return (_val);
 }
 
-void	Casting::printChar(ostream &o)
+void	Casting::printChar(std::ostream &o)
 {
 	if (getDouble() < 0 || getDouble() >= 256)
-		std::cout << "impossible" << std::endl;
+		o << "impossible" << std::endl;
 	else if (getDouble() < 32 || getDouble() > 126)
-		std::cout << "Non displayable" << std::endl;
+		o << "Non displayable" << std::endl;
 	else
-		std::cout << c.toChar() << std::endl;
+		o << toChar() << std::endl;
 }
 
-void	Casting::printInt(ostream &o, Casting &c)
+void	Casting::printInt(std::ostream &o, Casting &c)
 {
-	std::cout << c.toInt() << std::endl;
+	o << c.toInt() << std::endl;
 }
+
+Casting::Casting(void)
+{}
 
 Casting::Casting(std::string str) : _err(false)
 {
@@ -44,10 +47,9 @@ Casting::Casting(std::string str) : _err(false)
 	ss << _val;
 	if (!(ss.str() == str || (ss.str() + "f") == str))
 		_err = true;
-
 }
 
-std::ostream &operator<<(ostream &o, Casting &c)
+std::ostream &operator<<(std::ostream &o, Casting &c)
 {
 	c.printChar(o);
 	c.printInt(o, c);
