@@ -28,7 +28,7 @@ void	Casting::printChar(std::ostream &o)
 		o << "impossible" << std::endl;
 		return ;
 	}
-	if (getDouble() <= -1 || getDouble() >= 256)
+	if (getDouble() < 0 || getDouble() >= 256)
 		o << "impossible" << std::endl;
 	else if (getDouble() < 32 || getDouble() > 126)
 		o << "Non displayable" << std::endl;
@@ -40,6 +40,11 @@ void	Casting::printInt(std::ostream &o)
 {
 	o << "int: ";
 	if (_err || std::isnan(getDouble()) || std::isinf(getDouble()))
+	{
+		o << "impossible" << std::endl;
+		return ;
+	}
+	else if (getDouble() > 2147483647 || getDouble() < -2147483648)
 	{
 		o << "impossible" << std::endl;
 		return ;
@@ -84,7 +89,6 @@ Casting::Casting(std::string str) : _err(false), _isReal(false)
 	std::ostringstream ss;
 	bool	dotFlag = false;
 
-	std::cout << std::setprecision(16);
 	for (int i = 0; i < (int)str.length(); i++)
 	{
 		if (dotFlag)
