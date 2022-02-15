@@ -19,9 +19,9 @@ class	Casting {
 		float	toFloat(void) const;
 		double	getDouble(void)	const;
 		void	printChar(std::ostream &o);
-		void	printInt(std::ostream &o, Casting &c);
-		void	printFloat(std::ostream &o, Casting &c);
-		void	printDouble(std::ostream &o, Casting &c);
+		void	printInt(std::ostream &o);
+		void	printFloat(std::ostream &o);
+		void	printDouble(std::ostream &o);
 		Casting(std::string str);
 };
 std::ostream& operator<<(std::ostream& o, Casting& c);
