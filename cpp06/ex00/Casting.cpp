@@ -55,7 +55,7 @@ void	Casting::printFloat(std::ostream &o)
 		return ;
 	}
 	o << "float: ";
-	if (toFloat() - toInt() == 0)
+	if (getDouble() - toInt() == 0)
 		o << toFloat() << ".0f" << std::endl;
 	else
 		o << toFloat() << "f" << std::endl;
@@ -69,7 +69,7 @@ void	Casting::printDouble(std::ostream &o)
 		return ;
 	}
 	o << "double: ";
-	if (toFloat() - toInt() == 0)
+	if (getDouble() - toInt() == 0)
 		o << getDouble() << ".0" << std::endl;
 	else
 		o << getDouble() << std::endl;
@@ -78,14 +78,39 @@ void	Casting::printDouble(std::ostream &o)
 Casting::Casting(void)
 {}
 
-Casting::Casting(std::string str) : _err(false)
+Casting::Casting(std::string str) : _err(false), _isReal(false)
 {
 	const char *c = str.c_str();
 	std::ostringstream ss;
+	bool	dotFlag = false;
 
+	for (int i = 0; i < (int)str.length(); i++)
+	{
+		if (dotFlag)
+		{
+			if (str[i] == '0')
+				;
+			else if (i == (int)str.length() - 1 && str[i] == 'f')
+				;
+			else
+				_isReal = true;
+		}
+		else if (str[i] == '.')
+		{
+			dotFlag = true;
+		}
+
+	}
+	_str = str;
 	_val = atof(c);
 	ss << _val;
-	if (!(ss.str() == str || (ss.str() + "f") == str))
+	std::cout << ss.str() << std::endl;
+	if (!_isReal)
+	{
+		if (atoi(c) != ss.str())
+			_err = true;
+	}
+	else if (!(ss.str() == str || (ss.str() + "f") == str))
 		_err = true;
 }
 

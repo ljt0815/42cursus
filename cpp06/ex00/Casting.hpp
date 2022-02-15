@@ -4,6 +4,7 @@
 # include <sstream>
 # include <iostream>
 # include <cstdlib>
+# include <cfloat>
 
 
 class	Casting {
@@ -11,6 +12,7 @@ class	Casting {
 		std::string _str;
 		double	_val;
 		bool	_err;
+		bool	_isReal;
 		Casting(void);
 
 	public	:
