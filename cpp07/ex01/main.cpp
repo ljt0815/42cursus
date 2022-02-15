@@ -1,5 +1,11 @@
 #include "iter.hpp"
 
+template <typename T>
+void	print(T &t)
+{
+	std::cout << t << "\t";
+}
+
 int main(void)
 {
 	int i[4] = { 4, 3, 2, 1};

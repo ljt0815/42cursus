@@ -10,10 +10,4 @@ void	iter(T *t, int len, void (*f)(T &))
 		f(t[i]);
 	std::cout << std::endl;
 }
-
-template <typename T>
-void	print(T &t)
-{
-	std::cout << t << "\t";
-}
 #endif
