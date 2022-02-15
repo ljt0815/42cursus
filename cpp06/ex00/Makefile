@@ -34,7 +34,6 @@ all: $(NAME)
 
 clean:
 	$(RM) $(OBJS)
-	$(RM) \<*
 
 fclean: clean
 	$(RM) $(NAME)

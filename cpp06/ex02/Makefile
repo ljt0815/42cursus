@@ -17,7 +17,11 @@ CXXFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-FILES = main
+FILES = main	\
+		Base	\
+		A		\
+		B		\
+		C
 
 
 SRCS = $(addsuffix .cpp, $(FILES))
