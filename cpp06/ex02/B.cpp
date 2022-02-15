@@ -1,6 +1,6 @@
 #include "B.hpp"
 
-char B::getType(void) const;
+char B::getType(void) const
 {
 	return _type;
 }

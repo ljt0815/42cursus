@@ -19,5 +19,6 @@ Base *generate(void)
 int	main(void)
 {
 	Base *tmp = generate();
+	std::cout << tmp->getType() << std::endl;
 	return (0);
 }

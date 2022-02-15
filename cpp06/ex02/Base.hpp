@@ -13,4 +13,5 @@ class	Base {
 		Base(const Base &b);
 		Base &operator=(const Base &b);
 		virtual ~Base(void);
-}
+};
+#endif

@@ -10,4 +10,5 @@ class	A : public Base {
 		A(const A &a);
 		A &operator=(const A &a);
 		virtual ~A(void);
-}
+};
+#endif

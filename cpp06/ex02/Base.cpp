@@ -1,6 +1,6 @@
 #include "Base.hpp"
 
-Base::getType(void) const
+char Base::getType(void) const
 {
 	return (_type);
 }
