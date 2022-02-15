@@ -83,14 +83,14 @@ Casting::Casting(std::string str) : _err(false), _isReal(false)
 	const char *c = str.c_str();
 	std::ostringstream ss;
 	bool	dotFlag = false;
-	int		zeroCount = 0;
 
+	std::cout << std::setprecision(16);
 	for (int i = 0; i < (int)str.length(); i++)
 	{
 		if (dotFlag)
 		{
-			if (str[i] == '0' && zeroCount < 3)
-				zeroCount++;
+			if (str[i] == '0')
+				;
 			else if (i == (int)str.length() - 1 && str[i] == 'f')
 				;
 			else
@@ -101,13 +101,10 @@ Casting::Casting(std::string str) : _err(false), _isReal(false)
 			dotFlag = true;
 		}
 	}
-	if (zeroCount >= 3)
-		_isReal = false;
 	_str = str;
 	_val = atof(c);
+	ss.precision(16);
 	ss << _val;
-	std::cout << _val << std::endl;
-	std::cout << ss.str() << std::endl;
 	if (!_isReal)
 	{
 		if (atoi(c) != static_cast<int>(_val))

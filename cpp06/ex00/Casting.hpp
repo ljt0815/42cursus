@@ -4,7 +4,7 @@
 # include <sstream>
 # include <iostream>
 # include <cstdlib>
-# include <cfloat>
+# include <iomanip>
 
 
 class	Casting {
