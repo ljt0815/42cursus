@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Casting.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 11:02:42 by jitlee            #+#    #+#             */
+/*   Updated: 2022/02/16 15:14:25 by jitlee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Casting.hpp"
 
 char	Casting::toChar(void) const
@@ -89,36 +101,32 @@ Casting::Casting(std::string str) : _err(false), _isReal(false)
 	std::ostringstream ss;
 	bool	dotFlag = false;
 
+	std::cout << std::setprecision(16);
 	for (int i = 0; i < (int)str.length(); i++)
 	{
-		if (dotFlag)
+		if (str[i] == '.' && dotFlag == false)
 		{
-			if (str[i] == '0')
-				;
-			else if (i == (int)str.length() - 1 && str[i] == 'f')
-				;
+			if (i == (int)str.length() - 1)
+				_err = true;
+			else if (i == 0)
+				_err = true;
 			else
-				_isReal = true;
+				dotFlag = true;
+			continue ;
 		}
-		else if (str[i] == '.')
-		{
-			dotFlag = true;
-		}
+		else if (str[i] >= '0' && str[i] <= '9')
+			;
+		else if (i == (int)str.length() - 1 && str[i] == 'f')
+			;
+		else
+			_err = true;
 	}
+	if (dotFlag)
+		_isReal = true;
 	_str = str;
 	_val = atof(c);
 	ss.precision(16);
 	ss << _val;
-
-	if (ss.str() == str || (ss.str() + "f") == str)
-		;
-	else if (!_isReal)
-	{
-		if (atoi(c) != static_cast<int>(_val))
-			_err = true;
-	}
-	else
-		_err = true;
 }
 
 std::ostream &operator<<(std::ostream &o, Casting &c)
@@ -129,3 +137,26 @@ std::ostream &operator<<(std::ostream &o, Casting &c)
 	c.printDouble(o);
 	return (o);
 }
+
+Casting::Casting(const Casting &c)
+{
+	_str = c._str;
+	_val = c._val;
+	_err = c._err;
+	_isReal = c._isReal;
+}
+
+Casting &Casting::operator=(const Casting &c)
+{
+	if (this != &c)
+	{
+		_str = c._str;
+		_val = c._val;
+		_err = c._err;
+		_isReal = c._isReal;
+	}
+	return (*this);
+}
+
+Casting::~Casting(void)
+{}
