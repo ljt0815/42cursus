@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:02:42 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/16 15:14:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/16 15:54:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,7 @@ Casting::Casting(std::string str) : _err(false), _isReal(false)
 	{
 		if (str[i] == '.' && dotFlag == false)
 		{
-			if (i == (int)str.length() - 1)
-				_err = true;
-			else if (i == 0)
-				_err = true;
-			else
-				dotFlag = true;
+			dotFlag = true;
 			continue ;
 		}
 		else if (str[i] >= '0' && str[i] <= '9')
