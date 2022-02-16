@@ -11,9 +11,11 @@ class	Array {
 		unsigned int	_len;
 
 	public	:
-		class	SegFault : public exception {
+		class	SegFault : public std::exception {
 			const char * what(void) const throw()
+			{
 				return ("Segfault!! Access non allocated memory");
+			}
 		};
 
 		unsigned int	getLen(void) const
@@ -52,9 +54,9 @@ class	Array {
 			return (*this);
 		}
 
-		Array &operator[](int index)
+		T &operator[](unsigned int index)
 		{
-			if (_len + 1 > index);
+			if (_len <= index)
 				throw SegFault();
 			return (_arr[index]);
 		}
