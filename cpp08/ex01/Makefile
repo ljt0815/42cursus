@@ -6,11 +6,11 @@
 #    By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 14:53:42 by jitlee            #+#    #+#              #
-#    Updated: 2022/02/18 00:15:38 by jitlee           ###   ########.fr        #
+#    Updated: 2022/02/18 02:23:20 by jitlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = a.out
+NAME = ex01
 
 CLANG = c++
 CXXFLAGS = -Wall -Wextra -Werror
