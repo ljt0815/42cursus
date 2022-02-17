@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:54:01 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/17 22:47:50 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/17 22:55:28 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <vector>
 # include <list>
 # include <deque>
+# include <stdexcept>
 
 template <typename T>
 typename T::iterator easyfind(T &t, int target)
