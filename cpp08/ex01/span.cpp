@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 23:38:36 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/18 01:28:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 02:16:53 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ void	Span::print(void)
 	std::cout << std::endl;
 }
 
+void	Span::addNumber(int num)
+{
+	if (_arr.size() >= _n)
+		throw ArrayIsFullException();
+	_arr.push_back(num);
+}
+
 void	Span::addNumber(std::string str)
 {
 	std::string buf;
@@ -36,11 +43,18 @@ void	Span::addNumber(std::string str)
 	}
 }
 
-void	Span::addNumber(int num)
+void	Span::addRandomNumber(int len)
 {
-	if (_arr.size() >= _n)
-		throw ArrayIsFullException();
-	_arr.push_back(num);
+	srand(time(0));
+	for (int i = 0; i < len; i++)
+	{
+		if (_arr.size() >= _n)
+			throw ArrayIsFullException();
+		 int random = (long long)(rand() * (i + 7)) % 100000;
+		 if (random < 0)
+			 random *= -1;
+		_arr.push_back(random);
+	}
 }
 
 int		Span::shortestSpan(void)
