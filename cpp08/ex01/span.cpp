@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 23:38:36 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/18 02:16:53 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 15:23:22 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,32 +57,32 @@ void	Span::addRandomNumber(int len)
 	}
 }
 
-int		Span::shortestSpan(void)
+long long	Span::shortestSpan(void)
 {
-	int span;
+	long long span;
 
 	if (_arr.size() <= 1)
 		throw HasNotSpanException();
 	std::vector<int> tmp(_arr);
 	std::sort(tmp.begin(), tmp.end());
-	span = tmp[1] - tmp[0];
+	span = (long long)tmp[1] - (long long)tmp[0];
 	for (unsigned long i = 1; i < tmp.size() - 1; i++)
 	{
-		if (tmp[i + 1] - tmp[i] < span)
-			span = tmp[i + 1] - tmp[i];
+		if ((long long)tmp[i + 1] - (long long)tmp[i] < span)
+			span = (long long)tmp[i + 1] - (long long)tmp[i];
 	}
 	return (span);
 }
 
-int		Span::longestSpan(void)
+long long	Span::longestSpan(void)
 {
-	int span;
+	long long span;
 
 	if (_arr.size() <= 1)
 		throw HasNotSpanException();
 	std::vector<int> tmp(_arr);
 	std::sort(tmp.begin(), tmp.end());
-	span = tmp[_arr.size() - 1] - tmp[0];
+	span = (long long)tmp[_arr.size() - 1] - (long long)tmp[0];
 	return (span);
 }
 

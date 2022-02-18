@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 23:38:46 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/18 01:56:38 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 15:12:31 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ class	Span {
 		void	addNumber(int num);
 		void	addNumber(std::string str);
 		void	addRandomNumber(int len);
-		int		shortestSpan(void);
-		int		longestSpan(void);
+		long long shortestSpan(void);
+		long long longestSpan(void);
 		Span(unsigned int n);
 		Span(const Span &s);
 		Span &operator=(const Span &s);

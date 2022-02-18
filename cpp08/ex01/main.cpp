@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 00:15:44 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/18 02:19:41 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 15:23:47 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ int main()
 	sp4.print();
 	std::cout << sp4.shortestSpan() << std::endl;
 	std::cout << sp4.longestSpan() << std::endl;*/
+
+	/*Span sp5(4);
+	sp5.addNumber(2147483647);
+	sp5.addNumber(-2147483648);
+	sp5.print();
+	std::cout << sp5.shortestSpan() << std::endl;
+	std::cout << sp5.longestSpan() << std::endl;*/
 }
