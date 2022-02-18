@@ -6,46 +6,28 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 02:52:16 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/18 12:36:07 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 14:27:23 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MUTANTSTACK_HPP
 # define MUTANTSTACK_HPP
 
-# include <iostream>
 # include <stack>
 
 template <typename T>
 class	MutantStack	: public std::stack<T> {
 	public	:
-		typename std::stack<T>::container_type::iterator begin(void)
-		{
-			return (this->c.begin());
-		}
+		typedef typename MutantStack<T>::stack::container_type::iterator iterator;
+		iterator begin(void);
+		iterator end(void);
+		typedef typename MutantStack<T>::stack::container_type::reverse_iterator reverse_iterator;
+		reverse_iterator rbegin(void);
+		reverse_iterator rend(void);
 
-		typename std::stack<T>::container_type::iterator end(void)
-		{
-			return (this->c.end());
-		}
-
-		typename std::stack<T>::container_type::reverse_iterator rbegin(void)
-		{
-			return (this->c.rbegin());
-		}
-
-		typename std::stack<T>::container_type::reverse_iterator rend(void)
-		{
-			return (this->c.rend());
-		}
-
-		MutantStack(void) {}
-		MutantStack(const MutantStack &m) { *this = m; }
-		MutantStack& operator=(const MutantStack &m)
-		{
-			std::stack<T>::operator=(m);
-			return (*this);
-		}
-		~MutantStack(void) {}
+		MutantStack(void);
+		MutantStack(const MutantStack &m);
+		MutantStack& operator=(const MutantStack &m);
+		~MutantStack(void);
 };
 #endif
