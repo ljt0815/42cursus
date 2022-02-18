@@ -6,11 +6,15 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:41:20 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/17 23:25:25 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 14:29:55 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
+#include <iostream>
+#include <vector>
+#include <list>
+#include <deque>
 
 int main(void)
 {

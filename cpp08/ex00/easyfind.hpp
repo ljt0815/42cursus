@@ -6,7 +6,7 @@
 /*   By: jitlee <jitlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:54:01 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/17 23:39:54 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 14:30:07 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define EASYFIND_HPP
 
 # include <algorithm>
-# include <iostream>
-# include <vector>
-# include <list>
-# include <deque>
 # include <stdexcept>
 
 template <typename T>

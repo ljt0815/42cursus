@@ -6,7 +6,7 @@
 /*   By: jitlee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 11:41:28 by jitlee            #+#    #+#             */
-/*   Updated: 2022/02/18 14:27:19 by jitlee           ###   ########.fr       */
+/*   Updated: 2022/02/18 14:41:47 by jitlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,21 @@ int main()
 		++it;
 	}
 	std::stack<int> s(mstack);
+
+	std::cout << "-----------------------reverse--------------------------" << std::endl;
+
+	MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+	MutantStack<int>::reverse_iterator rite = mstack.rend();
+
+	++rit;
+	--rit;
+	while (rit != rite)
+	{
+		std::cout << *rit << std::endl;
+		++rit;
+	}
 	
-	std::cout << "-----------------------------------------------------------------------" << std::endl;
+	std::cout << "------------------------list-------------------------------------" << std::endl;
 
 	std::list<int> l;
 
@@ -73,6 +86,18 @@ int main()
 	{
 		std::cout << *it2 << std::endl;
 		++it2;
+	}
+
+	std::cout << "-----------------------reverse--------------------------" << std::endl;
+	std::list<int>::reverse_iterator rit2 = l.rbegin();
+	std::list<int>::reverse_iterator rite2 = l.rend();
+
+	++rit2;
+	--rit2;
+	while (rit2 != rite2)
+	{
+		std::cout << *rit2 << std::endl;
+		++rit2;
 	}
 	return (0);
 }
