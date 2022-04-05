@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: ./dockerfiles/Dockerfile_nginx
+        restart: always
+        volumes:
+            - ./data:/var/www/html
+        networks:
+            - mynet
+        tty: true
+    mariadb:
+        build:
+            context: .
+            dockerfile: ./dockerfiles/Dockerfile_mariadb
+        restart: always
+        volumes:
+            - ./mariadb:/data
+        networks:
+            - mynet
+        tty: true
+    wordpress:
+        volumes:
+            - ./wordpress:/data
+        build:
+            context: .
+            dockerfile: ./dockerfiles/Dockerfile_wordpress
+        restart: always
+        networks:
+            - mynet
+        tty: true
+networks:
+    mynet:
+        driver: bridge
+volumes:
+    wpdata:
+    dbdata:

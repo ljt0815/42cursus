@@ -1,0 +1,5 @@
+FROM debian:buster
+RUN		apt-get update
+RUN		apt-get -y install php-fpm php7.3-xml php7.3-curl php7.3-gd php7.3-mbstring php7.3-readline php7.3-bz2 php7.3-zip php7.3-json php7.3-opcache php-mysql
+COPY	./wordpress/wordpress /var/www/html/wordpress
+RUN		chown www-data.www-data /var/www/html/wordpress/* -R
