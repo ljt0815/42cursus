@@ -6,8 +6,10 @@ services:
             context: .
             dockerfile: ./dockerfiles/Dockerfile_nginx
         restart: always
+        ports:
+            - "80:80"
         volumes:
-            - ./data:/var/www/html
+            - ./wordpress/wordpress:/var/www/html
         networks:
             - mynet
         tty: true
@@ -18,22 +20,35 @@ services:
         restart: always
         volumes:
             - ./mariadb:/data
+        expose:
+            - "3600"
         networks:
             - mynet
         tty: true
+        depends_on:
+            - nginx
     wordpress:
         volumes:
-            - ./wordpress:/data
+            - ./wordpress/wordpress:/var/www/html
         build:
             context: .
             dockerfile: ./dockerfiles/Dockerfile_wordpress
         restart: always
         networks:
             - mynet
+        expose:
+            - "9000"
         tty: true
+        depends_on:
+            - mariadb
 networks:
     mynet:
         driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: "172.23.0.0/16"
+                  gateway: "172.23.0.1"
 volumes:
     wpdata:
     dbdata:
