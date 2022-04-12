@@ -51,4 +51,14 @@ networks:
                   gateway: "172.23.0.1"
 volumes:
     wpdata:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '/home/jitlee/data/'
     dbdata:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '/home/jitlee/data/'
