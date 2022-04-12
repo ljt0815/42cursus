@@ -9,7 +9,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./wordpress/wordpress:/var/www/html
+            - wpdata:/var/www/html
         networks:
             - mynet
         tty: true
@@ -19,7 +19,7 @@ services:
             dockerfile: ./dockerfiles/Dockerfile_mariadb
         restart: always
         volumes:
-            - ./mariadb:/data
+            - dbdata:/dbdata
         expose:
             - "3600"
         networks:
@@ -29,7 +29,7 @@ services:
             - nginx
     wordpress:
         volumes:
-            - ./wordpress/wordpress:/var/www/html
+            - wpdata:/var/www/html
         build:
             context: .
             dockerfile: ./dockerfiles/Dockerfile_wordpress
@@ -55,10 +55,10 @@ volumes:
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/home/jitlee/data/'
+            device: '/home/jitlee/data/wpdata'
     dbdata:
         driver: local
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/home/jitlee/data/'
+            device: '/home/jitlee/data/dbdata'

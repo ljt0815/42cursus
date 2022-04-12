@@ -386,5 +386,4 @@ insert into wp_users (user_login, user_pass, user_nicename, user_email, user_reg
 
 CREATE USER 'wordpress'@'%' IDENTIFIED BY 'jitlee123!';
 GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'%';
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'jitlee123';
 FLUSH PRIVILEGES;

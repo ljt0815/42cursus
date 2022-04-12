@@ -7,4 +7,6 @@ RUN /etc/init.d/mysql start && \
 RUN rm /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./mariadb/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./mariadb/inception /
-CMD ["sh", "/inception"]
+COPY ./mariadb/dump.sh /
+
+ENTRYPOINT ["sh", "/inception"]

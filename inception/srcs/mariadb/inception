@@ -1,1 +1,7 @@
+if [ ! -e /dbdata/my.sql ]; then
+	"ALTER USER 'root'@'localhost' IDENTIFIED BY 'jitlee123';" >> /dbdata/my.sql
+	"FLUSH PRIVILEGES;" >> /dbdata/my.sql
+fi
+/etc/init.d/mysql start && mysql < /dbdata/my.sql
+/etc/init.d/mysql stop
 exec /usr/bin/mysqld_safe

@@ -1,1 +1,4 @@
+if [ ! -f "/var/www/html/wp-config.php" ]; then
+	cp -r /wordpress/* /var/www/html
+fi
 exec /usr/sbin/php-fpm7.3 -F -R
