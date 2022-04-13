@@ -1,2 +1,4 @@
 #!/bin/bash
-mysql -uroot -pjitlee123 < /dbdata/my.sql
+sleep 5s
+mysql < /dbdata/my.sql
+echo "restore success"

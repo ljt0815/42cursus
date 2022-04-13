@@ -2,4 +2,5 @@ if [ ! -e /dbdata/my.sql ]; then
 	echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'jitlee123';" >> /dbdata/my.sql
 	echo "FLUSH PRIVILEGES;" >> /dbdata/my.sql
 fi
+nohup /restore.sh &
 exec /usr/bin/mysqld_safe
