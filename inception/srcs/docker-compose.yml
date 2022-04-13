@@ -12,7 +12,6 @@ services:
             - wpdata:/var/www/html
         networks:
             - mynet
-        tty: true
     mariadb:
         build:
             context: .
@@ -24,7 +23,6 @@ services:
             - "3600"
         networks:
             - mynet
-        tty: true
         depends_on:
             - nginx
     wordpress:
@@ -38,7 +36,6 @@ services:
             - mynet
         expose:
             - "9000"
-        tty: true
         depends_on:
             - mariadb
 networks:

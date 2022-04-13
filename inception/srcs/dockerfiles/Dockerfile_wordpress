@@ -4,7 +4,10 @@ RUN		apt-get -y install php-fpm php7.3-xml php7.3-curl php7.3-gd php7.3-mbstring
 RUN		rm -rf /etc/php/7.3/fpm/pool.d/www.conf
 COPY	./wordpress/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 COPY	./wordpress/inception /inception
-COPY	./wordpress/wordpress /wordpress
+COPY	./wordpress/latest.tar.gz /
+RUN		tar -xvf /latest.tar.gz
+RUN		chown -R www-data:www-data /wordpress
+COPY	./wordpress/wp-config.php /wordpress
 RUN		mkdir /run/php
 
 CMD ["sh", "/inception"]
