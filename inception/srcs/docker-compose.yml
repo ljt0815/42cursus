@@ -2,9 +2,7 @@ version: '3'
 
 services:
     nginx:
-        build:
-            context: .
-            dockerfile: ./dockerfiles/Dockerfile_nginx
+        build: ./requirements/nginx/
         restart: always
         ports:
             - "80:80"
@@ -13,9 +11,7 @@ services:
         networks:
             - mynet
     mariadb:
-        build:
-            context: .
-            dockerfile: ./dockerfiles/Dockerfile_mariadb
+        build: ./requirements/mariadb
         restart: always
         volumes:
             - dbdata:/dbdata
@@ -28,9 +24,7 @@ services:
     wordpress:
         volumes:
             - wpdata:/var/www/html
-        build:
-            context: .
-            dockerfile: ./dockerfiles/Dockerfile_wordpress
+        build: ./requirements/wordpress
         restart: always
         networks:
             - mynet

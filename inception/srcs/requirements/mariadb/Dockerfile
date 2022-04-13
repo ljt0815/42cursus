@@ -1,13 +1,13 @@
 FROM debian:buster
-COPY ./mariadb/setting.sql /
+COPY ./conf/setting.sql /
 RUN	apt-get update
 RUN apt-get -y install mariadb-server
 RUN /etc/init.d/mysql start && \
 		mysql < /setting.sql
 RUN rm /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ./mariadb/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ./mariadb/inception /
-COPY ./mariadb/dump.sh /
-COPY ./mariadb/restore.sh /
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./tools/inception /
+COPY ./tools/dump.sh /
+COPY ./tools/restore.sh /
 
 ENTRYPOINT ["sh", "/inception"]
