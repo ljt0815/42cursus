@@ -1,9 +1,11 @@
-version: '3'
+version: '2'
 
 services:
     nginx:
         build: ./requirements/nginx/
+        image: nginx
         restart: always
+        container_name: nginx
         ports:
             - "443:443"
         volumes:
@@ -12,7 +14,9 @@ services:
             - mynet
     mariadb:
         build: ./requirements/mariadb
+        image: mariadb
         restart: always
+        container_name: mariadb
         volumes:
             - dbdata:/dbdata
         expose:
@@ -22,9 +26,11 @@ services:
         depends_on:
             - nginx
     wordpress:
+        build: ./requirements/wordpress
+        image: wordpress
+        container_name: wordpress
         volumes:
             - wpdata:/var/www/html
-        build: ./requirements/wordpress
         restart: always
         networks:
             - mynet

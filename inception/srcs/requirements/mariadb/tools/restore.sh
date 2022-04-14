@@ -1,4 +1,7 @@
 #!/bin/bash
 sleep 5s
-mysql < /dbdata/my.sql
-echo "restore success"
+if [ -e /dbdata/my.sql ]; then
+	mysql < /dbdata/my.sql
+fi
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'jitlee123';" | mysql
+echo "restore success" > /aa
