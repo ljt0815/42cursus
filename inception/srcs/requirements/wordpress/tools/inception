@@ -1,3 +1,6 @@
+sed "s/MY_DB_NAME/${MY_DB_NAME}/g" /wp-config.php > /tmp1
+sed "s/MY_DB_USER/${MY_DB_USER}/g" /tmp1 > /tmp2
+sed "s/MY_DB_PWD/${MY_DB_PWD}/g" /tmp2 > /wordpress/wp-config.php
 if [ ! -f "/var/www/html/wp-config.php" ]; then
 	cp -r /wordpress/* /var/www/html
 fi

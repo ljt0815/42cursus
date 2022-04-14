@@ -25,6 +25,14 @@ services:
             - mynet
         depends_on:
             - nginx
+        environment:
+            MY_DB_NAME:     ${MY_DB_NAME}
+            MY_DB_USER:     ${MY_DB_USER}
+            MY_DB_PWD:      ${MY_DB_PWD}
+            WP_ADMIN_ID:    ${WP_ADMIN_ID}
+            WP_ADMIN_PW:    ${WP_ADMIN_PW}
+            WP_USER_ID:     ${WP_USER_ID}
+            WP_USER_PW:     ${WP_USER_PW}
     wordpress:
         build: ./requirements/wordpress
         image: wordpress
@@ -38,6 +46,10 @@ services:
             - "9000"
         depends_on:
             - mariadb
+        environment:
+            MY_DB_NAME:     ${MY_DB_NAME}
+            MY_DB_USER:     ${MY_DB_USER}
+            MY_DB_PWD:      ${MY_DB_PWD}
 networks:
     mynet:
         driver: bridge

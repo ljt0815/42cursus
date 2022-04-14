@@ -7,7 +7,7 @@ COPY	./tools/inception /inception
 COPY	./tools/latest.tar.gz /
 RUN		tar -xvf /latest.tar.gz
 RUN		chown -R www-data:www-data /wordpress
-COPY	./conf/wp-config.php /wordpress
+COPY	./conf/wp-config.php /
 RUN		mkdir /run/php
 
 CMD ["sh", "/inception"]
