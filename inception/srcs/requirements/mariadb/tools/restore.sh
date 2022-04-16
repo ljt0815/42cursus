@@ -14,4 +14,4 @@ else
 	mysql < /realsetting.sql
 fi
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'jitlee123';" | mysql
-echo "restore success" > /aa
+echo "success" > /success_setting

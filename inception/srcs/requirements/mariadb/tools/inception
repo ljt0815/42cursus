@@ -1,2 +1,4 @@
-nohup /restore.sh &
+if [ ! -e /success_setting ]; then
+	nohup /restore.sh &
+fi
 exec /usr/bin/mysqld_safe
