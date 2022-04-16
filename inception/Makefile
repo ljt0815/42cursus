@@ -5,6 +5,10 @@ all: clean start
 domain:
 	echo "127.0.0.1 jitlee.42.fr" >> /etc/hosts
 
+volume:
+	mkdir -p /home/jitlee/data/wpdata
+	mkdir -p /home/jitlee/data/dbdata
+
 start:
 	docker-compose -f srcs/docker-compose.yml up -d
 
@@ -15,4 +19,4 @@ stop:
 clean:
 	docker-compose -f srcs/docker-compose.yml down --rm all -v
 
-.PHONY: domain start stop clean
+.PHONY: domain volume start stop clean
